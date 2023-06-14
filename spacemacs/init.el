@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(go
+   '(javascript
+     go
      html
      yaml
      (spacemacs-evil :variables
@@ -668,8 +669,84 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(connection-local-criteria-alist
+   '(((:application tramp)
+      tramp-connection-local-default-system-profile tramp-connection-local-default-shell-profile)))
+ '(connection-local-profile-alist
+   '((tramp-connection-local-darwin-ps-profile
+      (tramp-process-attributes-ps-args "-acxww" "-o" "pid,uid,user,gid,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" "-o" "state=abcde" "-o" "ppid,pgid,sess,tty,tpgid,minflt,majflt,time,pri,nice,vsz,rss,etime,pcpu,pmem,args")
+      (tramp-process-attributes-ps-format
+       (pid . number)
+       (euid . number)
+       (user . string)
+       (egid . number)
+       (comm . 52)
+       (state . 5)
+       (ppid . number)
+       (pgrp . number)
+       (sess . number)
+       (ttname . string)
+       (tpgid . number)
+       (minflt . number)
+       (majflt . number)
+       (time . tramp-ps-time)
+       (pri . number)
+       (nice . number)
+       (vsize . number)
+       (rss . number)
+       (etime . tramp-ps-time)
+       (pcpu . number)
+       (pmem . number)
+       (args)))
+     (tramp-connection-local-busybox-ps-profile
+      (tramp-process-attributes-ps-args "-o" "pid,user,group,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" "-o" "stat=abcde" "-o" "ppid,pgid,tty,time,nice,etime,args")
+      (tramp-process-attributes-ps-format
+       (pid . number)
+       (user . string)
+       (group . string)
+       (comm . 52)
+       (state . 5)
+       (ppid . number)
+       (pgrp . number)
+       (ttname . string)
+       (time . tramp-ps-time)
+       (nice . number)
+       (etime . tramp-ps-time)
+       (args)))
+     (tramp-connection-local-bsd-ps-profile
+      (tramp-process-attributes-ps-args "-acxww" "-o" "pid,euid,user,egid,egroup,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" "-o" "state,ppid,pgid,sid,tty,tpgid,minflt,majflt,time,pri,nice,vsz,rss,etimes,pcpu,pmem,args")
+      (tramp-process-attributes-ps-format
+       (pid . number)
+       (euid . number)
+       (user . string)
+       (egid . number)
+       (group . string)
+       (comm . 52)
+       (state . string)
+       (ppid . number)
+       (pgrp . number)
+       (sess . number)
+       (ttname . string)
+       (tpgid . number)
+       (minflt . number)
+       (majflt . number)
+       (time . tramp-ps-time)
+       (pri . number)
+       (nice . number)
+       (vsize . number)
+       (rss . number)
+       (etime . number)
+       (pcpu . number)
+       (pmem . number)
+       (args)))
+     (tramp-connection-local-default-shell-profile
+      (shell-file-name . "/bin/sh")
+      (shell-command-switch . "-c"))
+     (tramp-connection-local-default-system-profile
+      (path-separator . ":")
+      (null-device . "/dev/null"))))
  '(package-selected-packages
-   '(ob-chatgpt-shell chatgpt-shell tree-sitter yaml-mode blacken code-cells company-anaconda anaconda-mode cython-mode dap-mode lsp-docker lsp-treemacs bui evil-matchit helm-cscope helm-pydoc importmagic epc ctable concurrent deferred live-py-mode lsp-pyright lsp-python-ms lsp-mode nose pip-requirements pipenv load-env-vars pippel poetry py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc stickyfunc-enhance window-purpose imenu-list xcscope yapfify ac-ispell auto-complete auto-dictionary auto-yasnippet browse-at-remote flycheck-pos-tip pos-tip flyspell-correct-helm flyspell-correct fuzzy git-gutter-fringe fringe-helper git-gutter helm-c-yasnippet helm-company mwim unfill yasnippet-snippets cider-eval-sexp-fu eval-sexp-fu clj-refactor inflections multiple-cursors clojure-snippets yasnippet counsel-gtags counsel swiper ivy evil-cleverparens flycheck-clj-kondo flycheck-clojure flycheck-joker ggtags helm-cider helm-gtags kaocha-runner popwin sayid cider sesman spinner queue parseedn clojure-mode parseclj git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git orgit-forge orgit forge yaml ghub closql emacsql treepy smeargle treemacs-magit magit magit-section git-commit with-editor transient compat company-emoji company emoji-cheat-sheet-plus gh-md markdown-toc markdown-mode mmm-mode smartparens valign vmd-mode org-roam evil-org gnuplot helm-org-rifle htmlize org-cliplink org-contrib org-download org-mime org-pomodoro alert log4e gntp org-present org-rich-yank org-superstar space-doc toc-org nameless elisp-slime-nav dotenv-mode diminish ace-jump-helm-line treemacs-icons-dired bind-map pcre2el flycheck-package treemacs-evil helm-themes holy-mode helm-xref helm-swoop elisp-def help-fns+ treemacs-projectile evil-mc flycheck-elsa helm-descbinds inspector macrostep helm-make auto-compile helm-projectile helm-ag quickrun helm-org evil-evilified-state helm-mode-manager hybrid-mode which-key emr overseer))
+   '(add-node-modules-path import-js grizzl js-doc js2-refactor livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern yaml-mode blacken code-cells company-anaconda anaconda-mode cython-mode dap-mode lsp-docker lsp-treemacs bui evil-matchit helm-cscope helm-pydoc importmagic epc ctable concurrent deferred live-py-mode lsp-pyright lsp-python-ms lsp-mode nose pip-requirements pipenv load-env-vars pippel poetry py-isort pydoc pyenv-mode pythonic pylookup pytest pyvenv sphinx-doc stickyfunc-enhance window-purpose imenu-list xcscope yapfify ac-ispell auto-complete auto-dictionary auto-yasnippet browse-at-remote flycheck-pos-tip pos-tip flyspell-correct-helm flyspell-correct fuzzy git-gutter-fringe fringe-helper git-gutter helm-c-yasnippet helm-company mwim unfill yasnippet-snippets cider-eval-sexp-fu eval-sexp-fu clj-refactor inflections multiple-cursors clojure-snippets yasnippet counsel-gtags counsel swiper ivy evil-cleverparens flycheck-clj-kondo flycheck-clojure flycheck-joker ggtags helm-cider helm-gtags kaocha-runner popwin sayid cider sesman spinner queue parseedn clojure-mode parseclj git-link git-messenger git-modes git-timemachine gitignore-templates helm-git-grep helm-ls-git orgit-forge orgit forge yaml ghub closql emacsql treepy smeargle treemacs-magit magit magit-section git-commit with-editor transient compat company-emoji company emoji-cheat-sheet-plus gh-md markdown-toc markdown-mode mmm-mode smartparens valign vmd-mode org-roam evil-org gnuplot helm-org-rifle htmlize org-cliplink org-contrib org-download org-mime org-pomodoro alert log4e gntp org-present org-rich-yank org-superstar space-doc toc-org nameless elisp-slime-nav dotenv-mode diminish ace-jump-helm-line treemacs-icons-dired bind-map pcre2el flycheck-package treemacs-evil helm-themes holy-mode helm-xref helm-swoop elisp-def help-fns+ treemacs-projectile evil-mc flycheck-elsa helm-descbinds inspector macrostep helm-make auto-compile helm-projectile helm-ag quickrun helm-org evil-evilified-state helm-mode-manager hybrid-mode which-key emr overseer))
  '(safe-local-variable-values
    '((eval progn
            (require 'lisp-mode)
