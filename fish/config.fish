@@ -1,0 +1,1 @@
+/gnu/store/k3vcazwwbsyfk6ih8bdkskisnsfgskw6-fish-config.fish
