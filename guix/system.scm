@@ -43,36 +43,24 @@
   (format #f "~s/backup/~s-~s-~s.tar.gz"
           file-system date-stamp machine-name backup-part))
 
-(define cdo-mcron-rules
-        '(
-          ;; Backup 'peter'
-          (job '(next-hour '(2))
-               '((let ((backup-file (cdo-backup-filename "peter" "root")))
-                (spawn "tar" "-cazf" backup-file
-                       "--one-file-system"
-                       "--listed-incremental=/mnt/9/backup/peter-root.snar"
-                       "-C" "/" "/"))))
+(define cdo-mcron-jobs
+  '(
+    (job '(next-hour '(2))
+         '((let ((backup-file (cdo-backup-filename "peter" "root")))
+             (spawn "tar" "-cazf" backup-file
+                    "--one-file-system"
+                    "-C" "/" "/"))))
 
-          ;; Backup 'isaac'
-          (job '(next-hour '(2))
-               '((let ((backup-file (cdo-backup-filename "isaac" "root"))
-                       (remote-cmd '("tar" "-cazf" "-"
-                                     "--one-file-system"
-                                     "--listed-incremental=/backup/isaac-root.snar"
-                                     "-C" "/" "/")))
-                   (apply spawn (concat '("ssh" "cdo@isaac") remote-cmd)
-                       #:output (open-file local-output-file "w")))))
-
-          ;; Copy backups to 'william'
-          (job '(next-hour '(5))
-               '((spawn "rsync" "-P")
-
-                ;; Copy 'isaac' backup to 'peter'
-                (spawn "scp" isaac-backup-file "william:/srv/files/cdo/backup/isaac/")
-
-                ;; Copy 'isaac' snar file to 'william' and 'peter'
-                (spawn "scp" "cdo@isaac:/backup/isaac-root.snar" "william:/srv/files/cdo/backup/")
-                (spawn "scp" "cdo@isaac:/backup/isaac-root.snar" "peter:/mnt/9/backup/")))))
+    (job '(next-hour '(2))
+         '((let ((backup-file (cdo-backup-filename "isaac" "root"))
+                 (remote-cmd '("tar" "-cazf" "-"
+                               "--one-file-system"
+                               "-C" "/" "/")))
+             (apply spawn (concat '("ssh" "cdo@isaac") remote-cmd)
+                    #:output (open-file local-output-file "w")))))
+    (job '(next-hour '(5))
+         '((spawn "rsync" "-Pa" "/mnt/9/" "/mnt/3/"))
+         '((spawn "rsync" "-Pa" "/mnt/9/" "cdo@william:/srv/files/cdo/")))))
 
 
 (operating-system
