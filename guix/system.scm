@@ -4,8 +4,10 @@
   (gnu services sound)
   (gnu services security-token)
   (gnu services syncthing)
+  (gnu services mcron)
   (gnu packages linux)
   (gnu packages emacs)
+  (gnu packages admin)
   (nongnu system linux-initrd)
   (nongnu packages linux))
 (use-service-modules
@@ -84,6 +86,11 @@
                   (supplementary-groups
                     '("wheel" "netdev" "audio" "video" "backup"))
                   (shell (file-append fish "/bin/fish")))
+                (user-account
+                  (name "backup")
+                  (group "backup")
+                  (shell (file-append shadow "/sbin/nologin"))
+                  (system? #t))
                 %base-user-accounts))
   (groups (cons* (user-group
                   (name "backup"))
@@ -111,6 +118,9 @@
                   (keyboard-layout keyboard-layout)))))
             (service alsa-service-type)
             (service pcscd-service-type)
+            ;; (service mcron-service-type
+            ;;          (mcron-configuration
+            ;;           (jobs cdo-mcron-jobs)))
             (service syncthing-service-type
               (syncthing-configuration
                (user "cdo")
