@@ -14,7 +14,27 @@
              (gnu packages)
              (gnu services)
              (gnu services mcron)
-             (guix gexp))
+             (guix gexp)
+             (guix ci))
+
+(define cdo-guix-channels
+  (list (channel-with-substitutes-available
+         (channel
+	        (name 'guix)
+	        (branch 'staging)
+	        (url "https://git.savannah.gnu.org/git/guix.git")
+	        (introduction (make-channel-introduction
+		                     "9a2e8664ecd0b7fe3371cb268506e68037b3263d"
+		                     (openpgp-fingerprint
+			                    "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
+         "https://ci.guix.gnu.org")
+        (channel
+	       (name 'nonguix)
+	       (url "https://gitlab.com/nonguix/nonguix")
+	       (introduction (make-channel-introduction
+		                    "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+		                    (openpgp-fingerprint
+			                   "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
 
 (define cdo-environment-variables
      '(("BROWSER" . "chromium")
@@ -94,131 +114,147 @@
 ")
 
 (define cdo-home-environment
-        (home-environment
-         (packages (specifications->packages (list "screen"
-                                                   "emacs-debbugs"
-                                                   "alacritty"
-                                                   "nvidia-system-monitor"
-                                                   "fish"
-                                                   "cloc"
-                                                   "ublock-origin-chromium"
-                                                   "xkbutils"
-                                                   "gcc-toolchain"
-                                                   "python"
-                                                   "yubico-pam"
-                                                   "libyubikey"
-                                                   "pam-u2f"
-                                                   "keepassxc"
-                                                   "adwaita-icon-theme"
-                                                   "autoconf"
-                                                   "basu"
-                                                   "ccid"
-                                                   "clang"
-                                                   "cmatrix"
-                                                   "coreutils"
-                                                   "curl"
-                                                   "dbus"
-                                                   "ddrescue"
-                                                   "diffutils"
-                                                   "dpkg"
-                                                   "dwm"
-                                                   "emacs-counsel"
-                                                   "emacs-counsel-tramp"
-                                                   "emacs-exwm"
-                                                   "emacs-guix"
-                                                   "emacs-ivy"
-                                                   "emacs-next-pgtk"
-                                                   "emacs-paredit"
-                                                   "emacs-smartparens"
-                                                   "file"
-                                                   "fish"
-                                                   "font-adobe-source-code-pro"
-                                                   "fontconfig"
-                                                   "font-gnu-unifont"
-                                                   "font-google-noto"
-                                                   "gdb"
-                                                   "git"
-                                                   "gnupg"
-                                                   "go"
-                                                   "greetd"
-                                                   "guile"
-                                                   "guile-colorized"
-                                                   "guile-readline"
-                                                   "htop"
-                                                   "hwdata"
-                                                   "icedove-wayland"
-                                                   "julia"
-                                                   "kicad"
-                                                   "kicad-doc"
-                                                   "kicad-footprints"
-                                                   "kicad-packages3d"
-                                                   "kicad-symbols"
-                                                   "kicad-templates"
-                                                   "libcap"
-                                                   "libiconv"
-                                                   "libreoffice"
-                                                   "libtool"
-                                                   "linux-pam"
-                                                   "lm-sensors"
-                                                   "lynx"
-                                                   "mailutils"
-                                                   "make"
-                                                   "matcha-theme"
-                                                   "meld"
-                                                   "moreutils"
-                                                   "nmon"
-                                                   "nomacs"
-                                                   "nvidia-settings"
-                                                   "okular"
-                                                   "openjdk"
-                                                   "openssl"
-                                                   "orca"
-                                                   "pinentry"
-                                                   "po4a"
-                                                   "pv"
-                                                   "qemu"
-                                                   "readline"
-                                                   "recutils"
-                                                   "rsync"
-                                                   "rust-cargo"
-                                                   "sddm"
-                                                   "sendmail"
-                                                   "speech-dispatcher"
-                                                   "sway"
-                                                   "syncthing"
-                                                   "texinfo"
-                                                   "tor"
-                                                   "tor-client"
-                                                   "tree"
-                                                   "ungoogled-chromium-wayland"
-                                                   "unison"
-                                                   "unzip"
-                                                   "vlc"
-                                                   "waybar"
-                                                   "wofi"
-                                                   "xdg-desktop-portal-kde"
-                                                   "xdg-user-dirs"
-                                                   "xinit"
-                                                   "xorg-server"
-                                                   "zip")))
+  (home-environment
+   (packages (specifications->packages (list "screen"
+                                             "emacs-debbugs"
+                                             "alacritty"
+                                             "nvidia-system-monitor"
+                                             "fish"
+                                             "cloc"
+                                             "ublock-origin-chromium"
+                                             "xkbutils"
+                                             "gcc-toolchain"
+                                             "python"
+                                             "yubico-pam"
+                                             "libyubikey"
+                                             "pam-u2f"
+                                             "keepassxc"
+                                             "adwaita-icon-theme"
+                                             "autoconf"
+                                             "basu"
+                                             "ccid"
+                                             "clang"
+                                             "cmatrix"
+                                             "coreutils"
+                                             "curl"
+                                             "dbus"
+                                             "ddrescue"
+                                             "diffutils"
+                                             "dpkg"
+                                             "dwm"
+                                             "emacs-counsel"
+                                             "emacs-counsel-tramp"
+                                             "emacs-exwm"
+                                             "emacs-guix"
+                                             "emacs-ivy"
+                                             "emacs-next-pgtk"
+                                             "emacs-paredit"
+                                             "emacs-smartparens"
+                                             "file"
+                                             "fish"
+                                             "font-adobe-source-code-pro"
+                                             "fontconfig"
+                                             "font-gnu-unifont"
+                                             "font-google-noto"
+                                             "gdb"
+                                             "git"
+                                             "gnupg"
+                                             "go"
+                                             "greetd"
+                                             "guile"
+                                             "guile-colorized"
+                                             "guile-readline"
+                                             "htop"
+                                             "hwdata"
+                                             "icedove-wayland"
+                                             "julia"
+                                             "kicad"
+                                             "kicad-doc"
+                                             "kicad-footprints"
+                                             "kicad-packages3d"
+                                             "kicad-symbols"
+                                             "kicad-templates"
+                                             "libcap"
+                                             "libiconv"
+                                             "libreoffice"
+                                             "libtool"
+                                             "linux-pam"
+                                             "lm-sensors"
+                                             "lynx"
+                                             "mailutils"
+                                             "make"
+                                             "matcha-theme"
+                                             "meld"
+                                             "moreutils"
+                                             "nmon"
+                                             "nomacs"
+                                             "nvidia-settings"
+                                             "okular"
+                                             "openjdk"
+                                             "openssl"
+                                             "orca"
+                                             "pinentry"
+                                             "po4a"
+                                             "pv"
+                                             "qemu"
+                                             "readline"
+                                             "recutils"
+                                             "rsync"
+                                             "rust-cargo"
+                                             "sddm"
+                                             "sendmail"
+                                             "speech-dispatcher"
+                                             "sway"
+                                             "syncthing"
+                                             "texinfo"
+                                             "tor"
+                                             "tor-client"
+                                             "tree"
+                                             "ungoogled-chromium-wayland"
+                                             "unison"
+                                             "unzip"
+                                             "vlc"
+                                             "waybar"
+                                             "wofi"
+                                             "xdg-desktop-portal-kde"
+                                             "xdg-user-dirs"
+                                             "xinit"
+                                             "xorg-server"
+                                             "zip")))
 
-         (services
-          (list
-           (service home-fish-service-type (home-fish-configuration
-                                            (environment-variables cdo-environment-variables)
-                                            (aliases '())
-                                            (config (list (local-file
-                                                           "/home/cdo/.config/fish/base-config.fish"
-                                                           "config.fish")))))
-           ))))
+   (services
+    (list
+     (service home-fish-service-type (home-fish-configuration
+                                      (environment-variables cdo-environment-variables)
+                                      (aliases '())
+                                      (config (list (local-file
+                                                     "/home/cdo/config/fish/config.fish"
+                                                     "config.fish")))))
+     (service home-xdg-configuration-files-service-type
+              `(("fish/fish_variables" ,(local-file "./fish_variables"))
+                ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
+                ("gh" ,(local-file "./gh" #:recursive? #t))
+                ("git" ,(local-file "./git" #:recursive))
+                ("guix/channels.scm" ,(local-file "guix/channels.scm"))
+                ("hexchat" ,(local-file "./hexchat" #:recursive? #t))
+                ("shell" ,(local-file ",.shell" #:recursive? #t))
+                ("spacemacs" ,(localfile "./spacemacs" #:recursive? #t))
+                ("sway" ,(local-file "./sway" #:recursive #t))
+                ("swaylock/config" ,(local-file "./swaylock/config"))
+                ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
+                ("waybar" ,(local-file "./waybar" #:recursive? #t))
+                ("wofi" ,(local-file "./wofi" #:recursive? #t))))
+     (service home-channels-service-type
+              cdo-guix-channels)
+     )))
 
 ;;; The following error occurs when trying to reload herd after a reconfigure.
 ;;; herd: error: exception caught while executing 'load' on service 'root':
 ;;; Wrong number of arguments to #<procedure 7f04867be6e0 at shepherd/service.scm:2773:6 (running file-name)>
-;; (service home-redshift-service-type
-;;          (home-redshift-configuration
-;;           (location-provider 'manual)
-;;           (latitude 51.5)
-;;           (longitude -0.1)))
+  ;; (service home-redshift-service-type
+  ;;          (home-redshift-configuration
+  ;;           (location-provider 'manual)
+  ;;           (latitude 51.5)
+  ;;           (longitude -0.1)))
 
-cdo-home-environment
+  cdo-home-environment)
