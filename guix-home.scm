@@ -11,9 +11,11 @@
              (gnu home services fontutils)
              (gnu home services mcron)
              (gnu home services desktop)
+             (gnu home services guix)
              (gnu packages)
              (gnu services)
              (gnu services mcron)
+             (guix channels)
              (guix gexp)
              (guix ci))
 
@@ -118,7 +120,7 @@
    (packages (specifications->packages (list "screen"
                                              "emacs-debbugs"
                                              "alacritty"
-                                             "nvidia-system-monitor"
+                                             ;; "nvidia-system-monitor"
                                              "fish"
                                              "cloc"
                                              "ublock-origin-chromium"
@@ -188,7 +190,7 @@
                                              "moreutils"
                                              "nmon"
                                              "nomacs"
-                                             "nvidia-settings"
+                                             ;; "nvidia-settings"
                                              "okular"
                                              "openjdk"
                                              "openssl"
@@ -231,30 +233,30 @@
                                                      "/home/cdo/config/fish/config.fish"
                                                      "config.fish")))))
      (service home-xdg-configuration-files-service-type
-              `(("fish/fish_variables" ,(local-file "./fish_variables"))
-                ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
+              `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
+                ;; ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
-                ("git" ,(local-file "./git" #:recursive))
-                ("guix/channels.scm" ,(local-file "guix/channels.scm"))
+                ("git" ,(local-file "./git" #:recursive? #t))
+                ;; ("guix/channels.scm" ,(local-file "guix/channels.scm"))
                 ("hexchat" ,(local-file "./hexchat" #:recursive? #t))
-                ("shell" ,(local-file ",.shell" #:recursive? #t))
-                ("spacemacs" ,(localfile "./spacemacs" #:recursive? #t))
-                ("sway" ,(local-file "./sway" #:recursive #t))
+                ("shell" ,(local-file "./shell" #:recursive? #t))
+                ("spacemacs/init.el" ,(local-file "./spacemacs/init.el"))
+                ("sway" ,(local-file "./sway" #:recursive? #t))
                 ("swaylock/config" ,(local-file "./swaylock/config"))
                 ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
                 ("waybar" ,(local-file "./waybar" #:recursive? #t))
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
      (service home-channels-service-type
-              cdo-guix-channels)
+              cdo-guix-channels))
      )))
 
 ;;; The following error occurs when trying to reload herd after a reconfigure.
 ;;; herd: error: exception caught while executing 'load' on service 'root':
 ;;; Wrong number of arguments to #<procedure 7f04867be6e0 at shepherd/service.scm:2773:6 (running file-name)>
-  ;; (service home-redshift-service-type
-  ;;          (home-redshift-configuration
-  ;;           (location-provider 'manual)
-  ;;           (latitude 51.5)
-  ;;           (longitude -0.1)))
+;; (service home-redshift-service-type
+;;          (home-redshift-configuration
+;;           (location-provider 'manual)
+;;           (latitude 51.5)
+;;           (longitude -0.1)))
 
-  cdo-home-environment)
+cdo-home-environment
