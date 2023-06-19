@@ -44,6 +44,7 @@ This function should only modify configuration layer settings."
                      ;; evil-collection-mode-list
                      ;; '(minibuffer dired)
                      )
+     tree-sitter
      python
      clojure
      markdown
@@ -95,7 +96,7 @@ This function should only modify configuration layer settings."
      version-control
      treemacs
      chrome
-     exwm
+     ;; exwm
      spacemacs-modeline
      spacemacs-navigation
      spacemacs-editing
@@ -113,9 +114,13 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(lispy
-     lispyville
-     gptel)
+   '(org-roam
+     chatgpt-shell
+     all-the-icons
+     no-littering
+     symex
+     lispy
+     lispyville)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -509,7 +514,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
 
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
@@ -594,7 +599,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-  (desktop-save-mode 1)
+  ;; (desktop-save-mode 1)
   (auto-save-visited-mode 1)
 )
 
@@ -605,7 +610,6 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq desktop-path '("/home/cdo/.local/state/emacs/"))
-  (org-roam-db-autosync-mode)
 )
 
 (defun dotspacemacs/user-load ()
@@ -613,6 +617,11 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
+)
+
+(defun reload-guix-home ()
+  (interactive)
+  (let ((prcess (start-process "guix-home-reconfigure"))))
 )
 
 (defun dotspacemacs/user-config ()
@@ -626,21 +635,51 @@ before packages are loaded."
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
   (global-set-key (kbd "C-s") 'save-buffer)
 
-  (require 'gptel)
   (require 'chatgpt-shell)
   (require 'epa-file)
-  (require 'exwm)
-  (require 'exwm)
-  (exwm-config-example)
+  ;; (require 'exwm)
+  ;; (exwm-config-example)
   (setq chatgpt-shell-openai-key
         "***REMOVED***")
-  (epa-file-enable)
-  (spacemacs/set-leader-keys
-    "kf" 'lispy-mode)
-  (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
-  (add-hook 'lisp-mode-hook #'lispyville-mode)
-  (lispyville-set-key-theme '(lispy special operators c-w additional))
-)
+  ;; (spacemacs/set-leader-keys
+  ;; "kf" 'lispy-mode)
+  ;; (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
+  ;; (add-hook 'lisp-mode-hook #'lispyville-mode)
+  ;; (lispyville-set-key-theme '(lispy special operators c-w additional))
+  (require 'tree-sitter)
+  (setq treesit-language-source-alist
+        '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
+  (tree-sitter-require 'c)
+  (tree-sitter-require 'cpp)
+  (tree-sitter-require 'css)
+  (tree-sitter-require 'go)
+  (tree-sitter-require 'haskell)
+  (tree-sitter-require 'html)
+  (tree-sitter-require 'javascript)
+  (tree-sitter-require 'json)
+  (tree-sitter-require 'ocaml)
+  (tree-sitter-require 'python)
+  (tree-sitter-require 'rust)
+  (tree-sitter-require 'scheme)
+  (tree-sitter-require 'typescript)
+  (tree-sitter-require 'elisp)
+  (global-tree-sitter-mode t)
+
+  (require 'org-roam)
+  (org-roam-db-autosync-enable)
+
+  (require 'symex)
+  ;; (symex-modal-backend 'evil)
+  (symex-initialize)
+  (global-set-key (kbd "C-c x") 'symex-mode-interface)
+
+  (setq backup-by-copying t)
+  (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
+  (setq delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t)
+  )
 
 (setq custom-file "~/.config/spacemacs/custom.el")
 (load custom-file)
