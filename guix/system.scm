@@ -4,6 +4,8 @@
   (gnu services sound)
   (gnu services security-token)
   (gnu services syncthing)
+  (gnu services docker)
+ (gnu services shepherd)
   (gnu services mcron)
   (gnu packages linux)
   (gnu packages emacs)
@@ -111,6 +113,7 @@
             (service ntp-service-type)
             (service gpm-service-type)
             (service elogind-service-type)
+            (service docker-service-type)
             (service sddm-service-type
               (sddm-configuration
                 (display-server "x11")

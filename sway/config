@@ -201,7 +201,7 @@ bindsym $mod+Ctrl+Shift+x exec $lock
 
 bindsym Print exec grim -g "$(slurp)"
 
-xwayland enable
+xwayland disable
 
 #exec mako
 #exec shepherd # can't share with isaac

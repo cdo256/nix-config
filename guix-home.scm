@@ -23,7 +23,7 @@
   (list (channel-with-substitutes-available
          (channel
 	        (name 'guix)
-	        (branch 'staging)
+	        (branch "staging")
 	        (url "https://git.savannah.gnu.org/git/guix.git")
 	        (introduction (make-channel-introduction
 		                     "9a2e8664ecd0b7fe3371cb268506e68037b3263d"
@@ -42,6 +42,7 @@
      '(("BROWSER" . "chromium")
        ("TERMINAL" . "alacritty")
        ("EDITOR" . "emacsclient")
+       ("GUIX_PROFILE" . "$HOME/.guix-profile")
        ("XDG_CACHE_HOME" . "$HOME/.local/cache")
        ("XDG_CONFIG_HOME" . "$HOME/.config")
        ("XDG_DATA_HOME" . "$HOME/.local/data")
@@ -62,17 +63,18 @@
        ("GOBIN" . "$HOME/.local/bin")
        ("GOCACHE" . "$XDG_CACHE_HOME/go")
        ("GOMODCACHE" . "$XDG_CACHE_HOME/go/modules")
-       ("GOROOT" . "/lib/go")
+       ("GOROOT" . "$GUIX_PROFILE/lib/go")
        ("GOTMPDIR" . "/tmp")
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
        ("HISTFILE" . "$XDG_DATA_HOME/shell/histfile")
        ("ICEAUTHORITY" . "$XDG_CACHE_HOME/x11/ICEauthority")
-       ("JULIA_DEPOT_PATH" . "$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH")
+       ("JULIA_DEPOT_PATH" . "$XDG_DATA_HOME/julia:$GUIX_PROFILE/share/julia/")
        ("LESSHISTFILE" . "$XDG_CONFIG_HOME/less/hist")
        ("LESSKEY" . "$XDG_CONFIG_HOME/less/keys")
        ("MPLAYER_HOME" . "$XDG_CONFIG_HOME/mplayer")
        ("PYTHONHISTFILE" . "$XDG_DATA_HOME/python/histfile")
        ("PYTHONSTARTUP" . "$XDG_CONFIG_HOME/python/startup.py")
+       ("QT_QPA_PLATFORM_PLUGIN_PATH" . "$GUIX_PROFILE/lib/qt5/plugins")
        ("SPACEMACSDIR" . "$XDG_CONFIG_HOME/spacemacs")
        ("SUBVERSION_HOME" . "$XDG_CONFIG_HOME/subversion")
        ("VIMDOTDIR" . "$XDG_CONFIG_HOME/vim")
@@ -197,6 +199,7 @@
                                              "pv"
                                              "python"
                                              "qemu"
+                                             "qtwayland"
                                              "readline"
                                              "recutils"
                                              "rsync"
@@ -223,6 +226,7 @@
                                              "xinit"
                                              "xkbutils"
                                              "xorg-server"
+                                             "xorg-server-xwayland"
                                              "yubico-pam"
                                              "zip")))
 
