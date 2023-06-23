@@ -142,14 +142,5 @@
                          (type "vfat"))
                        %base-file-systems))
   (sudoers-file (local-file "/home/cdo/.config/sudoers"))
-  (hosts-file (local-file "/home/cdo/.config/hosts"))
-  (pam-services
-   (map (lambda (s)
-    (pam-service
-      (name (pam-service-name s))
-      (account (pam-service-account s))
-      (auth (pam-service-auth s))
-      (password (pam-service-password s))
-      (session (map mutate-pam-entry (pam-service-session s)))))
-    (base-pam-services))))
+  (hosts-file (local-file "/home/cdo/.config/hosts")))
 
