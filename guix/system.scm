@@ -1,12 +1,12 @@
 (use-modules
   (gnu)
-  (gnu packages shells)
   (gnu services sound)
   (gnu services security-token)
   (gnu services syncthing)
   (gnu services docker)
- (gnu services shepherd)
+  (gnu services shepherd)
   (gnu services mcron)
+  (gnu packages shells)
   (gnu packages linux)
   (gnu packages emacs)
   (gnu packages admin)
@@ -29,43 +29,6 @@
     "RUN+=\"/bin/sh -c '/run/setuid-programs/sudo -u cdo "
       "/home/cdo/.guix-profile/bin/gpg-connect-agent --homedir=/home/cdo/.local/secure/gnupg/ \\\"scd serialno\\\" \\\"learn --force\\\" /bye "
       "2>&1 >>/var/log/gpg-connect-agent.log'\"\n")))
-
-(define (mutate-pam-entry entry)
- (if (string=? "pam_env.so" (pam-entry-module entry))
-     (pam-entry
-      (control (pam-entry-control entry))
-      (module (pam-entry-module entry))
-      (arguments (cons "user_readenv=1"
-                       (pam-entry-arguments entry))))
-     entry))
-
-(define* (cdo-backup-filename machine-name backup-part #:optional  (file-system "/mnt/9") (date (current-date)))
-  (date-stamp (format #f "~4,'0d~2,'0d~2,'0d"
-                      (date-year date)
-                      (date-month date)
-                      (date-day date)))
-  (format #f "~s/backup/~s-~s-~s.tar.gz"
-          file-system date-stamp machine-name backup-part))
-
-(define cdo-mcron-jobs
-  '(
-    (job '(next-hour '(2))
-         '((let ((backup-file (cdo-backup-filename "peter" "root")))
-             (spawn "tar" "-cazf" backup-file
-                    "--one-file-system"
-                    "-C" "/" "/"))))
-
-    (job '(next-hour '(2))
-         '((let ((backup-file (cdo-backup-filename "isaac" "root"))
-                 (remote-cmd '("tar" "-cazf" "-"
-                               "--one-file-system"
-                               "-C" "/" "/")))
-             (apply spawn (concat '("ssh" "cdo@isaac") remote-cmd)
-                    #:output (open-file local-output-file "w")))))
-    (job '(next-hour '(5))
-         '((spawn "rsync" "-Pa" "/mnt/9/" "/mnt/3/"))
-         '((spawn "rsync" "-Pa" "/mnt/9/" "cdo@william:/srv/files/cdo/")))))
-
 
 (operating-system
   (kernel linux)
@@ -102,7 +65,6 @@
       (list (specification->package "nss-certs")
             (specification->package "fish")
             (specification->package "sway")
-            (specification->package "emacs-exwm")
             (specification->package "linux-pam"))
       %base-packages))
   (services
@@ -116,7 +78,7 @@
             (service docker-service-type)
             (service sddm-service-type
               (sddm-configuration
-                (display-server "x11")
+                (display-server "wayland")
                 (xorg-configuration (xorg-configuration
                   (keyboard-layout keyboard-layout)))))
             (service alsa-service-type)
@@ -175,7 +137,7 @@
                        %base-file-systems))
   (sudoers-file (local-file "/home/cdo/.config/sudoers"))
   (hosts-file (local-file "/home/cdo/.config/hosts"))
-  (pam-services 
+  (pam-services
    (map (lambda (s)
     (pam-service
       (name (pam-service-name s))
