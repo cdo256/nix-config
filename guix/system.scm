@@ -6,6 +6,7 @@
   (gnu services docker)
   (gnu services shepherd)
   (gnu services mcron)
+  (gnu packages security-token)
   (gnu packages shells)
   (gnu packages linux)
   (gnu packages emacs)
@@ -51,7 +52,7 @@
                   (group "users")
                   (home-directory "/home/cdo")
                   (supplementary-groups
-                    '("wheel" "netdev" "audio" "video" "backup"))
+                    '("wheel" "netdev" "audio" "video" "backup" "plugdev"))
                   (shell (file-append fish "/bin/fish")))
                 (user-account
                   (name "backup")
@@ -92,13 +93,15 @@
             ;; (service mcron-service-type
             ;;          (mcron-configuration
             ;;           (jobs cdo-mcron-jobs)))
+            (udev-rules-service 'u2f libfido2 #:groups '("plugdev"))
             (service syncthing-service-type
               (syncthing-configuration
                (user "cdo")
                (logflags 19) ;; date,time,ms,long-filename,short-filename
                (arguments '("--logfile"
                             "/var/log/syncthing-cdo.log"))))
-            (udev-rules-service 'yubikey-gpg %yubikey-gpg-udev-rule))
+            ;; (udev-rules-service 'yubikey-gpg %yubikey-gpg-udev-rule)
+            )
       (modify-services %base-services
        (guix-service-type config => (guix-configuration
          (extra-options '("--cores=8")))))))
