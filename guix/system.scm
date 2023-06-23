@@ -22,13 +22,15 @@
 
 (define %yubikey-gpg-udev-rule
  (udev-rule
-   "90-yubikey.rules"
+   "10-yubikey.rules"
    (string-append
-    "ACTION==\"bind\", ENV{DEVTYPE}==\"usb_device\", "
-    "ENV{SUBSYSTEM}==\"usb\", ENV{PRODUCT}==\"1050/*\", "
-    "RUN+=\"/bin/sh -c '/run/setuid-programs/sudo -u cdo "
-      "/home/cdo/.guix-profile/bin/gpg-connect-agent --homedir=/home/cdo/.local/secure/gnupg/ \\\"scd serialno\\\" \\\"learn --force\\\" /bye "
-      "2>&1 >>/var/log/gpg-connect-agent.log'\"\n")))
+    ;; "ACTION==\"bind\", ENV{DEVTYPE}==\"usb_device\", "
+    ;; "ENV{SUBSYSTEM}==\"usb\", ENV{PRODUCT}==\"1050/*\", "
+    ;; "RUN+=\"/bin/sh -c '/run/setuid-programs/sudo -u cdo "
+    ;;   "/home/cdo/.guix-profile/bin/gpg-connect-agent --homedir=/home/cdo/.local/secure/gnupg/ \\\"scd serialno\\\" \\\"learn --force\\\" /bye "
+    ;;   "2>&1 >>/var/log/gpg-connect-agent.log'\"\n"
+    "KERNEL==\"hidraw*\", SUBSYSTEM==\"hidraw\", "
+    "MODE=\"0664\", GROUP=\"plugdev\", ATTRS{idVentor}==\"1050\"\n")))
 
 (operating-system
   (kernel linux)
@@ -65,6 +67,10 @@
       (list (specification->package "nss-certs")
             (specification->package "fish")
             (specification->package "sway")
+            (specification->package "libyubikey")
+            (specification->package "libu2f-host")
+            (specification->package "libfido2")
+            (specification->package "yubico-pam")
             (specification->package "linux-pam"))
       %base-packages))
   (services
