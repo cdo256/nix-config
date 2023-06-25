@@ -119,8 +119,7 @@
 
 (define cdo-home-environment
   (home-environment
-   (packages (specifications->packages (list
-                                             "adwaita-icon-theme"
+   (packages (specifications->packages (list "adwaita-icon-theme"
                                              "alacritty"
                                              "autoconf"
                                              "basu"
@@ -157,6 +156,7 @@
                                              "gnupg"
                                              "go"
                                              "greetd"
+                                             "grim"
                                              "guile"
                                              "guile-colorized"
                                              "guile-readline"
@@ -207,6 +207,7 @@
                                              "screen"
                                              "sddm"
                                              "sendmail"
+                                             "slurp"
                                              "speech-dispatcher"
                                              "sway"
                                              "syncthing"
