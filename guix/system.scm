@@ -12,7 +12,8 @@
   (gnu packages emacs)
   (gnu packages admin)
   (nongnu system linux-initrd)
-  (nongnu packages linux))
+  (nongnu packages linux)
+  (ice-9 match))
 (use-service-modules
   cups
   desktop
@@ -21,15 +22,50 @@
   xorg
   sddm)
 
-(define %yubikey-gpg-udev-rule
- (udev-rule
-   "90-yubikey.rules"
-   (string-append
-    "ACTION==\"bind\", ENV{DEVTYPE}==\"usb_device\", "
-    "ENV{SUBSYSTEM}==\"usb\", ENV{PRODUCT}==\"1050/*\", "
-    "RUN+=\"/bin/sh -c '/run/setuid-programs/sudo -u cdo "
-      "/home/cdo/.guix-profile/bin/gpg-connect-agent --homedir=/home/cdo/.local/secure/gnupg/ \\\"scd serialno\\\" \\\"learn --force\\\" /bye "
-      "2>&1 >>/var/log/gpg-connect-agent.log'\"\n")))
+(define (string-escape-just-quotes string)
+  (call-with-output-string
+    (lambda (p)
+      (string-for-each (lambda (c)
+                         (case c
+                           ((#\")
+                            (write-char #\\ p)
+                            (write-char c p))
+                           (else
+                            (write-char c p))))
+                       string))))
+
+(define (udev-clause->string clause)
+  (match clause
+    ((attribute operator value)
+     (string-append attribute
+                    (symbol->string operator)
+                    "\""
+                    (string-escape-just-quotes value)
+                    "\""))))
+
+(define (udev-rule->string udev-rule)
+  (string-join (map udev-clause->string udev-rule) ", "))
+
+(define (udev-rules->string udev-rules)
+  (string-append (string-join (map udev-rule->string udev-rules) "\n") "\n"))
+
+(define %yubikey-udev-rules
+  (udev-rule
+    "90-yubikey.rules"
+    (udev-rules->string
+     `((("ACTION" == "add")
+        ("SUBSYSTEM" == "usb")
+        ("ATTRS{idVendor}" == "1050")
+        ("MODE" = "0664")
+        ("GROUP" = "plugdev"))
+       (("ACTION" == "bind")
+        ("ENV{DEVTYPE}" == "usb_device")
+        ("ENV{SUBSYSTEM}" == "usb")
+        ("ENV{PRODUCT}" == "1050/*")
+        ("RUN" += ,(string-append
+                    "/bin/sh -c '/run/setuid-programs/sudo -u cdo "
+                    "/home/cdo/.guix-profile/bin/gpg-connect-agent --homedir=/home/cdo/.local/secure/gnupg/ "
+                    "\"scd serialno\" \"learn --force\" /bye'")))))))
 
 (operating-system
   (kernel linux)
@@ -66,9 +102,6 @@
       (list (specification->package "nss-certs")
             (specification->package "fish")
             (specification->package "sway")
-            ;; (specification->package "libyubikey")
-            ;; (specification->package "libu2f-host")
-            ;; (specification->package "libfido2")
             (specification->package "yubico-pam")
             (specification->package "linux-pam"))
       %base-packages))
@@ -98,8 +131,7 @@
                (logflags 19) ;; date,time,ms,long-filename,short-filename
                (arguments '("--logfile"
                             "/var/log/syncthing-cdo.log"))))
-            (udev-rules-service 'yubikey-gpg %yubikey-gpg-udev-rule)
-            )
+            (udev-rules-service 'yubikey %yubikey-udev-rules))
       (modify-services %base-services
        (guix-service-type config => (guix-configuration
          (extra-options '("--cores=8")))))))
