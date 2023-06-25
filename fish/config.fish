@@ -1,1 +1,4 @@
-/gnu/store/k3vcazwwbsyfk6ih8bdkskisnsfgskw6-fish-config.fish
+if status --is-login
+	set -x PATH ~/.cargo/bin /lib/go/bin ~/scripts ~/.local/bin $PATH
+  set -x GPG_TTY (tty)
+end
