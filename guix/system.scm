@@ -62,10 +62,12 @@
         ("ENV{DEVTYPE}" == "usb_device")
         ("ENV{SUBSYSTEM}" == "usb")
         ("ENV{PRODUCT}" == "1050/*")
-        ("RUN" += ,(string-append
-                    "/bin/sh -c '/run/setuid-programs/sudo -u cdo "
-                    "/home/cdo/.guix-profile/bin/gpg-connect-agent --homedir=/home/cdo/.local/secure/gnupg/ "
-                    "\"scd serialno\" \"learn --force\" /bye'")))))))
+        ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-insert"))
+       (("ACTION" == "remove")
+        ("ENV{DEVTYPE}" == "usb_device")
+        ("ENV{SUBSYSTEM}" == "usb")
+        ("ENV{PRODUCT}" == "1050/*")
+        ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-remove"))))))
 
 (operating-system
   (kernel linux)
