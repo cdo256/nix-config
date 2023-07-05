@@ -104,6 +104,7 @@
       (list (specification->package "nss-certs")
             (specification->package "fish")
             (specification->package "sway")
+            (specification->package "python")
             (specification->package "yubico-pam")
             (specification->package "linux-pam"))
       %base-packages))
