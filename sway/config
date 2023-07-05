@@ -113,8 +113,8 @@ bindsym $mod+Ctrl+v       focus output $display_tv
 bindsym $mod+Ctrl+Shift+p move workspace to output $display_primary;   focus ouptut $display_primary
 bindsym $mod+Ctrl+Shift+s move workspace to output $display_secondary; focus output $display_secondary
 bindsym $mod+Ctrl+Shift+v move workspace to output $display_tv;        focus output $display_tv
-# bindsym $mod+Mod1+Shift+n move container to output right; output right
-# bindsym $mod+Mod1+Shift+p move container to output left; output left
+bindsym $mod+Ctrl+Mod1+Shift+p move container to output $display_primary
+bindsym $mod+Ctrl+Mod1+Shift+s move container to output $display_secondary
 
 # Applications
 bindsym $mod+Shift+w exec thunderbird
