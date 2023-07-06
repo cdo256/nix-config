@@ -6,11 +6,14 @@
   (gnu services docker)
   (gnu services shepherd)
   (gnu services mcron)
+  (gnu services virtualization)
+  (gnu services desktop)
   (gnu packages security-token)
   (gnu packages shells)
   (gnu packages linux)
   (gnu packages emacs)
   (gnu packages admin)
+  (gnu packages virtualization)
   (nongnu system linux-initrd)
   (nongnu packages linux)
   (ice-9 match))
@@ -88,7 +91,7 @@
                   (group "users")
                   (home-directory "/home/cdo")
                   (supplementary-groups
-                    '("wheel" "netdev" "audio" "video" "backup" "plugdev"))
+                    '("wheel" "netdev" "audio" "video" "backup" "plugdev" "libvirt"))
                   (shell (file-append fish "/bin/fish")))
                 (user-account
                   (name "backup")
@@ -106,24 +109,26 @@
             (specification->package "sway")
             (specification->package "python")
             (specification->package "yubico-pam")
-            (specification->package "linux-pam"))
+            (specification->package "linux-pam")
+            (specification->package "virt-manager"))
       %base-packages))
   (services
     (append
       (list (service openssh-service-type)
-            (service network-manager-service-type)
-            (service wpa-supplicant-service-type)
-            (service ntp-service-type)
             (service gpm-service-type)
-            (service elogind-service-type)
             (service docker-service-type)
             (service sddm-service-type
               (sddm-configuration
                 (display-server "wayland")
                 (xorg-configuration (xorg-configuration
                   (keyboard-layout keyboard-layout)))))
-            (service alsa-service-type)
             (service pcscd-service-type)
+            (service libvirt-service-type
+              (libvirt-configuration
+               (auth-unix-ro "none")
+               (auth-unix-rw "none")
+               (unix-sock-group "libvirt")))
+            (service virtlog-service-type)
             ;; (service mcron-service-type
             ;;          (mcron-configuration
             ;;           (jobs cdo-mcron-jobs)))
@@ -135,8 +140,9 @@
                (arguments '("--logfile"
                             "/var/log/syncthing-cdo.log"))))
             (udev-rules-service 'yubikey %yubikey-udev-rules))
-      (modify-services %base-services
-       (guix-service-type config => (guix-configuration
+      (modify-services %desktop-services
+        (delete gdm-service-type)
+        (guix-service-type config => (guix-configuration
          (extra-options '("--cores=8")))))))
   (bootloader
     (bootloader-configuration
