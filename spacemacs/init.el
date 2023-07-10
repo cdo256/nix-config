@@ -45,13 +45,13 @@ This function should only modify configuration layer settings."
      ;;                 ;; evil-collection-mode-list
      ;;                 ;; '(minibuffer dired)
      ;;                 )
-     ;; tree-sitter
-     ;; python
-     ;; clojure
-     ;; markdown
-     ;; auto-completion
-     ;; better-defaults
-     ;; emacs-lisp
+     tree-sitter
+     python
+     clojure
+     markdown
+     auto-completion
+     better-defaults
+     emacs-lisp
      scheme
      git
      helm
