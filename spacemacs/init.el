@@ -70,38 +70,38 @@ This function should only modify configuration layer settings."
      ;;           :ssl t
      ;;           :nick "cdo256"))))
      ;; multiple-cursors
-;;     (org :variables
-;;          org-roam-directory "~/org-roam/"
-;;          org-enable-roam-support t
-;;          ;; org-roam-capture-templates
-;;          ;; '(("m" "main" plain nil
-;;             ;; :target (file+headline "main/${slug}.org"
-;;                                    ;; "#+title: ${title}\n")
-;;             ;; :immediate-finish t
-;;             ;; :unnarrowed t)
-;;            ;; ("r" "reference" plain nil
-;;             ;; :target (file+headline "reference/${title}.org"
-;;                                    ;; "#+title: ${title}\n")
-;;             ;; :immediate-finish t
-;;             ;; :unnarrowed t)
-;;            ;; ("i" "inbox" entry
-;;             ;; (function (lambda ()
-;;                         ;; :target (file+headline "inbox.org"
-;;                                                ;; "* %?\n"))))))
-;;          )
-;;     (shell :variables
-;;            shell-default-height 30
-;;          shell-default-position 'bottom)
-;;     spell-checking
-;;     syntax-checking
-;;     version-control
-;;     treemacs
-;;     chrome
-;;     ;; exwm
-;;     spacemacs-modeline
-;;     spacemacs-navigation
-;;     spacemacs-editing
-;;     spacemacs-project
+     (org :variables
+          org-roam-directory "~/org-roam/"
+          org-enable-roam-support t
+          ;; org-roam-capture-templates
+          ;; '(("m" "main" plain nil
+             ;; :target (file+headline "main/${slug}.org"
+                                    ;; "#+title: ${title}\n")
+             ;; :immediate-finish t
+             ;; :unnarrowed t)
+            ;; ("r" "reference" plain nil
+             ;; :target (file+headline "reference/${title}.org"
+                                    ;; "#+title: ${title}\n")
+             ;; :immediate-finish t
+             ;; :unnarrowed t)
+            ;; ("i" "inbox" entry
+             ;; (function (lambda ()
+                         ;; :target (file+headline "inbox.org"
+                                                ;; "* %?\n"))))))
+          )
+     (shell :variables
+            shell-default-height 30
+          shell-default-position 'bottom)
+     spell-checking
+     syntax-checking
+     version-control
+     treemacs
+     chrome
+     ;; exwm
+     spacemacs-modeline
+     spacemacs-navigation
+     spacemacs-editing
+     spacemacs-project
      spacemacs-purpose)
 
 
