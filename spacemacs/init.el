@@ -32,43 +32,44 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
-     go
-     html
-     yaml
-     (spacemacs-evil :variables
-                     evil-move-beyond-eol t
-                     evil-want-minibuffer t
-                     spacemacs-evil-collection-allowed-list
-                     '(minibuffer dired)
-                     ;; evil-collection-mode-list
-                     ;; '(minibuffer dired)
-                     )
-     tree-sitter
-     python
-     clojure
-     markdown
-     auto-completion
-     better-defaults
-     emacs-lisp
-     scheme
-     git
-     helm
-     lsp
-     markdown
-     '((erc :variables
-            erc-enable-sasl-auth t
-            erc-hide-list '("JOIN" "PART" "QUIT")
-            erc-server-list
-            '(("irc.libera.chat"
-               :port 6697
-               :ssl t
-               :nick "cdo256")
-              ("irc.oftc.net"
-               :port 6697
-               :ssl t
-               :nick "cdo256"))))
-     multiple-cursors
+   '(
+     ;; javascript
+     ;; go
+     ;; html
+     ;; yaml
+     ;; (spacemacs-evil :variables
+     ;;                 evil-move-beyond-eol t
+     ;;                 evil-want-minibuffer t
+     ;;                 spacemacs-evil-collection-allowed-list
+     ;;                 '(minibuffer dired)
+     ;;                 ;; evil-collection-mode-list
+     ;;                 ;; '(minibuffer dired)
+     ;;                 )
+     ;; tree-sitter
+     ;; python
+     ;; clojure
+     ;; markdown
+     ;; auto-completion
+     ;; better-defaults
+     ;; emacs-lisp
+     ;; scheme
+     ;; git
+     ;; helm
+     ;; lsp
+     ;; markdown
+     ;; '((erc :variables
+     ;;        erc-enable-sasl-auth t
+     ;;        erc-hide-list '("JOIN" "PART" "QUIT")
+     ;;        erc-server-list
+     ;;        '(("irc.libera.chat"
+     ;;           :port 6697
+     ;;           :ssl t
+     ;;           :nick "cdo256")
+     ;;          ("irc.oftc.net"
+     ;;           :port 6697
+     ;;           :ssl t
+     ;;           :nick "cdo256"))))
+     ;; multiple-cursors
      (org :variables
           org-roam-directory "~/org-roam/"
           org-enable-roam-support t
@@ -119,8 +120,9 @@ This function should only modify configuration layer settings."
      all-the-icons
      no-littering
      symex
-     lispy
-     lispyville)
+     ;; lispy
+     ;; lispyville
+     )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -641,24 +643,24 @@ before packages are loaded."
   ;; (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
   ;; (add-hook 'lisp-mode-hook #'lispyville-mode)
   ;; (lispyville-set-key-theme '(lispy special operators c-w additional))
-  (require 'tree-sitter)
-  (setq treesit-language-source-alist
-        '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
-  (tree-sitter-require 'c)
-  (tree-sitter-require 'cpp)
-  (tree-sitter-require 'css)
-  (tree-sitter-require 'go)
-  (tree-sitter-require 'haskell)
-  (tree-sitter-require 'html)
-  (tree-sitter-require 'javascript)
-  (tree-sitter-require 'json)
-  (tree-sitter-require 'ocaml)
-  (tree-sitter-require 'python)
-  (tree-sitter-require 'rust)
-  (tree-sitter-require 'scheme)
-  (tree-sitter-require 'typescript)
-  (tree-sitter-require 'elisp)
-  (global-tree-sitter-mode t)
+  ;; (require 'tree-sitter)
+  ;; (setq treesit-language-source-alist
+  ;;       '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
+  ;; (tree-sitter-require 'c)
+  ;; (tree-sitter-require 'cpp)
+  ;; (tree-sitter-require 'css)
+  ;; (tree-sitter-require 'go)
+  ;; (tree-sitter-require 'haskell)
+  ;; (tree-sitter-require 'html)
+  ;; (tree-sitter-require 'javascript)
+  ;; (tree-sitter-require 'json)
+  ;; (tree-sitter-require 'ocaml)
+  ;; (tree-sitter-require 'python)
+  ;; (tree-sitter-require 'rust)
+  ;; (tree-sitter-require 'scheme)
+  ;; (tree-sitter-require 'typescript)
+  ;; (tree-sitter-require 'elisp)
+  ;; (global-tree-sitter-mode t)
 
   (require 'org-roam)
   (org-roam-db-autosync-enable)
