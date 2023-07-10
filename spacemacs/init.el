@@ -32,25 +32,26 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
-     go
-     html
-     yaml
-     (spacemacs-evil :variables
-                     evil-move-beyond-eol t
-                     evil-want-minibuffer t
-                     spacemacs-evil-collection-allowed-list
-                     '(minibuffer dired)
-                     ;; evil-collection-mode-list
-                     ;; '(minibuffer dired)
-                     )
-     tree-sitter
-     python
-     clojure
-     markdown
-     auto-completion
-     better-defaults
-     emacs-lisp
+   '(
+     ;; javascript
+     ;; go
+     ;; html
+     ;; yaml
+     ;; (spacemacs-evil :variables
+     ;;                 evil-move-beyond-eol t
+     ;;                 evil-want-minibuffer t
+     ;;                 spacemacs-evil-collection-allowed-list
+     ;;                 '(minibuffer dired)
+     ;;                 ;; evil-collection-mode-list
+     ;;                 ;; '(minibuffer dired)
+     ;;                 )
+     ;; tree-sitter
+     ;; python
+     ;; clojure
+     ;; markdown
+     ;; auto-completion
+     ;; better-defaults
+     ;; emacs-lisp
      scheme
      git
      helm
@@ -633,33 +634,33 @@ before packages are loaded."
 
   (require 'chatgpt-shell)
   (require 'epa-file)
-  (require 'exwm)
-  (exwm-config-example)
+  ;; (require 'exwm)
+  ;; (exwm-config-example)
   (setq chatgpt-shell-openai-key
         "***REMOVED***")
-  (spacemacs/set-leader-keys
-  "kf" 'lispy-mode)
-  (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
-  (add-hook 'lisp-mode-hook #'lispyville-mode)
-  (lispyville-set-key-theme '(lispy special operators c-w additional))
-  (require 'tree-sitter)
-  (setq treesit-language-source-alist
-        '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
-  (tree-sitter-require 'c)
-  (tree-sitter-require 'cpp)
-  (tree-sitter-require 'css)
-  (tree-sitter-require 'go)
-  (tree-sitter-require 'haskell)
-  (tree-sitter-require 'html)
-  (tree-sitter-require 'javascript)
-  (tree-sitter-require 'json)
-  (tree-sitter-require 'ocaml)
-  (tree-sitter-require 'python)
-  (tree-sitter-require 'rust)
-  (tree-sitter-require 'scheme)
-  (tree-sitter-require 'typescript)
-  (tree-sitter-require 'elisp)
-  (global-tree-sitter-mode t)
+  ;; (spacemacs/set-leader-keys
+  ;; "kf" 'lispy-mode)
+  ;; (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
+  ;; (add-hook 'lisp-mode-hook #'lispyville-mode)
+  ;; (lispyville-set-key-theme '(lispy special operators c-w additional))
+  ;; (require 'tree-sitter)
+  ;; (setq treesit-language-source-alist
+  ;;       '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
+  ;; (tree-sitter-require 'c)
+  ;; (tree-sitter-require 'cpp)
+  ;; (tree-sitter-require 'css)
+  ;; (tree-sitter-require 'go)
+  ;; (tree-sitter-require 'haskell)
+  ;; (tree-sitter-require 'html)
+  ;; (tree-sitter-require 'javascript)
+  ;; (tree-sitter-require 'json)
+  ;; (tree-sitter-require 'ocaml)
+  ;; (tree-sitter-require 'python)
+  ;; (tree-sitter-require 'rust)
+  ;; (tree-sitter-require 'scheme)
+  ;; (tree-sitter-require 'typescript)
+  ;; (tree-sitter-require 'elisp)
+  ;; (global-tree-sitter-mode t)
 
   (require 'org-roam)
   (org-roam-db-autosync-enable)
