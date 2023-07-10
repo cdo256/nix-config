@@ -32,8 +32,76 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
-     emacs-lisp)
+   '(javascript
+     go
+     html
+     yaml
+     (spacemacs-evil :variables
+                     evil-move-beyond-eol t
+                     evil-want-minibuffer t
+                     spacemacs-evil-collection-allowed-list
+                     '(minibuffer dired)
+                     ;; evil-collection-mode-list
+                     ;; '(minibuffer dired)
+                     )
+     tree-sitter
+     python
+     clojure
+     markdown
+     auto-completion
+     better-defaults
+     emacs-lisp
+     scheme
+     git
+     helm
+     lsp
+     markdown
+     '((erc :variables
+            erc-enable-sasl-auth t
+            erc-hide-list '("JOIN" "PART" "QUIT")
+            erc-server-list
+            '(("irc.libera.chat"
+               :port 6697
+               :ssl t
+               :nick "cdo256")
+              ("irc.oftc.net"
+               :port 6697
+               :ssl t
+               :nick "cdo256"))))
+     multiple-cursors
+     (org :variables
+          org-roam-directory "~/org-roam/"
+          org-enable-roam-support t
+          ;; org-roam-capture-templates
+          ;; '(("m" "main" plain nil
+             ;; :target (file+headline "main/${slug}.org"
+                                    ;; "#+title: ${title}\n")
+             ;; :immediate-finish t
+             ;; :unnarrowed t)
+            ;; ("r" "reference" plain nil
+             ;; :target (file+headline "reference/${title}.org"
+                                    ;; "#+title: ${title}\n")
+             ;; :immediate-finish t
+             ;; :unnarrowed t)
+            ;; ("i" "inbox" entry
+             ;; (function (lambda ()
+                         ;; :target (file+headline "inbox.org"
+                                                ;; "* %?\n"))))))
+          )
+     (shell :variables
+            shell-default-height 30
+          shell-default-position 'bottom)
+     spell-checking
+     syntax-checking
+     version-control
+     treemacs
+     chrome
+     ;; exwm
+     spacemacs-modeline
+     spacemacs-navigation
+     spacemacs-editing
+     spacemacs-project
+     spacemacs-purpose)
 
 
 
@@ -46,9 +114,13 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(
+   '(org-roam
+     chatgpt-shell
+     all-the-icons
+     no-littering
      symex
-    )
+     lispy
+     lispyville)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -558,10 +630,43 @@ before packages are loaded."
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
   (global-set-key (kbd "C-s") 'save-buffer)
 
+  (require 'chatgpt-shell)
+  (require 'epa-file)
+  ;; (require 'exwm)
+  ;; (exwm-config-example)
+  (setq chatgpt-shell-openai-key
+        "***REMOVED***")
+  ;; (spacemacs/set-leader-keys
+  ;; "kf" 'lispy-mode)
+  ;; (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
+  ;; (add-hook 'lisp-mode-hook #'lispyville-mode)
+  ;; (lispyville-set-key-theme '(lispy special operators c-w additional))
+  (require 'tree-sitter)
+  (setq treesit-language-source-alist
+        '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
+  (tree-sitter-require 'c)
+  (tree-sitter-require 'cpp)
+  (tree-sitter-require 'css)
+  (tree-sitter-require 'go)
+  (tree-sitter-require 'haskell)
+  (tree-sitter-require 'html)
+  (tree-sitter-require 'javascript)
+  (tree-sitter-require 'json)
+  (tree-sitter-require 'ocaml)
+  (tree-sitter-require 'python)
+  (tree-sitter-require 'rust)
+  (tree-sitter-require 'scheme)
+  (tree-sitter-require 'typescript)
+  (tree-sitter-require 'elisp)
+  (global-tree-sitter-mode t)
+
+  (require 'org-roam)
+  (org-roam-db-autosync-enable)
+
   (require 'symex)
   ;; (symex-modal-backend 'evil)
   (symex-initialize)
-  (global-set-key (kbd "C-c y") 'symex-mode-interface)
+  (global-set-key (kbd "C-c x") 'symex-mode-interface)
 
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
