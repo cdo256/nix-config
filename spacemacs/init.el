@@ -52,24 +52,24 @@ This function should only modify configuration layer settings."
      ;; auto-completion
      ;; better-defaults
      ;; emacs-lisp
-     ;; scheme
-     ;; git
-     ;; helm
-     ;; lsp
-     ;; markdown
-     ;; '((erc :variables
-     ;;        erc-enable-sasl-auth t
-     ;;        erc-hide-list '("JOIN" "PART" "QUIT")
-     ;;        erc-server-list
-     ;;        '(("irc.libera.chat"
-     ;;           :port 6697
-     ;;           :ssl t
-     ;;           :nick "cdo256")
-     ;;          ("irc.oftc.net"
-     ;;           :port 6697
-     ;;           :ssl t
-     ;;           :nick "cdo256"))))
-     ;; multiple-cursors
+     scheme
+     git
+     helm
+     lsp
+     markdown
+     '((erc :variables
+            erc-enable-sasl-auth t
+            erc-hide-list '("JOIN" "PART" "QUIT")
+            erc-server-list
+            '(("irc.libera.chat"
+               :port 6697
+               :ssl t
+               :nick "cdo256")
+              ("irc.oftc.net"
+               :port 6697
+               :ssl t
+               :nick "cdo256"))))
+     multiple-cursors
      (org :variables
           org-roam-directory "~/org-roam/"
           org-enable-roam-support t
