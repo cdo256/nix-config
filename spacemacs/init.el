@@ -119,10 +119,7 @@ This function should only modify configuration layer settings."
      chatgpt-shell
      all-the-icons
      no-littering
-     symex
-     ;; lispy
-     ;; lispyville
-     )
+     symex)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -638,29 +635,23 @@ before packages are loaded."
   ;; (exwm-config-example)
   (setq chatgpt-shell-openai-key
         "***REMOVED***")
-  ;; (spacemacs/set-leader-keys
-  ;; "kf" 'lispy-mode)
-  ;; (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
-  ;; (add-hook 'lisp-mode-hook #'lispyville-mode)
-  ;; (lispyville-set-key-theme '(lispy special operators c-w additional))
-  ;; (require 'tree-sitter)
-  ;; (setq treesit-language-source-alist
-  ;;       '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
-  ;; (tree-sitter-require 'c)
-  ;; (tree-sitter-require 'cpp)
-  ;; (tree-sitter-require 'css)
-  ;; (tree-sitter-require 'go)
-  ;; (tree-sitter-require 'haskell)
-  ;; (tree-sitter-require 'html)
-  ;; (tree-sitter-require 'javascript)
-  ;; (tree-sitter-require 'json)
-  ;; (tree-sitter-require 'ocaml)
-  ;; (tree-sitter-require 'python)
-  ;; (tree-sitter-require 'rust)
-  ;; (tree-sitter-require 'scheme)
-  ;; (tree-sitter-require 'typescript)
-  ;; (tree-sitter-require 'elisp)
-  ;; (global-tree-sitter-mode t)
+  (require 'tree-sitter)
+  (setq treesit-language-source-alist
+        '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
+  (tree-sitter-require 'c)
+  (tree-sitter-require 'cpp)
+  (tree-sitter-require 'css)
+  (tree-sitter-require 'go)
+  (tree-sitter-require 'haskell)
+  (tree-sitter-require 'html)
+  (tree-sitter-require 'javascript)
+  (tree-sitter-require 'json)
+  (tree-sitter-require 'ocaml)
+  (tree-sitter-require 'python)
+  (tree-sitter-require 'rust)
+  (tree-sitter-require 'scheme)
+  (tree-sitter-require 'typescript)
+  (global-tree-sitter-mode t)
 
   (require 'org-roam)
   (org-roam-db-autosync-enable)
