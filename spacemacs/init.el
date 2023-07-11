@@ -33,9 +33,9 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; javascript
-     ;; go
-     ;; html
+     javascript
+     go
+     html
      yaml
      (spacemacs-evil :variables
                      evil-move-beyond-eol t
