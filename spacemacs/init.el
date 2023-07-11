@@ -36,15 +36,15 @@ This function should only modify configuration layer settings."
      ;; javascript
      ;; go
      ;; html
-     ;; yaml
-     ;; (spacemacs-evil :variables
-     ;;                 evil-move-beyond-eol t
-     ;;                 evil-want-minibuffer t
-     ;;                 spacemacs-evil-collection-allowed-list
-     ;;                 '(minibuffer dired)
-     ;;                 ;; evil-collection-mode-list
-     ;;                 ;; '(minibuffer dired)
-     ;;                 )
+     yaml
+     (spacemacs-evil :variables
+                     evil-move-beyond-eol t
+                     evil-want-minibuffer t
+                     spacemacs-evil-collection-allowed-list
+                     '(minibuffer dired)
+                     ;; evil-collection-mode-list
+                     ;; '(minibuffer dired)
+                     )
      tree-sitter
      python
      clojure
