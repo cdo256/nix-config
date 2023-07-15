@@ -75,8 +75,8 @@
 (operating-system
   (kernel linux)
   (kernel-arguments
-   (list "module_blacklist=nouveau"
-         "nvidia_drm.modeset=1"
+   (list ;; "module_blacklist=nouveau"
+         ;; "nvidia_drm.modeset=1"
          "crashkernel=256"))
   (firmware (list linux-firmware))
   ;; Should include radeon-firmware
