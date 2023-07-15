@@ -116,6 +116,7 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(org-roam
+     ein ;; Jupyter Notebook intergration
      chatgpt-shell
      all-the-icons
      no-littering
