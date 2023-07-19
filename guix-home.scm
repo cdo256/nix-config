@@ -13,7 +13,9 @@
              (gnu home services desktop)
              (gnu home services guix)
              (gnu packages)
+             (gnu packages emacs)
              (gnu services)
+             (gnu services shepherd)
              (gnu services mcron)
              (guix channels)
              (guix gexp)
@@ -117,6 +119,26 @@
 	</alias>
 </fontconfig>
 ")
+
+(define-record-type <emacs-server-configuration>
+  emacs-server-configuration make-emacs-server-configuration
+  emacs-server-configuration?
+  (emacs emacs-server-configuration-emacs
+         (default emacs))
+  (additional-arguments emacs-server-configuration-additional-arguments
+                        (default '())))
+
+(define emacs-service
+  (match-lambda
+    (($ <emacs-server-configuration> emacs additional-arguments)
+     (list (shepherd-service
+            (provision (list emacs-server))
+            (documentation "Emacs server.")
+            (start #~(make-forkexec-constructor
+                      (append (list #$emacs "--daemon")
+                              additional-arguments)))
+            (stop #~(make-kill-destructor))
+            (respawn? #t))))))
 
 (define cdo-home-environment
   (home-environment
