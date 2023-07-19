@@ -19,7 +19,9 @@
              (gnu services mcron)
              (guix channels)
              (guix gexp)
-             (guix ci))
+             (guix ci)
+             (guix records)
+             (ice-9 match))
 
 (define cdo-guix-channels
   (list (channel-with-substitutes-available
@@ -120,7 +122,7 @@
 </fontconfig>
 ")
 
-(define-record-type <emacs-server-configuration>
+(define-record-type* <emacs-server-configuration>
   emacs-server-configuration make-emacs-server-configuration
   emacs-server-configuration?
   (emacs emacs-server-configuration-emacs
