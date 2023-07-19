@@ -245,6 +245,7 @@
                 ;; ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
                 ("git" ,(local-file "./git" #:recursive? #t))
+                ("guile" ,(local-file "./guile" #:recursive? #t))
                 ;; ("guix/channels.scm" ,(local-file "guix/channels.scm"))
                 ("hexchat" ,(local-file "./hexchat" #:recursive? #t))
                 ("shell" ,(local-file "./shell" #:recursive? #t))
