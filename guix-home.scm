@@ -188,8 +188,6 @@
                                              "moreutils"
                                              "nmon"
                                              "nomacs"
-                                             ;; "nvidia-settings"
-                                             ;; "nvidia-system-monitor"
                                              "okular"
                                              "openjdk"
                                              "openssl"
