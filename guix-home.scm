@@ -67,6 +67,7 @@
        ("GOBIN" . "$HOME/.local/bin")
        ("GOCACHE" . "$XDG_CACHE_HOME/go")
        ("GOMODCACHE" . "$XDG_CACHE_HOME/go/modules")
+       ("GOPATH" . "$XDG_CACHE_HOME/go:$HOME/src")
        ("GOROOT" . "$GUIX_PROFILE/lib/go")
        ("GOTMPDIR" . "/tmp")
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
