@@ -111,6 +111,7 @@
             (specification->package "python")
             (specification->package "yubico-pam")
             (specification->package "linux-pam")
+            (specification->package "pinentry")
             (specification->package "virt-manager"))
       %base-packages))
   (services
