@@ -71,7 +71,8 @@
        ("GOROOT" . "$GUIX_PROFILE/lib/go")
        ("GOTMPDIR" . "/tmp")
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
-       ("GUILE_LOAD_PATH" . "...:$XDG_CONFIG_HOME/guile")
+       ;;; This breaks guix shell!!
+       ;; ("GUILE_LOAD_PATH" . "...:$XDG_CONFIG_HOME/guile")
        ("HISTFILE" . "$XDG_DATA_HOME/shell/histfile")
        ("ICEAUTHORITY" . "$XDG_CACHE_HOME/x11/ICEauthority")
        ("JULIA_DEPOT_PATH" . "$XDG_DATA_HOME/julia:$GUIX_PROFILE/share/julia/")
@@ -268,7 +269,7 @@
                 ;; ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
                 ("git" ,(local-file "./git" #:recursive? #t))
-                ("guile" ,(local-file "./guile" #:recursive? #t))
+                (".guile" ,(local-file "./guile/init.scm" #:recursive? #t))
                 ;; ("guix/channels.scm" ,(local-file "guix/channels.scm"))
                 ("hexchat" ,(local-file "./hexchat" #:recursive? #t))
                 ("shell" ,(local-file "./shell" #:recursive? #t))
