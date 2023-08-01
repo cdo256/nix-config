@@ -158,7 +158,7 @@
                 (initrd "/boot/initrd.img-5.10.0-23-amd64")
                 (linux "/boot/vmlinuz-5.10.0-23-amd64")
                 (linux-arguments
-                 (list (string-append "root=UUID=" device)))
+                 (list (string-append "root=PART_UUID=" device)))
                 (device device)))))
       (keyboard-layout keyboard-layout)))
   (swap-devices
