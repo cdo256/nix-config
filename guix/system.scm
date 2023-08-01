@@ -151,12 +151,13 @@
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
       (targets (list "/boot/efi"))
-      (menu-entries ((menu-entry
-                      (label "Debian")
-                      (initrd "/boot/initrd.img-5.10.0-23-amd64")
-                      (linux "/boot/vmlinuz-5.10.0-23-amd64")
-                      (linux-arguments '())
-                      (device "bc2c94bf-fa93-4754-b655-ade0ff03816b"))))
+      (menu-entries
+       (list (menu-entry
+              (label "Debian")
+              (initrd "/boot/initrd.img-5.10.0-23-amd64")
+              (linux "/boot/vmlinuz-5.10.0-23-amd64")
+              (linux-arguments '())
+              (device "bc2c94bf-fa93-4754-b655-ade0ff03816b"))))
       (keyboard-layout keyboard-layout)))
   (swap-devices
     (list (swap-space
