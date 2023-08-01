@@ -77,7 +77,7 @@
   (kernel-arguments
    (list ;; "module_blacklist=nouveau"
          ;; "nvidia_drm.modeset=1"
-         "crashkernel=256"))
+         "crashkernel=256M"))
   (firmware (list linux-firmware))
   ;; Should include radeon-firmware
   (initrd microcode-initrd)
@@ -112,6 +112,7 @@
             (specification->package "yubico-pam")
             (specification->package "linux-pam")
             (specification->package "pinentry")
+            (specification->package "kexec-tools")
             (specification->package "virt-manager"))
       %base-packages))
   (services
@@ -150,6 +151,12 @@
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
       (targets (list "/boot/efi"))
+      (menu-entries ((menu-entry
+                      (label "Debian")
+                      (initrd "/boot/initrd.img-5.10.0-23-amd64")
+                      (linux "/boot/vmlinuz-5.10.0-23-amd64")
+                      (linux-arguments '())
+                      (device "bc2c94bf-fa93-4754-b655-ade0ff03816b"))))
       (keyboard-layout keyboard-layout)))
   (swap-devices
     (list (swap-space
