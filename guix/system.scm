@@ -112,6 +112,11 @@
             (specification->package "yubico-pam")
             (specification->package "linux-pam")
             (specification->package "pinentry")
+            (specification->package "bluez")
+            (specification->package "bluez-alsa")
+            (specification->package "bluez-qt")
+            (specification->package "bluez-firmware")
+            (specification->package "blueman")
             (specification->package "kexec-tools")
             (specification->package "virt-manager"))
       %base-packages))
@@ -125,6 +130,9 @@
                 (display-server "wayland")
                 (xorg-configuration (xorg-configuration
                   (keyboard-layout keyboard-layout)))))
+            (service bluetooth-service
+                     (bluetooth-configuration
+                      (auto-enable? #t)))
             (service pcscd-service-type)
             (service libvirt-service-type
               (libvirt-configuration
