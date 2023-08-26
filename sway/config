@@ -9,7 +9,7 @@ set $display_tv 'DP-1'
 # TV is intentionally placed in an inaccessible location.
 output $display_primary pos 0 0
 output $display_secondary pos -1920 0
-output $display_tv pos 2000 0
+output $display_tv pos 4000 0
 
 set $workspace1 "1"
 set $workspace2 "2"
