@@ -202,6 +202,6 @@
                                        'fat32))
                          (type "vfat"))
                        %base-file-systems))
-  (sudoers-file (local-file "/home/cdo/.config/sudoers"))
-  (hosts-file (local-file "/home/cdo/.config/hosts")))
+  (sudoers-file (local-file "/home/cdo/config/sudoers"))
+  (hosts-file (local-file "/home/cdo/config/hosts")))
 
