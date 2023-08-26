@@ -130,7 +130,7 @@
                 (display-server "wayland")
                 (xorg-configuration (xorg-configuration
                   (keyboard-layout keyboard-layout)))))
-            (service bluetooth-service
+            (service bluetooth-service-type
                      (bluetooth-configuration
                       (auto-enable? #t)))
             (service pcscd-service-type)
