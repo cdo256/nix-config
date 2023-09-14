@@ -9,7 +9,7 @@
 		(openpgp-fingerprint
 			"BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
         "https://ci.guix.gnu.org")
-      (channel
+ (channel
 	(name 'nonguix)
 	(url "https://gitlab.com/nonguix/nonguix")
 	(introduction (make-channel-introduction
