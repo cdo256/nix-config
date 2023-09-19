@@ -1,6 +1,6 @@
 (define-module (cdo config system-common)
   #:export (udev-rules->string
-            keyboard-layout
+            %keyboard-layout
             %yubikey-udev-rules
             %user-accounts
             %user-groups
@@ -80,7 +80,7 @@
         ("ENV{PRODUCT}" == "1050/*")
         ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-remove"))))))
 
-(define keyboard-layot
+(define %keyboard-layout
   (keyboard-layout "gb"))
 
 (define %user-accounts
@@ -132,7 +132,7 @@
               (sddm-configuration
                 (display-server "wayland")
                 (xorg-configuration (xorg-configuration
-                  (keyboard-layout keyboard-layout)))))
+                  (keyboard-layout %keyboard-layout)))))
             (service bluetooth-service-type
                      (bluetooth-configuration
                       (auto-enable? #t)))

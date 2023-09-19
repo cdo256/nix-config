@@ -38,7 +38,7 @@
 
   (locale "en_GB.utf8")
   (timezone "Europe/London")
-  (keyboard-layout keyboard-layout)
+  (keyboard-layout %keyboard-layout)
   (host-name "peter")
   (users %user-accounts)
   (groups %user-groups)
@@ -56,7 +56,7 @@
               (linux-arguments
                (list "root=UUID=3214fc2c-d68a-4a5e-8c95-71a1dc6c57a0"))
               (device "bc2c94bf-fa93-4754-b655-ade0ff03816b"))))
-      (keyboard-layout keyboard-layout)))
+      (keyboard-layout %keyboard-layout)))
   (swap-devices
     (list (swap-space
             (target
