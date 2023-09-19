@@ -1,5 +1,5 @@
 (use-modules
-  (system-common)
+  (cdo config system-common)
   (gnu)
   (gnu packages admin)
   (gnu packages emacs)
@@ -38,7 +38,7 @@
 
   (locale "en_GB.utf8")
   (timezone "Europe/London")
-  (keyboard-layout (keyboard-layout "gb"))
+  (keyboard-layout keyboard-layout)
   (host-name "peter")
   (users %user-accounts)
   (groups %user-groups)

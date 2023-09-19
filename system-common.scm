@@ -1,10 +1,11 @@
-(define-module (system-common)
-  #:export '(udev-rules->string
-             %yubikey-udev-rules
-             %user-accounts
-             %user-groups
-             %common-packages
-             %common-services))
+(define-module (cdo config system-common)
+  #:export (udev-rules->string
+            keyboard-layout
+            %yubikey-udev-rules
+            %user-accounts
+            %user-groups
+            %common-packages
+            %common-services))
 (use-modules
   (gnu)
   (gnu packages admin)
@@ -78,6 +79,9 @@
         ("ENV{SUBSYSTEM}" == "usb")
         ("ENV{PRODUCT}" == "1050/*")
         ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-remove"))))))
+
+(define keyboard-layot
+  (keyboard-layout "gb"))
 
 (define %user-accounts
   (cons* (user-account
