@@ -1,39 +1,14 @@
 (use-modules
-  (cdo config system-common)
   (gnu)
-  (gnu packages admin)
-  (gnu packages emacs)
-  (gnu packages linux)
-  (gnu packages security-token)
-  (gnu packages shells)
-  (gnu packages virtualization)
-  (gnu services desktop)
-  (gnu services docker)
-  (gnu services mcron)
-  (gnu services shepherd)
-  (gnu services sound)
-  (gnu services security-token)
-  (gnu services syncthing)
-  (gnu services virtualization)
+  (cdo config system-common)
   (nongnu system linux-initrd)
-  (nongnu packages linux)
-  (ice-9 match))
-(use-service-modules
-  cups
-  desktop
-  networking
-  ssh
-  xorg
-  sddm)
+  (nongnu packages linux))
 
 (operating-system
   (kernel linux)
   (kernel-arguments
-   (list ;; "module_blacklist=nouveau"
-         ;; "nvidia_drm.modeset=1"
-         "crashkernel=256M"))
+   (list "crashkernel=256M"))
   (firmware (list linux-firmware))
-  ;; Should include radeon-firmware
   (initrd microcode-initrd)
 
   (locale "en_GB.utf8")
