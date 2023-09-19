@@ -1,3 +1,10 @@
+(define-module (system-common)
+  #:export '(udev-rules->string
+             %yubikey-udev-rules
+             %user-accounts
+             %user-groups
+             %common-packages
+             %common-services))
 (use-modules
   (gnu)
   (gnu packages admin)
