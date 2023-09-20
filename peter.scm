@@ -1,8 +1,8 @@
 (use-modules
-  (gnu)
-  (cdo config system-common)
-  (nongnu system linux-initrd)
-  (nongnu packages linux))
+ (gnu)
+ (cdo config system-common)
+ (nongnu system linux-initrd)
+ (nongnu packages linux))
 
 (operating-system
   (kernel linux)
