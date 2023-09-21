@@ -116,7 +116,7 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(org-roam
-     ein ;; Jupyter Notebook intergration
+     ein ;; Jupyter Notebook integration
      chatgpt-shell
      all-the-icons
      no-littering
@@ -629,6 +629,7 @@ before packages are loaded."
   (global-set-key (kbd "C-c n f") 'org-roam-node-find)
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
   (global-set-key (kbd "C-s") 'save-buffer)
+  (global-set-key (kbd "C-x p") 'toggle-truncate-lines)
 
   (require 'chatgpt-shell)
   (require 'epa-file)
@@ -662,13 +663,25 @@ before packages are loaded."
   (symex-initialize)
   (global-set-key (kbd "C-c x") 'symex-mode-interface)
 
+  (require 'company)
+  (define-key company-active-map (kbd "<return>") nil)
+  (define-key company-active-map (kbd "RET") nil)
+  (define-key company-active-map (kbd "ESC") 'company-abort)
+
+  (require 'magit)
+  (with-eval-after-load 'magit
+    (define-key magit-mode-map (kbd "ESC") 'keyboard-quit))
+
+  (with-eval-after-load 'helm-files
+    (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
+
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
   (setq delete-old-versions t
         kept-new-versions 6
         kept-old-versions 2
         version-control t)
-  )
+)
 
 (setq custom-file "~/.config/spacemacs/custom.el")
 (load custom-file)
