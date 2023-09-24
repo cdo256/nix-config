@@ -22,6 +22,14 @@
   (bootloader (bootloader-configuration
                (bootloader grub-efi-bootloader)
                (targets (list "/boot/efi"))
+               (menu-entries
+                (list (menu-entry
+                       (label "Debian")
+                       (initrd "/boot/initrd.img-6.4.0-4-amd64")
+                       (linux "/boot/vmlinuz-6.4.0-4-amd64")
+                       (linux-arguments
+                        (list "root=UUID=ec5539cc-5eb5-4a0a-a919-1de9fec3f248"))
+                       (device "1b40ff94-038e-994f-a7d2-f14e1c01dde4"))))
                (keyboard-layout keyboard-layout)))
   (file-systems (cons* (file-system
                         (mount-point "/home")
