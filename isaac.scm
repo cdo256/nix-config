@@ -14,7 +14,7 @@
   (locale "en_GB.utf8")
   (timezone "Europe/London")
   (keyboard-layout %keyboard-layout)
-  (host-name "peter")
+  (host-name "isaac")
   (users %user-accounts)
   (groups %user-groups)
   (packages %common-packages)
