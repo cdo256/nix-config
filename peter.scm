@@ -35,7 +35,9 @@
   (swap-devices
     (list (swap-space
             (target
-             (uuid "d05291b8-8439-413a-9f3a-323b91db8fdd")))))
+	     (uuid "fdfc8239-e381-4286-b010-ee9c9411e823")
+             ;; (uuid "d05290b8-8439-413a-9f3a-323b91db8fdd")
+	     ))))
   (file-systems (cons* (file-system
                          (mount-point "/mnt/3")
                          (device (uuid
