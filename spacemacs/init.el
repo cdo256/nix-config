@@ -610,6 +610,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq desktop-path '("/home/cdo/.local/state/emacs/"))
+  (setq evil-respect-visual-line-mode t)
 )
 
 (defun dotspacemacs/user-load ()
@@ -630,6 +631,9 @@ before packages are loaded."
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
   (global-set-key (kbd "C-s") 'save-buffer)
   (global-set-key (kbd "C-x p") 'toggle-truncate-lines)
+
+  (require 'evil)
+  (setq global-visual-line-mode t)
 
   (require 'chatgpt-shell)
   (require 'epa-file)
