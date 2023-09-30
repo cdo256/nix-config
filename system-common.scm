@@ -137,7 +137,6 @@
                      (bluetooth-configuration
                       (auto-enable? #t)))
             (service pcscd-service-type)
-            (service alsa-service-type)
             (service libvirt-service-type
               (libvirt-configuration
                (auth-unix-ro "none")
