@@ -581,10 +581,8 @@ It should only modify the values of Spacemacs settings."
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
 This function defines the environment variables for your Emacs session. By
-default it calls `spacemacs/load-spacemacs-env' which loads the environment
-variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
-See the header of this file for more information."
-  (spacemacs/load-spacemacs-env)
+default it called `spacemacs/load-spacemacs-env' but I (cdo) have removed it
+since it doesn't play nice with Guix."
   ;; (desktop-save-mode 1)
   (auto-save-visited-mode 1)
 )
