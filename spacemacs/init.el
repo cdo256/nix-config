@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
      yaml
      (spacemacs-evil :variables
                      evil-move-beyond-eol t
+                     evil-cross-lines t
                      evil-want-minibuffer t
                      spacemacs-evil-collection-allowed-list
                      '(minibuffer dired)
