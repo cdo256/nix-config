@@ -32,8 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
-     javascript
+   '(javascript
      go
      html
      yaml
@@ -75,13 +74,14 @@ This function should only modify configuration layer settings."
           org-enable-roam-support t)
      (shell :variables
             shell-default-height 30
-          shell-default-position 'bottom)
+            shell-default-position 'bottom)
      spell-checking
      syntax-checking
      version-control
      treemacs
      chrome
-     vinegar
+     (vinegar :variables
+              vinegar-reuse-dired-buffer t)
      ;; exwm
      spacemacs-modeline
      spacemacs-navigation
