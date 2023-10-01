@@ -72,23 +72,7 @@ This function should only modify configuration layer settings."
      multiple-cursors
      (org :variables
           org-roam-directory "~/org-roam/"
-          org-enable-roam-support t
-          ;; org-roam-capture-templates
-          ;; '(("m" "main" plain nil
-             ;; :target (file+headline "main/${slug}.org"
-                                    ;; "#+title: ${title}\n")
-             ;; :immediate-finish t
-             ;; :unnarrowed t)
-            ;; ("r" "reference" plain nil
-             ;; :target (file+headline "reference/${title}.org"
-                                    ;; "#+title: ${title}\n")
-             ;; :immediate-finish t
-             ;; :unnarrowed t)
-            ;; ("i" "inbox" entry
-             ;; (function (lambda ()
-                         ;; :target (file+headline "inbox.org"
-                                                ;; "* %?\n"))))))
-          )
+          org-enable-roam-support t)
      (shell :variables
             shell-default-height 30
           shell-default-position 'bottom)
@@ -97,6 +81,7 @@ This function should only modify configuration layer settings."
      version-control
      treemacs
      chrome
+     vinegar
      ;; exwm
      spacemacs-modeline
      spacemacs-navigation
@@ -680,6 +665,9 @@ before packages are loaded."
   (with-eval-after-load 'helm-files
     (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
 
+  (set-default 'tramp-default-proxies-alist
+               '((".*" "\\`root\\'" "/ssh:%h:")))
+  
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
   (setq delete-old-versions t
