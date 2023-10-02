@@ -65,8 +65,7 @@
        ("GOROOT" . "$GUIX_PROFILE/lib/go")
        ("GOTMPDIR" . "/tmp")
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
-       ;;; This broke guix shell in an earlier version. Is it fixed now?
-       ("GUILE_LOAD_PATH" . "...:$XDG_CONFIG_HOME/guile:$HOME/src/guile")
+       ("GUILE_LOAD_PATH" . "$XDG_CONFIG_HOME/guile:$HOME/src/guile:$GUILE_LOAD_PATH")
        ("HISTFILE" . "$XDG_DATA_HOME/shell/histfile")
        ("ICEAUTHORITY" . "$XDG_CACHE_HOME/x11/ICEauthority")
        ("JULIA_DEPOT_PATH" . "$XDG_DATA_HOME/julia:$GUIX_PROFILE/share/julia/")
