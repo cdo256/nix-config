@@ -273,16 +273,11 @@
                 ("waybar" ,(local-file "./waybar" #:recursive? #t))
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
      (service home-channels-service-type
-              cdo-guix-channels))
-     )))
-
-;;; The following error occurs when trying to reload herd after a reconfigure.
-;;; herd: error: exception caught while executing 'load' on service 'root':
-;;; Wrong number of arguments to #<procedure 7f04867be6e0 at shepherd/service.scm:2773:6 (running file-name)>
-;; (service home-redshift-service-type
-;;          (home-redshift-configuration
-;;           (location-provider 'manual)
-;;           (latitude 51.5)
-;;           (longitude -0.1)))
+              cdo-guix-channels)
+     (service home-redshift-service-type
+              (home-redshift-configuration
+               (location-provider 'manual)
+               (latitude 51.5)
+               (longitude -0.1)))))))
 
 cdo-home-environment
