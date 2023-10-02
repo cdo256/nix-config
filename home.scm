@@ -251,7 +251,6 @@
 (define cdo-home-environment
   (home-environment
    (packages (specifications->packages %cdo-packages))
-
    (services
     (list
      (service home-fish-service-type (home-fish-configuration
@@ -262,11 +261,9 @@
                                                      "config.fish")))))
      (service home-xdg-configuration-files-service-type
               `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
-                ;; ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
                 ("git" ,(local-file "./git" #:recursive? #t))
                 (".guile" ,(local-file "./guile/init.scm" #:recursive? #t))
-                ;; ("guix/channels.scm" ,(local-file "guix/channels.scm"))
                 ("hexchat" ,(local-file "./hexchat" #:recursive? #t))
                 ("shell" ,(local-file "./shell" #:recursive? #t))
                 ("spacemacs/init.el" ,(local-file "./spacemacs/init.el"))
