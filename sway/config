@@ -129,8 +129,9 @@ bindsym $mod+Mod1+p focus parent
 bindsym $mod+Mod1+f       focus mode_toggle # focus tiling area/floating area
 bindsym $mod+Mod1+Shift+f floating toggle   # move to/from floating area
 
-bindsym $mod+Mod1+minus       scratchpad show # This isn't working. I'm loosing windows.
-bindsym $mod+Mod1+Shift+minus move to scratchpad
+# $mod+Mod1+minus can't be used for some reason.
+bindsym $mod+Mod1+m                scratchpad show
+bindsym $mod+Mod1+Shift+m          move to scratchpad
 
 # Control keys
 bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +10%
