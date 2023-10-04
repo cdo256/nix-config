@@ -107,20 +107,21 @@
 (define %common-packages
   (append
    (specifications->packages
-    (list "nss-certs"
-          "fish"
-          "sway"
-          "python"
-          "yubico-pam"
-          "linux-pam"
-          "pinentry"
-          "bluez"
+    (list "bluez"
           "bluez-alsa"
           "bluez-qt"
           "bluez-firmware"
           "blueman"
+          "etckeeper"
+          "fish"
           "kexec-tools"
-          "virt-manager"))
+          "linux-pam"
+          "nss-certs"
+          "pinentry"
+          "python"
+          "sway"
+          "virt-manager"
+          "yubico-pam"))
    %base-packages))
 
 (define %common-services
