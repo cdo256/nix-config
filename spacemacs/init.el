@@ -663,6 +663,7 @@ before packages are loaded."
   (with-eval-after-load 'helm-files
     (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
 
+  (setq tramp-default-method "ssh")
   (set-default 'tramp-default-proxies-alist
                '((".*" "\\`root\\'" "/ssh:%h:")))
   
