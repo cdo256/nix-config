@@ -117,6 +117,7 @@
           "linux-pam"
           "nss-certs"
           "pinentry"
+          "pulseaudio"
           "python"
           "sway"
           "virt-manager"
