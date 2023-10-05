@@ -112,7 +112,6 @@
           "bluez-qt"
           "bluez-firmware"
           "blueman"
-          "etckeeper"
           "fish"
           "kexec-tools"
           "linux-pam"
