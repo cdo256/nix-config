@@ -667,7 +667,8 @@ before packages are loaded."
   (setq tramp-default-method "ssh")
   (set-default 'tramp-default-proxies-alist
                '((".*" "\\`root\\'" "/ssh:%h:")))
-  
+
+  (setq-default evil-cross-lines t)
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
   (setq delete-old-versions t
