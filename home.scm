@@ -231,6 +231,7 @@
         "texinfo"
         "tor"
         "tor-client"
+        "trash-cli"
         "tree"
         "ublock-origin-chromium"
         "ungoogled-chromium-wayland"
