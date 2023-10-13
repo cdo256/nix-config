@@ -32,31 +32,11 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(javascript
-     go
-     html
-     yaml
-     (spacemacs-evil :variables
-                     evil-move-beyond-eol t
-                     evil-cross-lines t
-                     evil-want-minibuffer t
-                     spacemacs-evil-collection-allowed-list
-                     '(minibuffer dired)
-                     ;; evil-collection-mode-list
-                     ;; '(minibuffer dired)
-                     )
-     tree-sitter
-     python
-     clojure
-     markdown
-     auto-completion
+   '(auto-completion
      better-defaults
+     chrome
+     clojure
      emacs-lisp
-     scheme
-     git
-     helm
-     lsp
-     markdown
      '((erc :variables
             erc-enable-sasl-auth t
             erc-hide-list '("JOIN" "PART" "QUIT")
@@ -69,28 +49,40 @@ This function should only modify configuration layer settings."
                :port 6697
                :ssl t
                :nick "cdo256"))))
+     git
+     go
+     helm
+     html
+     javascript
+     lsp
+     markdown
      multiple-cursors
      (org :variables
           org-roam-directory "~/org-roam/"
           org-enable-roam-support t)
+     python
+     treemacs
+     tree-sitter
+     scheme
+     (spacemacs-evil :variables
+                     evil-move-beyond-eol t
+                     evil-want-minibuffer t
+                     spacemacs-evil-collection-allowed-list
+                     '(minibuffer dired))
+     spacemacs-modeline
+     spacemacs-navigation
+     spacemacs-editing
+     spacemacs-project
+     spacemacs-purpose
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
-     version-control
-     treemacs
-     chrome
      (vinegar :variables
               vinegar-reuse-dired-buffer t)
-     ;; exwm
-     spacemacs-modeline
-     spacemacs-navigation
-     spacemacs-editing
-     spacemacs-project
-     spacemacs-purpose)
-
-
+     version-control
+     yaml)
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -101,13 +93,13 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(org-roam
-     ein ;; Jupyter Notebook integration
+   '(all-the-icons
+     atomic-chrome
      chatgpt-shell
-     all-the-icons
+     ein ;; Jupyter Notebook integration
      no-littering
-     symex
-     atomic-chrome)
+     org-roam
+     symex)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
