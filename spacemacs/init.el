@@ -57,6 +57,7 @@ This function should only modify configuration layer settings."
      lsp
      markdown
      multiple-cursors
+     notmuch
      (org :variables
           org-roam-directory "~/org-roam/"
           org-enable-roam-support t)
