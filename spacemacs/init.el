@@ -66,6 +66,8 @@ This function should only modify configuration layer settings."
      treemacs
      tree-sitter
      scheme
+     spacemacs-defaults
+     spacemacs-editing
      (spacemacs-evil :variables
                      evil-move-beyond-eol t
                      evil-want-minibuffer t
@@ -73,7 +75,6 @@ This function should only modify configuration layer settings."
                      '(minibuffer dired))
      spacemacs-modeline
      spacemacs-navigation
-     spacemacs-editing
      spacemacs-project
      spacemacs-purpose
      (shell :variables
@@ -101,6 +102,7 @@ This function should only modify configuration layer settings."
      ein ;; Jupyter Notebook integration
      no-littering
      org-roam
+     simple-httpd
      symex)
 
    ;; A list of packages that cannot be updated.
