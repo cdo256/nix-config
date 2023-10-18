@@ -613,6 +613,9 @@ before packages are loaded."
   (global-set-key (kbd "C-s") 'save-buffer)
   (global-set-key (kbd "C-x p") 'toggle-truncate-lines)
 
+  (setq dotspacemacs-whitespace-cleanup t)
+  (global-set-key (kbd "C-c w") 'spacemacs-whitespace-cleanup-mode)
+
   (require 'evil)
   (setq global-visual-line-mode t)
 
@@ -647,6 +650,9 @@ before packages are loaded."
   ;; (symex-modal-backend 'evil)
   (symex-initialize)
   (global-set-key (kbd "C-c x") 'symex-mode-interface)
+
+  (require 'dired)
+  (define-key dired-mode-map (kbd "E") 'make-directory)
 
   (require 'company)
   (define-key company-active-map (kbd "<return>") nil)
