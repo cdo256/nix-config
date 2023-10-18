@@ -53,6 +53,10 @@
        ("XDG_DOCUMENTS_DIR" . "$HOME")
        ("XDG_MUSIC_DIR" . "$HOME")
 
+       ("ANSIBLE_HOME" . "$XDG_CONFIG_HOME/ansible")
+       ("ANSIBLE_CONFIG" . "$XDG_CONFIG_HOME/ansible")
+       ("ANSIBLE_GALAXY_CACHE_DIR" . "$XDG_CACHE_HOME/ansible/galaxy_cache")
+       ("BASH_HISTORY" . "$XDG_STATE_HOME/shell/histfile")
        ("BZR_HOME" . "$XDG_CACHE_HOME/bazaar")
        ("BZRPATH" . "$XDG_CONFIG_HOME/bazaar")
        ("BZR_PLUGIN_PATH" . "$XDG_DATA_HOME/bazaar")
@@ -65,6 +69,7 @@
        ("GOROOT" . "$GUIX_PROFILE/lib/go")
        ("GOTMPDIR" . "/tmp")
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
+       ("GUILE_HISTORY" . "$XDG_STATE_HOME/guile/history")
        ("GUILE_LOAD_PATH" . "$XDG_CONFIG_HOME/guile:$HOME/src/guile:$GUILE_LOAD_PATH")
        ("HISTFILE" . "$XDG_DATA_HOME/shell/histfile")
        ("ICEAUTHORITY" . "$XDG_CACHE_HOME/x11/ICEauthority")
@@ -78,7 +83,8 @@
        ("SPACEMACSDIR" . "$XDG_CONFIG_HOME/spacemacs")
        ("SUBVERSION_HOME" . "$XDG_CONFIG_HOME/subversion")
        ("VIMDOTDIR" . "$XDG_CONFIG_HOME/vim")
-       ("XAUTHORITY" . "$XDG_DATA_HOME/x11/xAuthority")))
+       ("XAUTHORITY" . "$XDG_DATA_HOME/x11/xauthority")
+       ("XINITRC" . "$XDG_CONFIG_HOME/x11/xinitrc")))
 
 (define cdo-font-config
   "<?xml version=\"1.0\"?>
