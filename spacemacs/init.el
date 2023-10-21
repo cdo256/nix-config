@@ -66,6 +66,9 @@ This function should only modify configuration layer settings."
      treemacs
      tree-sitter
      scheme
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      spacemacs-defaults
      spacemacs-editing
      (spacemacs-evil :variables
@@ -77,11 +80,9 @@ This function should only modify configuration layer settings."
      spacemacs-navigation
      spacemacs-project
      spacemacs-purpose
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
      spell-checking
      syntax-checking
+     systemd
      (vinegar :variables
               vinegar-reuse-dired-buffer t)
      version-control
