@@ -104,7 +104,8 @@ This function should only modify configuration layer settings."
      no-littering
      org-roam
      simple-httpd
-     symex)
+     symex
+     sync-recentf)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
