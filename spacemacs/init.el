@@ -648,10 +648,11 @@ before packages are loaded."
   (require 'org-roam)
   (org-roam-db-autosync-enable)
 
-  (require 'symex)
+  ;;; Disable symex globally - paredit breaks spacing on non-lisp languages
+  ;; (require 'symex)
   ;; (symex-modal-backend 'evil)
-  (symex-initialize)
-  (global-set-key (kbd "C-c x") 'symex-mode-interface)
+  ;; (symex-initialize)
+  ;; (global-set-key (kbd "C-c x") 'symex-mode-interface)
 
   (require 'dired)
   (define-key dired-mode-map (kbd "E") 'make-directory)
