@@ -190,6 +190,7 @@
         "git"
         "git:send-email"
         "glances"
+	"gnome"
         "gnome-calculator"
         "gnupg"
         "go"
@@ -289,6 +290,7 @@
         "ungoogled-chromium-wayland"
         "unison"
         "unzip"
+        "vim"                            ; For quick editing
         "virt-manager"
         "vinagre"
         "vlc"

@@ -31,6 +31,7 @@
   networking
   ssh
   xorg
+  gnome
   sddm)
 
 (define (string-escape-just-quotes string)
@@ -129,11 +130,7 @@
       (list (service openssh-service-type)
             (service gpm-service-type)
             (service docker-service-type)
-            (service sddm-service-type
-              (sddm-configuration
-                (display-server "wayland")
-                (xorg-configuration (xorg-configuration
-                  (keyboard-layout %keyboard-layout)))))
+            (service gnome-desktop-service-type)
             (service bluetooth-service-type
                      (bluetooth-configuration
                       (auto-enable? #t)))
