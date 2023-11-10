@@ -187,6 +187,7 @@
         "gcc-toolchain"
         "gdb"
         "gettext"
+        "gimp"
         "git"
         "git:send-email"
         "glances"
