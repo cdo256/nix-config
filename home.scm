@@ -342,10 +342,12 @@
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
      (service home-channels-service-type
               cdo-guix-channels)
-     (service home-redshift-service-type
-              (home-redshift-configuration
-               (location-provider 'manual)
-               (latitude 51.5)
-               (longitude -0.1)))))))
+     ;;; Disabled. Currently failing on my machine
+     ;;(service home-redshift-service-type
+     ;;         (home-redshift-configuration
+     ;;          (location-provider 'manual)
+     ;;          (latitude 51.5)
+     ;;          (longitude -0.1)))
+     ))))
 
 cdo-home-environment
