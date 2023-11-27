@@ -5,30 +5,33 @@
             %user-accounts
             %user-groups
             %common-packages
-            %common-services)
-  #:use-module (gnu)
-  #:use-module (gnu packages admin)
-  #:use-module (gnu packages emacs)
-  #:use-module (gnu packages linux)
-  #:use-module (gnu packages security-token)
-  #:use-module (gnu packages shells)
-  #:use-module (gnu packages bash)
-  #:use-module (gnu packages virtualization)
-  #:use-module (gnu services cups)
-  #:use-module (gnu services desktop)
-  #:use-module (gnu services docker)
-  #:use-module (gnu services mcron)
-  #:use-module (gnu services networking)
-  #:use-module (gnu services shepherd)
-  #:use-module (gnu services sound)
-  #:use-module (gnu services security-token)
-  #:use-module (gnu services ssh)
-  #:use-module (gnu services syncthing)
-  #:use-module (gnu services virtualization)
-  #:use-module (gnu services xorg)
-  #:use-module (nongnu packages linux)
-  #:use-module (nongnu system linux-initrd) 
-  #:use-module (ice-9 match))
+            %common-services))
+(use-modules
+  (gnu)
+  (gnu packages admin)
+  (gnu packages emacs)
+  (gnu packages linux)
+  (gnu packages security-token)
+  (gnu packages shells)
+  (gnu packages virtualization)
+  (gnu services desktop)
+  (gnu services docker)
+  (gnu services mcron)
+  (gnu services shepherd)
+  (gnu services sound)
+  (gnu services security-token)
+  (gnu services syncthing)
+  (gnu services virtualization)
+  (nongnu system linux-initrd)
+  (nongnu packages linux)
+  (ice-9 match))
+(use-service-modules
+  cups
+  desktop
+  networking
+  ssh
+  xorg
+  sddm)
 
 (define (string-escape-just-quotes string)
   (call-with-output-string
@@ -83,12 +86,21 @@
 (define %user-accounts
   (cons* (user-account
           (name "cdo")
+          (uid 1000)
           (comment "Christina O'Donnell")
-          (group "users")
+          (group "cdo")
           (home-directory "/home/cdo")
           (supplementary-groups
            '("users" "wheel" "netdev" "audio" "video" "backup" "plugdev" "libvirt"))
-          (shell (file-append fish "/bin/fish")))
+          (shell (file-append bash "/bin/bash")))
+         (user-account
+          (name "olivia")
+          (comment "Olivia Biid")
+          (group "cdo")
+          (home-directory "/home/olivia")
+          (supplementary-groups
+           '("users" "wheel" "netdev" "audio" "video" "backup" "plugdev" "libvirt"))
+          (shell (file-append bash "/bin/bash")))
          (user-account
           (name "backup")
           (group "backup")
@@ -98,7 +110,11 @@
 
 (define %user-groups
   (cons* (user-group
-          (name "backup"))
+          (name "cdo")
+          (id 1000))
+         (user-group
+          (name "backup")
+          (id 30001))
          %base-groups))
 
 (define %common-packages
@@ -148,12 +164,60 @@
                (arguments '("--logfile"
                             "/var/log/syncthing-cdo.log"))))
             (udev-rules-service 'yubikey %yubikey-udev-rules))
-      modify-services %desktop-services
-        (gdm-service-type config =>
-	 (gdm-configuration
-	   (inherit config)
-	   (wayland? #t)))
-        (guix-service-type config =>
-	 (guix-configuration
-	   (inherit config)
-           (extra-options '("--cores=8"))))))
+      (modify-services %desktop-services
+        (delete gdm-service-type)
+        (guix-service-type config => (guix-configuration
+         (extra-options '("--cores=8")))))))
+
+(operating-system
+  (kernel linux)
+  (kernel-arguments
+   (list "crashkernel=256M"))
+  (firmware (list linux-firmware))
+  (initrd microcode-initrd)
+
+  (locale "en_GB.utf8")
+  (timezone "Europe/London")
+  (keyboard-layout %keyboard-layout)
+  (host-name "isaac")
+  (users %user-accounts)
+  (groups %user-groups)
+  (packages %common-packages)
+  (services %common-services)
+  (bootloader (bootloader-configuration
+               (bootloader grub-efi-bootloader)
+               (targets (list "/boot/efi"))
+               (menu-entries
+                (list (menu-entry
+                       (label "Debian")
+                       (initrd "/boot/initrd.img-6.4.0-4-amd64")
+                       (linux "/boot/vmlinuz-6.4.0-4-amd64")
+                       (linux-arguments
+                        (list "root=UUID=ec5539cc-5eb5-4a0a-a919-1de9fec3f248"))
+                       (device "1b40ff94-038e-994f-a7d2-f14e1c01dde4"))))
+               (keyboard-layout keyboard-layout)))
+  (mapped-devices
+    (list (mapped-device
+	    (source (uuid "a7378653-dea4-48dc-a8c8-b65e31745dd3"))
+	    (target "home")
+	    (type luks-device-mapping))))
+  (file-systems (cons* (file-system
+			(device (file-system-label "home"))
+                        (mount-point "/home")
+                        (type "ext4")
+			(dependencies mapped-devices))
+                       (file-system
+                        (mount-point "/")
+                        (device (uuid
+                                 "82cdad44-17f3-4d55-a547-cb3c8349b3d1"
+                                 'ext4))
+                        (type "ext4"))
+                       (file-system
+                        (mount-point "/boot/efi")
+                        (device (uuid "92CD-AAF1"
+                                      'fat32))
+                        (type "vfat")) %base-file-systems))
+  (sudoers-file (local-file "/home/cdo/config/sudoers"))
+  (hosts-file (local-file "/home/cdo/config/hosts")))
+
+;;/dev/sda5: UUID="a7378653-dea4-48dc-a8c8-b65e31745dd3" TYPE="crypto_LUKS" PARTUUID="5cb2ecde-199f-284b-84d1-dcbba217ad6b"

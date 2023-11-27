@@ -31,6 +31,8 @@
                         (list "root=UUID=ec5539cc-5eb5-4a0a-a919-1de9fec3f248"))
                        (device "1b40ff94-038e-994f-a7d2-f14e1c01dde4"))))
                (keyboard-layout keyboard-layout)))
+  (swap-devices
+    (list (swap-space (target (file-system-label "swap")))))
   (mapped-devices
     (list (mapped-device
 	    (source (uuid "a7378653-dea4-48dc-a8c8-b65e31745dd3"))

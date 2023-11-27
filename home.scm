@@ -21,7 +21,7 @@
   (list (channel-with-substitutes-available
          (channel
 	        (name 'guix)
-	        (branch "staging")
+	        ; (branch "staging")
 	        (url "https://git.savannah.gnu.org/git/guix.git")
 	        (introduction (make-channel-introduction
 		                     "9a2e8664ecd0b7fe3371cb268506e68037b3263d"
@@ -191,7 +191,7 @@
         "git"
         "git:send-email"
         "glances"
-	      "gnome"
+	"gnome"
         "gnome-calculator"
         "gnupg"
         "go"
@@ -307,7 +307,8 @@
         "xorg-server-xwayland"
         "ykclient"
         "yubico-pam"
-        "zip"))
+        "zip"
+	"zoom"))
 
 (define cdo-home-environment
   (home-environment
