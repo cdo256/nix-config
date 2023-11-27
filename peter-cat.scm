@@ -107,7 +107,7 @@
   (append
    (specifications->packages
     (list "bluez"
-          "bluez-alsa"
+          ;; "bluez-alsa"
           "bluez-qt"
           "bluez-firmware"
           "blueman"
@@ -190,12 +190,12 @@
 	     (uuid "fdfc8239-e381-4286-b010-ee9c9411e823")
              ;; (uuid "d05290b8-8439-413a-9f3a-323b91db8fdd")
 	     ))))
-  (file-systems (cons* (file-system
-                         (mount-point "/mnt/3")
-                         (device (uuid
-                                  "a2f6e327-1e37-4e1a-a238-478fc46fbbf2"
-                                  'ext4))
-                         (type "ext4"))
+  (file-systems (cons* ;; (file-system
+                       ;;   (mount-point "/mnt/3")
+                       ;;   (device (uuid
+                       ;;            "a2f6e327-1e37-4e1a-a238-478fc46fbbf2"
+                       ;;            'ext4))
+                       ;;   (type "ext4"))
                        (file-system
                          (mount-point "/home")
                          (device (uuid

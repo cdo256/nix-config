@@ -10,11 +10,10 @@
 		              (openpgp-fingerprint
 			             "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))))
 
-;; This is structured incorrectly, it makes the whole file raise an error even if not used in final output
-;(define %guix-with-substitutes-channel
-;  (channel-with-substitutes-available
-;   %guix-base-channel
-;   "https://ci.guix.gnu.org"))
+(define %guix-with-substitutes-channel
+  (channel-with-substitutes-available
+   %guix-base-channel
+   "https://ci.guix.gnu.org"))
 
 (define %nonguix-channel
   (channel
@@ -27,6 +26,6 @@
 
 (define %channels
   (list %guix-base-channel
-        %nonguix-channel))
+        ))
 
 %channels
