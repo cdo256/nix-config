@@ -117,6 +117,7 @@
           "pulseaudio"
           "python"
           "sway"
+          "v4l2loopback-linux-module"
           "virt-manager"
           "yubico-pam"))
    %base-packages))
