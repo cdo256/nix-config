@@ -148,12 +148,12 @@
                (arguments '("--logfile"
                             "/var/log/syncthing-cdo.log"))))
             (udev-rules-service 'yubikey %yubikey-udev-rules))
-      modify-services %desktop-services
+      (modify-services %desktop-services
         (gdm-service-type config =>
-	 (gdm-configuration
-	   (inherit config)
-	   (wayland? #t)))
+	        (gdm-configuration
+	         (inherit config)
+	         (wayland? #t)))
         (guix-service-type config =>
 	 (guix-configuration
 	   (inherit config)
-           (extra-options '("--cores=8"))))))
+           (extra-options '("--cores=8")))))))
