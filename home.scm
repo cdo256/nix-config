@@ -178,6 +178,7 @@
         "emacs-trashed"
         "festival"
         "file"
+        "firefox-esr" ;; Sometime necessary
         "fish"
         "ffmpeg"
         "font-adobe-source-code-pro"
@@ -191,7 +192,7 @@
         "git"
         "git:send-email"
         "glances"
-	"gnome"
+	      "gnome"
         "gnome-calculator"
         "gnupg"
         "go"
@@ -308,7 +309,7 @@
         "ykclient"
         "yubico-pam"
         "zip"
-	"zoom"))
+	      "zoom"))
 
 (define cdo-home-environment
   (home-environment
