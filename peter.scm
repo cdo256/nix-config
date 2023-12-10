@@ -1,6 +1,7 @@
 (use-modules
  (gnu)
  (cdo config system-common)
+ (gnu packages linux)
  (nongnu system linux-initrd)
  (nongnu packages linux))
 
@@ -8,6 +9,8 @@
   (kernel linux)
   (kernel-arguments
    (list "crashkernel=256M"))
+  (kernel-loadable-modules
+   (list v4l2loopback-linux-module))
   (firmware (list linux-firmware))
   (initrd microcode-initrd)
 

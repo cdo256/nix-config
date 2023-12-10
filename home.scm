@@ -150,6 +150,7 @@
         "autoconf"
         "automake"
         "basu"
+	"blueman"
         "bridge-utils"
         "ccid"
         "clang"
