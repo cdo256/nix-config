@@ -674,13 +674,12 @@ before packages are loaded."
   (set-default 'tramp-default-proxies-alist
                '((".*" "\\`root\\'" "/ssh:%h:")))
 
-  (setq gnus-select-methods
-        '((nnimap "mutix.org"
+  (setq gnus-select-method
+        '(nnimap "mutix.org"
                   (nnimap-address "mutix.org")
                   (nnimap-server-port 143)
                   (nnimap-stream starttls)
-                  (nnimap-user "cdo")
-                  )))
+                  (nnimap-user "cdo")))
   
   (setq-default evil-cross-lines t)
   (setq backup-by-copying t)
