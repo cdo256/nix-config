@@ -70,12 +70,12 @@
         ("ENV{DEVTYPE}" == "usb_device")
         ("ENV{SUBSYSTEM}" == "usb")
         ("ENV{PRODUCT}" == "1050/*")
-        ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-insert"))
+        ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-insert >>/var/log/gpg-connect-agent.log"))
        (("ACTION" == "remove")
         ("ENV{DEVTYPE}" == "usb_device")
         ("ENV{SUBSYSTEM}" == "usb")
         ("ENV{PRODUCT}" == "1050/*")
-        ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-remove"))))))
+        ("RUN" += "/run/setuid-programs/sudo -iu cdo on-yubikey-remove >>/var/log/gpg-connect-agent.log"))))))
 
 (define %keyboard-layout
   (keyboard-layout "gb"))
