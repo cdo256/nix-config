@@ -77,6 +77,7 @@
        ("LESSHISTFILE" . "$XDG_STATE_HOME/less/hist")
        ("LESSKEY" . "$XDG_CONFIG_HOME/less/keys")
        ("MPLAYER_HOME" . "$XDG_CONFIG_HOME/mplayer")
+       ("PATH" . "/home/cdo/scripts:$PATH")
        ("PYTHONHISTFILE" . "$XDG_DATA_HOME/python/histfile")
        ("PYTHONSTARTUP" . "$XDG_CONFIG_HOME/python/startup.py")
        ("QT_QPA_PLATFORM_PLUGIN_PATH" . "$GUIX_PROFILE/lib/qt5/plugins")
