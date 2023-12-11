@@ -50,6 +50,7 @@ This function should only modify configuration layer settings."
                :ssl t
                :nick "cdo256"))))
      git
+     gnus
      go
      helm
      html
@@ -673,6 +674,14 @@ before packages are loaded."
   (set-default 'tramp-default-proxies-alist
                '((".*" "\\`root\\'" "/ssh:%h:")))
 
+  (setq gnus-select-methods
+        '((nnimap "mutix.org"
+                  (nnimap-address "mutix.org")
+                  (nnimap-server-port 143)
+                  (nnimap-stream starttls)
+                  (nnimap-user "cdo")
+                  )))
+  
   (setq-default evil-cross-lines t)
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
