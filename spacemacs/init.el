@@ -670,6 +670,7 @@ before packages are loaded."
                   (nnimap-user "cdo")))
 
   (setq-default evil-cross-lines t)
+  (setq-default word-wrap-whitespace-mode t)
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
   (setq delete-old-versions t
