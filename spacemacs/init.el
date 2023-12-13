@@ -680,7 +680,7 @@ before packages are loaded."
                   (nnimap-server-port 143)
                   (nnimap-stream starttls)
                   (nnimap-user "cdo")))
-  
+
   (setq-default evil-cross-lines t)
   (setq backup-by-copying t)
   (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
@@ -688,6 +688,9 @@ before packages are loaded."
         kept-new-versions 6
         kept-old-versions 2
         version-control t)
+
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program (getenv "BROWSER"))
 )
 
 (setq custom-file "~/.config/spacemacs/custom.el")
