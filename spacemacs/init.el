@@ -628,22 +628,10 @@ before packages are loaded."
   ;; (exwm-config-example)
   (setq chatgpt-shell-openai-key
         "***REMOVED***")
+
   (require 'tree-sitter)
-  (setq treesit-language-source-alist
-        '((elisp "https://github.com/Wilfred/tree-sitter-alist")))
-  (tree-sitter-require 'c)
-  (tree-sitter-require 'cpp)
-  (tree-sitter-require 'css)
-  (tree-sitter-require 'go)
-  (tree-sitter-require 'haskell)
-  (tree-sitter-require 'html)
-  (tree-sitter-require 'javascript)
-  (tree-sitter-require 'json)
-  (tree-sitter-require 'ocaml)
-  (tree-sitter-require 'python)
-  (tree-sitter-require 'rust)
-  (tree-sitter-require 'scheme)
-  (tree-sitter-require 'typescript)
+  ;;; Enable all language grammars
+  (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
   (global-tree-sitter-mode t)
 
   (require 'org-roam)
