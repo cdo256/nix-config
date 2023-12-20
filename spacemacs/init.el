@@ -37,18 +37,18 @@ This function should only modify configuration layer settings."
      chrome
      clojure
      emacs-lisp
-     '((erc :variables
-            erc-enable-sasl-auth t
-            erc-hide-list '("JOIN" "PART" "QUIT")
-            erc-server-list
-            '(("irc.libera.chat"
-               :port 6697
-               :ssl t
-               :nick "cdo256")
-              ("irc.oftc.net"
-               :port 6697
-               :ssl t
-               :nick "cdo256"))))
+     (erc :variables
+          erc-enable-sasl-auth t
+          erc-hide-list '("JOIN" "PART" "QUIT")
+          erc-server-list
+          '(("irc.libera.chat"
+             :port 6697
+             :ssl t
+             :nick "cdo256")
+            ("irc.oftc.net"
+             :port 6697
+             :ssl t
+             :nick "cdo256")))
      git
      gnus
      go
