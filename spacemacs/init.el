@@ -669,6 +669,14 @@ before packages are loaded."
                   (nnimap-stream starttls)
                   (nnimap-user "cdo")))
 
+  (defun copy-filename ()
+    (interactive)
+    (let ((filename (buffer-file-name)))
+      (when filename
+        (kill-new (file-name-nondirectory (file-name-sans-extension filename))))))
+
+  (global-set-key (kbd "C-c y") copy-filename)
+
   (setq-default evil-cross-lines t)
   (setq-default word-wrap-whitespace-mode t)
   (setq backup-by-copying t)
