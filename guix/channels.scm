@@ -34,9 +34,18 @@
      (openpgp-fingerprint
       "2841 9AC6 5038 7440 C7E9  2FFA 2208 D209 58C1 DEB0")))))
 
+(define %cdo-channel
+  (channel
+   (name 'cdo)
+   (url "https://git.mutix.org/cdo-guix-channel.git")
+   (introduction (make-channel-introduction
+                  "0530e990813d616079686004f1d52c9ffe4dfd91"
+                  (openpgp-fingerprint
+                   "358B 3178 BAC1 BA9B 105C   5CDA 344C 0AA8 A41E 474A")))))
+
 (define %channels
-  (list %rde-channel
-        %guix-with-substitutes-channel
-        %nonguix-channel))
+  (list %guix-with-substitutes-channel
+        %nonguix-channel
+        %cdo-channel))
 
 %channels

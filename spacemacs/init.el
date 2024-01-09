@@ -673,7 +673,7 @@ before packages are loaded."
     (interactive)
     (let ((filename (buffer-file-name)))
       (when filename
-        (kill-new (file-name-nondirectory (file-name-sans-extension filename))))))
+        (kill-new filename))))
 
   (global-set-key (kbd "C-c y") copy-filename)
 
