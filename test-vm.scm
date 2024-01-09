@@ -3,6 +3,7 @@
  (cdo config system-common)
  (nongnu system linux-initrd)
  (nongnu packages linux))
+(use-service-modules networking)
 
 (operating-system
   (kernel linux)
@@ -24,8 +25,10 @@
            (name "libvirt")
            (id 30003))
           %user-groups))
-  (packages %common-packages)
-  (services %base-services)
+  (packages (cons* (specification->package "net-tools")
+             %common-packages))
+  (services (cons* (service dhcp-client-service-type)
+                   %base-services))
   (bootloader (bootloader-configuration
                (bootloader grub-efi-bootloader)
                (targets (list "/boot/efi"))
