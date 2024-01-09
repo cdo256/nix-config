@@ -157,4 +157,5 @@
         (guix-service-type config =>
 	 (guix-configuration
 	   (inherit config)
-           (extra-options '("--cores=8")))))))
+           (extra-options '("--cores=8"
+                            "--listen=localhost:44146")))))))

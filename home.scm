@@ -71,6 +71,7 @@
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
        ("GUILE_HISTORY" . "$XDG_STATE_HOME/guile/history")
        ("GUILE_LOAD_PATH" . "$XDG_CONFIG_HOME/guile:$HOME/src/guile:$GUILE_LOAD_PATH")
+       ("GUIX_DAEMON_SOCKET" . "guix://localhost:44146")
        ("HISTFILE" . "$XDG_STATE_HOME/shell/histfile")
        ("ICEAUTHORITY" . "$XDG_CACHE_HOME/x11/ICEauthority")
        ("JULIA_DEPOT_PATH" . "$XDG_DATA_HOME/julia:$GUIX_PROFILE/share/julia/")
