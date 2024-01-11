@@ -158,5 +158,5 @@
 	                         (guix-configuration
 	                          (inherit config)
                             (extra-options '("--cores=8"
-                                             "--listen=/var/guix/daemon-sockeet/socket"
+                                             "--listen=/var/guix/daemon-socket/socket"
                                              "--listen=localhost:44146")))))))
