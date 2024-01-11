@@ -150,8 +150,10 @@
   '("adwaita-icon-theme" ;; GNOME icon theme
     "gnome" ;; The GNU desktop environment
     "gnome-calculator" ;; Desktop calculator
+    "icedove-wayland" ;; Copyright-less email client
     "matcha-theme" ;; Flat design theme for GTK 3, GTK 2 and GNOME-Shell
     "qtwayland" ;; Qt Wayland module
+    "speech-dispatcher" ;; Common interface to speech synthesizers
     "sway" ;; Wayland compositor compatible with i3
     "xdg-desktop-portal-kde" ;; Backend implementation for xdg-desktop-portal using Qt/KF5
     "xdg-user-dirs" ;; Tool to help manage "well known" user directories
@@ -159,6 +161,8 @@
     "xorg-server-xwayland" ;; Xorg server with Wayland backend
     "wofi" ;; Launcher/menu program for wayland
     "waybar" ;; Wayland bar for Sway and Wlroots based compositors
+    "alacritty" ;; Terminal emulator
+    "vinagre" ;; Remote desktop viewer
     ))
 
 (define %development-tools
@@ -168,6 +172,7 @@
     "clang" ;; C language family frontend for LLVM
     "gcc-toolchain" ;; Complete GCC tool chain for C/C++ development
     "git" ;; Distributed version control system
+    "git:sendmail" ;; Send emails with Git
     "libtool" ;; Generic shared library support tools
     "make" ;; Remake files automatically
     "pkg-config" ;; Helper tool used when compiling applications and libraries
@@ -175,6 +180,7 @@
     "python-pip" ;; Package manager for Python software
     "python-pyopencl" ;; Python wrapper for OpenCL
     "rust-cargo" ;; Package manager for Rust
+    "emacs-ox-hugo" ;; Org-mode to Hugo exporter
     ))
 
 (define %system-utilities
@@ -188,6 +194,7 @@
     "ddrescue" ;; Data recovery utility
     "diffutils" ;; Comparing and merging files
     "file" ;; File type guesser
+    "isync" ;; Mailbox sync utility for use with mu4e
     "libcap" ;; Library for working with POSIX capabilities
     "libfido2" ;; Library functionality and command-line tools for FIDO devices
     "libiconv" ;; Character set conversion library
@@ -210,6 +217,8 @@
     "vlc" ;; Audio and video framework
     "mpv" ;; Audio and video player
     "inkscape" ;; Vector graphics editor
+    "guvcview" ;; GTK+ UVC Viewer
+    "nomacs" ;; Image viewer and manipulator
     ))
 
 (define %text-editors-packages
@@ -250,7 +259,6 @@
 (define %security-authentication-tools
   ;; Security and Authentication Tools
   '("gnupg" ;; GNU Privacy Guard
-    "libvirt" ;; Simple API for virtualization
     "libyubikey" ;; Development kit for the YubiKey authentication device
     "pcsc-lite" ;; Middleware to access a smart card using PC/SC
     "pcsc-tools" ;; Smart cards and PC/SC tools
@@ -263,6 +271,7 @@
   ;; Office and Document Tools
   '("libreoffice" ;; Office suite
     "texinfo" ;; The GNU documentation format
+    "keepassxc" ;; Password manager (Added category packages)
     ))
 
 (define %monitoring-performance-tools
@@ -270,13 +279,18 @@
   '("glances" ;; Cross-platform curses-based monitoring tool
     "htop" ;; Interactive process viewer
     "iotop" ;; Interactive `top'-like input/output activity monitor
+    "libvirt" ;; Simple API for virtualization
     "nmon" ;; Monitor system performance in a terminal or to a `.csv' log file
+    "rocm-comgr" ;; ROCm Compiler Driver
+    "rocm-device-libs" ;; ROCm Device Libraries
+    "rocr-runtime" ;; ROCm Runtime
     ))
 
 (define %file-disk-management-tools
   ;; File and Disk Management Tools
   '("gparted" ;; Partition editor to graphically manage disk partitions
     "gptfdisk" ;; Low-level GPT disk partitioning and formatting
+    "po4a" ;; Tools for using PO files
     "rsync" ;; Remote (and local) file copying tool
     "trash-cli" ;; Trash can management tool
     "tree" ;; Recursively list the contents of a directory
@@ -288,36 +302,36 @@
   ;; Utilities and Miscellaneous Tools
   '("cloc" ;; Count source lines of code (SLOC) and other source code metrics
     "cmatrix" ;; Simulate the display from "The Matrix"
-    "speech-dispatcher" ;; Common interface to speech synthesizers
-    "sqlitebrowser" ;; Visual database browser and editor for SQLite
-    "recutils" ;; Manipulate plain text files as databases
     "moreutils" ;; Miscellaneous general-purpose command-line tools
     "neofetch" ;; System information script
-    "sddm" ;; QML based X11 and Wayland display manager
+    "recutils" ;; Manipulate plain text files as databases
     "sendmail" ;; Highly configurable Mail Transfer Agent (MTA)
     "socat" ;; Open bidirectional communication channels from the command line
+    "sqlitebrowser" ;; Visual database browser and editor for SQLite
     "synergy" ;; Mouse and keyboard sharing utility
     "v4l-utils" ;; Realtime video capture utilities for Linux
     "xinit" ;; Commands to start the X Window server
     "xhost" ;; Xorg server access control utility
     "xkbutils" ;; XKB utilities
-    "zip" ;; Compression and file packing utility
+    "zoom" ;; Zoom video conferencing software
     ))
 
 (define %scientific-technical-computing
   ;; Scientific and Technical Computing
   '("julia" ;; High-performance dynamic language for technical computing
     "jupyter" ;; Web application for interactive documents
+    "kicad" ;; Electronic design automation suite
+    "kicad-doc" ;; Documentation for KiCad
     "qgis" ;; Geographical information system
     ))
 
 (define %printers-hardware-tools
   ;; Printers and Hardware Tools
-  '("hplip" ;; HP printer drivers
-    "dmidecode" ;; Read hardware information from the BIOS
+  '("dmidecode" ;; Read hardware information from the BIOS
+    "hplip" ;; HP printer drivers
     "libwacom" ;; Helper library for graphics tablet settings
-    "wacomtablet" ;; KDE GUI for the Wacom Linux Drivers
     "net-tools" ;; Tools for controlling the network subsystem in Linux
+    "wacomtablet" ;; KDE GUI for the Wacom Linux Drivers
     ))
 
 (define %cdo-packages
