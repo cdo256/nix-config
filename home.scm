@@ -145,174 +145,197 @@
             (stop #~(make-kill-destructor))
             (respawn? #t))))))
 
+(define %desktop-environment-packages
+  ;; Desktop Environment and Related Packages
+  '("adwaita-icon-theme" ;; GNOME icon theme
+    "gnome" ;; The GNU desktop environment
+    "gnome-calculator" ;; Desktop calculator
+    "matcha-theme" ;; Flat design theme for GTK 3, GTK 2 and GNOME-Shell
+    "qtwayland" ;; Qt Wayland module
+    "sway" ;; Wayland compositor compatible with i3
+    "xdg-desktop-portal-kde" ;; Backend implementation for xdg-desktop-portal using Qt/KF5
+    "xdg-user-dirs" ;; Tool to help manage "well known" user directories
+    "xorg-server" ;; Xorg implementation of the X Window System
+    "xorg-server-xwayland" ;; Xorg server with Wayland backend
+    "wofi" ;; Launcher/menu program for wayland
+    "waybar" ;; Wayland bar for Sway and Wlroots based compositors
+    ))
+
+(define %development-tools
+  ;; Development Tools
+  '("autoconf" ;; Create source code configuration scripts
+    "automake" ;; Making GNU standards-compliant Makefiles
+    "clang" ;; C language family frontend for LLVM
+    "gcc-toolchain" ;; Complete GCC tool chain for C/C++ development
+    "git" ;; Distributed version control system
+    "libtool" ;; Generic shared library support tools
+    "make" ;; Remake files automatically
+    "pkg-config" ;; Helper tool used when compiling applications and libraries
+    "python" ;; High-level, dynamically-typed programming language
+    "python-pip" ;; Package manager for Python software
+    "python-pyopencl" ;; Python wrapper for OpenCL
+    "rust-cargo" ;; Package manager for Rust
+    ))
+
+(define %system-utilities
+  ;; System Utilities and Libraries
+  '("basu" ;; The sd-bus library, extracted from systemd
+    "bridge-utils" ;; Manipulate Ethernet bridges
+    "ccid" ;; PC/SC driver for USB smart card devices
+    "coreutils" ;; Core GNU utilities (file, text, shell)
+    "cryptsetup" ;; Set up transparent encryption of block devices using dm-crypt
+    "dbus" ;; Message bus for inter-process communication (IPC)
+    "ddrescue" ;; Data recovery utility
+    "diffutils" ;; Comparing and merging files
+    "file" ;; File type guesser
+    "libcap" ;; Library for working with POSIX capabilities
+    "libfido2" ;; Library functionality and command-line tools for FIDO devices
+    "libiconv" ;; Character set conversion library
+    "linux-pam" ;; Pluggable authentication modules for Linux
+    "lm-sensors" ;; Utilities to read temperature/voltage/fan sensors
+    "lsof" ;; Display information about open files
+    "pamixer" ;; PulseAudio command line mixer
+    "pam-u2f" ;; PAM module for U2F authentication
+    "pulseaudio-qt" ;; Qt bindings for PulseAudio
+    "strace" ;; System call tracer for Linux
+    ))
+
+(define %multimedia-graphics-tools
+  ;; Multimedia and Graphics Tools
+  '("ffmpeg" ;; Audio and video framework
+    "gimp" ;; GNU Image Manipulation Program
+    "mediainfo" ;; Utility for reading media metadata
+    "obs" ;; Live streaming software
+    "okular" ;; Document viewer
+    "vlc" ;; Audio and video framework
+    "mpv" ;; Audio and video player
+    "inkscape" ;; Vector graphics editor
+    ))
+
+(define %text-editors-packages
+  ;; Text Editors and Related Packages
+  '("emacs-all-the-icons" ;; Collect icon fonts and propertize them within Emacs
+    "emacs-counsel" ;; Various completion functions using Ivy
+    "emacs-counsel-tramp" ;; Ivy interface for TRAMP
+    "emacs-debbugs" ;; Access the Debbugs bug tracker in Emacs
+    "emacs-exwm" ;; Emacs X window manager
+    "emacs-git-email" ;; Format and send Git patches in Emacs
+    "emacs-guix" ;; Emacs interface for GNU Guix
+    "emacs-ivy" ;; Incremental vertical completion for Emacs
+    "emacs-jupyter" ;; Emacs interface to communicate with Jupyter kernels
+    "emacs-paredit" ;; Emacs minor mode for editing parentheses
+    "emacs-pgtk" ;; Emacs text editor with `pgtk' frames
+    "emacs-smartparens" ;; Paredit-like insertion, wrapping and navigation with user defined pairs
+    "emacs-trashed" ;; View and edit system trash can in Emacs
+    "vim" ;; Text editor based on vi
+    ))
+
+(define %package-management-utilities
+  ;; Package Management and Utilities
+  '("dpkg" ;; Debian package management system
+    "guile" ;; Scheme implementation intended especially for extensions
+    "guile-colorized" ;; Colorized REPL for Guile
+    "guile-gcrypt" ;; Cryptography library for Guile using Libgcrypt
+    "guile-readline" ;; Line editing support for GNU Guile
+    "pkg-config" ;; Helper tool used when compiling applications and libraries
+    ))
+
+(define %web-browsers
+  ;; Web Browsers
+  '("firefox-esr" ;; Trademarkless version of Firefox
+    "ungoogled-chromium-wayland" ;; Graphical web browser
+    "ublock-origin-chromium" ;; Block unwanted content from web sites
+    ))
+
+(define %security-authentication-tools
+  ;; Security and Authentication Tools
+  '("gnupg" ;; GNU Privacy Guard
+    "libvirt" ;; Simple API for virtualization
+    "libyubikey" ;; Development kit for the YubiKey authentication device
+    "pcsc-lite" ;; Middleware to access a smart card using PC/SC
+    "pcsc-tools" ;; Smart cards and PC/SC tools
+    "pinentry" ;; GnuPG's interface to passphrase input
+    "pinentry-qt" ;; GnuPG's interface to passphrase input
+    "yubico-pam" ;; Yubico pluggable authentication module
+    ))
+
+(define %office-document-tools
+  ;; Office and Document Tools
+  '("libreoffice" ;; Office suite
+    "texinfo" ;; The GNU documentation format
+    ))
+
+(define %monitoring-performance-tools
+  ;; Monitoring and Performance Tools
+  '("glances" ;; Cross-platform curses-based monitoring tool
+    "htop" ;; Interactive process viewer
+    "iotop" ;; Interactive `top'-like input/output activity monitor
+    "nmon" ;; Monitor system performance in a terminal or to a `.csv' log file
+    ))
+
+(define %file-disk-management-tools
+  ;; File and Disk Management Tools
+  '("gparted" ;; Partition editor to graphically manage disk partitions
+    "gptfdisk" ;; Low-level GPT disk partitioning and formatting
+    "rsync" ;; Remote (and local) file copying tool
+    "trash-cli" ;; Trash can management tool
+    "tree" ;; Recursively list the contents of a directory
+    "unzip" ;; Decompression and file extraction utility
+    "zip" ;; Compression and file packing utility
+    ))
+
+(define %utilities-miscellaneous-tools
+  ;; Utilities and Miscellaneous Tools
+  '("cloc" ;; Count source lines of code (SLOC) and other source code metrics
+    "cmatrix" ;; Simulate the display from "The Matrix"
+    "speech-dispatcher" ;; Common interface to speech synthesizers
+    "sqlitebrowser" ;; Visual database browser and editor for SQLite
+    "recutils" ;; Manipulate plain text files as databases
+    "moreutils" ;; Miscellaneous general-purpose command-line tools
+    "neofetch" ;; System information script
+    "sddm" ;; QML based X11 and Wayland display manager
+    "sendmail" ;; Highly configurable Mail Transfer Agent (MTA)
+    "socat" ;; Open bidirectional communication channels from the command line
+    "synergy" ;; Mouse and keyboard sharing utility
+    "v4l-utils" ;; Realtime video capture utilities for Linux
+    "xinit" ;; Commands to start the X Window server
+    "xhost" ;; Xorg server access control utility
+    "xkbutils" ;; XKB utilities
+    "zip" ;; Compression and file packing utility
+    ))
+
+(define %scientific-technical-computing
+  ;; Scientific and Technical Computing
+  '("julia" ;; High-performance dynamic language for technical computing
+    "jupyter" ;; Web application for interactive documents
+    "qgis" ;; Geographical information system
+    ))
+
+(define %printers-hardware-tools
+  ;; Printers and Hardware Tools
+  '("hplip" ;; HP printer drivers
+    "dmidecode" ;; Read hardware information from the BIOS
+    "libwacom" ;; Helper library for graphics tablet settings
+    "wacomtablet" ;; KDE GUI for the Wacom Linux Drivers
+    "net-tools" ;; Tools for controlling the network subsystem in Linux
+    ))
+
 (define %cdo-packages
-  (list "adwaita-icon-theme"
-        "alacritty"
-        "ansible"
-        "autoconf"
-        "automake"
-        "basu"
-	"blueman"
-        "bridge-utils"
-        "ccid"
-        "clang"
-        "cloc"
-        "cmatrix"
-        "coreutils"
-        "cryptsetup"
-        "curl"
-        "dbus"
-        "ddrescue"
-        "diffutils"
-        "dpkg"
-        "dwm"
-        "emacs-all-the-icons"
-        "emacs-counsel"
-        "emacs-counsel-tramp"
-        "emacs-debbugs"
-        "emacs-exwm"
-        "emacs-git-email"
-        "emacs-guix"
-        "emacs-ivy"
-        "emacs-jupyter"
-        "emacs-paredit"
-        "emacs-pgtk"
-        "emacs-smartparens"
-        "emacs-trashed"
-        "festival"
-        "file"
-        "firefox-esr" ;; Sometime necessary
-        "fish"
-        "ffmpeg"
-        "font-adobe-source-code-pro"
-        "fontconfig"
-        "font-gnu-unifont"
-        "font-google-noto"
-        "gcc-toolchain"
-        "gdb"
-        "gettext"
-        "gimp"
-        "git"
-        "git:send-email"
-        "glances"
-	      "gnome"
-        "gnome-calculator"
-        "gnupg"
-        "go"
-        "gparted"
-        "gptfdisk"
-        "graphviz"
-        "greetd"
-        "grim"
-        "guvcview"
-        "guile"
-        "guile-colorized"
-        "guile-gcrypt"
-        "guile-readline"
-        "htop"
-        "hwdata"
-        "icedove-wayland"
-        "iotop"
-        "ispell"
-        "julia"
-        "jupyter"
-        "kdenlive"
-        "keepassxc"
-        "kicad"
-        "kicad-doc"
-        "kicad-footprints"
-        "kicad-packages3d"
-        "kicad-symbols"
-        "kicad-templates"
-        "libcap"
-        "libfido2"
-        "libiconv"
-        "libreoffice"
-        "libtool"
-        "libu2f-host"
-        "libvirt"
-        "libyubikey"
-        "linux-pam"
-        "lm-sensors"
-        "lsof"
-        "lynx"
-        "mailutils"
-        "make"
-        "matcha-theme"
-        "mediainfo"
-        "meld"
-        "moreutils"
-        "neofetch"
-        "nmon"
-        "nomacs"
-        "obs"
-        "okular"
-        "opencl-headers"
-        "openjdk"
-        "openssl"
-        "orca"
-        "ovmf"
-        "pamixer"
-        "pam-u2f"
-        "pavucontrol"
-        "pcsc-lite"
-        "pcsc-tools"
-        "pinentry"
-        "pinentry-qt"
-        "pkg-config"
-        "po4a"
-        "pulseaudio-qt"
-        "pv"
-        "python"
-        "python-pip"
-        "python-pyopencl"
-        "qemu"
-        "qtwayland"
-        "readline"
-        "recutils"
-        "rocm-comgr"
-        "rocm-device-libs"
-        "rocr-runtime"
-        "rsync"
-        "rust-cargo"
-        "screen"
-        "sddm"
-        "sendmail"
-        "signal-desktop"
-        "slurp"
-        "socat"
-        "speech-dispatcher"
-        "sqlitebrowser"
-        "strace"
-        "sway"
-        "syncthing"
-        "synergy"
-        "texinfo"
-        "tor"
-        "tor-client"
-        "trash-cli"
-        "tree"
-        "ublock-origin-chromium"
-        "ungoogled-chromium-wayland"
-        "unison"
-        "unzip"
-        "vim"                            ; For quick editing
-        "virt-manager"
-        "vinagre"
-        "vlc"
-        "waybar"
-        "wofi"
-        "xdg-desktop-portal-kde"
-        "xdg-user-dirs"
-        "xinit"
-        "xhost"
-        "xkbutils"
-        "xorg-server"
-        "xorg-server-xwayland"
-        "ykclient"
-        "yubico-pam"
-        "zip"
-	      "zoom"))
+  ;; My default list of packages
+  (append %desktop-environment-packages
+          %development-tools
+          %system-utilities
+          %multimedia-graphics-tools
+          %text-editors-packages
+          %package-management-utilities
+          %web-browsers
+          %security-authentication-tools
+          %office-document-tools
+          %monitoring-performance-tools
+          %file-disk-management-tools
+          %utilities-miscellaneous-tools
+          %scientific-technical-computing
+          %printers-hardware-tools))
 
 (define cdo-home-environment
   (home-environment
