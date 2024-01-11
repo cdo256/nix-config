@@ -155,7 +155,8 @@
 	         (inherit config)
 	         (wayland? #t)))
         (guix-service-type config =>
-	 (guix-configuration
-	   (inherit config)
-           (extra-options '("--cores=8"
-                            "--listen=localhost:44146")))))))
+	                         (guix-configuration
+	                          (inherit config)
+                            (extra-options '("--cores=8"
+                                             "--listen=/var/guix/daemon-sockeet/socket"
+                                             "--listen=localhost:44146")))))))
