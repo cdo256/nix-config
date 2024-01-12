@@ -172,7 +172,7 @@
     "clang" ;; C language family frontend for LLVM
     "gcc-toolchain" ;; Complete GCC tool chain for C/C++ development
     "git" ;; Distributed version control system
-    "git:sendmail" ;; Send emails with Git
+    "git:send-email" ;; Send emails with Git
     "libtool" ;; Generic shared library support tools
     "make" ;; Remake files automatically
     "pkg-config" ;; Helper tool used when compiling applications and libraries
@@ -288,7 +288,8 @@
 
 (define %file-disk-management-tools
   ;; File and Disk Management Tools
-  '("gparted" ;; Partition editor to graphically manage disk partitions
+  '("direnv" ;; Per-directory environments
+    "gparted" ;; Partition editor to graphically manage disk partitions
     "gptfdisk" ;; Low-level GPT disk partitioning and formatting
     "po4a" ;; Tools for using PO files
     "rsync" ;; Remote (and local) file copying tool
