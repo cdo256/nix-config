@@ -8,6 +8,7 @@
             %common-services)
   #:use-module (gnu)
   #:use-module (gnu packages admin)
+  #:use-module (gnu packages cups)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages linux)
   #:use-module (gnu packages security-token)
@@ -125,6 +126,11 @@
 (define %common-services
     (append
       (list (service openssh-service-type)
+            (service cups-service-type
+                     (cups-configuration
+                      (web-interface? #t)
+                      (extensions
+                       (list cups-filters hplip))))
             (service gpm-service-type)
             (service docker-service-type)
             (service gnome-desktop-service-type)
