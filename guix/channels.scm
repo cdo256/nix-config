@@ -15,10 +15,19 @@
    %guix-base-channel
    "https://ci.guix.gnu.org"))
 
+(define %nonguix-local-channel
+  (channel
+	 (name 'nonguix)
+   (branch 'local-testing)
+   (file ,(string-append (getenv "HOME") "/src/nonguix"))
+	 (introduction (make-channel-introduction
+		              "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+		              (openpgp-fingerprint
+			             "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
+
 (define %nonguix-channel
   (channel
 	 (name 'nonguix)
-   #;(file ,(string-append (getenv "HOME") "/src/nonguix"))
    (url "https://gitlab.com/nonguix/nonguix"))
 	(introduction (make-channel-introduction
 		             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
@@ -46,7 +55,7 @@
 
 (define %channels
   (list %guix-with-substitutes-channel
-        %nonguix-channel
+        %nonguix-local-channel
         %cdo-channel))
 
 %channels
