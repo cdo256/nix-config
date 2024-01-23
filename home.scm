@@ -146,8 +146,8 @@
             (respawn? #t))))))
 
 (define %desktop-environment-packages
-  ;; Desktop Environment and Related Packages
-  '("adwaita-icon-theme" ;; GNOME icon theme
+  '(;; Desktop Environment and Related Packages
+    "adwaita-icon-theme" ;; GNOME icon theme
     "gnome" ;; The GNU desktop environment
     "gnome-calculator" ;; Desktop calculator
     "icedove-wayland" ;; Copyright-less email client
@@ -166,8 +166,8 @@
     ))
 
 (define %development-tools
-  ;; Development Tools
-  '("autoconf" ;; Create source code configuration scripts
+  '(;; Development Tools
+    "autoconf" ;; Create source code configuration scripts
     "automake" ;; Making GNU standards-compliant Makefiles
     "clang" ;; C language family frontend for LLVM
     "gcc-toolchain" ;; Complete GCC tool chain for C/C++ development
@@ -180,12 +180,11 @@
     "python-pip" ;; Package manager for Python software
     "python-pyopencl" ;; Python wrapper for OpenCL
     "rust-cargo" ;; Package manager for Rust
-    "emacs-ox-hugo" ;; Org-mode to Hugo exporter
     ))
 
 (define %system-utilities
-  ;; System Utilities and Libraries
-  '("basu" ;; The sd-bus library, extracted from systemd
+  '(;; System Utilities and Libraries
+    "basu" ;; The sd-bus library, extracted from systemd
     "bridge-utils" ;; Manipulate Ethernet bridges
     "ccid" ;; PC/SC driver for USB smart card devices
     "coreutils" ;; Core GNU utilities (file, text, shell)
@@ -204,12 +203,13 @@
     "pamixer" ;; PulseAudio command line mixer
     "pam-u2f" ;; PAM module for U2F authentication
     "pulseaudio-qt" ;; Qt bindings for PulseAudio
+    "pv" ;; Progress monitor
     "strace" ;; System call tracer for Linux
     ))
 
 (define %multimedia-graphics-tools
-  ;; Multimedia and Graphics Tools
-  '("ffmpeg" ;; Audio and video framework
+  '(;; Multimedia and Graphics Tools
+    "ffmpeg" ;; Audio and video framework
     "gimp" ;; GNU Image Manipulation Program
     "mediainfo" ;; Utility for reading media metadata
     "obs" ;; Live streaming software
@@ -222,8 +222,8 @@
     ))
 
 (define %text-editors-packages
-  ;; Text Editors and Related Packages
-  '("emacs-all-the-icons" ;; Collect icon fonts and propertize them within Emacs
+  '(;; Text Editors and Related Packages
+    "emacs-all-the-icons" ;; Collect icon fonts and propertize them within Emacs
     "emacs-counsel" ;; Various completion functions using Ivy
     "emacs-counsel-tramp" ;; Ivy interface for TRAMP
     "emacs-debbugs" ;; Access the Debbugs bug tracker in Emacs
@@ -232,16 +232,18 @@
     "emacs-guix" ;; Emacs interface for GNU Guix
     "emacs-ivy" ;; Incremental vertical completion for Emacs
     "emacs-jupyter" ;; Emacs interface to communicate with Jupyter kernels
+    "emacs-ox-hugo" ;; Org-mode to Hugo exporter
     "emacs-paredit" ;; Emacs minor mode for editing parentheses
     "emacs-pgtk" ;; Emacs text editor with `pgtk' frames
     "emacs-smartparens" ;; Paredit-like insertion, wrapping and navigation with user defined pairs
     "emacs-trashed" ;; View and edit system trash can in Emacs
     "vim" ;; Text editor based on vi
+    "vscodium" ;; Free text editor based off VSCode
     ))
 
 (define %package-management-utilities
-  ;; Package Management and Utilities
-  '("dpkg" ;; Debian package management system
+  '(;; Package Management and Utilities
+    "dpkg" ;; Debian package management system
     "guile" ;; Scheme implementation intended especially for extensions
     "guile-colorized" ;; Colorized REPL for Guile
     "guile-gcrypt" ;; Cryptography library for Guile using Libgcrypt
@@ -250,15 +252,15 @@
     ))
 
 (define %web-browsers
-  ;; Web Browsers
-  '("firefox-esr" ;; Trademarkless version of Firefox
+  '(;; Web Browsers
+    "firefox-esr" ;; Trademarkless version of Firefox
     "ungoogled-chromium-wayland" ;; Graphical web browser
     "ublock-origin-chromium" ;; Block unwanted content from web sites
     ))
 
 (define %security-authentication-tools
-  ;; Security and Authentication Tools
-  '("gnupg" ;; GNU Privacy Guard
+  '(;; Security and Authentication Tools
+    "gnupg" ;; GNU Privacy Guard
     "libyubikey" ;; Development kit for the YubiKey authentication device
     "pcsc-lite" ;; Middleware to access a smart card using PC/SC
     "pcsc-tools" ;; Smart cards and PC/SC tools
@@ -268,15 +270,15 @@
     ))
 
 (define %office-document-tools
-  ;; Office and Document Tools
-  '("libreoffice" ;; Office suite
+  '(;; Office and Document Tools
+    "libreoffice" ;; Office suite
     "texinfo" ;; The GNU documentation format
     "keepassxc" ;; Password manager (Added category packages)
     ))
 
 (define %monitoring-performance-tools
-  ;; Monitoring and Performance Tools
-  '("glances" ;; Cross-platform curses-based monitoring tool
+  '(;; Monitoring and Performance Tools
+    "glances" ;; Cross-platform curses-based monitoring tool
     "htop" ;; Interactive process viewer
     "iotop" ;; Interactive `top'-like input/output activity monitor
     "libvirt" ;; Simple API for virtualization
@@ -287,8 +289,8 @@
     ))
 
 (define %file-disk-management-tools
-  ;; File and Disk Management Tools
-  '("direnv" ;; Per-directory environments
+  '(;; File and Disk Management Tools
+    "direnv" ;; Per-directory environments
     "gparted" ;; Partition editor to graphically manage disk partitions
     "gptfdisk" ;; Low-level GPT disk partitioning and formatting
     "po4a" ;; Tools for using PO files
@@ -300,8 +302,8 @@
     ))
 
 (define %utilities-miscellaneous-tools
-  ;; Utilities and Miscellaneous Tools
-  '("cloc" ;; Count source lines of code (SLOC) and other source code metrics
+  '(;; Utilities and Miscellaneous Tools
+    "cloc" ;; Count source lines of code (SLOC) and other source code metrics
     "cmatrix" ;; Simulate the display from "The Matrix"
     "moreutils" ;; Miscellaneous general-purpose command-line tools
     "neofetch" ;; System information script
@@ -318,8 +320,8 @@
     ))
 
 (define %scientific-technical-computing
-  ;; Scientific and Technical Computing
-  '("julia" ;; High-performance dynamic language for technical computing
+  '(;; Scientific and Technical Computing
+    "julia" ;; High-performance dynamic language for technical computing
     "jupyter" ;; Web application for interactive documents
     "kicad" ;; Electronic design automation suite
     "kicad-doc" ;; Documentation for KiCad
@@ -327,8 +329,8 @@
     ))
 
 (define %printers-hardware-tools
-  ;; Printers and Hardware Tools
-  '("dmidecode" ;; Read hardware information from the BIOS
+  '(;; Printers and Hardware Tools
+    "dmidecode" ;; Read hardware information from the BIOS
     "hplip" ;; HP printer drivers
     "libwacom" ;; Helper library for graphics tablet settings
     "net-tools" ;; Tools for controlling the network subsystem in Linux
