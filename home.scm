@@ -373,6 +373,8 @@
                (config (list (local-file
                               "/home/cdo/config/fish/config.fish"
                               "config.fish")))))
+     (service home-files-service-type
+              `((".mbsyncrc" ,(localfile "./mbsyncrc"))))
      (service home-xdg-configuration-files-service-type
               `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
