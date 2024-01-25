@@ -374,7 +374,9 @@
                               "/home/cdo/config/fish/config.fish"
                               "config.fish")))))
      (service home-files-service-type
-              `((".mbsyncrc" ,(localfile "./mbsyncrc"))))
+              `((".mbsyncrc" ,(local-file "./mbsyncrc"))
+                ;; Ensure this directory exists
+                (".local/data/mail/.ensure" ,(plain-file "ensure" ""))))
      (service home-xdg-configuration-files-service-type
               `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
