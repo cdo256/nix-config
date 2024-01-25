@@ -381,7 +381,7 @@
                 (".guile" ,(local-file "./guile/init.scm" #:recursive? #t))
                 ("hexchat" ,(local-file "./hexchat" #:recursive? #t))
                 ("shell" ,(local-file "./shell" #:recursive? #t))
-                ("spacemacs" ,(local-file "./spacemacs" #:recursive? #t))
+                ("spacemacs/init.el" ,(local-file "./spacemacs/init.el"))
                 ("sway" ,(local-file "./sway" #:recursive? #t))
                 ("swaylock/config" ,(local-file "./swaylock/config"))
                 ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
