@@ -179,6 +179,9 @@
     "python" ;; High-level, dynamically-typed programming language
     "python-pip" ;; Package manager for Python software
     "python-pyopencl" ;; Python wrapper for OpenCL
+    "rocm-comgr" ;; ROCm Compiler Driver
+    "rocm-device-libs" ;; ROCm Device Libraries
+    "rocr-runtime" ;; ROCm Runtime
     "rust-cargo" ;; Package manager for Rust
     ))
 
@@ -187,6 +190,8 @@
     "basu" ;; The sd-bus library, extracted from systemd
     "bridge-utils" ;; Manipulate Ethernet bridges
     "ccid" ;; PC/SC driver for USB smart card devices
+    "cloc" ;; Count source lines of code (SLOC) and other source code metrics
+    "cmatrix" ;; Simulate the display from "The Matrix"
     "coreutils" ;; Core GNU utilities (file, text, shell)
     "cryptsetup" ;; Set up transparent encryption of block devices using dm-crypt
     "dbus" ;; Message bus for inter-process communication (IPC)
@@ -200,12 +205,26 @@
     "linux-pam" ;; Pluggable authentication modules for Linux
     "lm-sensors" ;; Utilities to read temperature/voltage/fan sensors
     "lsof" ;; Display information about open files
-    "pamixer" ;; PulseAudio command line mixer
+    "moreutils" ;; Miscellaneous general-purpose command-line tools
+    "neofetch" ;; System information script
     "pam-u2f" ;; PAM module for U2F authentication
+    "pamixer" ;; PulseAudio command line mixer
     "pulseaudio-qt" ;; Qt bindings for PulseAudio
     "pv" ;; Progress monitor
+    "recutils" ;; Manipulate plain text files as databases
+    "sendmail" ;; Highly configurable Mail Transfer Agent (MTA)
+    "socat" ;; Open bidirectional communication channels from the command line
+    "spice-gtk" ;; SPICE client
+    "sqlitebrowser" ;; Visual database browser and editor for SQLite
     "strace" ;; System call tracer for Linux
+    "synergy" ;; Mouse and keyboard sharing utility
+    "v4l-utils" ;; Realtime video capture utilities for Linux
+    "xhost" ;; Xorg server access control utility
+    "xinit" ;; Commands to start the X Window server
+    "xkbutils" ;; XKB utilities
+    "zoom" ;; Zoom video conferencing software
     ))
+
 
 (define %multimedia-graphics-tools
   '(;; Multimedia and Graphics Tools
@@ -276,16 +295,14 @@
     "keepassxc" ;; Password manager (Added category packages)
     ))
 
-(define %monitoring-performance-tools
+(define %system-monitoring-tools
   '(;; Monitoring and Performance Tools
     "glances" ;; Cross-platform curses-based monitoring tool
     "htop" ;; Interactive process viewer
     "iotop" ;; Interactive `top'-like input/output activity monitor
     "libvirt" ;; Simple API for virtualization
     "nmon" ;; Monitor system performance in a terminal or to a `.csv' log file
-    "rocm-comgr" ;; ROCm Compiler Driver
-    "rocm-device-libs" ;; ROCm Device Libraries
-    "rocr-runtime" ;; ROCm Runtime
+    "radeontop" ;; Monitor Radeon graphics cards
     ))
 
 (define %file-disk-management-tools
@@ -301,31 +318,12 @@
     "zip" ;; Compression and file packing utility
     ))
 
-(define %utilities-miscellaneous-tools
-  '(;; Utilities and Miscellaneous Tools
-    "cloc" ;; Count source lines of code (SLOC) and other source code metrics
-    "cmatrix" ;; Simulate the display from "The Matrix"
-    "moreutils" ;; Miscellaneous general-purpose command-line tools
-    "neofetch" ;; System information script
-    "recutils" ;; Manipulate plain text files as databases
-    "sendmail" ;; Highly configurable Mail Transfer Agent (MTA)
-    "socat" ;; Open bidirectional communication channels from the command line
-    "sqlitebrowser" ;; Visual database browser and editor for SQLite
-    "synergy" ;; Mouse and keyboard sharing utility
-    "v4l-utils" ;; Realtime video capture utilities for Linux
-    "xinit" ;; Commands to start the X Window server
-    "xhost" ;; Xorg server access control utility
-    "xkbutils" ;; XKB utilities
-    "zoom" ;; Zoom video conferencing software
-    ))
-
 (define %scientific-technical-computing
   '(;; Scientific and Technical Computing
     "julia" ;; High-performance dynamic language for technical computing
     "jupyter" ;; Web application for interactive documents
     "kicad" ;; Electronic design automation suite
     "kicad-doc" ;; Documentation for KiCad
-    "qgis" ;; Geographical information system
     ))
 
 (define %printers-hardware-tools
@@ -348,9 +346,8 @@
           %web-browsers
           %security-authentication-tools
           %office-document-tools
-          %monitoring-performance-tools
+          %system-monitoring-tools
           %file-disk-management-tools
-          %utilities-miscellaneous-tools
           %scientific-technical-computing
           %printers-hardware-tools))
 
