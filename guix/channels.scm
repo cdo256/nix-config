@@ -19,7 +19,7 @@
 (define %nonguix-local-channel
   (channel
 	 (name 'nonguix)
-   ;; (branch 'local-testing)
+   (branch "local-testing")
    (url (string-append "file://" (getenv "HOME") "/src/nonguix"))
 	 (introduction
     (make-channel-introduction
@@ -59,6 +59,7 @@
 (define %channels
   (list %guix-with-substitutes-channel
         %nonguix-channel
-        %cdo-channel))
+        %cdo-channel
+        %rde-channel))
 
 %channels
