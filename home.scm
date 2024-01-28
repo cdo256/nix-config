@@ -232,6 +232,7 @@
   '(;; Multimedia and Graphics Tools
     "ffmpeg" ;; Audio and video framework
     "gimp" ;; GNU Image Manipulation Program
+    "guix" ;; Include guix iteself!
     "mediainfo" ;; Utility for reading media metadata
     "obs" ;; Live streaming software
     "okular" ;; Document viewer
