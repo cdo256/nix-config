@@ -390,6 +390,7 @@
                 ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
                 ("waybar" ,(local-file "./waybar" #:recursive? #t))
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
+     (service home-x11-service-type)
      (service home-channels-service-type
               cdo-guix-channels)
      ;;; Disabled. Currently failing on my machine
