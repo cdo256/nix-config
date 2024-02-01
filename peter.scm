@@ -2,17 +2,31 @@
  (gnu)
  (cdo config system-common)
  (gnu packages linux)
+ (gnu services linux)
  (nongnu system linux-initrd)
  (nongnu packages linux))
+
+;;; Ensure vfio-pci is loaded
+;; (define vfio.conf
+;;   (simple-file "vfio.conf"
+;;                "softdep drm pre: vfio-pci"))
 
 (operating-system
   (kernel linux)
   (kernel-arguments
-   (list "crashkernel=256M"))
+   (list "crashkernel=256M"
+         ;; Virtual driver for AMD 6650
+         "vfio-pci.ids=1002:73ef,1002:ab28"))
+
   (kernel-loadable-modules
    (list v4l2loopback-linux-module))
   (firmware (list linux-firmware))
   (initrd microcode-initrd)
+  (initrd-modules
+   (cons* "vfio-pci"
+          "vfio"
+          "vfio_iommu_type1"
+          %base-initrd-modules))
 
   (locale "en_GB.utf8")
   (timezone "Europe/London")
@@ -21,7 +35,11 @@
   (users %user-accounts)
   (groups %user-groups)
   (packages %common-packages)
-  (services %common-services)
+  (services
+   (cons* (service kernel-module-loader-service-type
+                   '("vfio-pci" ;; For GPU passthrough
+                     ))
+    %common-services))
   (bootloader
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
