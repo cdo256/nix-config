@@ -1,10 +1,10 @@
 set $mod Mod4
 set $term alacritty
-set $menu wofi -Srun 2>>.local/data/sway/wofi.out
+set $menu wofi -Srun 2>>$XDG_DATA_HOME/sway/wofi.out
 
-set $display_primary 'DP-3'
+set $display_primary 'DP-1'
 set $display_secondary 'HDMI-A-1'
-set $display_tv 'DP-1'
+set $display_tv 'TODO'
 
 # TV is intentionally placed in an inaccessible location.
 output $display_primary pos 0 0

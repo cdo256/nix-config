@@ -45,7 +45,7 @@
        ;;; Disabled as they're already defined by default
        ;; ("XDG_CACHE_HOME" . "$HOME/.local/cache")
        ;; ("XDG_CONFIG_HOME" . "$HOME/.config")
-       ;; ("XDG_DATA_HOME" . "$HOME/.local/data")
+       ;; ("XDG_DATA_HOME" . "$HOME/.local/data") ;; Default is .local/share
        ;; ("XDG_STATE_HOME" . "$HOME/.local/state")
        ("XDG_DOWNLOAD_DIR" . "$HOME/downloads")
        ("XDG_PICTURES_DIR" . "$HOME/images")
