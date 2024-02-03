@@ -200,6 +200,8 @@
     "ddrescue" ;; Data recovery utility
     "diffutils" ;; Comparing and merging files
     "file" ;; File type guesser
+    ;; Note this shadows the more up to date .config/guix/current!
+    ;; "guix" ;; Include guix iteself!
     "isync" ;; Mailbox sync utility for use with mu4e
     "libcap" ;; Library for working with POSIX capabilities
     "libfido2" ;; Library functionality and command-line tools for FIDO devices
@@ -232,7 +234,6 @@
   '(;; Multimedia and Graphics Tools
     "ffmpeg" ;; Audio and video framework
     "gimp" ;; GNU Image Manipulation Program
-    "guix" ;; Include guix iteself!
     "mediainfo" ;; Utility for reading media metadata
     "obs" ;; Live streaming software
     "okular" ;; Document viewer
