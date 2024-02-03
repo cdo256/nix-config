@@ -377,8 +377,10 @@
                               "config.fish")))))
      (service home-files-service-type
               `((".mbsyncrc" ,(local-file "./mbsyncrc"))
-                ;; Ensure this directory exists
-                (".local/data/mail/.ensure" ,(plain-file "ensure" ""))))
+                ;; Ensure these directories exists
+                (".local/share/mail/.ensure" ,(plain-file "ensure" ""))
+                (".local/share/sway/.ensure" ,(plain-file "ensure" "")) ;; Required for wofi output
+                ))
      (service home-xdg-configuration-files-service-type
               `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
