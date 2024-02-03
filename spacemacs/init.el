@@ -676,7 +676,6 @@ before packages are loaded."
         (kill-new filename))))
 
   (global-set-key (kbd "C-c y") copy-filename)
-
   (setq-default evil-cross-lines t)
   (setq-default word-wrap-whitespace-mode t)
   (setq backup-by-copying t)
