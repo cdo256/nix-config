@@ -210,6 +210,7 @@
     "lm-sensors" ;; Utilities to read temperature/voltage/fan sensors
     "lsof" ;; Display information about open files
     "moreutils" ;; Miscellaneous general-purpose command-line tools
+    "mu" ;; Mail syncing agent
     "neofetch" ;; System information script
     "pam-u2f" ;; PAM module for U2F authentication
     "pamixer" ;; PulseAudio command line mixer
