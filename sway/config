@@ -4,7 +4,10 @@ set $menu wofi -Srun 2>>$XDG_DATA_HOME/sway/wofi.out
 
 set $display_primary 'DP-1'
 set $display_secondary 'HDMI-A-1'
-set $display_tv 'TODO'
+set $display_tv 'DP-5'
+
+output DP-4 disable
+output DP-5 disable
 
 # TV is intentionally placed in an inaccessible location.
 output $display_primary pos 0 0
