@@ -7,9 +7,18 @@
  (nongnu packages linux))
 
 ;;; Ensure vfio-pci is loaded
-;; (define vfio.conf
-;;   (simple-file "vfio.conf"
-;;                "softdep drm pre: vfio-pci"))
+(define additional-modules-service
+  (service kernel-module-loader-service-type
+           '("vfio-pci" "vfio" "vfio_iommu_type1")))
+
+(define gpu-passthrough-modprobe-service
+  (simple-service 'gpu-passthrough-modprobe-service etc-service-type
+   (list `("modprobe.d/cpu-passthrough.conf"
+           ,(plain-file "ensure-vfio.conf"
+                        "softdep drm pre: vfio-pci"))
+         `("modprobe.d/gpu-vfio.conf"
+           ,(plain-file "gpu-vfio.conf"
+                        "options vfio-pci ids=1002:73ef,1002:ab28")))))
 
 (operating-system
   (kernel linux)
@@ -36,10 +45,9 @@
   (groups %user-groups)
   (packages %common-packages)
   (services
-   (cons* (service kernel-module-loader-service-type
-                   '("vfio-pci" ;; For GPU passthrough
-                     ))
-    %common-services))
+   (cons* gpu-passthrough-modprobe-service
+          additional-modules-service
+          %common-services))
   (bootloader
     (bootloader-configuration
       (bootloader grub-efi-bootloader)
