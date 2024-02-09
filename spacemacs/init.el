@@ -64,9 +64,8 @@ This function should only modify configuration layer settings."
           org-roam-directory "~/org-roam/"
           org-enable-roam-support t)
      python
-     treemacs
-     tree-sitter
      scheme
+     ruby
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -84,6 +83,8 @@ This function should only modify configuration layer settings."
      spell-checking
      syntax-checking
      systemd
+     treemacs
+     tree-sitter
      (vinegar :variables
               vinegar-reuse-dired-buffer t)
      version-control
