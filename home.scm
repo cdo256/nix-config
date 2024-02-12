@@ -152,10 +152,12 @@
     "adwaita-icon-theme" ;; GNOME icon theme
     "gnome" ;; The GNU desktop environment
     "gnome-calculator" ;; Desktop calculator
+    "grim" ;; Create screenshots in a wayland compositor
     "icedove-wayland" ;; Copyright-less email client
     "matcha-theme" ;; Flat design theme for GTK 3, GTK 2 and GNOME-Shell
     "qtwayland" ;; Qt Wayland module
     "speech-dispatcher" ;; Common interface to speech synthesizers
+    "slurp" ;; Select a region in a wayland compositor
     "sway" ;; Wayland compositor compatible with i3
     "xdg-desktop-portal-kde" ;; Backend implementation for xdg-desktop-portal using Qt/KF5
     "xdg-user-dirs" ;; Tool to help manage "well known" user directories
