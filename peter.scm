@@ -6,33 +6,36 @@
  (nongnu system linux-initrd)
  (nongnu packages linux))
 
-;;; Ensure vfio-pci is loaded
+;;; Ensure vfio_pci is loaded
 (define additional-modules-service
   (service kernel-module-loader-service-type
-           '("vfio-pci" "vfio" "vfio_iommu_type1")))
+           '("vfio_pci" "vfio" "vfio_iommu_type1")))
 
 (define gpu-passthrough-modprobe-service
   (simple-service 'gpu-passthrough-modprobe-service etc-service-type
-   (list `("modprobe.d/cpu-passthrough.conf"
-           ,(plain-file "ensure-vfio.conf"
-                        "softdep drm pre: vfio-pci"))
-         `("modprobe.d/gpu-vfio.conf"
-           ,(plain-file "gpu-vfio.conf"
-                        "options vfio-pci ids=1002:73ef,1002:ab28")))))
+   (list `("modprobe.d/10-vfio.conf"
+           ,(plain-file
+	      "10-vfio.conf"
+              (string-append
+		"softdep amdgpu pre: vfio,vfio-pci\n"
+		"softdep drm pre: vfio,vfio-pci\n"
+                "options vfio-pci ids=1002:73ef,1002:ab28\n"))))))
 
 (operating-system
   (kernel linux)
   (kernel-arguments
    (list "crashkernel=256M"
          ;; Virtual driver for AMD 6650
-         "vfio-pci.ids=1002:73ef,1002:ab28"))
+         "vfio_pci.ids=1002:73ef,1002:ab28"
+	 "amd_iommu=on"
+	 "iommu=pt"))
 
   (kernel-loadable-modules
    (list v4l2loopback-linux-module))
   (firmware (list linux-firmware))
   (initrd microcode-initrd)
   (initrd-modules
-   (cons* "vfio-pci"
+   (cons* "vfio_pci"
           "vfio"
           "vfio_iommu_type1"
           %base-initrd-modules))
@@ -99,4 +102,3 @@
                        %base-file-systems))
   (sudoers-file (local-file "/home/cdo/config/sudoers"))
   (hosts-file (local-file "/home/cdo/config/hosts")))
-
