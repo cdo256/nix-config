@@ -28,8 +28,14 @@
   #:use-module (gnu services virtualization)
   #:use-module (gnu services xorg)
   #:use-module (nongnu packages linux)
-  #:use-module (nongnu system linux-initrd) 
+  #:use-module (nongnu system linux-initrd)
   #:use-module (ice-9 match))
+
+(define-public cdo-linux
+  (corrupt-linux
+   linux-libre
+   #:configs `("CONFIG_DRM_AMDGPU=m"
+               ,@(nonguix-extra-linux-options linux-libre))))
 
 (define (string-escape-just-quotes string)
   (call-with-output-string

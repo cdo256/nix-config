@@ -15,20 +15,21 @@
   (simple-service 'gpu-passthrough-modprobe-service etc-service-type
    (list `("modprobe.d/10-vfio.conf"
            ,(plain-file
-	      "10-vfio.conf"
-              (string-append
-		"softdep amdgpu pre: vfio,vfio-pci\n"
-		"softdep drm pre: vfio,vfio-pci\n"
-                "options vfio-pci ids=1002:73ef,1002:ab28\n"))))))
+             "10-vfio.conf"
+             (string-append
+              "softdep amdgpu pre: vfio,vfio-pci\n"
+              "softdep drm pre: vfio,vfio-pci\n"
+              "options vfio-pci ids=1002:73ef,1002:ab28\n"))))))
 
 (operating-system
-  (kernel linux)
+  (kernel cdo-linux)
   (kernel-arguments
-   (list "crashkernel=256M"
-         ;; Virtual driver for AMD 6650
-         "vfio_pci.ids=1002:73ef,1002:ab28"
-	 "amd_iommu=on"
-	 "iommu=pt"))
+   (cons* "crashkernel=256M"
+          ;; Virtual driver for AMD 6650
+          "vfio-pci.ids=1002:73ef,1002:ab28"
+          "amd_iommu=on"
+          "iommu=pt"
+          %default-kernel-arguments))
 
   (kernel-loadable-modules
    (list v4l2loopback-linux-module))
