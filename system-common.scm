@@ -162,10 +162,7 @@
                             "/var/log/syncthing-cdo.log"))))
             (udev-rules-service 'yubikey %yubikey-udev-rules))
       (modify-services %desktop-services
-        (gdm-service-type config =>
-	        (gdm-configuration
-	         (inherit config)
-	         (wayland? #t)))
+        (delete gdm-service-type)
         (guix-service-type config =>
 	                         (guix-configuration
 	                          (inherit config)
