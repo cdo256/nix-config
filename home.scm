@@ -90,43 +90,6 @@
        ("XAUTHORITY" . "$XDG_DATA_HOME/x11/xauthority")
        ("XINITRC" . "$XDG_CONFIG_HOME/x11/xinitrc")))
 
-(define cdo-font-config
-  "<?xml version=\"1.0\"?>
-<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">
-<fontconfig>
-	<alias>
-		<family>sans-serif</family>
-		<prefer>
-			<family>Noto Sans</family>
-			<family>Noto Color Emoji</family>
-			<family>Noto Emoji</family>
-			<family>FontAwesome</family>
-			<family>Unifont</family>
-		</prefer>
-	</alias>
-	<alias>
-		<family>serif</family>
-		<prefer>
-			<family>Noto Serif</family>
-			<family>Noto Color Emoji</family>
-			<family>Noto Emoji</family>
-			<family>FontAwesome</family>
-			<family>Unifont</family>
-		</prefer>
-	</alias>
-	<alias>
-		<family>monospace</family>
-		<prefer>
-			<family>Noto Mono</family>
-			<family>Noto Color Emoji</family>
-			<family>Noto Emoji</family>
-			<family>FontAwesome</family>
-			<family>Unifont</family>
-		</prefer>
-	</alias>
-</fontconfig>
-")
-
 (define-record-type* <emacs-server-configuration>
   emacs-server-configuration make-emacs-server-configuration
   emacs-server-configuration?
@@ -147,9 +110,44 @@
             (stop #~(make-kill-destructor))
             (respawn? #t))))))
 
+(define cdo-fontconfig
+  '(list
+    (alias
+     (family "sans-serif")
+     (prefer
+      (family "Noto Sans")
+      (family "Noto Color Emoji")
+      (family "Noto Emoji")
+      (family "FontAwesome")
+      (family "Linux Biolinum") ; from font-linuxlibertine
+      (family "Unifont")))
+    (alias
+     (family "serif")
+     (prefer
+      (family "Noto Serif")
+      (family "Noto Color Emoji")
+      (family "Noto Emoji")
+      (family "FontAwesome")
+      (family "Linux Libertine") ; from font-linuxlibertine
+      (family "Unifont")))
+    (alias
+     (family "monospace")
+     (prefer
+      (family "Noto Mono")
+      (family "Noto Color Emoji")
+      (family "Noto Emoji")
+      (family "FontAwesome")
+      (family "Linux Biolinum") ; from font-linuxlibertine
+      (family "Unifont")))))
+
 (define %desktop-environment-packages
   '(;; Desktop Environment and Related Packages
     "adwaita-icon-theme" ;; GNOME icon theme
+    "font-awesome" ;; Font awesome
+    "font-gnu-unifont" ;; Low quality but comprehenisve fonts
+    "font-google-noto" ;; Noto fonts
+    "font-google-noto-emoji" ;; Noto emoji fonts
+    "font-linuxlibertine" ;; "Linux Libertine" and "Linux Biolinum"
     "gnome" ;; The GNU desktop environment
     "gnome-calculator" ;; Desktop calculator
     "grim" ;; Create screenshots in a wayland compositor
@@ -361,8 +359,15 @@
 (define cdo-home-environment
   (home-environment
    (packages (specifications->packages %cdo-packages))
+   #;(essential-services
+    (modify-services (home-environment-default-essential-services this-home-environment)
+     (delete home-font-config-service-type)))
    (services
     (list
+     (simple-service 'cdo-home-fontconfig
+                     home-fontconfig-service-type
+                     #~("~/.guix-home/profile/share/fonts")
+                     #;cdo-fontconfig)
      (simple-service 'cdo-environment-variables
                      home-environment-variables-service-type
                      cdo-environment-variables)
@@ -379,12 +384,13 @@
                               "config.fish")))))
      (service home-files-service-type
               `((".mbsyncrc" ,(local-file "./mbsyncrc"))
-                ;; Ensure these directories exists
+                ;; ensure these directories exists
                 (".local/share/mail/.ensure" ,(plain-file "ensure" ""))
-                (".local/share/sway/.ensure" ,(plain-file "ensure" "")) ;; Required for wofi output
+                (".local/share/sway/.ensure" ,(plain-file "ensure" "")) ;; required for wofi output
                 ))
      (service home-xdg-configuration-files-service-type
               `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
+                ;; ("fontconfig" ,(local-file "./fontconfig" #:recursive? #t))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
                 ("git" ,(local-file "./git" #:recursive? #t))
                 (".guile" ,(local-file "./guile/init.scm" #:recursive? #t))
@@ -396,10 +402,11 @@
                 ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
                 ("waybar" ,(local-file "./waybar" #:recursive? #t))
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
+     
      (service home-x11-service-type)
      (service home-channels-service-type
               cdo-guix-channels)
-     ;;; Disabled. Currently failing on my machine
+     ;;; disabled. currently failing on my machine
      ;;(service home-redshift-service-type
      ;;         (home-redshift-configuration
      ;;          (location-provider 'manual)
