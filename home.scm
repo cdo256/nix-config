@@ -251,6 +251,8 @@
 (define %text-editors-packages
   '(;; Text Editors and Related Packages
     "emacs-all-the-icons" ;; Collect icon fonts and propertize them within Emacs
+    ;; For when it becomes available!
+    ;; "emacs-combobulate" ;; Structual editing in Emacs
     "emacs-counsel" ;; Various completion functions using Ivy
     "emacs-counsel-tramp" ;; Ivy interface for TRAMP
     "emacs-debbugs" ;; Access the Debbugs bug tracker in Emacs
