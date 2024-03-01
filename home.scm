@@ -1,4 +1,5 @@
 (define-module (cdo config home)
+  #:use-module (cdo config channels)
   #:use-module (gnu)
   #:use-module (gnu home)
   #:use-module (gnu home services)
@@ -19,25 +20,6 @@
   #:use-module (guix ci)
   #:use-module (guix records)
   #:use-module (ice-9 match))
-
-(define cdo-guix-channels
-  (list (channel-with-substitutes-available
-         (channel
-	        (name 'guix)
-	        ; (branch "staging")
-	        (url "https://git.savannah.gnu.org/git/guix.git")
-	        (introduction (make-channel-introduction
-		                     "9a2e8664ecd0b7fe3371cb268506e68037b3263d"
-		                     (openpgp-fingerprint
-			                    "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA"))))
-         "https://ci.guix.gnu.org")
-        (channel
-	       (name 'nonguix)
-	       (url "https://gitlab.com/nonguix/nonguix")
-	       (introduction (make-channel-introduction
-		                    "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
-		                    (openpgp-fingerprint
-			                   "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
 
 (define cdo-environment-variables
      '(("BROWSER" . "chromium")
@@ -406,7 +388,7 @@
 
      (service home-x11-service-type)
      (service home-channels-service-type
-              cdo-guix-channels)
+              %channels)
      ;;; disabled. currently failing on my machine
      ;;(service home-redshift-service-type
      ;;         (home-redshift-configuration
