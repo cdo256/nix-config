@@ -71,7 +71,7 @@
        ("GOCACHE" . "$XDG_CACHE_HOME/go")
        ("GOMODCACHE" . "$XDG_CACHE_HOME/go/modules")
        ("GOPATH" . "$XDG_CACHE_HOME/go:$HOME/src")
-       ("GOROOT" . "$GUIX_PROFILE/lib/go")
+       ;; ("GOROOT" . "$GUIX_PROFILE/lib/go")
        ("GOTMPDIR" . "/tmp")
        ("GOTOOLDIR" . "$XDG_DATA_HOME/go")
        ("GUILE_HISTORY" . "$XDG_STATE_HOME/guile/history")
