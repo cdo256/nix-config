@@ -388,13 +388,6 @@
 
      (service home-x11-service-type)
      (service home-channels-service-type
-              %channels)
-     ;;; disabled. currently failing on my machine
-     ;;(service home-redshift-service-type
-     ;;         (home-redshift-configuration
-     ;;          (location-provider 'manual)
-     ;;          (latitude 51.5)
-     ;;          (longitude -0.1)))
-     ))))
+              %channels)))))
 
 cdo-home-environment
