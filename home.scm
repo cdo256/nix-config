@@ -278,13 +278,14 @@
     "pinentry" ;; GnuPG's interface to passphrase input
     "pinentry-qt" ;; GnuPG's interface to passphrase input
     "yubico-pam" ;; Yubico pluggable authentication module
+    "keepassxc" ;; Password manager (Added category packages)
     ))
 
 (define %office-document-tools
   '(;; Office and Document Tools
     "libreoffice" ;; Office suite
     "texinfo" ;; The GNU documentation format
-    "keepassxc" ;; Password manager (Added category packages)
+    "calibre" ;; eBook manager
     ))
 
 (define %system-monitoring-tools
