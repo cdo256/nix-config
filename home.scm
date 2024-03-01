@@ -114,8 +114,8 @@
             (respawn? #t))))))
 
 (define cdo-fontconfig
-  '(list
-    (alias
+  (list
+   '(alias
      (family "sans-serif")
      (prefer
       (family "Noto Sans")
@@ -124,7 +124,7 @@
       (family "FontAwesome")
       (family "Linux Biolinum") ; from font-linuxlibertine
       (family "Unifont")))
-    (alias
+   '(alias
      (family "serif")
      (prefer
       (family "Noto Serif")
@@ -133,10 +133,10 @@
       (family "FontAwesome")
       (family "Linux Libertine") ; from font-linuxlibertine
       (family "Unifont")))
-    (alias
+   '(alias
      (family "monospace")
      (prefer
-      (family "Noto Mono")
+      (family "Noto Sans Mono")
       (family "Noto Color Emoji")
       (family "Noto Emoji")
       (family "FontAwesome")
@@ -362,15 +362,11 @@
 (define cdo-home-environment
   (home-environment
    (packages (specifications->packages %cdo-packages))
-   #;(essential-services
-    (modify-services (home-environment-default-essential-services this-home-environment)
-     (delete home-font-config-service-type)))
    (services
     (list
      (simple-service 'cdo-home-fontconfig
                      home-fontconfig-service-type
-                     #~("~/.guix-home/profile/share/fonts")
-                     #;cdo-fontconfig)
+                     cdo-fontconfig)
      (simple-service 'cdo-environment-variables
                      home-environment-variables-service-type
                      cdo-environment-variables)
@@ -405,7 +401,7 @@
                 ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
                 ("waybar" ,(local-file "./waybar" #:recursive? #t))
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
-     
+
      (service home-x11-service-type)
      (service home-channels-service-type
               cdo-guix-channels)
