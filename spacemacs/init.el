@@ -57,7 +57,15 @@ This function should only modify configuration layer settings."
      javascript
      lsp
      markdown
-     mu4e
+     (mu4e :variables
+           mu4e-attachment-dir "~/downloads"
+           mu4e-update-interval 10 ;; seconds
+           mu4e-update-func "mbsync -a"
+           mu4e-change-filenames-when-moving t
+           mu4e-drafts-folder "/drafts"
+           mu4e-sent-folder "/sent"
+           mu4e-refile-folder "/Archives"
+           mu4e-trash-folder "/trash")
      multiple-cursors
      nginx
      notmuch
@@ -612,6 +620,10 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (setq user-mail-address "cdo@mutix.org")
+
+  (setq helm-allow-mouse nil) ;; Workaround for https://github.com/yasuyk/helm-git-grep/issues/52
+
   (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
   (global-set-key (kbd "C-c n f") 'org-roam-node-find)
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
