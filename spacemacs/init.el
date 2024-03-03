@@ -61,6 +61,7 @@ This function should only modify configuration layer settings."
            mu4e-attachment-dir "~/downloads"
            mu4e-update-interval 10 ;; seconds
            mu4e-update-func "mbsync -a"
+           mu4e-get-mail-command "mbsyncrc -a"
            mu4e-change-filenames-when-moving t
            mu4e-drafts-folder "/drafts"
            mu4e-sent-folder "/sent"
