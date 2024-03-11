@@ -700,6 +700,9 @@ before packages are loaded."
         kept-old-versions 2
         version-control t)
 
+  (with-eval-after-load 'geiser-guile
+    (add-to-list 'geiser-guile-load-path "~/src/guix"))
+
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program (getenv "BROWSER"))
 )
