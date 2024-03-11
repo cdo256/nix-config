@@ -3,21 +3,24 @@
   #:use-module (gnu)
   #:use-module (gnu home)
   #:use-module (gnu home services)
-  #:use-module (gnu home services shells)
-  #:use-module (gnu home services fontutils)
-  #:use-module (gnu home services mcron)
   #:use-module (gnu home services desktop)
+  #:use-module (gnu home services fontutils)
+  #:use-module (gnu home services gnupg)
   #:use-module (gnu home services guix)
-  #:use-module (gnu home services xdg)
+  #:use-module (gnu home services mcron)
+  #:use-module (gnu home services shells)
   #:use-module (gnu home services shepherd)
+  #:use-module (gnu home services ssh)
+  #:use-module (gnu home services xdg)
   #:use-module (gnu packages)
   #:use-module (gnu packages emacs)
+  #:use-module (gnu packages gnupg)
   #:use-module (gnu services)
-  #:use-module (gnu services shepherd)
   #:use-module (gnu services mcron)
+  #:use-module (gnu services shepherd)
   #:use-module (guix channels)
-  #:use-module (guix gexp)
   #:use-module (guix ci)
+  #:use-module (guix gexp)
   #:use-module (guix records)
   #:use-module (ice-9 match))
 
@@ -349,6 +352,7 @@
    (packages (specifications->packages %cdo-packages))
    (services
     (list
+     (service home-shepherd-service-type)
      (simple-service 'cdo-home-fontconfig
                      home-fontconfig-service-type
                      cdo-fontconfig)
@@ -386,7 +390,12 @@
                 ("user-dirs.dirs" ,(local-file "./user-dirs.dirs"))
                 ("waybar" ,(local-file "./waybar" #:recursive? #t))
                 ("wofi" ,(local-file "./wofi" #:recursive? #t))))
-
+     (service home-gpg-agent-service-type
+              (home-gpg-agent-configuration
+               (pinentry-program
+                (file-append pinentry "/bin/pinentry-gtk-2"))
+               (ssh-support? #f)))
+     (service home-ssh-agent-service-type)
      (service home-x11-service-type)
      (service home-channels-service-type
               %channels)))))
