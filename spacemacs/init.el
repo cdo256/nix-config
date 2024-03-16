@@ -700,6 +700,7 @@ before packages are loaded."
         kept-old-versions 2
         version-control t)
 
+  (require 'geiser)
   (with-eval-after-load 'geiser-guile
     (add-to-list 'geiser-guile-load-path "~/src/guix"))
 
