@@ -234,8 +234,8 @@
     "nomacs" ;; Image viewer and manipulator
     ))
 
-(define %text-editors-packages
-  '(;; Text Editors and Related Packages
+(define %emacs-packages
+  '(
     "emacs-all-the-icons" ;; Collect icon fonts and propertize them within Emacs
     ;; For when it becomes available!
     ;; "emacs-combobulate" ;; Structual editing in Emacs
@@ -255,6 +255,20 @@
     "vim" ;; Text editor based on vi
     "vscodium" ;; Free text editor based off VSCode
     ))
+
+(define %neovim-packages
+  '(
+    "neovim"
+    "neovim-packer"
+    ))
+
+(define %text-editors-packages
+  (append %emacs-packages
+          %neovim-packages
+          (list
+           "vim" ;; Text editor based on vi
+           "vscodium" ;; Free text editor based off VSCode
+           )))
 
 (define %package-management-utilities
   '(;; Package Management and Utilities
