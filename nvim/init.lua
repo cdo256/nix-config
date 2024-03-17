@@ -1,0 +1,2 @@
+require("cdo")
+print("hello")
