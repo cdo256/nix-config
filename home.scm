@@ -187,6 +187,7 @@
     "dbus" ;; Message bus for inter-process communication (IPC)
     "ddrescue" ;; Data recovery utility
     "diffutils" ;; Comparing and merging files
+    "direnv" ;; Directory based shell configuration tool
     "file" ;; File type guesser
     ;; Note this shadows the more up to date .config/guix/current!
     ;; "guix" ;; Include guix iteself!
