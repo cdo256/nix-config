@@ -105,6 +105,7 @@
      (prefer
       (family "Noto Sans")
       (family "Noto Color Emoji")
+      (family "IosevkaNerdFontPropo")
       (family "Noto Emoji")
       (family "FontAwesome")
       (family "Linux Biolinum") ; from font-linuxlibertine
@@ -114,6 +115,7 @@
      (prefer
       (family "Noto Serif")
       (family "Noto Color Emoji")
+      (family "IosevkaNerdFontPropo")
       (family "Noto Emoji")
       (family "FontAwesome")
       (family "Linux Libertine") ; from font-linuxlibertine
@@ -123,6 +125,7 @@
      (prefer
       (family "Noto Sans Mono")
       (family "Noto Color Emoji")
+      (family "IosevkaNerdFontMono")
       (family "Noto Emoji")
       (family "FontAwesome")
       (family "Linux Biolinum") ; from font-linuxlibertine
@@ -135,6 +138,7 @@
     "font-gnu-unifont" ;; Low quality but comprehenisve fonts
     "font-google-noto" ;; Noto fonts
     "font-google-noto-emoji" ;; Noto emoji fonts
+    "font-iosevka-nerd" ;; Nerd Fonts
     "font-linuxlibertine" ;; "Linux Libertine" and "Linux Biolinum"
     "gnome" ;; The GNU desktop environment
     "gnome-calculator" ;; Desktop calculator
@@ -260,6 +264,7 @@
   '(
     "neovim"
     "neovim-packer"
+    "chafa" ;; For rendering images in a terminal font
     ))
 
 (define %text-editors-packages
