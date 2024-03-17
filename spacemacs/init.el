@@ -56,6 +56,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      lsp
+     lua
      markdown
      (mu4e :variables
            mu4e-attachment-dir "~/downloads"
