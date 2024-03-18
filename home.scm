@@ -262,9 +262,16 @@
 
 (define %neovim-packages
   '(
+    "chafa" ;; For rendering images in a terminal font
+    "fzf" ;; Fuzzy finder
     "neovim"
     "neovim-packer"
-    "chafa" ;; For rendering images in a terminal font
+    "ripgrep"
+    "make"
+    "rust-analyzer" ;; Rust LSP
+    "python-lsp-server"
+    "clang"
+    "llvm"
     ))
 
 (define %text-editors-packages
