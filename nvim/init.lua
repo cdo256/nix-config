@@ -1,2 +1,0 @@
-require("cdo")
-print("hello")
