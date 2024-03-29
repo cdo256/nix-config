@@ -134,6 +134,7 @@
 (define %desktop-environment-packages
   '(;; Desktop Environment and Related Packages
     "adwaita-icon-theme" ;; GNOME icon theme
+    "alacritty" ;; Terminal emulator
     "font-awesome" ;; Font awesome
     "font-gnu-unifont" ;; Low quality but comprehenisve fonts
     "font-google-noto" ;; Noto fonts
@@ -155,7 +156,7 @@
     "xorg-server-xwayland" ;; Xorg server with Wayland backend
     "wofi" ;; Launcher/menu program for wayland
     "waybar" ;; Wayland bar for Sway and Wlroots based compositors
-    "alacritty" ;; Terminal emulator
+    "wl-clipboard" ;; Command line clipboard utility. To allow pasting into and out of the terminal
     "vinagre" ;; Remote desktop viewer
     ))
 
