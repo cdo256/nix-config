@@ -64,7 +64,7 @@
 (define %cdo-channel
   (channel
    (name 'cdo)
-   (url "git@git.mutix.org:cdo-guix-channel.git")
+   (url "https://git.mutix.org/cdo/guix-channel.git")
    (introduction
     (make-channel-introduction
      "45db57dc9add2f175b23ec72c222915baafe879b"
@@ -76,3 +76,5 @@
         %nonguix-channel
         %rde-channel
         %cdo-channel))
+
+%channels
