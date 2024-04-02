@@ -10,6 +10,10 @@ end
 
 require("lvim.bootstrap"):init(base_dir)
 
+local Log = require "lvim.core.log"
+Log:debug('Search path:')
+Log:debug(package.path)
+
 require("lvim.config"):load()
 
 local plugins = require "lvim.plugins"
@@ -18,7 +22,6 @@ require("lvim.plugin-loader").load { plugins, lvim.plugins }
 
 require("lvim.core.theme").setup()
 
-local Log = require "lvim.core.log"
 Log:debug "Starting LunarVim"
 
 local commands = require "lvim.core.commands"
