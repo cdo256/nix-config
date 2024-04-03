@@ -1,8 +1,6 @@
 local base_dir = vim.env.LUNARVIM_BASE_DIR
-  or (function()
-    local init_path = debug.getinfo(1, "S").source
-    return init_path:sub(2):match("(.*[/\\])"):sub(1, -2)
-  end)()
+  -- or "/home/cdo/src/nvim-lunar"
+  or "/home/cdo/.guix-home/profile/share/nvim"
 
 if not vim.tbl_contains(vim.opt.rtp:get(), base_dir) then
   vim.opt.rtp:prepend(base_dir)
@@ -15,11 +13,13 @@ Log:debug('Search path:')
 Log:debug(package.path)
 
 require("lvim.config"):load()
-
+ 
 local plugins = require "lvim.plugins"
-
+ 
 require("lvim.plugin-loader").load { plugins, lvim.plugins }
 
+require("lvim.core.commands")
+ 
 require("lvim.core.theme").setup()
 
 Log:debug "Starting LunarVim"
