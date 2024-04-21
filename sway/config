@@ -109,7 +109,7 @@ bindsym $mod+Ctrl+Mod1+Shift+p move container to output $display_primary
 bindsym $mod+Ctrl+Mod1+Shift+s move container to output $display_secondary
 
 # Applications
-bindsym $mod+Shift+w exec thunderbird
+bindsym $mod+Shift+w exec icedove
 bindsym $mod+Shift+t exec $term
 bindsym $mod+Shift+f exec chromium
 bindsym $mod+Shift+e exec emacs
