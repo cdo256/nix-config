@@ -627,6 +627,9 @@ before packages are loaded."
 
   (setq helm-allow-mouse nil) ;; Workaround for https://github.com/yasuyk/helm-git-grep/issues/52
 
+  (setq use-short-answers t)
+  (setq confirm-nonexistent-file-or-buffer nil)
+
   (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
   (global-set-key (kbd "C-c n f") 'org-roam-node-find)
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
