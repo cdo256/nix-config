@@ -635,6 +635,10 @@ before packages are loaded."
   (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
   (global-set-key (kbd "C-s") 'save-buffer)
   (global-set-key (kbd "C-x p") 'toggle-truncate-lines)
+  (global-set-key (kbd "C-h") 'evil-window-left)
+  (global-set-key (kbd "C-j") 'evil-window-down)
+  (global-set-key (kbd "C-k") 'evil-window-up)
+  (global-set-key (kbd "C-l") 'evil-window-right)
 
   (setq dotspacemacs-whitespace-cleanup t)
   (global-set-key (kbd "C-c w") 'spacemacs-whitespace-cleanup-mode)
