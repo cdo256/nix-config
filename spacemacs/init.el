@@ -677,7 +677,8 @@ before packages are loaded."
 
   (require 'magit)
   (with-eval-after-load 'magit
-    (define-key magit-mode-map (kbd "ESC") 'keyboard-quit))
+    (define-key magit-mode-map (kbd "ESC") 'keyboard-quit)
+    (setq magit-diff-visit-previous-blob nil))
 
   (with-eval-after-load 'helm-files
     (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
