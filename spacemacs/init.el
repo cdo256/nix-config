@@ -52,7 +52,9 @@ This function should only modify configuration layer settings."
      git
      gnus
      go
-     helm
+     (helm :variables
+           ;; These would conflict with my windwo navigation bindings.
+           hybrid-style-enable-hjkl-bindings nil)
      html
      javascript
      lsp
@@ -682,6 +684,10 @@ before packages are loaded."
 
   (with-eval-after-load 'helm-files
     (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
+
+  (with-eval-after-load 'helm
+    (evil-define-key 'normal helm-map (kbd "j") 'helm-next-line)
+    (evil-define-key 'normal helm-map (kbd "k") 'helm-previous-line))
 
   (setq tramp-default-method "ssh")
   (set-default 'tramp-default-proxies-alist
