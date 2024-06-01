@@ -115,7 +115,6 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages
    '(all-the-icons
      atomic-chrome
-     chatgpt-shell
      ein ;; Jupyter Notebook integration
      no-littering
      org-roam
@@ -648,7 +647,6 @@ before packages are loaded."
   (require 'evil)
   (setq global-visual-line-mode t)
 
-  (require 'chatgpt-shell)
   (require 'epa-file)
   ;; (require 'exwm)
   ;; (exwm-config-example)
