@@ -120,7 +120,8 @@ This function should only modify configuration layer settings."
      org-roam
      simple-httpd
      symex
-     sync-recentf)
+     sync-recentf
+     combobulate)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -718,6 +719,9 @@ before packages are loaded."
 
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program (getenv "BROWSER"))
+
+  (require 'combobulate)
+  (require 'sync-recentf)
 )
 
 (setq custom-file "~/.config/spacemacs/custom.el")
