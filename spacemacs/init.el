@@ -652,8 +652,6 @@ before packages are loaded."
   (require 'epa-file)
   ;; (require 'exwm)
   ;; (exwm-config-example)
-  (setq chatgpt-shell-openai-key
-        "***REMOVED***")
 
   (require 'tree-sitter)
   ;;; Enable all language grammars
