@@ -5,6 +5,7 @@
   (gnu packages linux)
   (gnu packages security-token)
   (gnu packages shells)
+  (gnu packages bash)
   (gnu packages virtualization)
   (gnu services desktop)
   (gnu services docker)
@@ -85,7 +86,7 @@
           (home-directory "/home/cdo")
           (supplementary-groups
            '("users" "wheel" "netdev" "audio" "video" "backup" "plugdev" "libvirt"))
-          (shell (file-append fish "/bin/fish")))
+          (shell (file-append bash "/bin/bash")))
          (user-account
           (name "backup")
           (group "backup")
@@ -116,6 +117,7 @@
           "nss-certs"
           "pinentry"
           "pulseaudio"
+
           "python"
           "sway"
           "virt-manager"

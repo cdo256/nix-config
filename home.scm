@@ -41,12 +41,12 @@
        ("TERMINAL" . "alacritty")
        ("EDITOR" . "emacsclient")
        ("GUIX_PROFILE" . "$HOME/.guix-profile")
-       ("XDG_CACHE_HOME" . "$HOME/.local/cache")
-       ("XDG_CONFIG_HOME" . "$HOME/.config")
-       ("XDG_DATA_HOME" . "$HOME/.local/data")
+       ;; ("XDG_CACHE_HOME" . "$HOME/.local/cache")
+       ;; ("XDG_CONFIG_HOME" . "$HOME/.config")
+       ;; ("XDG_DATA_HOME" . "$HOME/.local/data")
        ("XDG_DOWNLOAD_DIR" . "$HOME/downloads")
        ("XDG_PICTURES_DIR" . "$HOME/images")
-       ("XDG_STATE_HOME" . "$HOME/.local/state")
+       ;; ("XDG_STATE_HOME" . "$HOME/.local/state")
        ("XDG_TEMPLATES_DIR" . "$HOME")
        ("XDG_VIDEOS_DIR" . "$HOME")
        ("XDG_DESKTOP_DIR" . "$HOME")
@@ -313,12 +313,20 @@
    (packages (specifications->packages %cdo-packages))
    (services
     (list
-     (service home-fish-service-type (home-fish-configuration
-                                      (environment-variables cdo-environment-variables)
-                                      (aliases '())
-                                      (config (list (local-file
-                                                     "/home/cdo/config/fish/config.fish"
-                                                     "config.fish")))))
+     (simple-service 'cdo-environment-variables
+                     home-environment-variables-service-type
+                     cdo-environment-variables)
+     (service home-bash-service-type
+              (home-bash-configuration
+               (environment-variables cdo-environment-variables)
+               (guix-defaults? #t)))
+     (service home-fish-service-type
+              (home-fish-configuration
+               (environment-variables cdo-environment-variables)
+               (aliases '())
+               (config (list (local-file
+                              "/home/cdo/config/fish/config.fish"
+                              "config.fish")))))
      (service home-xdg-configuration-files-service-type
               `(("fish/fish_variables" ,(local-file "./fish/fish_variables"))
                 ("gh" ,(local-file "./gh" #:recursive? #t))
