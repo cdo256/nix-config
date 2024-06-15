@@ -93,6 +93,27 @@
       # SPACEMACSDIR = "${xdg.configHome}/spacemacs";
     }; 
 
+    home.file = {
+      ".config/fish".source = /mnt/guix-home/cdo/src/config-files/fish;
+      ".config/sway".source = /mnt/guix-home/cdo/src/config-files/sway;
+      ".config/spacemacs".source = /mnt/guix-home/cdo/src/config-files/spacemacs;
+      ".config/git".source = /mnt/guix-home/cdo/src/config-files/git;
+      ".config/nvim".source = /mnt/guix-home/cdo/src/config-files/nvim;
+      ".config/chromium".source = /mnt/guix-home/cdo/.config/chromium;
+      ".config/emacs".source = /mnt/guix-home/cdo/.config/emacs;
+      ".config/libreoffice".source = /mnt/guix-home/cdo/.config/libreoffice;
+      ".config/obs-studio".source = /mnt/guix-home/cdo/.config/obs-studio;
+      ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
+      ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
+      ".config/swaylock".source = /mnt/guix-home/cdo/.config/swaylock;
+      ".config/Synergy".source = /mnt/guix-home/cdo/.config/Synergy;
+      ".config/VSCodium".source = /mnt/guix-home/cdo/.config/VSCodium;
+      ".config/zoom.conf".source = /mnt/guix-home/cdo/.config/zoom.conf;
+      ".config/zoomus.conf".source = /mnt/guix-home/cdo/.config/zoomus.conf;
+      ".config/Yubico".source = /mnt/guix-home/cdo/.config/Yubico;
+      ".config/x11".source = /mnt/guix-home/cdo/.config/x11;
+    };
+
     # home.file.".config/emacs" = {
     #   recursive = true;
     #   source = pkgs.fetchgit {
