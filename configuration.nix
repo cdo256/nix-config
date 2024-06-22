@@ -2,9 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+
+
+{ config, pkgs, nixpkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -46,7 +49,6 @@
   console.keyMap = "uk";
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
   users.users.cdo = {
     uid = 1000;
@@ -64,7 +66,7 @@
   };
 
   home-manager.useUserPackages = true;
-  home-manager.users.cdo = { pkgs, config, ... }:
+  home-manager.users.cdo = { pkgs, config, lib, ... }:
   {
     home.stateVersion = "24.05";
     home.username = "cdo";
@@ -120,9 +122,10 @@
     #     url = "https://github.com/syl20bnr/spacemacs.git";
     #     fetchSubmodules = false;
     #   };
-    # ;
+    programs.fish.enable = true;
 
     home.packages = [
+      pkgs.fish
       pkgs.thunderbird
       pkgs.vim
       pkgs.keepassxc
@@ -130,6 +133,13 @@
       pkgs.ungoogled-chromium
       pkgs.nmon
       pkgs.alacritty
+      pkgs.emacs
+      pkgs.zoom
+      pkgs.vscodium
+      pkgs.direnv
+      pkgs.obs-studio
+      pkgs.ffmpeg_7-full
+      pkgs.borgbackup
    ];
  };
 
