@@ -132,7 +132,7 @@
           hash = "sha256-9/nvRhXJK+PjvglHmPu5RiJbfAz7XqkX9oHTo7LfIFI=";
         };
       };
-      ".config/libreoffice".source = /mnt/guix-home/cdo/.config/libreoffice;
+      ".config/libreoffice".source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/libreoffice;
       ".config/obs-studio" = {
         source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/obs-studio;
       };
