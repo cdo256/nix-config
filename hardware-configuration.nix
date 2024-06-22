@@ -29,12 +29,6 @@
       fsType = "ext4";
     };
 
-  fileSystems."/home/cdo/sync" =
-    { device = "/mnt/sda5/cdo/sync";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
