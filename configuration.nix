@@ -92,19 +92,50 @@
       # GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
       # HISTFILE = "${xdg.stateHome}/shell/histfile";
       # MAILDIR = "${xdg.dataHome}/mail/"; # Trailing slash required.
-      # SPACEMACSDIR = "${xdg.configHome}/spacemacs";
+      SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
     }; 
 
     home.file = {
-      ".config/fish".source = /mnt/guix-home/cdo/src/config-files/fish;
-      ".config/sway".source = /mnt/guix-home/cdo/src/config-files/sway;
-      ".config/spacemacs".source = /mnt/guix-home/cdo/src/config-files/spacemacs;
+      "sync" = {
+        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/sync;
+        recursive = true;
+      };
+      #".config/fish" = {
+      #  source = /mnt/guix-home/cdo/src/config-files/fish;
+      #  recursive = true;
+      #};
+      ".config/sway" = {
+        source = /mnt/guix-home/cdo/src/config-files/sway;
+        recursive = true;
+      };
+      ".config/spacemacs" = {
+        source = /mnt/guix-home/cdo/src/config-files/spacemacs;
+        recursive = true;
+      };
       ".config/git".source = /mnt/guix-home/cdo/src/config-files/git;
-      ".config/nvim".source = /mnt/guix-home/cdo/src/config-files/nvim;
-      ".config/chromium".source = /mnt/guix-home/cdo/.config/chromium;
-      ".config/emacs".source = /mnt/guix-home/cdo/.config/emacs;
+      ".config/nvim" = {
+        source = /mnt/guix-home/cdo/src/config-files/nvim;
+        recursive = true;
+      };
+      ".config/chromium" = {
+        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/chromium;
+        recursive = true;
+      };
+      ".config/spacemacs/custom.el" = {
+        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/spacemacs/custom.el;
+      };
+      ".config/emacs" = {
+	recursive = true;
+        source = pkgs.fetchgit {
+          url = "https://github.com/syl20bnr/spacemacs.git";
+          fetchSubmodules = false;
+          hash = "sha256-9/nvRhXJK+PjvglHmPu5RiJbfAz7XqkX9oHTo7LfIFI=";
+        };
+      };
       ".config/libreoffice".source = /mnt/guix-home/cdo/.config/libreoffice;
-      ".config/obs-studio".source = /mnt/guix-home/cdo/.config/obs-studio;
+      ".config/obs-studio" = {
+        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/obs-studio;
+      };
       ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
       ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
       ".config/swaylock".source = /mnt/guix-home/cdo/.config/swaylock;
