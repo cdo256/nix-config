@@ -171,6 +171,7 @@
       pkgs.obs-studio
       pkgs.ffmpeg_7-full
       pkgs.borgbackup
+      pkgs.libreoffice
    ];
  };
 
