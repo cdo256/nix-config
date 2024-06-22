@@ -98,7 +98,6 @@
     home.file = {
       "sync" = {
         source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/sync;
-        recursive = true;
       };
       #".config/fish" = {
       #  source = /mnt/guix-home/cdo/src/config-files/fish;
@@ -119,7 +118,6 @@
       };
       ".config/chromium" = {
         source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/chromium;
-        recursive = true;
       };
       ".config/spacemacs/custom.el" = {
         source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/spacemacs/custom.el;
