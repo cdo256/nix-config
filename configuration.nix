@@ -1,13 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ nix, config, lib, pkgs, nixpkgs, ... }:
 
-
-
-{ config, pkgs, nixpkgs, ... }:
-
+let
+  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+in
 {
   nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -16,14 +14,13 @@
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "peter"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "peter";
+  networking.wireless.enable = false;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -49,24 +46,21 @@
   console.keyMap = "uk";
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-
   users.users.cdo = {
     uid = 1000;
     isNormalUser = true;
     description = "Christina O'Donnell";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # thunderbird
-      # vim
-      # keepassxc
-      # git
-      # ungoogled-chromium
     ];
     shell = pkgs.fish;
   };
 
   home-manager.useUserPackages = true;
   home-manager.users.cdo = { pkgs, config, lib, ... }:
+  let
+    symlink = config.lib.file.mkOutOfStoreSymlink;
+  in
   {
     home.stateVersion = "24.05";
     home.username = "cdo";
@@ -97,7 +91,7 @@
 
     home.file = {
       "sync" = {
-        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/sync;
+        source = symlink /mnt/guix-home/cdo/sync;
       };
       #".config/fish" = {
       #  source = /mnt/guix-home/cdo/src/config-files/fish;
@@ -117,22 +111,22 @@
         recursive = true;
       };
       ".config/chromium" = {
-        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/chromium;
+        source = symlink /mnt/guix-home/cdo/.config/chromium;
       };
       ".config/spacemacs/custom.el" = {
-        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/spacemacs/custom.el;
+        source = symlink /mnt/guix-home/cdo/.config/spacemacs/custom.el;
       };
-      ".config/emacs" = {
-	recursive = true;
-        source = pkgs.fetchgit {
-          url = "https://github.com/syl20bnr/spacemacs.git";
-          fetchSubmodules = false;
-          hash = "sha256-9/nvRhXJK+PjvglHmPu5RiJbfAz7XqkX9oHTo7LfIFI=";
-        };
-      };
-      ".config/libreoffice".source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/libreoffice;
+      # ".config/emacs" = {
+      #   recursive = true;
+      #   source = pkgs.fetchgit {
+      #     url = "https://github.com/syl20bnr/spacemacs.git";
+      #     fetchSubmodules = false;
+      #     hash = "sha256-9/nvRhXJK+PjvglHmPu5RiJbfAz7XqkX9oHTo7LfIFI=";
+      #   };
+      # };
+      ".config/libreoffice".source = symlink /mnt/guix-home/cdo/.config/libreoffice;
       ".config/obs-studio" = {
-        source = config.lib.file.mkOutOfStoreSymlink /mnt/guix-home/cdo/.config/obs-studio;
+        source = symlink /mnt/guix-home/cdo/.config/obs-studio;
       };
       ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
       ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
@@ -175,11 +169,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    guix
+  environment.systemPackages = [
+    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    pkgs.wget
+    pkgs.git
+    pkgs.guix
+    #scriptsPackage
   ];
 
   #programs.mtr.enable = true;
@@ -215,5 +210,13 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+    # borgbackup.jobs.home-cdo = {
+    #   paths = "/home/cdo";
+    #   encryption.mode = "repokey";
+    #   encryption.passCommand = "cat /run/keys/borg-pass";
+    #   doInit = true;
+    #   environment = { BORG_RSH = "ssh -i /run/keys/id_borg"; };
+    # };
+     
   }; 
 }
