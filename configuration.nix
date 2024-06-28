@@ -164,6 +164,8 @@ in
       pkgs.ffmpeg_7-full
       pkgs.borgbackup
       pkgs.libreoffice
+      pkgs.vlc
+      pkgs.signal-desktop
    ];
  };
 
