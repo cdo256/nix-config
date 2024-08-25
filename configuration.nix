@@ -1,7 +1,69 @@
-{ nix, config, lib, pkgs, nixpkgs, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+  pynentry = pkgs.python3Packages.buildPythonPackage rec {
+    pname = "pynentry";
+    version = "0.0.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "Laharah";
+      repo = "pynentry";
+      rev = "master";
+      sha256 = "Pu7lMgMEHYTP/6yvkt0QsyLPNQvYbj7el7EGKXUA/cQ=";
+    };
+    dependencies = [
+      pkgs.pinentry
+    ];
+    propagatedBuildInputs = [
+      (pkgs.python3.withPackages (pypkgs: [
+        pypkgs.setuptools
+        pypkgs.setuptools-scm
+        #pypkgs.subprocess
+        #pypkgs.os
+        #pypkgs.sys
+        #pypkgs.re
+        #pypkgs.locale
+      ]))
+    ];
+    meta = {
+      description = "A pythonic wrapper for pinentry";
+      homepage = "https://github.com/Laharah/pynentry";
+      license = lib.licenses.mit;
+    };
+    doCheck = false; # Requires tty
+  };
+  askpass = pkgs.stdenv.mkDerivation {
+    name = "askpass";
+  
+    propagatedBuildInputs = [
+      (pkgs.python3.withPackages (pypkgs: [
+        pynentry
+        pkgs.pinentry-gnome3
+        pypkgs.ipdb
+      ]))
+    ];
+    dontUnpack = true;
+    installPhase = "install -Dm755 ${pkgs.writeText "askpass.py" ''
+      #!/usr/bin/env python3
+      from pynentry import *
+      import sys
+
+      pinentry = "${pkgs.pinentry-gnome3}/bin/pinentry-gnome3"
+
+      with PynEntry(executable=pinentry) as pe:
+          pe.prompt = "Enter password for sudo:"
+          try:
+              pw = pe.get_pin()
+              print(pw)
+              exit(0)
+          except PinEntryCancelled as e:
+              print("Cancelled.", file=sys.stderr)
+              exit(2)
+          except Exception as e:
+              print(e, file=sys.stderr)
+              exit(1)
+    ''} $out/bin/askpass";
+  };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -46,6 +108,10 @@ in
   console.keyMap = "uk";
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.sudo = {
+    enable =  true;
+  };
+
   users.users.cdo = {
     uid = 1000;
     isNormalUser = true;
@@ -87,27 +153,35 @@ in
       # HISTFILE = "${xdg.stateHome}/shell/histfile";
       # MAILDIR = "${xdg.dataHome}/mail/"; # Trailing slash required.
       SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
-    }; 
+    };
 
     home.file = {
-      "sync" = {
-        source = symlink /mnt/guix-home/cdo/sync;
+      # "sync" = {
+      #   source = symlink /mnt/guix-home/cdo/sync;
+      # };
+      "sync/.stignore" = {
+        source = builtins.toFile "stignore" "
+          a34
+          org
+          org-roam
+          secure
+        ";
       };
       #".config/fish" = {
-      #  source = /mnt/guix-home/cdo/src/config-files/fish;
+      #  source = /home/cdo/src/config-files/fish;
       #  recursive = true;
       #};
       ".config/sway" = {
-        source = /mnt/guix-home/cdo/src/config-files/sway;
+        source = /home/cdo/src/config-files/sway;
         recursive = true;
       };
       ".config/spacemacs" = {
-        source = /mnt/guix-home/cdo/src/config-files/spacemacs;
+        source = /home/cdo/src/config-files/spacemacs;
         recursive = true;
       };
-      ".config/git".source = /mnt/guix-home/cdo/src/config-files/git;
+      ".config/git".source = /home/cdo/src/config-files/git;
       ".config/nvim" = {
-        source = /mnt/guix-home/cdo/src/config-files/nvim;
+        source = /home/cdo/src/config-files/nvim;
         recursive = true;
       };
       ".config/chromium" = {
@@ -124,9 +198,9 @@ in
       #     hash = "sha256-9/nvRhXJK+PjvglHmPu5RiJbfAz7XqkX9oHTo7LfIFI=";
       #   };
       # };
-      ".config/libreoffice".source = symlink /mnt/guix-home/cdo/.config/libreoffice;
+      ".config/libreoffice".source = symlink /home/cdo/.config/libreoffice;
       ".config/obs-studio" = {
-        source = symlink /mnt/guix-home/cdo/.config/obs-studio;
+        source = symlink /home/cdo/.config/obs-studio;
       };
       ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
       ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
@@ -162,23 +236,64 @@ in
       pkgs.direnv
       pkgs.obs-studio
       pkgs.ffmpeg_7-full
-      pkgs.borgbackup
+      pkgs.restic
       pkgs.libreoffice
       pkgs.vlc
       pkgs.signal-desktop
+      pkgs.trash-cli
+      pkgs.kdePackages.kdenlive
+      pkgs.okular
    ];
  };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = [
-    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    pkgs.wget
-    pkgs.git
-    pkgs.guix
-    #scriptsPackage
-  ];
+  environment = {
+    systemPackages = [
+      pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      pkgs.wget
+      pkgs.git
+      pkgs.guix
+      #scriptsPackage
+      pkgs.libimobiledevice
+      pkgs.ifuse
+      pkgs.usbmuxd
+    ];
+    etc = {
+      "sudo.conf" = {
+        text = ''
+          Path askpass ${askpass}/bin/askpass
+        '';
+        mode = "0400";
+      };
+    };
+  };
 
+########################
+# let
+#   spacemacsRepo = pkgs.fetchFromGitHub {
+#     owner = "syl20bnr";
+#     repo = "spacemacs";
+#     rev = "develop";  # or "master" for the stable branch
+#     sha256 = "0v1k7g4n5l4b7v8y9z3m5q2w1x6y8z3m5q2w1x6y8z3m5q2w1x6y8z3m5q2w1x6y";
+#   };
+# in
+# {
+#   programs.emacs = {
+#     enable = true;
+#     package = pkgs.emacs;  # or another variant like pkgs.emacs-gtk
+#     extraPackages = epkgs: with epkgs; [
+#       use-package
+#       ;; Add other Emacs packages you need here
+#     ];
+#   };
+# 
+#   home.file.".emacs.d" = {
+#     source = spacemacsRepo;
+#     recursive = true;
+#   };
+# 
+#   home.file.".spacemacs".source = ./spacemacs.el;  # Your custom Spacemacs configuration
+# }
+  
   #programs.mtr.enable = true;
   programs = {
     gnupg.agent = {
@@ -212,13 +327,112 @@ in
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-    # borgbackup.jobs.home-cdo = {
+    restic = {
+      backups.borgbase = {
+        repository = "";
+        initialize = true;
+        passwordFile = "/var/restic/borgbase.pass";
+        paths = [ "/home" "/var" "/mnt/guix-home" ];
+        extraBackupArgs = let
+          ignorePatterns = [
+            "/home/*/.local/share/trash"
+            "/home/*/src"
+            "/home/*/.local"
+            ".cache"
+            ".tmp"
+            ".log"
+            ".Trash"
+          ];
+          ignoreFile = builtins.toFile "ignore"
+            (lib.lists.foldl (a: b: a + "\n" + b) "" ignorePatterns);
+        in [
+          "--exclude-file=${ignoreFile}"
+          "-vv"
+        ];
+        pruneOpts = [
+          "--keep-daily 7"
+          "--keep-weekly 4"
+          "--keep-monthly 3"
+          "--keep-yearly 1"
+        ];
+      };
+    };
     #   paths = "/home/cdo";
     #   encryption.mode = "repokey";
     #   encryption.passCommand = "cat /run/keys/borg-pass";
     #   doInit = true;
     #   environment = { BORG_RSH = "ssh -i /run/keys/id_borg"; };
     # };
-     
-  }; 
+    syncthing = {
+      enable = true;
+      user = "cdo";
+      dataDir = "/home/cdo/";
+      configDir = "/home/cdo/.config/syncthing";
+      overrideDevices = true;
+      overrideFolders = true;
+      settings = {
+        devices = {
+          "peter" = { id = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD"; };
+          "isaac" = { id = "RHYO6AW-JYA36ML-PZD4MX2-WVEJUFM-FLV5WNS-66FNKJE-F4AHMT5-COI32QC"; };
+          "a34" = { id = "RYS4YUR-ZYVE46Q-NBUAAKM-I7TX46Z-JSM367B-RGCIYTY-TC6TVV6-GYWSPAF"; };
+        };
+        folders = {
+          "sync" = {
+            path = "/home/cdo/sync";
+            devices = [ "peter" "isaac" ];
+            versioning = {
+              type = "staggered";
+              params.maxAge = 365;
+            };
+          };
+          "org" = {
+            path = "/home/cdo/sync/org";
+            devices = [ "peter" "a34" ];
+            versioning = {
+              type = "staggered";
+              params.maxAge = 365;
+            };
+          };
+          "org-roam" = {
+            path = "/home/cdo/org-roam";
+            devices = [ "peter" "isaac" "a34" ];
+            versioning = {
+              type = "staggered";
+              params.maxAge = 365;
+            };
+          };
+          "a34-root" = {
+            path = "/home/cdo/sync/a34";
+            devices = [ "peter" "a34" ];
+            versioning = {
+              type = "staggered";
+              params.maxAge = 365;
+            };
+          };
+          "secure" = {
+            path = "/home/cdo/sync/secure";
+            devices = [ "peter" "isaac" "a34" ];
+            versioning = {
+              type = "staggered";
+              params.maxAge = 365;
+            };
+          };
+        };
+      };
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+  };
+  # systemd.services."restic-backups-borgbase" = {
+  #   preStart = ''
+  #     rm -rf /home/cdo/src-backup
+  #     ${pkgs.rsync}/bin/rsync \
+  #       -a --delete \
+  #       --filter=':- .gitignore' \
+  #       --link-dest=/home/cdo/src \
+  #       /home/cdo/src/ /home/cdo/src-backup
+  #   '';
+  # };
 }
