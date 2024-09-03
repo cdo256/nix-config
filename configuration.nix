@@ -244,6 +244,14 @@ in
       pkgs.kdePackages.kdenlive
       pkgs.okular
    ];
+   services = {
+     gammastep = {
+       enable = true;
+       provider = "manual";
+       latitude = 51.5;
+       longitude = -0.1;
+     };
+   };
  };
 
   environment = {
