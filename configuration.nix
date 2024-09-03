@@ -200,7 +200,7 @@ in
       # };
       ".config/libreoffice".source = symlink /home/cdo/.config/libreoffice;
       ".config/obs-studio" = {
-        source = symlink /home/cdo/.config/obs-studio;
+        source = symlink /mnt/guix-home/cdo/.config/obs-studio;
       };
       ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
       ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
