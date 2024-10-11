@@ -32,6 +32,7 @@
     extraGroups = [ "wheel" ]; # Add user to wheel group for sudo access
     shell = pkgs.fish; # Set the default shell to fish
   };
+  programs.fish.enable = true;
 
   # Environment packages
   environment.systemPackages = with pkgs; [
