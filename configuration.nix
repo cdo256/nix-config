@@ -158,8 +158,8 @@ in
       TERMINAL = "alacritty";
       BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
       GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
-      HISTFILE = "${xdg.stateHome}/shell/histfile";
-      MAILDIR = "${xdg.dataHome}/mail/"; # Trailing slash required.
+      HISTFILE = "${config.xdg.stateHome}/shell/histfile";
+      MAILDIR = "${config.xdg.dataHome}/mail/"; # Trailing slash required.
       SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
     };
 
