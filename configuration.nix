@@ -111,7 +111,6 @@ in
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-  programs.fish.enable = true;
 
   console.keyMap = "uk";
   hardware.pulseaudio.enable = false;
@@ -158,16 +157,13 @@ in
       EDITOR = "vim"; # TODO: Change to emacsclient once I've set up the emacs server.
       TERMINAL = "alacritty";
       BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
-      # GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
-      # HISTFILE = "${xdg.stateHome}/shell/histfile";
-      # MAILDIR = "${xdg.dataHome}/mail/"; # Trailing slash required.
+      GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
+      HISTFILE = "${xdg.stateHome}/shell/histfile";
+      MAILDIR = "${xdg.dataHome}/mail/"; # Trailing slash required.
       SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
     };
 
     home.file = {
-      # "sync" = {
-      #   source = symlink /mnt/guix-home/cdo/sync;
-      # };
       "sync/.stignore" = {
         source = builtins.toFile "stignore" "
           a34
@@ -193,12 +189,6 @@ in
         source = /home/cdo/src/config-files/nvim;
         recursive = true;
       };
-      ".config/chromium" = {
-        source = symlink /mnt/guix-home/cdo/.config/chromium;
-      };
-      ".config/spacemacs/custom.el" = {
-        source = symlink /mnt/guix-home/cdo/.config/spacemacs/custom.el;
-      };
       # ".config/emacs" = {
       #   recursive = true;
       #   source = pkgs.fetchgit {
@@ -208,9 +198,6 @@ in
       #   };
       # };
       ".config/libreoffice".source = symlink /home/cdo/.config/libreoffice;
-      ".config/obs-studio" = {
-        source = symlink /mnt/guix-home/cdo/.config/obs-studio;
-      };
       ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
       ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
       ".config/swaylock".source = /mnt/guix-home/cdo/.config/swaylock;
@@ -222,12 +209,6 @@ in
       ".config/x11".source = /mnt/guix-home/cdo/.config/x11;
     };
 
-    # home.file.".config/emacs" = {
-    #   recursive = true;
-    #   source = pkgs.fetchgit {
-    #     url = "https://github.com/syl20bnr/spacemacs.git";
-    #     fetchSubmodules = false;
-    #   };
     programs.fish.enable = true;
 
     home.packages = [
@@ -235,8 +216,6 @@ in
       pkgs.thunderbird
       pkgs.vim
       pkgs.keepassxc
-      pkgs.git      
-      pkgs.ungoogled-chromium
       pkgs.nmon
       pkgs.alacritty
       pkgs.emacs
@@ -268,6 +247,7 @@ in
       pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       pkgs.wget
       pkgs.git
+      pkgs.ungoogled-chromium
       pkgs.guix
       #scriptsPackage
       pkgs.libimobiledevice
@@ -284,33 +264,6 @@ in
     };
   };
 
-########################
-# let
-#   spacemacsRepo = pkgs.fetchFromGitHub {
-#     owner = "syl20bnr";
-#     repo = "spacemacs";
-#     rev = "develop";  # or "master" for the stable branch
-#     sha256 = "0v1k7g4n5l4b7v8y9z3m5q2w1x6y8z3m5q2w1x6y8z3m5q2w1x6y8z3m5q2w1x6y";
-#   };
-# in
-# {
-#   programs.emacs = {
-#     enable = true;
-#     package = pkgs.emacs;  # or another variant like pkgs.emacs-gtk
-#     extraPackages = epkgs: with epkgs; [
-#       use-package
-#       ;; Add other Emacs packages you need here
-#     ];
-#   };
-# 
-#   home.file.".emacs.d" = {
-#     source = spacemacsRepo;
-#     recursive = true;
-#   };
-# 
-#   home.file.".spacemacs".source = ./spacemacs.el;  # Your custom Spacemacs configuration
-# }
-  
   #programs.mtr.enable = true;
   programs = {
     gnupg.agent = {
@@ -349,7 +302,7 @@ in
         repository = "";
         initialize = true;
         passwordFile = "/var/restic/borgbase.pass";
-        paths = [ "/home" "/var" "/mnt/guix-home" ];
+        paths = [ "/home" "/var" ];
         extraBackupArgs = let
           ignorePatterns = [
             "/home/*/.local/share/trash"
