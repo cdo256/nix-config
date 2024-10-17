@@ -71,7 +71,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      #<home-manager/nixos>
     ];
 
   # Before changing this value read the documentation for this option
@@ -197,16 +197,6 @@ in
       #     hash = "sha256-9/nvRhXJK+PjvglHmPu5RiJbfAz7XqkX9oHTo7LfIFI=";
       #   };
       # };
-      ".config/libreoffice".source = symlink /home/cdo/.config/libreoffice;
-      ".config/keepassxc".source = /mnt/guix-home/cdo/.config/keepassxc;
-      ".config/Signal".source = /mnt/guix-home/cdo/.config/Signal;
-      ".config/swaylock".source = /mnt/guix-home/cdo/.config/swaylock;
-      ".config/Synergy".source = /mnt/guix-home/cdo/.config/Synergy;
-      ".config/VSCodium".source = /mnt/guix-home/cdo/.config/VSCodium;
-      ".config/zoom.conf".source = /mnt/guix-home/cdo/.config/zoom.conf;
-      ".config/zoomus.conf".source = /mnt/guix-home/cdo/.config/zoomus.conf;
-      ".config/Yubico".source = /mnt/guix-home/cdo/.config/Yubico;
-      ".config/x11".source = /mnt/guix-home/cdo/.config/x11;
     };
 
     programs.fish.enable = true;
