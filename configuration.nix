@@ -78,8 +78,22 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/nvme0n1";
+  boot.loader.grub.useOSProber = true;
+
+  boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".device = "/dev/disk/by-uuid/58655766-776f-42ca-96b1-a87a3e21508f";
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/boot/crypto_keyfile.bin" = null;
+  };
+
+  boot.loader.grub.enableCryptodisk = true;
+
+  boot.initrd.luks.devices."luks-26f30444-e729-4254-808d-16e12eec659f".keyFile = "/boot/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".keyFile = "/boot/crypto_keyfile.bin";
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
   boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
