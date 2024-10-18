@@ -2,68 +2,6 @@
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
-  pynentry = pkgs.python3Packages.buildPythonPackage rec {
-    pname = "pynentry";
-    version = "0.0.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "Laharah";
-      repo = "pynentry";
-      rev = "master";
-      sha256 = "Pu7lMgMEHYTP/6yvkt0QsyLPNQvYbj7el7EGKXUA/cQ=";
-    };
-    dependencies = [
-      pkgs.pinentry
-    ];
-    propagatedBuildInputs = [
-      (pkgs.python3.withPackages (pypkgs: [
-        pypkgs.setuptools
-        pypkgs.setuptools-scm
-        #pypkgs.subprocess
-        #pypkgs.os
-        #pypkgs.sys
-        #pypkgs.re
-        #pypkgs.locale
-      ]))
-    ];
-    meta = {
-      description = "A pythonic wrapper for pinentry";
-      homepage = "https://github.com/Laharah/pynentry";
-      license = lib.licenses.mit;
-    };
-    doCheck = false; # Requires tty
-  };
-  askpass = pkgs.stdenv.mkDerivation {
-    name = "askpass";
-  
-    propagatedBuildInputs = [
-      (pkgs.python3.withPackages (pypkgs: [
-        pynentry
-        pkgs.pinentry-gnome3
-        pypkgs.ipdb
-      ]))
-    ];
-    dontUnpack = true;
-    installPhase = "install -Dm755 ${pkgs.writeText "askpass.py" ''
-      #!/usr/bin/env python3
-      from pynentry import *
-      import sys
-
-      pinentry = "${pkgs.pinentry-gnome3}/bin/pinentry-gnome3"
-
-      with PynEntry(executable=pinentry) as pe:
-          pe.prompt = "Enter password for sudo:"
-          try:
-              pw = pe.get_pin()
-              print(pw)
-              exit(0)
-          except PinEntryCancelled as e:
-              print("Cancelled.", file=sys.stderr)
-              exit(2)
-          except Exception as e:
-              print(e, file=sys.stderr)
-              exit(1)
-    ''} $out/bin/askpass";
-  };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -252,20 +190,12 @@ in
       pkgs.wget
       pkgs.git
       pkgs.ungoogled-chromium
-      pkgs.guix
+      #pkgs.guix
       #scriptsPackage
       pkgs.libimobiledevice
       pkgs.ifuse
       pkgs.usbmuxd
     ];
-    etc = {
-      "sudo.conf" = {
-        text = ''
-          Path askpass ${askpass}/bin/askpass
-        '';
-        mode = "0400";
-      };
-    };
   };
 
   #programs.mtr.enable = true;
