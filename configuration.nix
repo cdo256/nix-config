@@ -106,7 +106,7 @@ in
     };
     home.sessionVariables = {
       BROWSER = "chromium";
-      EDITOR = "vim"; # TODO: Change to emacsclient once I've set up the emacs server.
+      EDITOR = "codium";
       TERMINAL = "alacritty";
       BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
       GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
