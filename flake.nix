@@ -14,7 +14,7 @@
     nixosConfigurations.halley = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        ./configuration.nix
+        ./hosts/halley/default.nix
         inputs.home-manager.nixosModules.default
       ];
     };
