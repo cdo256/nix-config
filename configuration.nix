@@ -211,6 +211,9 @@ in
   };
 
   services = {
+    logind = {
+      lidSwitch = "ignore";
+    };
     xserver = {
       enable = true;
       displayManager.gdm.enable = true;
