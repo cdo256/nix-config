@@ -13,8 +13,12 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       halley = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          devices = import hosts/devices.nix;
+        };
         modules = [
+          ./modules/syncthing.nix
           ./hosts/halley/hardware-configuration.nix
           ./hosts/halley/configuration.nix
           inputs.home-manager.nixosModules.default
