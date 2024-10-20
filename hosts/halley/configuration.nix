@@ -89,7 +89,7 @@ in
 
   environment = {
     systemPackages = [
-      pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      pkgs.vim
       pkgs.wget
       pkgs.git
       pkgs.ungoogled-chromium
@@ -132,10 +132,6 @@ in
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
     };
     restic = {
       backups.borgbase = {
@@ -184,8 +180,8 @@ in
         devices = {
           "peter" = { id = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD"; };
           "isaac" = { id = "RHYO6AW-JYA36ML-PZD4MX2-WVEJUFM-FLV5WNS-66FNKJE-F4AHMT5-COI32QC"; };
-          "a34" = { id = "RYS4YUR-ZYVE46Q-NBUAAKM-I7TX46Z-JSM367B-RGCIYTY-TC6TVV6-GYWSPAF"; };
           "halley" = { id = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD"; };
+          "a34" = { id = "RYS4YUR-ZYVE46Q-NBUAAKM-I7TX46Z-JSM367B-RGCIYTY-TC6TVV6-GYWSPAF"; };
           "s9" = { id = "X4EZQ7E-ZD5KA3Q-XVU77YT-KDJIBZ4-FMMMSW7-5V6IMMI-VQEHC5O-4ZBEMA5"; };
         };
         folders = {

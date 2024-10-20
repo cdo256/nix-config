@@ -1,0 +1,44 @@
+{}:
+
+{
+  algernon = {
+    name = "algernon";
+    #syncthingId = ""; #TODO
+    type = "server";
+    sshPublicKey = ""; #TODO
+    #resticRepo = ""; #TODO
+    ipAddr = "194.163.141.236";
+  };
+  peter = {
+    name = "algernon";
+    syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
+    type = "desktop";
+    #sshPublicKey = ""; #TODO
+    
+  };
+  isaac = {
+    name = "algernon";
+    syncthingId = "RHYO6AW-JYA36ML-PZD4MX2-WVEJUFM-FLV5WNS-66FNKJE-F4AHMT5-COI32QC";
+    type = "laptop";
+    #sshPublicKey = ""; #TODO
+    #resticRepo = ""; #TODO
+  };
+  halley = {
+    syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
+    type = "laptop";
+    sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqDnhdlknFB0KhLATaKouZW1jlqchpzuAcScrlOn4XG cdo@halley";
+    
+  };
+  a34 = {
+    syncthingId = "RYS4YUR-ZYVE46Q-NBUAAKM-I7TX46Z-JSM367B-RGCIYTY-TC6TVV6-GYWSPAF";
+    type = "phone";
+  };
+  s9 = {
+    syncthingId = "X4EZQ7E-ZD5KA3Q-XVU77YT-KDJIBZ4-FMMMSW7-5V6IMMI-VQEHC5O-4ZBEMA5";
+    type = "tablet";
+  };
+  linuxDevices = [ algernon isaac peter halley ];
+  nixosDevices = [ isaac peter halley ];
+  androidDevices = [ s9 a34 ];
+  allDevices = [ algernon isaac peter halley s9 a34 ];
+}
