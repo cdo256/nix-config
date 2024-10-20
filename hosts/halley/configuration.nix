@@ -84,7 +84,7 @@ in
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users.cdo = import ./home.nix;
+    users.cdo = import ../../home/client.nix;
   };
 
   environment = {
