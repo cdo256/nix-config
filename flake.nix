@@ -18,7 +18,6 @@
           devices = import hosts/devices.nix;
         };
         modules = [
-          ./modules/syncthing.nix
           ./hosts/halley/hardware-configuration.nix
           ./hosts/halley/configuration.nix
           inputs.home-manager.nixosModules.default

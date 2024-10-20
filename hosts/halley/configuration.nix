@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, devices, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
@@ -8,7 +8,9 @@ in
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports =
     [ # Include the results of the hardware scan.
-      #./hardware-configuration.nix
+      ./hardware-configuration.nix
+      ../../modules/syncnet.nix
+      ../../modules/borgbase.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -133,6 +135,9 @@ in
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    borgbase.enable = true;
+    repository = 
+    syncnet.enable = true;
     restic = {
       backups.borgbase = {
         repository = "";
