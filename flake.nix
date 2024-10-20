@@ -11,12 +11,23 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.halley = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/halley/default.nix
-        inputs.home-manager.nixosModules.default
-      ];
+    nixosConfigurations = {
+      halley = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/halley/hardware-configuration.nix
+          ./hosts/halley/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+      #peter = nixpkgs.lib.nixosSystem {
+      #  specialArgs = {inherit inputs;};
+      #  modules = [
+      #    ./hosts/peter/hardware-configuration.nix
+      #    ./hosts/peter/configuration.nix
+      #    inputs.home-manager.nixosModules.default
+      #  ]
+      #}
     };
   };
 }

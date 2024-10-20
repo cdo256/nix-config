@@ -1,4 +1,9 @@
-[
-    ../default/configuration.nix
-    ./hardware-configuration.nix
-]
+{pkgs, ...}:
+
+{
+  imports =
+    [
+      ./hardware-configuration.nix
+      ../default/configuration.nix
+    ];
+}
