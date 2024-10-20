@@ -41,10 +41,12 @@ let
     };
   };
 in
-  machines // {
+{
+  config.devices = machines // {
     linuxDevices = [ machines.algernon machines.isaac machines.peter machines.halley ];
     nixosDevices = [ machines.isaac machines.peter machines.halley ];
     androidDevices = [ machines.s9 machines.a34 ];
     allDevices = [ machines.algernon machines.isaac machines.peter machines.halley machines.s9 machines.a34 ];
     pcs = [ machines.peter machines.isaac machines.halley ];
-  }
+  };
+}

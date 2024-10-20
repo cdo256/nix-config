@@ -7,8 +7,9 @@ in
   options = {
     services.syncnet = {
       enable = lib.mkEnableOption "Enable Syncnet";
-      cfg.devices = lib.mkOption {
-        type = lib.types.string;
+      devices = lib.mkOption {
+        type = lib.types.anything; # TODO: Refine
+        default = {};
       };
     };
   };

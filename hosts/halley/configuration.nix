@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, devices, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
@@ -7,15 +7,14 @@ in
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      ../devices.nix
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
       inputs.home-manager.nixosModules.default
     ];
 
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05";
 
   boot.loader.grub.enable = true;
@@ -136,51 +135,12 @@ in
       pulse.enable = true;
     };
     borgbase.enable = true;
-    repository = 
+    borgbase.repository = config.devices.${config.hostName}.resticRepo;
     syncnet.enable = true;
-    restic = {
-      backups.borgbase = {
-        repository = "";
-        initialize = true;
-        passwordFile = "/var/restic/borgbase.pass";
-        paths = [ "/home" "/var" ];
-        extraBackupArgs = let
-          ignorePatterns = [
-            "/home/*/.local/share/trash"
-            "/home/*/src"
-            "/home/*/.local"
-            ".cache"
-            ".tmp"
-            ".log"
-            ".Trash"
-          ];
-          ignoreFile = builtins.toFile "ignore"
-            (lib.lists.foldl (a: b: a + "\n" + b) "" ignorePatterns);
-        in [
-          "--exclude-file=${ignoreFile}"
-          "-vv"
-        ];
-        pruneOpts = [
-          "--keep-daily 7"
-          "--keep-weekly 4"
-          "--keep-monthly 3"
-          "--keep-yearly 1"
-        ];
-      };
-    };
+    syncnet.devices = config.devices;
     avahi = {
       enable = true;
       nssmdns4 = true;
     };
   };
-  # systemd.services."restic-backups-borgbase" = {
-  #   preStart = ''
-  #     rm -rf /home/cdo/src-backup
-  #     ${pkgs.rsync}/bin/rsync \
-  #       -a --delete \
-  #       --filter=':- .gitignore' \
-  #       --link-dest=/home/cdo/src \
-  #       /home/cdo/src/ /home/cdo/src-backup
-  #   '';
-  # };
 }
