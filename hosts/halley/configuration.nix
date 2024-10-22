@@ -116,6 +116,7 @@ in
   services = {
     logind = {
       lidSwitch = "ignore";
+      powerKey = "suspend";
     };
     xserver = {
       enable = true;
