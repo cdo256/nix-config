@@ -1,3 +1,5 @@
+{ config, pkgs, lib, ... }:
+
 let
   machines =  {
     algernon = {
@@ -42,6 +44,10 @@ let
   };
 in
 {
+  options.devices = lib.mkOption {
+    type = lib.types.attrsOf lib.types.anything;
+    description = "A set of machine configurations.";
+  };
   config.devices = machines // {
     linuxDevices = [ machines.algernon machines.isaac machines.peter machines.halley ];
     nixosDevices = [ machines.isaac machines.peter machines.halley ];
