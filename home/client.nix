@@ -69,6 +69,8 @@ in
       source = /home/cdo/src/config-files/nvim;
       recursive = true;
     };
+    ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
+    ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
 
   programs.fish.enable = true;
