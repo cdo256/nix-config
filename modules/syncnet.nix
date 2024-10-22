@@ -18,19 +18,19 @@ in
       folders = {
         "sync" = {
           path = "/home/cdo/sync/root";
-          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidcfg.devices;
+          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
         };
         "org" = {
           path = "/home/cdo/sync/org";
-          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidcfg.devices;
+          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
         };
         "org-roam" = {
           path = "/home/cdo/sync/org-roam";
-          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidcfg.devices;
+          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
         };
         "secure" = {
           path = "/home/cdo/sync/secure";
-          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidcfg.devices;
+          cfg.devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
         };
       } // builtins.listToAttrs (map (androidDevice:
         {
@@ -39,15 +39,15 @@ in
             path = "/home/cdo/sync/" + androidDevice.name;
             cfg.devices = [ androidDevice ] ++ cfg.devices.pcs;
           };
-        }) cfg.devices.androidcfg.devices);
+        }) cfg.devices.androidDevices);
     in
     {
-      config.services.syncthing = {
+      services.syncthing = {
         enable = true;
         user = "cdo";
         dataDir = "/home/cdo/";
         configDir = "/home/cdo/.config/syncthing";
-        overridecfg.devices = true;
+        overrideDevices = true;
         overrideFolders = true;
         settings = {
           cfg.devices = builtins.listToAttrs (map (device:
@@ -55,11 +55,11 @@ in
               name = device.name;
               value = { id = device.syncthingId; };
             }
-          ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allcfg.devices));
+          ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
           folders = builtins.mapAttrs (name: folder:
           {
             path = folder.path;
-            cfg.devices = (map (device: device.name) cfg.devices.allcfg.devices);
+            cfg.devices = (map (device: device.name) cfg.devices.allDevices);
             versioning = {
               type = "staggered";
               params.maxAge = 365;
@@ -69,4 +69,3 @@ in
       };
     };
 }
-
