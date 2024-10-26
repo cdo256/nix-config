@@ -10,6 +10,11 @@ let
       #resticRepo = ""; #TODO
       ipAddr = "194.163.141.236";
     };
+    eugenia = {
+      name = "eugenia";
+      type = "server";
+      ipAddr = "84.247.140.25";
+    };
     peter = {
       name = "algernon";
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";

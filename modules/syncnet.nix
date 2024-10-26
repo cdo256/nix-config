@@ -42,6 +42,10 @@ in
         }) cfg.devices.androidDevices);
     in
     {
+      networking.hosts = builtins.listToAttrs (map (device: {
+        name = device.ipAddr;
+        value = [ device.name ];
+      }) (builtins.filter (device: device ? "ipAddr") cfg.devices.allDevices));
       services.syncthing = {
         enable = true;
         user = "cdo";
