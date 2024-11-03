@@ -235,7 +235,7 @@ in
       pkgs.vim
       pkgs.keepassxc
       pkgs.git      
-      #pkgs.ungoogled-chromium
+      pkgs.ungoogled-chromium
       pkgs.nmon
       pkgs.alacritty
       pkgs.emacs
@@ -267,7 +267,6 @@ in
       pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       pkgs.wget
       pkgs.git
-      pkgs.google-chrome
       pkgs.guix
       #scriptsPackage
       pkgs.libimobiledevice
