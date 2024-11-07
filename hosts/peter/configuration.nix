@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
@@ -70,7 +70,7 @@ in
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    user.cdo = import ../../home/client.nix;
+    users.cdo = import ../../home/client.nix;
   };
 
   environment = {
@@ -150,69 +150,8 @@ in
         ];
       };
     };
-    #   paths = "/home/cdo";
-    #   encryption.mode = "repokey";
-    #   encryption.passCommand = "cat /run/keys/borg-pass";
-    #   doInit = true;
-    #   environment = { BORG_RSH = "ssh -i /run/keys/id_borg"; };
-    # };
-    syncthing = {
-      enable = true;
-      user = "cdo";
-      dataDir = "/home/cdo/";
-      configDir = "/home/cdo/.config/syncthing";
-      overrideDevices = true;
-      overrideFolders = true;
-      settings = {
-        devices = {
-          "peter" = { id = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD"; };
-          "isaac" = { id = "RHYO6AW-JYA36ML-PZD4MX2-WVEJUFM-FLV5WNS-66FNKJE-F4AHMT5-COI32QC"; };
-          "a34" = { id = "RYS4YUR-ZYVE46Q-NBUAAKM-I7TX46Z-JSM367B-RGCIYTY-TC6TVV6-GYWSPAF"; };
-        };
-        folders = {
-          "sync" = {
-            path = "/home/cdo/sync";
-            devices = [ "peter" "isaac" ];
-            versioning = {
-              type = "staggered";
-              params.maxAge = 365;
-            };
-          };
-          "org" = {
-            path = "/home/cdo/sync/org";
-            devices = [ "peter" "a34" ];
-            versioning = {
-              type = "staggered";
-              params.maxAge = 365;
-            };
-          };
-          "org-roam" = {
-            path = "/home/cdo/org-roam";
-            devices = [ "peter" "isaac" "a34" ];
-            versioning = {
-              type = "staggered";
-              params.maxAge = 365;
-            };
-          };
-          "a34-root" = {
-            path = "/home/cdo/sync/a34";
-            devices = [ "peter" "a34" ];
-            versioning = {
-              type = "staggered";
-              params.maxAge = 365;
-            };
-          };
-          "secure" = {
-            path = "/home/cdo/sync/secure";
-            devices = [ "peter" "isaac" "a34" ];
-            versioning = {
-              type = "staggered";
-              params.maxAge = 365;
-            };
-          };
-        };
-      };
-    };
+    syncnet.enable = true;
+    syncnet.devices = config.devices;
     avahi = {
       enable = true;
       nssmdns4 = true;
