@@ -95,6 +95,7 @@ in
     pkgs.trash-cli
     pkgs.kdePackages.kdenlive
     pkgs.okular
+    pkgs.vscodium
   ];
   services = {
     gammastep = {
