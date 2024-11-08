@@ -62,16 +62,17 @@ This function should only modify configuration layer settings."
      lsp
      lua
      markdown
-     (mu4e :variables
-           mu4e-attachment-dir "~/downloads"
-           mu4e-update-interval 10 ;; seconds
-           mu4e-update-func "mbsync -a"
-           mu4e-get-mail-command "mbsyncrc -a"
-           mu4e-change-filenames-when-moving t
-           mu4e-drafts-folder "/drafts"
-           mu4e-sent-folder "/sent"
-           mu4e-refile-folder "/Archives"
-           mu4e-trash-folder "/trash")
+     ;;; TODO: Diagnose why this might be broken.
+     ;; (mu4e :variables
+     ;;       mu4e-attachment-dir "~/downloads"
+     ;;       mu4e-update-interval 10 ;; seconds
+     ;;       mu4e-update-func "mbsync -a"
+     ;;       mu4e-get-mail-command "mbsyncrc -a"
+     ;;       mu4e-change-filenames-when-moving t
+     ;;       mu4e-drafts-folder "/drafts"
+     ;;       mu4e-sent-folder "/sent"
+     ;;       mu4e-refile-folder "/Archives"
+     ;;       mu4e-trash-folder "/trash")
      multiple-cursors
      nginx
      notmuch
@@ -602,7 +603,7 @@ default it called `spacemacs/load-spacemacs-env' but I (cdo) have removed it
 since it doesn't play nice with Guix."
   ;; (desktop-save-mode 1)
   (auto-save-visited-mode 1)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -612,14 +613,14 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq desktop-path '("/home/cdo/.local/state/emacs/"))
   (setq evil-respect-visual-line-mode t)
-)
+  )
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -694,10 +695,10 @@ before packages are loaded."
 
   (setq gnus-select-method
         '(nnimap "mutix.org"
-                  (nnimap-address "mutix.org")
-                  (nnimap-server-port 143)
-                  (nnimap-stream starttls)
-                  (nnimap-user "cdo")))
+                 (nnimap-address "mutix.org")
+                 (nnimap-server-port 143)
+                 (nnimap-stream starttls)
+                 (nnimap-user "cdo")))
 
   (defun copy-filename ()
     (interactive)
@@ -724,7 +725,7 @@ before packages are loaded."
 
   (require 'combobulate)
   (require 'sync-recentf)
-)
+  )
 
 (setq custom-file "~/.config/spacemacs/custom.el")
 (load custom-file)
