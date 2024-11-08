@@ -96,6 +96,8 @@ in
     pkgs.kdePackages.kdenlive
     pkgs.okular
     pkgs.vscodium
+    pkgs.thunderbird
+    pkgs.keepassxc
   ];
   services = {
     gammastep = {
