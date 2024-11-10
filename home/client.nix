@@ -98,6 +98,9 @@ in
     pkgs.vscodium
     pkgs.thunderbird
     pkgs.keepassxc
+    pkgs.inkscape
+    pkgs.gimp
+    pkgs.nmap
   ];
   services = {
     gammastep = {
