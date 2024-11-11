@@ -73,6 +73,17 @@ in
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
 
+  # For Dolphin
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = {
+      name = "adwaita-dark";
+    };
+  };
+  xdg.mimeApps.defaultApplications."inode/directory" =
+      "org.kde.dolphin.desktop";
+
   programs.fish.enable = true;
 
   home.packages = [
@@ -93,7 +104,6 @@ in
     pkgs.vlc
     pkgs.signal-desktop
     pkgs.trash-cli
-    pkgs.kdePackages.kdenlive
     pkgs.okular
     pkgs.vscodium
     pkgs.thunderbird
@@ -101,6 +111,10 @@ in
     pkgs.inkscape
     pkgs.gimp
     pkgs.nmap
+    pkgs.xdg-desktop-portal
+    pkgs.kdePackages.xdg-desktop-portal-kde 
+    pkgs.kdePackages.kdenlive
+    pkgs.kdePackages.dolphin
   ];
   services = {
     gammastep = {
@@ -110,6 +124,5 @@ in
       longitude = -0.1;
     };
   };
-
   programs.home-manager.enable = true;
 }

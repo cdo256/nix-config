@@ -88,6 +88,14 @@ in
     users.cdo = import ../../home/client.nix;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    config.common.default = [
+      "kde"
+    ];
+  };
+
   environment = {
     systemPackages = [
       pkgs.vim
@@ -99,6 +107,8 @@ in
       pkgs.libimobiledevice
       pkgs.ifuse
       pkgs.usbmuxd
+      pkgs.kdePackages.dolphin
+      pkgs.kdePackages.qtwayland
     ];
   };
 
