@@ -4,10 +4,8 @@ let
   machines =  {
     algernon = {
       name = "algernon";
-      #syncthingId = ""; #TODO
       type = "server";
       sshPublicKey = ""; #TODO
-      #resticRepo = ""; #TODO
       ipAddr = "194.163.141.236";
     };
     eugenia = {
@@ -16,14 +14,14 @@ let
       ipAddr = "84.247.140.25";
     };
     peter = {
-      name = "algernon";
+      name = "peter";
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "desktop";
       #sshPublicKey = ""; #TODO
       
     };
     isaac = {
-      name = "algernon";
+      name = "peter";
       syncthingId = "RHYO6AW-JYA36ML-PZD4MX2-WVEJUFM-FLV5WNS-66FNKJE-F4AHMT5-COI32QC";
       type = "laptop";
       #sshPublicKey = ""; #TODO
@@ -54,7 +52,7 @@ in
     description = "A set of machine configurations.";
   };
   config.devices = machines // {
-    linuxDevices = [ machines.algernon machines.isaac machines.peter machines.halley ];
+    linuxDevices = [ machines.algernon machines.eugenia machines.isaac machines.peter machines.halley ];
     nixosDevices = [ machines.isaac machines.peter machines.halley ];
     androidDevices = [ machines.s9 machines.a34 ];
     allDevices = [ machines.algernon machines.isaac machines.peter machines.halley machines.s9 machines.a34 ];
