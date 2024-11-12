@@ -17,7 +17,7 @@ in
     let
       folders = {
         "sync" = {
-          path = "/home/cdo/sync/root";
+          path = "/home/cdo/sync";
           cfg.devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
         };
         "org" = {
@@ -54,7 +54,7 @@ in
         overrideDevices = true;
         overrideFolders = true;
         settings = {
-          cfg.devices = builtins.listToAttrs (map (device:
+          devices = builtins.listToAttrs (map (device:
             {
               name = device.name;
               value = { id = device.syncthingId; };
