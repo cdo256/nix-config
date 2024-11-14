@@ -76,6 +76,11 @@ in
       source = "${files}/nvim";
       recursive = true;
     };
+    ".config/obs-studio" = {
+      source = "${files}/obs-studio";
+      recursive = true;
+    };
+    
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
@@ -132,5 +137,6 @@ in
       longitude = -0.1;
     };
   };
+
   programs.home-manager.enable = true;
 }
