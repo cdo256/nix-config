@@ -86,6 +86,11 @@ in
 
   programs.fish.enable = true;
 
+  #programs.nixvim.enable = true;
+  #programs.nixvim.options = {
+  #  relativenumber = true;
+  #};
+
   home.packages = [
     pkgs.fish
     pkgs.thunderbird
@@ -115,6 +120,7 @@ in
     pkgs.kdePackages.xdg-desktop-portal-kde 
     pkgs.kdePackages.kdenlive
     pkgs.kdePackages.dolphin
+    pkgs.neovim
   ];
   services = {
     gammastep = {

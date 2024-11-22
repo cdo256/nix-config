@@ -1,8 +1,8 @@
 { nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
 
-let
-  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
-in
+#let
+#  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+#in
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -12,7 +12,8 @@ in
       ../devices.nix
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
-      inputs.home-manager.nixosModules.default
+      #inputs.home-manager.nixosModules.default
+      #inputs.nixvim.homeManagerModules.nixvim
     ];
 
   system.stateVersion = "24.05";
@@ -83,10 +84,10 @@ in
     shell = pkgs.fish;
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.cdo = import ../../home/client.nix;
-  };
+#  home-manager = {
+#    extraSpecialArgs = { inherit inputs; };
+#    users.cdo = import ../../home/client.nix;
+#  };
 
   xdg.portal = {
     enable = true;
