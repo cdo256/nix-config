@@ -1,8 +1,8 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, home-manager, inputs, ... }:
 
-#let
-#  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
-#in
+let
+  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+in
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -13,7 +13,6 @@
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
       #inputs.home-manager.nixosModules.default
-      #inputs.nixvim.homeManagerModules.nixvim
     ];
 
   system.stateVersion = "24.05";

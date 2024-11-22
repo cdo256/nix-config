@@ -86,11 +86,6 @@ in
 
   programs.fish.enable = true;
 
-  #programs.nixvim.enable = true;
-  #programs.nixvim.options = {
-  #  relativenumber = true;
-  #};
-
   home.packages = [
     pkgs.fish
     pkgs.thunderbird
