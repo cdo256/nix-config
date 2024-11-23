@@ -1,10 +1,14 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, nixvim, ... }@inputs:
 
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
 in
 {
+  imports = [
+    nixvim.homeManagerModules.nixvim
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "cdo";
@@ -85,6 +89,9 @@ in
       "org.kde.dolphin.desktop";
 
   programs.fish.enable = true;
+  programs.nixvim = {
+  #  enable = true;
+  };
 
   home.packages = [
     pkgs.fish

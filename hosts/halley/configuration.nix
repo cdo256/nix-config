@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, home-manager, inputs, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, home-manager, inputs, nixvim, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
@@ -12,7 +12,8 @@ in
       ../devices.nix
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
-      #inputs.home-manager.nixosModules.default
+      inputs.home-manager.nixosModules.default
+      #inputs.nixvim.nixosModules.nixvim
     ];
 
   system.stateVersion = "24.05";
@@ -83,10 +84,10 @@ in
     shell = pkgs.fish;
   };
 
-#  home-manager = {
-#    extraSpecialArgs = { inherit inputs; };
-#    users.cdo = import ../../home/client.nix;
-#  };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.cdo = import ../../home/client.nix;
+  };
 
   xdg.portal = {
     enable = true;

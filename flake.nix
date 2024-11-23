@@ -15,16 +15,16 @@
     nixpkgs,
     flake-utils,
     home-manager,
-    #nixvim,
-    ... }: 
+    nixvim,
+    ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in
     {
-    #  devShells.x86_64-linux.default = pkgs.mkShell {
-    #    nativeBuildInputs = [ pkgs.gnumake ];
-    #  };
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        nativeBuildInputs = [ pkgs.gnumake ];
+      };
       nixosConfigurations = {
         halley = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -35,8 +35,8 @@
           modules = [
             ./hosts/halley/hardware-configuration.nix
             ./hosts/halley/configuration.nix
-           # home-manager.nixosModules.default
-    #        nixvim.nixosModules.default
+            home-manager.nixosModules.default
+            #nixvim.nixosModules.default
           ];
         };
     #    peter = nixpkgs.lib.nixosSystem {
