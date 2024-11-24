@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, nixvim, ... }:
 
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
