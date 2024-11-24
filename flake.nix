@@ -22,6 +22,9 @@
     {
       nixosConfigurations = {
         halley = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit nixvim;
+          };
           modules = [
             ./hosts/halley/hardware-configuration.nix
             ./hosts/halley/configuration.nix

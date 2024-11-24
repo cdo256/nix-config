@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, nixvim, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -32,6 +32,9 @@
   };
 
   home-manager = {
+    extraSpecialArgs = {
+      inherit nixvim;
+    };
     users.cdo = import ../../home/client.nix;
   };
 }
