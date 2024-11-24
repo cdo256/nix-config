@@ -5,6 +5,9 @@ let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
 in
 {
+  imports = [
+    nixvim.homeManagerModules.nixvim
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "cdo";
