@@ -8,9 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs: 
+  outputs = { self, nixpkgs, flake-utils, nixvim, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
