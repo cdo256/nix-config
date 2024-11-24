@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, nixvim, ... }@inputs: 
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -23,7 +23,7 @@
       nixosConfigurations = {
         halley = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit nixvim;
+            inherit inputs;
           };
           modules = [
             ./hosts/halley/hardware-configuration.nix

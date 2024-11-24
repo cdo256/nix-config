@@ -1,8 +1,8 @@
-{ nixpkgs, nixvim, ... }:
+{ inputs, nixpkgs, ... }:
 
 {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
   ];
   home.username = "cdo";
   home.homeDirectory = "/home/cdo";
