@@ -20,39 +20,21 @@
       pkgs = import nixpkgs { inherit system; };
     in
     {
-      devShells.x86_64-linux.default = pkgs.mkShell {
-        nativeBuildInputs = [ pkgs.gnumake ];
-      };
       nixosConfigurations = {
         halley = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            devices = import hosts/devices.nix;
-          };
           modules = [
             ./hosts/halley/hardware-configuration.nix
             ./hosts/halley/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };
-        peter = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            devices = import hosts/devices.nix;
-          };
-          modules = [
-            ./hosts/peter/hardware-configuration.nix
-            ./hosts/peter/configuration.nix
-            inputs.home-manager.nixosModules.default
-          ];
-        };
       };
-      homeConfigurations = {
-        "cdo@halley" = home-manager.lib.homeManagerConfiguration {
-           modules = [
-             ./home/client.nix 
-           ];
-         };
-       };
-     };
+      #homeConfigurations = {
+      #  "cdo@halley" = home-manager.lib.homeManagerConfiguration {
+      #    modules = [
+      #      ./home/client.nix 
+      #    ];
+      #  };
+      #};
+    };
 }
