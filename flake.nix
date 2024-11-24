@@ -49,8 +49,10 @@
       };
       homeConfigurations = {
         "cdo@halley" = home-manager.lib.homeManagerConfiguration {
-
-        };
-      };
-    };
+           modules = [
+             ./home/client.nix 
+           ];
+         };
+       };
+     };
 }
