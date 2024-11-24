@@ -68,10 +68,10 @@ in
       recursive = true;
     };
     ".config/git".source = /home/cdo/src/config-files/git;
-    ".config/nvim" = {
-      source = /home/cdo/src/config-files/nvim;
-      recursive = true;
-    };
+    #".config/nvim" = {
+    #  source = /home/cdo/src/config-files/nvim;
+    #  recursive = true;
+    #};
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
