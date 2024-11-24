@@ -88,6 +88,9 @@ in
       "org.kde.dolphin.desktop";
 
   programs.fish.enable = true;
+  programs.nixvim = {
+    enable = true;
+  };
 
   home.packages = [
     pkgs.fish
