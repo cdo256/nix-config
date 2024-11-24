@@ -1,32 +1,30 @@
 { inputs, pkgs, system, nixvim, ... }:
 
 let 
-  nixvimLib = nixvim.lib.${system};
-  nixvim' = nixvim.legacyPackages.${system};
+  nixvimLib = inputs.nixvim.lib.${inputs.system};
+  nixvim' = inputs.nixvim.legacyPackages.${inputs.system};
   nixvimModule = nixvim'.makeNixvimWithModule {
-    #inherit pkgs;
+    inherit pkgs;
     extraSpecialArgs = {
-      #inherit inputs;
-      #inherit nixvimLib;
-      #inherit nixvim';
+      inherit inputs;
+      inherit system;
+      inherit nixvimLib;
+      inherit (inputs) nixvim';
     };
     module = {
-
+      imports = [
+      #  ./keys.nix
+      #  ./opts.nix
+      #  ./plugins/lualine.nix
+      ];
     };
   };
 in
 {
-  #programs.nixvim = {
-  #  #specialArgs = {
-  #    #inherit inputs;
-  #    #inherit config;
-  #  #  inherit nixvim;
-  #  #};
-  #  imports = [
-  #  #  ./opts.nix
-  #  #  ./keys.nix
-  #  #  ./plugins/lualine.nix
-  #  ];
-  #  enable = true;
-  #};
+  #programs.nixvim = nixvimModule;
+  #packages.neovim = nixvimModule; #.overrideAttrs (oa: {
+  #  meta = oa.meta // {
+  #    description = "Neovim with NixVim configuration.";
+  #  };
+ # });
 }

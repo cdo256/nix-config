@@ -3,9 +3,11 @@
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
-  nixvimLib = inputs.nixvim.lib.${system};
 in
 {
+  specialArgs = {
+    inherit system;
+  };
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./../modules/nixvim
