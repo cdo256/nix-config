@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, nixvim, ... }:
+{ inputs, nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
 
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
@@ -6,7 +6,7 @@ let
 in
 {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
