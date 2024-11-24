@@ -88,9 +88,38 @@ in
 
   programs.fish.enable = true;
   programs.nixvim = {
+    clipboard = {
+      register = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
     enable = true;
     defaultEditor = true;
     colorschemes.oxocarbon.enable = true;
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
+    keymaps = let
+      normal = lib.mapAttrsToList
+        (key: action: {
+	  mode = "n";
+	  inherit action key;
+	})
+	{
+          "<C-s>" = ":w<CR>";
+	};
+      visual = lib.mapAttrsToList
+        (key: action: {
+	  mode = "n";
+	  inherit action key;
+	})
+	{
+          "<C-s>" = ":w<CR>";
+	};
+    in
+      config.nixvim.helpers.keymaps.mkKeymaps
+      {options.silent = true;}
+      (normal ++ visual);
   };
 
   home.packages = [
