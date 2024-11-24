@@ -1,7 +1,6 @@
-{ config, lib, ... }:
+{ config, lib, nixvim, ... }:
 
 {
-  programs.nixvim = {
     globals = {
       mapleader = " ";
       maplocalleader = " ";
@@ -24,8 +23,7 @@
           "<C-s>" = ":w<CR>";
 	};
     in
-      config.nixvim.helpers.keymaps.mkKeymaps
+      nixvim.helpers.keymaps.mkKeymaps
       {options.silent = true;}
       (normal ++ visual);
-  };
 }
