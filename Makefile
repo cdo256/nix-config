@@ -4,7 +4,7 @@ ifndef $(HOST)
     HOST = $(shell hostname)
 endif
 
-ifdef $(DEBUG) 
+ifdef DEBUG 
     SHOW_TRACE_FLAG = --show-trace
 else
     SHOW_TRACE_FLAG = 

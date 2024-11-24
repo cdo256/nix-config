@@ -3,15 +3,6 @@
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../devices.nix
-      #../../modules/syncnet.nix
-      #../../modules/borgbase.nix
-      #inputs.home-manager.nixosModules.default
-    ];
-
   system.stateVersion = "24.05";
 
   boot.loader.grub.enable = true;
@@ -19,7 +10,6 @@
   boot.loader.grub.useOSProber = true;
 
   boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".device = "/dev/disk/by-uuid/58655766-776f-42ca-96b1-a87a3e21508f";
-  # Setup keyfile
   boot.initrd.secrets = {
     "/boot/crypto_keyfile.bin" = null;
   };
