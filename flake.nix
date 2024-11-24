@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, nixvim, ... }@inputs: 
+  outputs = { self, nixpkgs, flake-utils, home-manager, nixvim, ... }@inputs: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -47,6 +47,10 @@
           ];
         };
       };
-      homeConfigurations = {};
+      homeConfigurations = {
+        "cdo@halley" = home-manager.lib.homeManagerConfiguration {
+
+        };
+      };
     };
 }
