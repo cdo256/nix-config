@@ -1,8 +1,9 @@
-{ inputs, nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
+{ inputs, system, nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
 
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+  nixvimLib = inputs.nixvim.lib.${system};
 in
 {
   imports = [
@@ -89,41 +90,6 @@ in
       "org.kde.dolphin.desktop";
 
   programs.fish.enable = true;
-  programs.nixvim = {
-    clipboard = {
-      register = "unnamedplus";
-      providers.wl-copy.enable = true;
-    };
-    enable = true;
-    defaultEditor = true;
-    colorschemes.oxocarbon.enable = true;
-    globals = {
-      mapleader = " ";
-      maplocalleader = " ";
-    };
-    keymaps = let
-      normal = lib.mapAttrsToList
-        (key: action: {
-	  mode = "n";
-	  inherit action key;
-	})
-	{
-          "<C-s>" = ":w<CR>";
-	};
-      visual = lib.mapAttrsToList
-        (key: action: {
-	  mode = "n";
-	  inherit action key;
-	})
-	{
-          "<C-s>" = ":w<CR>";
-	};
-    in
-      config.nixvim.helpers.keymaps.mkKeymaps
-      {options.silent = true;}
-      (normal ++ visual);
-  };
-
   home.packages = [
     pkgs.fish
     pkgs.thunderbird
