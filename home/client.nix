@@ -36,7 +36,6 @@ in
   };
   home.sessionVariables = {
     BROWSER = "chromium";
-    EDITOR = "codium";
     TERMINAL = "alacritty";
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
     GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
@@ -90,6 +89,8 @@ in
   programs.fish.enable = true;
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
+    colorschemes.oxocarbon.enable = true;
   };
 
   home.packages = [
