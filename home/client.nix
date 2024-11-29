@@ -61,18 +61,18 @@ in
     #  recursive = true;
     #};
     ".config/sway" = {
-      source = /home/cdo/src/config-files/sway;
+      source = ./files/sway;
       recursive = true;
     };
     ".config/spacemacs" = {
-      source = /home/cdo/src/config-files/spacemacs;
+      source = ./files/spacemacs;
       recursive = true;
     };
-    ".config/git".source = /home/cdo/src/config-files/git;
-    #".config/nvim" = {
-    #  source = /home/cdo/src/config-files/nvim;
-    #  recursive = true;
-    #};
+    ".config/git".source = ./files/git;
+    ".config/nvim" = {
+      source = ./files/nvim;
+      recursive = true;
+    };
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
@@ -89,40 +89,6 @@ in
       "org.kde.dolphin.desktop";
 
   programs.fish.enable = true;
-  programs.nixvim = {
-    clipboard = {
-      register = "unnamedplus";
-      providers.wl-copy.enable = true;
-    };
-    enable = true;
-    defaultEditor = true;
-    colorschemes.oxocarbon.enable = true;
-    globals = {
-      mapleader = " ";
-      maplocalleader = " ";
-    };
-    keymaps = let
-      normal = lib.mapAttrsToList
-        (key: action: {
-	  mode = "n";
-	  inherit action key;
-	})
-	{
-          "<C-s>" = ":w<CR>";
-	};
-      visual = lib.mapAttrsToList
-        (key: action: {
-	  mode = "n";
-	  inherit action key;
-	})
-	{
-          "<C-s>" = ":w<CR>";
-	};
-    in
-      config.nixvim.helpers.keymaps.mkKeymaps
-      {options.silent = true;}
-      (normal ++ visual);
-  };
 
   home.packages = [
     pkgs.fish
@@ -132,6 +98,7 @@ in
     pkgs.nmon
     pkgs.alacritty
     pkgs.emacs
+    pkgs.neovim
     pkgs.zoom
     pkgs.vscodium
     pkgs.direnv
