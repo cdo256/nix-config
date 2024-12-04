@@ -57,20 +57,23 @@ in
       ";
     };
     #".config/fish" = {
-    #  source = /home/cdo/src/config-files/fish;
+    #  source = ./../files/fish;
     #  recursive = true;
     #};
     ".config/sway" = {
-      source = ./files/sway;
+      source = ./../files/sway;
       recursive = true;
     };
     ".config/spacemacs" = {
-      source = ./files/spacemacs;
+      source = ./../files/spacemacs;
       recursive = true;
     };
-    ".config/git".source = ./files/git;
+    ".config/git" = {
+      source = ./../files/git;
+      recursive = true;
+    };
     ".config/nvim" = {
-      source = ./files/nvim;
+      source = ./../files/nvim;
       recursive = true;
     };
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
