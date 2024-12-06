@@ -5,7 +5,15 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+  systemd.services.nix-daemon = {
+    enable = true;
+    serviceConfig = {
+      EnvironmentFile = "-/etc/nix/nix-daemon-environment";
+    };
+  };
   imports =
     [ 
       ./hardware-configuration.nix
