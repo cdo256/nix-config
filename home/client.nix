@@ -1,4 +1,4 @@
-{ inputs, nix, config, lib, pkgs, nixpkgs, stdenv, ... }:
+{ inputs, nix, config, lib, pkgs, nixpkgs, stdenv, files, ... }:
 
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
@@ -56,26 +56,26 @@ in
         secure
       ";
     };
-    #".config/fish" = {
-    #  source = ./../files/fish;
+    ".config/fish" = {
+      source = "${files}/fish";
+      recursive = true;
+    };
+    ".config/sway" = {
+      source = "${files}/sway";
+      recursive = true;
+    };
+    #".config/spacemacs" = {
+    #  source = ./../files/spacemacs;
     #  recursive = true;
     #};
-    ".config/sway" = {
-      source = ./../files/sway;
-      recursive = true;
-    };
-    ".config/spacemacs" = {
-      source = ./../files/spacemacs;
-      recursive = true;
-    };
-    ".config/git" = {
-      source = ./../files/git;
-      recursive = true;
-    };
-    ".config/nvim" = {
-      source = ./../files/nvim;
-      recursive = true;
-    };
+    ##".config/git" = {
+    ##  source = ./../files/git;
+    ##  recursive = true;
+    ##};
+    #".config/nvim" = {
+    #  source = ./../files;
+    #  recursive = true;
+    #};
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };

@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
@@ -92,7 +92,11 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = ".nix.bak";
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit files;
+    };
     users.cdo = import ../../home/client.nix;
   };
 
