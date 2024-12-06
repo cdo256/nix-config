@@ -18,8 +18,16 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      files = pkgs.fetchFromGitHub {
+        owner = "cdo256";
+        repo = "cdo-config";
+        rev = "master";
+        sha256 = "sha256-yjqRcNp0JF6vYr6hQSIe4csATrOI3kCBInGekRySCPg=";
+        private = true;
+      };
     in
     {
+      packages.x86_64-linux.files = files;
       devShells.x86_64-linux.default = pkgs.mkShell {
         nativeBuildInputs = [ pkgs.gnumake ];
       };
@@ -27,6 +35,7 @@
         halley = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
+            inherit files;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -38,6 +47,7 @@
         peter = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
+            inherit files;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -49,10 +59,14 @@
       };
       homeConfigurations = {
         "cdo@halley" = home-manager.lib.homeManagerConfiguration {
-           modules = [
-             ./home/client.nix 
-           ];
-         };
-       };
-     };
+          specialArgs = {
+            inherit inputs;
+            inherit files;
+          };
+          modules = [
+            ./home/client.nix 
+          ];
+        };
+      };
+    };
 }
