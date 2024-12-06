@@ -8,7 +8,7 @@ in
     services.borgbase = {
       enable = lib.mkEnableOption "Enable Restic backup";
       repository = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
       };
     };
   };
