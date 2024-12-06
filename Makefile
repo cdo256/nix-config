@@ -1,4 +1,4 @@
-.PHONY: switch
+.PHONY: switch build
 
 ifndef HOST
     HOST = $(shell hostname)
@@ -9,7 +9,11 @@ ifdef DEBUG
 else
     SHOW_TRACE_FLAG = 
 endif
-	
+
+build:
+	nixos-rebuild build --flake ".#$(HOST)" --impure $(SHOW_TRACE_FLAG)
+
 switch:
-	nixos-rebuild switch --flake .#$(HOST) --impure $(SHOW_TRACE_FLAG)
+	nixos-rebuild switch --flake ".#$(HOST)" --impure $(SHOW_TRACE_FLAG)
+
 
