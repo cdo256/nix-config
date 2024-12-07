@@ -27,6 +27,7 @@
       };
     in
     {
+      packages.x86_64-linux.home-manager = home-manager.defaultPackage.x86_64-linux;
       packages.x86_64-linux.files = files;
       devShells.x86_64-linux.default = pkgs.mkShell {
         nativeBuildInputs = [ pkgs.gnumake ];
@@ -58,11 +59,12 @@
         };
       };
       homeConfigurations = {
-        "cdo@halley" = home-manager.lib.homeManagerConfiguration {
-          specialArgs = {
+        "cdo" = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = {
             inherit inputs;
             inherit files;
           };
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
             ./home/client.nix 
           ];

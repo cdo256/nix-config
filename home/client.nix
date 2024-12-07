@@ -64,18 +64,18 @@ in
       source = "${files}/sway";
       recursive = true;
     };
-    #".config/spacemacs" = {
-    #  source = ./../files/spacemacs;
-    #  recursive = true;
-    #};
-    ##".config/git" = {
-    ##  source = ./../files/git;
-    ##  recursive = true;
-    ##};
-    #".config/nvim" = {
-    #  source = ./../files;
-    #  recursive = true;
-    #};
+    ".config/spacemacs" = {
+      source = "${files}/spacemacs";
+      recursive = true;
+    };
+    ".config/git" = {
+      source = "${files}/git";
+      recursive = true;
+    };
+    ".config/nvim" = {
+      source = "${files}/nvim";
+      recursive = true;
+    };
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
