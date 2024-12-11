@@ -39,6 +39,7 @@ in
   home.sessionVariables = {
     BROWSER = "chromium";
     TERMINAL = "alacritty";
+    EDITOR = "vim"; # TODO: Change this once I get nvim working agian.
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
     GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
     HISTFILE = "${config.xdg.stateHome}/shell/histfile";
