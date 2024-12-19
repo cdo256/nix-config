@@ -57,7 +57,10 @@ in
           devices = builtins.listToAttrs (map (device:
             {
               name = device.name;
-              value = { id = device.syncthingId; };
+              value = {
+                id = device.syncthingId;
+                introducer = true;
+              };
             }
           ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
           folders = builtins.mapAttrs (name: folder:
