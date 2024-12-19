@@ -49,8 +49,8 @@ in
       services.syncthing = {
         enable = true;
         user = "cdo";
-        dataDir = "/home/cdo/";
-        configDir = "/home/cdo/.config/syncthing";
+        #dataDir = "/home/cdo";
+        #configDir = "/home/cdo/.config/syncthing";
         overrideDevices = true;
         overrideFolders = true;
         settings = {
