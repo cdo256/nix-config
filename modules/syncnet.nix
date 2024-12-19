@@ -64,14 +64,14 @@ in
             }
           ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
           folders = builtins.mapAttrs (name: folder:
-          {
-            path = folder.path;
-            cfg.devices = (map (device: device.name) cfg.devices.allDevices);
-            versioning = {
-              type = "staggered";
-              params.maxAge = 365;
-            };
-          }) folders;
+            {
+              path = folder.path;
+              cfg.devices = (map (device: device.name) cfg.devices.allDevices);
+              versioning = {
+                type = "staggered";
+                params.maxAge = 365;
+              };
+            }) folders;
         };
       };
     };
