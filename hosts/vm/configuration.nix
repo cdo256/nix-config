@@ -16,7 +16,6 @@ in
   };
   imports =
     [
-      ./hardware-configuration.nix
       ../devices.nix
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
@@ -25,29 +24,15 @@ in
 
   system.stateVersion = "24.05";
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
+  # From hardware-configuration.nix
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".device = "/dev/disk/by-uuid/58655766-776f-42ca-96b1-a87a3e21508f";
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/boot/crypto_keyfile.bin" = null;
-  };
-
-  boot.loader.grub.enableCryptodisk = true;
-
-  boot.initrd.luks.devices."luks-26f30444-e729-4254-808d-16e12eec659f".keyFile = "/boot/crypto_keyfile.bin";
-  boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".keyFile = "/boot/crypto_keyfile.bin";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  boot.kernelModules = [ "v4l2loopback" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-  '';
+  virtualisation.vmVariant = {
+    virtualisation = {
+      memorySize = 2048;
+      cores = 2;
+    }
+  }
 
   networking.hostName = "halley";
   networking.wireless.enable = false;
@@ -86,6 +71,7 @@ in
     isNormalUser = true;
     description = "Christina O'Donnell";
     extraGroups = [ "networkmanager" "wheel" ];
+    initialPassword = "";
     packages = with pkgs; [
     ];
     shell = pkgs.fish;
