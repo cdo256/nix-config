@@ -130,7 +130,7 @@ in
     pkgs.kdePackages.kdenlive
     pkgs.kdePackages.dolphin
     pkgs.nh # NixOS Helper
-    pkgs.nixfmt
+    pkgs.nixfmt-rfc-style
     pkgs.nix-output-monitor
     pkgs.nvd
     pkgs.jq
