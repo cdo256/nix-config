@@ -49,14 +49,14 @@ in
       services.syncthing = {
         enable = true;
         user = "cdo";
-        #dataDir = "/home/cdo";
-        #configDir = "/home/cdo/.config/syncthing";
+        configDir = "/home/cdo/.config/syncthing";
+        dataDir = "/home/cdo/.local/state/syncthing";
         overrideDevices = true;
         overrideFolders = true;
         settings = {
           devices = {
             "peter" = {
-              id = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
+              id = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
               introducer = true;
             };
           };
@@ -75,7 +75,7 @@ in
               cfg.devices = (map (device: device.name) cfg.devices.allDevices);
               versioning = {
                 type = "staggered";
-                params.maxAge = 365;
+                params.maxAge = "365";
               };
             }) folders;
         };
