@@ -69,7 +69,7 @@ in
               cfg.devices = (map (device: device.name) cfg.devices.allDevices);
               versioning = {
                 type = "staggered";
-                params.maxAge = 365;
+                params.maxAge = "365";
               };
             }) folders;
         };
