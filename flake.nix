@@ -18,13 +18,23 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      files = pkgs.fetchFromGitHub {
-        owner = "cdo256";
-        repo = "cdo-config";
-        rev = "master";
-        sha256 = "sha256-yjqRcNp0JF6vYr6hQSIe4csATrOI3kCBInGekRySCPg=";
-        private = true;
-      };
+      bootstrap = true;
+      files = if bootstrap then
+        pkgs.mkDerivation {
+          name = "files";
+          src = ./.;
+          buildPhase = "true"; # Do nothing.
+          installPhase = ''
+            mkdir -p $out
+            cp -r $src/* $out/
+          '';
+        } else pkgs.fetchFromGitHub {
+          owner = "cdo256";
+          repo = "cdo-config";
+          rev = "master";
+          sha256 = "sha256-yjqRcNp0JF6vYr6hQSIe4csATrOI3kCBInGekRySCPg=";
+          private = true;
+        };
     in
     {
       packages.x86_64-linux.home-manager = home-manager.defaultPackage.x86_64-linux;
@@ -61,6 +71,7 @@
             inherit inputs;
             inherit files;
             devices = import hosts/devices.nix;
+            peter.bootstrap = true;
           };
           modules = [
             ./hosts/peter/hardware-configuration.nix
