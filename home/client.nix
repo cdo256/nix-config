@@ -129,6 +129,11 @@ in
     pkgs.kdePackages.xdg-desktop-portal-kde 
     pkgs.kdePackages.kdenlive
     pkgs.kdePackages.dolphin
+    pkgs.nh # NixOS Helper
+    pkgs.nixfmt
+    pkgs.nix-output-monitor
+    pkgs.nvd
+    pkgs.jq
   ];
   services = {
     gammastep = {
