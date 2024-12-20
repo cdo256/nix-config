@@ -54,21 +54,15 @@ in
         overrideDevices = true;
         overrideFolders = true;
         settings = {
-          devices = {
-            "peter" = {
-              id = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
-              introducer = true;
-            };
-          };
-          #devices = builtins.listToAttrs (map (device:
-          #  {
-          #    name = device.name;
-          #    value = {
-          #      id = device.syncthingId;
-          #      introducer = true;
-          #    };
-          #  }
-          #) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
+          devices = builtins.listToAttrs (map (device:
+            {
+              name = device.name;
+              value = {
+                id = device.syncthingId;
+                introducer = true;
+              };
+            }
+          ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
           folders = builtins.mapAttrs (name: folder:
             {
               path = folder.path;
