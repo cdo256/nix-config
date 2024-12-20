@@ -33,6 +33,17 @@
         nativeBuildInputs = [ pkgs.gnumake ];
       };
       nixosConfigurations = {
+        vm1 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            inherit files;
+            devices = import hosts/devices.nix;
+          };
+          modules = [
+            ./hosts/vm1/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
         halley = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;

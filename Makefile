@@ -1,7 +1,11 @@
-.PHONY: switch system-build system-switch home-build home-switch
+.PHONY: switch system-build system-switch home-build home-switch build-vm run-vm
 
 ifndef HOST
     HOST = $(shell hostname)
+endif
+
+ifndef VM
+	VM = vm1
 endif
 
 ifdef DEBUG 
@@ -21,5 +25,11 @@ home-build:
 
 home-switch:
 	nix run .#home-manager -- switch --flake ".#cdo" $(SHOW_TRACE_FLAG)
+
+build-vm:
+	nixos-rebuild build-vm --flake ".#$(VM)" $(SHOW_TRACE_FLAG)
+
+run-vm: build-vm
+	./result/bin/run-$(VM)-vm
 
 switch: home-switch system-switch
