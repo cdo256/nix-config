@@ -18,7 +18,7 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      bootstrap = true;
+      bootstrap = false;
       files = if bootstrap then
         pkgs.stdenv.mkDerivation {
           name = "files";

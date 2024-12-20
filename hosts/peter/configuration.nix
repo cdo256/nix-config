@@ -21,7 +21,7 @@ in
     systemd.services.nix-daemon = {
       enable = true;
       serviceConfig = {
-        EnvironmentFile = "-/etc/nix/nix-daemon-environment";
+        EnvironmentFile = "/etc/nix/nix-daemon-environment";
       };
     };
 
