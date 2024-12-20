@@ -134,6 +134,7 @@ in
     pkgs.nix-output-monitor
     pkgs.nvd
     pkgs.jq
+    pkgs.moreutils
   ];
   services = {
     gammastep = {
