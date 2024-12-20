@@ -20,7 +20,7 @@
       pkgs = import nixpkgs { inherit system; };
       bootstrap = true;
       files = if bootstrap then
-        pkgs.mkDerivation {
+        pkgs.stdenv.mkDerivation {
           name = "files";
           src = ./.;
           buildPhase = "true"; # Do nothing.
@@ -71,7 +71,6 @@
             inherit inputs;
             inherit files;
             devices = import hosts/devices.nix;
-            peter.bootstrap = true;
           };
           modules = [
             ./hosts/peter/hardware-configuration.nix

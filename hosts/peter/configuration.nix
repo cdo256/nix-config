@@ -2,6 +2,7 @@
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+  bootstrap = false;
 in
 {
   imports =
@@ -12,13 +13,6 @@ in
       ../../modules/borgbase.nix
       inputs.home-manager.nixosModules.default
     ];
-  
-  options.peter = {
-    bootstrap = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
   
   config = {
     nixpkgs.config.allowUnfree = true;
@@ -86,7 +80,7 @@ in
       ];
       shell = pkgs.fish;
     };
-    home-manager = if config.peter.bootstrap then {} else {
+    home-manager = if bootstrap then {} else {
       backupFileExtension = ".nix.bak";
       extraSpecialArgs = {
         inherit inputs;
