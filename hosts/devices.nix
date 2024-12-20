@@ -34,6 +34,10 @@ let
       sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqDnhdlknFB0KhLATaKouZW1jlqchpzuAcScrlOn4XG cdo@halley";
       
     };
+    vm1 = {
+      name = "vm1";
+      type = "vm";
+    };
     a34 = {
       name = "a34";
       syncthingId = "RYS4YUR-ZYVE46Q-NBUAAKM-I7TX46Z-JSM367B-RGCIYTY-TC6TVV6-GYWSPAF";

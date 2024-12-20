@@ -33,14 +33,14 @@
         nativeBuildInputs = [ pkgs.gnumake ];
       };
       nixosConfigurations = {
-        vm = nixpkgs.lib.nixosSystem {
+        vm1 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
             inherit files;
             devices = import hosts/devices.nix;
           };
           modules = [
-            ./hosts/vm/configuration.nix
+            ./hosts/vm1/configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };
