@@ -4,5 +4,4 @@ SAVEHIST=100000
 setopt nomatch
 unsetopt appendhistory autocd beep extendedglob
 autoload -Uz compinit
-export PATH="$HOME/scripts:$PATH"
 
