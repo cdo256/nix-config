@@ -13,6 +13,13 @@ in
       inputs.home-manager.nixosModules.default
     ];
   
+  options.halley = {
+    bootstrap = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+  
   config = {
     nixpkgs.config.allowUnfree = true;
     nix = {
@@ -93,7 +100,7 @@ in
       shell = pkgs.fish;
     };
 
-    home-manager = {
+    home-manager = if config.halley.bootstrap then {} else {
       backupFileExtension = ".nix.bak";
       extraSpecialArgs = {
         inherit inputs;

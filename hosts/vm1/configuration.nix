@@ -12,6 +12,13 @@ in
       inputs.home-manager.nixosModules.default
     ];
 
+  options.vm1 = {
+    bootstrap = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+
   config = {
     nixpkgs.config.allowUnfree = true;
     nix = {
@@ -83,7 +90,7 @@ in
       shell = pkgs.fish;
     };
 
-    home-manager = {
+    home-manager = if config.vm1.bootstrap then {} else {
       backupFileExtension = ".nix.bak";
       extraSpecialArgs = {
         inherit inputs;

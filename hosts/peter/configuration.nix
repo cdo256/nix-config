@@ -13,6 +13,13 @@ in
       inputs.home-manager.nixosModules.default
     ];
   
+  options.peter = {
+    bootstrap = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+  
   config = {
     nixpkgs.config.allowUnfree = true;
     nix = {
@@ -78,7 +85,7 @@ in
       ];
       shell = pkgs.fish;
     };
-    home-manager = {
+    home-manager = if config.peter.bootstrap then {} else {
       backupFileExtension = ".nix.bak";
       extraSpecialArgs = {
         inherit inputs;
