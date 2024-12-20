@@ -1,4 +1,4 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, bootstrap, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
@@ -12,13 +12,6 @@ in
       ../../modules/borgbase.nix
       inputs.home-manager.nixosModules.default
     ];
-  
-  options.halley = {
-    bootstrap = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
   
   config = {
     nixpkgs.config.allowUnfree = true;
@@ -101,7 +94,7 @@ in
       shell = pkgs.fish;
     };
 
-    home-manager = if config.halley.bootstrap then {} else {
+    home-manager = if bootstrap then {} else {
       backupFileExtension = ".nix.bak";
       extraSpecialArgs = {
         inherit inputs;

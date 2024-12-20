@@ -1,8 +1,7 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, ... }:
+{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, bootstrap, ... }:
 
 let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
-  bootstrap = false;
 in
 {
   imports =

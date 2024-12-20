@@ -47,6 +47,7 @@
           specialArgs = {
             inherit inputs;
             inherit files;
+            inherit bootstrap;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -58,6 +59,7 @@
           specialArgs = {
             inherit inputs;
             inherit files;
+            inherit bootstrap;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -70,6 +72,7 @@
           specialArgs = {
             inherit inputs;
             inherit files;
+            inherit bootstrap;
             devices = import hosts/devices.nix;
           };
           modules = [
