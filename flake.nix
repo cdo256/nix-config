@@ -12,6 +12,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils, home-manager, nixvim, ... }@inputs: 
@@ -53,6 +57,7 @@
           modules = [
             ./hosts/vm1/configuration.nix
             inputs.home-manager.nixosModules.default
+            inputs.sops-nix.nixosModules.sops
           ];
         };
         halley = nixpkgs.lib.nixosSystem {
@@ -66,6 +71,7 @@
             ./hosts/halley/hardware-configuration.nix
             ./hosts/halley/configuration.nix
             inputs.home-manager.nixosModules.default
+            inputs.sops-nix.nixosModules.sops
           ];
         };
         peter = nixpkgs.lib.nixosSystem {
@@ -79,6 +85,7 @@
             ./hosts/peter/hardware-configuration.nix
             ./hosts/peter/configuration.nix
             inputs.home-manager.nixosModules.default
+            inputs.sops-nix.nixosModules.sops
           ];
         };
       };

@@ -11,6 +11,7 @@ in
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
       inputs.home-manager.nixosModules.default
+      inputs.sops-nix.nixosModules.sops
     ];
   
   config = {
@@ -21,7 +22,7 @@ in
     systemd.services.nix-daemon = {
       enable = true;
       serviceConfig = {
-        EnvironmentFile = "/etc/nix/nix-daemon-environment";
+        EnvironmentFile = "/run/secrets/nix-daemon-environment";
       };
     };
 
@@ -68,6 +69,15 @@ in
     security.sudo = {
       enable =  true;
       wheelNeedsPassword = false;
+    };
+
+    sops = {
+      defaultSopsFile = ../../secrets/secrets.yaml;
+      defaultSopsFormat = "yaml";
+      age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
+      secrets = {
+        nix-daemon-environment = {};
+      };
     };
 
     users.users.cdo = {
