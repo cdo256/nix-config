@@ -36,7 +36,7 @@
           owner = "cdo256";
           repo = "cdo-config";
           rev = "master";
-          sha256 = "sha256-yjqRcNp0JF6vYr6hQSIe4csATrOI3kCBInGekRySCPg=";
+          sha256 = "sha256-PoKR5QFWtVki6W5qfv/rCXslkpc3qvDA7TkFYw3ORKI=";
           private = true;
         };
     in
