@@ -14,22 +14,26 @@ age_key_path = home_path / '.config/sops/age/keys.txt'
 ap = argparse.ArgumentParser(
         prog='generate-keys.py')
 ap.add_argument('-r', '--regenerate', action='store_true')
+ap.add_argument('-s', '--ssh', action='store_true')
+ap.add_argument('-a', '--age', action='store_true')
 args = ap.parse_args()
 print(args)
 
-if args.regenerate or not ssh_priv_key_path.exists():
+if (args.regenerate and args.ssh) or not ssh_priv_key_path.exists():
     print(f'Generating ed25519 ssh key in {ssh_priv_key_path}...')
     sp.run(['ssh-keygen', '-t', 'ed25519', '-C', 'cdo@mutix.org'], capture_output=False)
-    print('Done.')
+    print('Done: ')
 else:
     print(f'ed25519 ssh key already exists at path {ssh_priv_key_path}, not regenerating.')
 
-if args.regenerate or not age_key_path.exists():
+if (args.regenerate and args.age) or not age_key_path.exists():
     print(f'Generating age key {age_key_path} from ed25519 key...')
-    p = sp.run(['nix', 'run', 'nixpkgs#ssh-to-age', '--', '-private-key', '-i', ssh_priv_key_path], capture_output=True)
+    p = sp.run(['nix', 'run', 'nixpkgs#ssh-to-age', '--', '-private-key', '-i', ssh_priv_key_path], capture_output=True, text=True)
     age_key_path.parent.mkdir(parents=True, exist_ok=True)
     with open(age_key_path, 'w') as f:
-        print(p.stdout, file=f)
+        f.write(p.stdout)
+    p = sp.run(['nix', 'shell', 'nixpkgs#age', '-c', 'age-keygen', '-y', age_key_path], stdout=sp.PIPE, stderr=None, text=True)
+    print(p.stdout)
     print('Done.')
 else:
     print(f'age key already exists at path {age_key_path}, not regenerating.')
