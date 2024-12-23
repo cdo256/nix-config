@@ -22,7 +22,7 @@ let
     };
     isaac = {
       name = "peter";
-      syncthingId = "RHYO6AW-JYA36ML-PZD4MX2-WVEJUFM-FLV5WNS-66FNKJE-F4AHMT5-COI32QC";
+      syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "laptop";
       #sshPublicKey = ""; #TODO
       #resticRepo = ""; #TODO
