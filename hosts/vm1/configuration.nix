@@ -17,12 +17,6 @@ in
     nix = {
       settings.experimental-features = [ "nix-command" "flakes" ];
     };
-    systemd.services.nix-daemon = {
-      enable = true;
-      serviceConfig = {
-        EnvironmentFile = "-/etc/nix/nix-daemon-environment";
-      };
-    };
 
     system.stateVersion = "24.05";
 
@@ -71,6 +65,16 @@ in
     };
 
     users.users.root.initialPassword = "";
+
+    sops = {
+      defaultSopsFile = ../../secrets/secrets.yaml;
+      defaultSopsFormat = "yaml";
+      age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
+      secrets = {
+        NIX_GITHUB_PRIVATE_USERNAME = {};
+        NIX_GITHUB_PRIVATE_PASSWORD = {};
+      };
+    };
 
     users.users.cdo = {
       uid = 1000;

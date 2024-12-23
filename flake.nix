@@ -44,7 +44,10 @@
       packages.x86_64-linux.home-manager = home-manager.defaultPackage.x86_64-linux;
       packages.x86_64-linux.files = files;
       devShells.x86_64-linux.default = pkgs.mkShell {
-        nativeBuildInputs = [ pkgs.gnumake ];
+        nativeBuildInputs = [
+          pkgs.gnumake
+          pkgs.sops
+        ];
       };
       nixosConfigurations = {
         vm1 = nixpkgs.lib.nixosSystem {
