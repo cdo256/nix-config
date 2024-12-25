@@ -69,10 +69,6 @@ in
       defaultSopsFile = ../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
-      secrets = {
-        NIX_GITHUB_PRIVATE_USERNAME = {};
-        NIX_GITHUB_PRIVATE_PASSWORD = {};
-      };
     };
 
     users.users.cdo = {
@@ -85,7 +81,7 @@ in
       shell = pkgs.fish;
     };
     home-manager = if bootstrap then {} else {
-      backupFileExtension = ".nix.bak";
+      backupFileExtension = "nix.bak";
       extraSpecialArgs = {
         inherit inputs;
         inherit files;

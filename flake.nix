@@ -35,7 +35,7 @@
         } else pkgs.fetchFromGitHub {
           owner = "cdo256";
           repo = "cdo-config";
-          rev = "master";
+          rev = "4ce2a70cbb2b5e47a0187a8367f321f63008a966";
           sha256 = "sha256-PoKR5QFWtVki6W5qfv/rCXslkpc3qvDA7TkFYw3ORKI=";
           private = true;
         };
