@@ -47,6 +47,8 @@
         nativeBuildInputs = [
           pkgs.gnumake
           pkgs.sops
+          pkgs.just
+          pkgs.nh
         ];
       };
       nixosConfigurations = {
