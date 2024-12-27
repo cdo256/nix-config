@@ -18,5 +18,8 @@ build-home user=USER:
 switch-home user=USER:
     nh home switch .
 
-build-vm hostname=VM:
-    nixos-rebuild build-vm --flake
+build-vm host=VM:
+    nixos-rebuild build-vm --flake .#{{host}}
+
+run-vm host=VM: build-vm
+    sudo ./result/bin/run-{{host}}-vm
