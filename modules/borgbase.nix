@@ -14,25 +14,17 @@ in
   };
   config = lib.mkIf cfg.enable {
     services.restic.backups.borgbase = {
-      repository = cfg.repository;
+      repositoryFile = config.sops.secrets."restic/${config.networking.hostName}/url".path;
       initialize = true;
-      passwordFile = "/var/restic/borgbase.pass";
-      paths = [ "/home" "/var" ];
+      passwordFile = config.sops.secrets."restic/${config.networking.hostName}/key".path;
+      paths = [ "/home" "/root" "/var" "/usr" "/boot" "/srv" "/etc" "/nix" "/opt" ];
       extraBackupArgs = let
-        ignorePatterns = [
-          "/home/*/.local/share/trash"
-          "/home/*/src"
-          "/home/*/.local"
-          ".cache"
-          ".tmp"
-          ".log"
-          ".Trash"
-        ];
+        ignorePatterns = [];
         ignoreFile = builtins.toFile "ignore"
           (lib.lists.foldl (a: b: a + "\n" + b) "" ignorePatterns);
       in [
-          "--exclude-file=${ignoreFile}"
-          "-vv"
+        "--exclude-file=${ignoreFile}"
+        "-vv"
       ];
       pruneOpts = [
         "--keep-daily 7"

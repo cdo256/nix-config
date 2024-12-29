@@ -10,6 +10,7 @@ in
       ../devices.nix
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
+      ../../modules/sops.nix
       inputs.home-manager.nixosModules.default
       inputs.sops-nix.nixosModules.sops
     ];
@@ -77,12 +78,6 @@ in
     security.sudo = {
       enable =  true;
       wheelNeedsPassword = false;
-    };
-
-    sops = {
-      defaultSopsFile = ../../secrets/secrets.yaml;
-      defaultSopsFormat = "yaml";
-      age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
     };
 
     users.users.cdo = {

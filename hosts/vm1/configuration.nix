@@ -9,6 +9,7 @@ in
       ../devices.nix
       ../../modules/syncnet.nix
       ../../modules/borgbase.nix
+      ../../modules/sops.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -65,13 +66,6 @@ in
     };
 
     users.users.root.initialPassword = "";
-
-    sops = {
-      defaultSopsFile = ../../secrets/secrets.yaml;
-      defaultSopsFormat = "yaml";
-      age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
-    };
-
     users.users.cdo = {
       uid = 1000;
       isNormalUser = true;
