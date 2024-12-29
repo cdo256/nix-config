@@ -7,19 +7,19 @@ default:
     @just switch
 
 build host=HOST:
-    nh os build . -H {{host}}
+    nh os build . -H {{host}} --out-link ./results/system
 
 switch host=HOST:
     nh os switch . -H {{host}} 
 
 build-home user=USER:
-    nh home build .
+    nh home build . --out-link ./results/home
 
 switch-home user=USER:
     nh home switch .
 
 build-vm host=VM:
-    nixos-rebuild build-vm --flake .#{{host}}
+    nixos-rebuild build-vm --flake .#{{host}} --out-link ./results/vm
 
 run-vm host=VM: build-vm
-    sudo ./result/bin/run-{{host}}-vm
+    sudo ./results/vm/bin/run-{{host}}-vm
