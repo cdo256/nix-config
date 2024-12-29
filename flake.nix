@@ -43,6 +43,23 @@
     {
       packages.x86_64-linux.home-manager = home-manager.defaultPackage.x86_64-linux;
       packages.x86_64-linux.files = files;
+      packages.x86_64-linux.borgbase-api-client = pkgs.python3Packages.buildPythonPackage rec {
+        pname = "borgbase-api-client";
+        version = "1.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "borgbase";
+          repo = "borgbase-api-client";
+          rev = "cbd4367817a4cb590612133a34eb8f8b2fa8b833";
+          sha256 = "sha256-pcQLeJ6vYsHDeXxVbZEYoV14E2m0bN+tSLkDJ1Ehejg=";
+        };
+        propagatedBuildInputs = with pkgs.python3Packages; [
+          requests
+        ];
+        meta = with pkgs.lib; {
+          description = "Borgbase API client in python";
+          license = licenses.mit;
+        };
+      };
       devShells.x86_64-linux.default = pkgs.mkShell {
         nativeBuildInputs = [
           pkgs.gnumake
