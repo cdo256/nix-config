@@ -157,7 +157,6 @@ in
         pulse.enable = true;
       };
       borgbase.enable = true;
-      borgbase.repository = config.devices.${config.networking.hostName}.resticRepo;
       syncnet.enable = true;
       syncnet.devices = config.devices;
       avahi = {

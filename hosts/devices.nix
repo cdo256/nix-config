@@ -18,21 +18,18 @@ let
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "desktop";
       #sshPublicKey = ""; #TODO
-      
     };
     isaac = {
       name = "peter";
       syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "laptop";
       #sshPublicKey = ""; #TODO
-      #resticRepo = ""; #TODO
     };
     halley = {
       name = "halley";
       syncthingId = "5Y5D72K-I4AOOJS-MAXNQUR-ISK7SGZ-QWQ6VN6-FGK37VW-QJFWOHY-UAKJUQZ";
       type = "laptop";
       sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqDnhdlknFB0KhLATaKouZW1jlqchpzuAcScrlOn4XG cdo@halley";
-      
     };
     vm1 = {
       name = "vm1";
