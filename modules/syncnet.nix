@@ -59,7 +59,7 @@ in
               name = device.name;
               value = {
                 id = device.syncthingId;
-                introducer = true;
+                introducer = false;
               };
             }
           ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
