@@ -6,6 +6,6 @@
     ./keys.nix
   ];
   programs.nixvim = {
-    enable = false;
+    enable = true;
   };
 }

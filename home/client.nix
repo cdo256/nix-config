@@ -39,7 +39,6 @@ in
   home.sessionVariables = {
     BROWSER = "chromium";
     TERMINAL = "alacritty";
-    EDITOR = "vim"; # TODO: Change this once I get nvim working agian.
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
     GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
     HISTFILE = "${config.xdg.stateHome}/shell/histfile";
@@ -73,10 +72,10 @@ in
       source = "${files}/git";
       recursive = true;
     };
-    ".config/nvim" = {
-      source = "${files}/nvim";
-      recursive = true;
-    };
+    #".config/nvim" = {
+    #  source = "${files}/nvim";
+    #  recursive = true;
+    #};
     ".config/obs-studio" = {
       source = "${files}/obs-studio";
       recursive = true;
@@ -107,7 +106,6 @@ in
     pkgs.nmon
     pkgs.alacritty
     pkgs.emacs
-    pkgs.neovim
     pkgs.zoom
     pkgs.vscodium
     pkgs.direnv
