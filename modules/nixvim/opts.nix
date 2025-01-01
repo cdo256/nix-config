@@ -8,5 +8,6 @@
     };
     defaultEditor = true;
     colorschemes.oxocarbon.enable = true;
+    opts.virtualedit = ["onemore" "block"];
   };
 }
