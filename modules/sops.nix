@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   sops = {
@@ -6,12 +11,12 @@
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
     secrets = {
-      "restic/halley/url" = {};
-      "restic/halley/key" = {};
-      "restic/peter/url" = {};
-      "restic/peter/key" = {};
-      "restic/rhiannon/url" = {};
-      "restic/rhiannon/key" = {};
+      "restic/halley/url" = { };
+      "restic/halley/key" = { };
+      "restic/peter/url" = { };
+      "restic/peter/key" = { };
+      "restic/rhiannon/url" = { };
+      "restic/rhiannon/key" = { };
     };
   };
 }

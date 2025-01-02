@@ -1,8 +1,18 @@
-{ inputs, nix, config, lib, pkgs, nixpkgs, stdenv, files, ... }:
+{
+  inputs,
+  nix,
+  config,
+  lib,
+  pkgs,
+  nixpkgs,
+  stdenv,
+  files,
+  ...
+}:
 
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
-  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+  scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
 in
 {
   imports = [
@@ -78,7 +88,7 @@ in
       source = "${files}/obs-studio";
       recursive = true;
     };
-    
+
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
   };
@@ -91,8 +101,7 @@ in
       name = "adwaita-dark";
     };
   };
-  xdg.mimeApps.defaultApplications."inode/directory" =
-      "org.kde.dolphin.desktop";
+  xdg.mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
 
   programs.fish.enable = true;
 
@@ -122,7 +131,7 @@ in
     pkgs.gimp
     pkgs.nmap
     pkgs.xdg-desktop-portal
-    pkgs.kdePackages.xdg-desktop-portal-kde 
+    pkgs.kdePackages.xdg-desktop-portal-kde
     pkgs.kdePackages.kdenlive
     pkgs.kdePackages.dolphin
     pkgs.nh # NixOS Helper

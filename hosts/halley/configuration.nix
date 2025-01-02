@@ -1,24 +1,37 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, bootstrap, ... }:
+{
+  nix,
+  config,
+  lib,
+  pkgs,
+  nixpkgs,
+  stdenv,
+  inputs,
+  files,
+  bootstrap,
+  ...
+}:
 
 let
-  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+  scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../devices.nix
-      ../../modules/syncnet.nix
-      ../../modules/borgbase.nix
-      ../../modules/sops.nix
-      inputs.home-manager.nixosModules.default
-      inputs.sops-nix.nixosModules.sops
-    ];
-  
+  imports = [
+    ./hardware-configuration.nix
+    ../devices.nix
+    ../../modules/syncnet.nix
+    ../../modules/borgbase.nix
+    ../../modules/sops.nix
+    inputs.home-manager.nixosModules.default
+    inputs.sops-nix.nixosModules.sops
+  ];
+
   config = {
     nixpkgs.config.allowUnfree = true;
     nix = {
-      settings.experimental-features = [ "nix-command" "flakes" ];
+      settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
 
     system.stateVersion = "24.05";
@@ -27,7 +40,8 @@ in
     boot.loader.grub.device = "/dev/nvme0n1";
     boot.loader.grub.useOSProber = true;
 
-    boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".device = "/dev/disk/by-uuid/58655766-776f-42ca-96b1-a87a3e21508f";
+    boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".device =
+      "/dev/disk/by-uuid/58655766-776f-42ca-96b1-a87a3e21508f";
     # Setup keyfile
     boot.initrd.secrets = {
       "/boot/crypto_keyfile.bin" = null;
@@ -35,8 +49,10 @@ in
 
     boot.loader.grub.enableCryptodisk = true;
 
-    boot.initrd.luks.devices."luks-26f30444-e729-4254-808d-16e12eec659f".keyFile = "/boot/crypto_keyfile.bin";
-    boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".keyFile = "/boot/crypto_keyfile.bin";
+    boot.initrd.luks.devices."luks-26f30444-e729-4254-808d-16e12eec659f".keyFile =
+      "/boot/crypto_keyfile.bin";
+    boot.initrd.luks.devices."luks-58655766-776f-42ca-96b1-a87a3e21508f".keyFile =
+      "/boot/crypto_keyfile.bin";
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     boot.kernelModules = [ "v4l2loopback" ];
@@ -76,7 +92,7 @@ in
     security.rtkit.enable = true;
     security.polkit.enable = true;
     security.sudo = {
-      enable =  true;
+      enable = true;
       wheelNeedsPassword = false;
     };
 
@@ -84,20 +100,27 @@ in
       uid = 1000;
       isNormalUser = true;
       description = "Christina O'Donnell";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       packages = with pkgs; [
       ];
       shell = pkgs.fish;
     };
 
-    home-manager = if bootstrap then {} else {
-      backupFileExtension = "nix.bak";
-      extraSpecialArgs = {
-        inherit inputs;
-        inherit files;
-      };
-      users.cdo = import ../../home/client.nix;
-    };
+    home-manager =
+      if bootstrap then
+        { }
+      else
+        {
+          backupFileExtension = "nix.bak";
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit files;
+          };
+          users.cdo = import ../../home/client.nix;
+        };
 
     xdg.portal = {
       enable = true;

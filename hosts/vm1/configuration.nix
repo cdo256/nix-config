@@ -1,22 +1,35 @@
-{ nix, config, lib, pkgs, nixpkgs, stdenv, inputs, files, bootstrap, ... }:
+{
+  nix,
+  config,
+  lib,
+  pkgs,
+  nixpkgs,
+  stdenv,
+  inputs,
+  files,
+  bootstrap,
+  ...
+}:
 
 let
-  scriptsPackage = pkgs.callPackage ./scripts/default.nix {};
+  scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
 in
 {
-  imports =
-    [
-      ../devices.nix
-      ../../modules/syncnet.nix
-      ../../modules/borgbase.nix
-      ../../modules/sops.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    ../devices.nix
+    ../../modules/syncnet.nix
+    ../../modules/borgbase.nix
+    ../../modules/sops.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   config = {
     nixpkgs.config.allowUnfree = true;
     nix = {
-      settings.experimental-features = [ "nix-command" "flakes" ];
+      settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
 
     system.stateVersion = "24.05";
@@ -61,7 +74,7 @@ in
     security.rtkit.enable = true;
     security.polkit.enable = true;
     security.sudo = {
-      enable =  true;
+      enable = true;
       wheelNeedsPassword = false;
     };
 
@@ -70,21 +83,28 @@ in
       uid = 1000;
       isNormalUser = true;
       description = "Christina O'Donnell";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       initialPassword = "";
       packages = with pkgs; [
       ];
       shell = pkgs.fish;
     };
 
-    home-manager = if bootstrap then {} else {
-      backupFileExtension = "nix.bak";
-      extraSpecialArgs = {
-        inherit inputs;
-        inherit files;
-      };
-      users.cdo = import ../../home/client.nix;
-    };
+    home-manager =
+      if bootstrap then
+        { }
+      else
+        {
+          backupFileExtension = "nix.bak";
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit files;
+          };
+          users.cdo = import ../../home/client.nix;
+        };
 
     xdg.portal = {
       enable = true;

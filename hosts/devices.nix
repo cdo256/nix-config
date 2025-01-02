@@ -1,11 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
-  machines =  {
+  machines = {
     algernon = {
       name = "algernon";
       type = "server";
-      sshPublicKey = ""; #TODO
+      sshPublicKey = ""; # TODO
       ipAddr = "194.163.141.236";
     };
     eugenia = {
@@ -53,10 +58,34 @@ in
     description = "A set of machine configurations.";
   };
   config.devices = machines // {
-    linuxDevices = [ machines.algernon machines.eugenia machines.isaac machines.peter machines.halley ];
-    nixosDevices = [ machines.isaac machines.peter machines.halley ];
-    androidDevices = [ machines.s9 machines.a34 ];
-    allDevices = [ machines.algernon machines.isaac machines.peter machines.halley machines.s9 machines.a34 ];
-    pcs = [ machines.peter machines.isaac machines.halley ];
+    linuxDevices = [
+      machines.algernon
+      machines.eugenia
+      machines.isaac
+      machines.peter
+      machines.halley
+    ];
+    nixosDevices = [
+      machines.isaac
+      machines.peter
+      machines.halley
+    ];
+    androidDevices = [
+      machines.s9
+      machines.a34
+    ];
+    allDevices = [
+      machines.algernon
+      machines.isaac
+      machines.peter
+      machines.halley
+      machines.s9
+      machines.a34
+    ];
+    pcs = [
+      machines.peter
+      machines.isaac
+      machines.halley
+    ];
   };
 }

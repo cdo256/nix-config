@@ -1,4 +1,4 @@
-{config, lib, ...}:
+{ config, lib, ... }:
 
 let
   cfg = config.services.borgbase;
@@ -17,15 +17,26 @@ in
       repositoryFile = config.sops.secrets."restic/${config.networking.hostName}/url".path;
       initialize = true;
       passwordFile = config.sops.secrets."restic/${config.networking.hostName}/key".path;
-      paths = [ "/home" "/root" "/var" "/usr" "/boot" "/srv" "/etc" "/nix" "/opt" ];
-      extraBackupArgs = let
-        ignorePatterns = [];
-        ignoreFile = builtins.toFile "ignore"
-          (lib.lists.foldl (a: b: a + "\n" + b) "" ignorePatterns);
-      in [
-        "--exclude-file=${ignoreFile}"
-        "-vv"
+      paths = [
+        "/home"
+        "/root"
+        "/var"
+        "/usr"
+        "/boot"
+        "/srv"
+        "/etc"
+        "/nix"
+        "/opt"
       ];
+      extraBackupArgs =
+        let
+          ignorePatterns = [ ];
+          ignoreFile = builtins.toFile "ignore" (lib.lists.foldl (a: b: a + "\n" + b) "" ignorePatterns);
+        in
+        [
+          "--exclude-file=${ignoreFile}"
+          "-vv"
+        ];
       pruneOpts = [
         "--keep-daily 7"
         "--keep-weekly 4"

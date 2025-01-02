@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.services.syncnet;
@@ -9,43 +14,48 @@ in
       enable = lib.mkEnableOption "Enable Syncnet";
       devices = lib.mkOption {
         type = lib.types.anything; # TODO: Refine
-        default = {};
+        default = { };
       };
     };
   };
   config =
     let
-      folders = {
-        "sync" = {
-          path = "/home/cdo/sync";
-          devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
-        };
-        "org" = {
-          path = "/home/cdo/sync/org";
-          devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
-        };
-        "org-roam" = {
-          path = "/home/cdo/sync/org-roam";
-          devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
-        };
-        "secure" = {
-          path = "/home/cdo/sync/secure";
-          devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
-        };
-      } // builtins.listToAttrs (map (androidDevice:
+      folders =
         {
-          name = androidDevice.name + "-root";
-          value = {
-            path = "/home/cdo/sync/" + androidDevice.name;
-            devices = [ androidDevice ] ++ cfg.devices.pcs;
+          "sync" = {
+            path = "/home/cdo/sync";
+            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
           };
-        }) cfg.devices.androidDevices);
+          "org" = {
+            path = "/home/cdo/sync/org";
+            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+          };
+          "org-roam" = {
+            path = "/home/cdo/sync/org-roam";
+            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+          };
+          "secure" = {
+            path = "/home/cdo/sync/secure";
+            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+          };
+        }
+        // builtins.listToAttrs (
+          map (androidDevice: {
+            name = androidDevice.name + "-root";
+            value = {
+              path = "/home/cdo/sync/" + androidDevice.name;
+              devices = [ androidDevice ] ++ cfg.devices.pcs;
+            };
+          }) cfg.devices.androidDevices
+        );
     in
     {
-      networking.hosts = builtins.listToAttrs (map (device: {
-        name = device.ipAddr;
-        value = [ device.name ];
-      }) (builtins.filter (device: device ? "ipAddr") cfg.devices.allDevices));
+      networking.hosts = builtins.listToAttrs (
+        map (device: {
+          name = device.ipAddr;
+          value = [ device.name ];
+        }) (builtins.filter (device: device ? "ipAddr") cfg.devices.allDevices)
+      );
       services.syncthing = {
         enable = true;
         user = "cdo";
@@ -54,25 +64,24 @@ in
         overrideDevices = true;
         overrideFolders = true;
         settings = {
-          devices = builtins.listToAttrs (map (device:
-            {
+          devices = builtins.listToAttrs (
+            map (device: {
               name = device.name;
               value = {
                 id = device.syncthingId;
                 introducer = false;
               };
-            }
-          ) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices));
-          folders = builtins.mapAttrs (name: folder:
-            {
-              enable = true;
-              path = folder.path;
-              devices = (map (device: device.name) folder.devices);
-              versioning = {
-                type = "staggered";
-                params.maxAge = "365";
-              };
-            }) folders;
+            }) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices)
+          );
+          folders = builtins.mapAttrs (name: folder: {
+            enable = true;
+            path = folder.path;
+            devices = (map (device: device.name) folder.devices);
+            versioning = {
+              type = "staggered";
+              params.maxAge = "365";
+            };
+          }) folders;
         };
       };
     };
