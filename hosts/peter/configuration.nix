@@ -109,7 +109,6 @@ in
         pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         pkgs.wget
         pkgs.git
-        pkgs.guix
         pkgs.ungoogled-chromium
         #scriptsPackage
         pkgs.libimobiledevice

@@ -120,7 +120,6 @@ in
         pkgs.wget
         pkgs.git
         pkgs.ungoogled-chromium
-        #pkgs.guix
         #scriptsPackage
         pkgs.libimobiledevice
         pkgs.ifuse
