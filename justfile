@@ -7,13 +7,13 @@ default:
     @just switch
 
 build host=HOST:
-    nh os build . -H {{host}} --out-link ./results/system
+    nh os build . -H {{host}} --out-link ./results/system -- --show-trace
 
 switch host=HOST:
     nh os switch . -H {{host}} 
 
 build-home user=USER:
-    nh home build . --out-link ./results/home
+    nh home build . --out-link ./results/home -- --show-trace
 
 switch-home user=USER:
     nh home switch .
