@@ -133,6 +133,7 @@ in
       };
       syncnet.enable = true;
       syncnet.devices = config.devices;
+      borgbase.enable = true;
       avahi = {
         enable = true;
         nssmdns4 = true;

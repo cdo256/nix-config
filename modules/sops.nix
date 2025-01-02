@@ -8,6 +8,8 @@
     secrets = {
       "restic/halley/url" = {};
       "restic/halley/key" = {};
+      "restic/peter/url" = {};
+      "restic/peter/key" = {};
       "restic/rhiannon/url" = {};
       "restic/rhiannon/key" = {};
     };
