@@ -141,6 +141,8 @@ in
     pkgs.jq
     pkgs.moreutils
     inputs.nixvim.packages.x86_64-linux.default
+    pkgs.just
+    pkgs.lazygit
   ];
   services = {
     gammastep = {
