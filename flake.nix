@@ -8,8 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #nixvim = {
+    #  url = "github:nix-community/nixvim";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:cdo256/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -41,8 +45,11 @@
         };
     in
     {
-      packages.x86_64-linux.home-manager = home-manager.defaultPackage.x86_64-linux;
-      packages.x86_64-linux.files = files;
+      packages.x86_64-linux = {
+        home-manager = home-manager.defaultPackage.x86_64-linux;
+        files = files;
+        nixvim = nixvim.packages.x86_64-linux.default;
+      };
       devShells.x86_64-linux.default = pkgs.mkShell {
         nativeBuildInputs = [
           pkgs.gnumake

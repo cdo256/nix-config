@@ -133,6 +133,7 @@ in
     pkgs.nvd
     pkgs.jq
     pkgs.moreutils
+    inputs.nixvim.packages.x86_64-linux.default
   ];
   services = {
     gammastep = {
