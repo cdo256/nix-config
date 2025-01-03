@@ -106,31 +106,24 @@ in
   programs.fish.enable = true;
 
   home.packages = [
+    # Stable
     pkgs.fish
+    pkgs.fzf
+    pkgs.fishPlugins.foreign-env
     pkgs.thunderbird
-    pkgs.vim
+    pkgs.vim # In a pinch
     pkgs.keepassxc
     pkgs.nmon
     pkgs.alacritty
-    pkgs.emacs
-    pkgs.zoom
-    pkgs.vscodium
     pkgs.direnv
     pkgs.obs-studio
     pkgs.ffmpeg_7-full
     pkgs.restic
     pkgs.libreoffice
     pkgs.vlc
-    pkgs.signal-desktop
     pkgs.trash-cli
-    pkgs.okular
-    pkgs.inkscape
-    pkgs.gimp
     pkgs.nmap
     pkgs.xdg-desktop-portal
-    pkgs.kdePackages.xdg-desktop-portal-kde
-    pkgs.kdePackages.kdenlive
-    pkgs.kdePackages.dolphin
     pkgs.nh # NixOS Helper
     pkgs.nixfmt-rfc-style
     pkgs.nix-output-monitor
@@ -141,6 +134,32 @@ in
     pkgs.just
     pkgs.lazygit
     pkgs.google-chrome
+
+    # Broken
+    pkgs.zoom # Screen sharing never worked, but browser sharing did.
+
+    pkgs.kdePackages.xdg-desktop-portal-kde
+    pkgs.kdePackages.kdenlive
+    pkgs.kdePackages.dolphin # Usable but dark color-scheme is broken.
+
+    # Less used
+    pkgs.vscodium
+    pkgs.emacs
+    pkgs.signal-desktop
+    pkgs.okular
+    pkgs.inkscape
+    pkgs.gimp
+
+    # Trying
+    pkgs.fishPlugins.done
+    pkgs.fishPlugins.autopair
+    pkgs.fishPlugins.fzf-fish
+    pkgs.fishPlugins.forgit
+    pkgs.fishPlugins.hydro
+    pkgs.grc
+    pkgs.fishPlugins.grc
+    pkgs.brave
+    pkgs.delta
   ];
   services = {
     gammastep = {
