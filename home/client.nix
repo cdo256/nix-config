@@ -45,7 +45,7 @@ in
     createDirectories = true;
   };
   home.sessionVariables = {
-    BROWSER = "chromium";
+    BROWSER = "google-chrome-stable";
     TERMINAL = "alacritty";
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
     GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
@@ -143,6 +143,7 @@ in
     inputs.nixvim.packages.x86_64-linux.default
     pkgs.just
     pkgs.lazygit
+    pkgs.google-chrome
   ];
   services = {
     gammastep = {
@@ -153,5 +154,6 @@ in
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
 }
