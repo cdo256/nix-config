@@ -18,6 +18,11 @@ let
       type = "server";
       ipAddr = "84.247.140.25";
     };
+    rhiannon = {
+      name = "rhiannon";
+      type = "server";
+      ipAddr = "139.162.147.31";
+    };
     peter = {
       name = "peter";
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
@@ -61,6 +66,7 @@ in
     linuxDevices = [
       machines.algernon
       machines.eugenia
+      machines.rhiannon
       machines.isaac
       machines.peter
       machines.halley
@@ -76,6 +82,8 @@ in
     ];
     allDevices = [
       machines.algernon
+      machines.eugenia
+      machines.rhiannon
       machines.isaac
       machines.peter
       machines.halley
