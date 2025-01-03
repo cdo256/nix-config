@@ -124,9 +124,6 @@ in
     pkgs.signal-desktop
     pkgs.trash-cli
     pkgs.okular
-    pkgs.vscodium
-    pkgs.thunderbird
-    pkgs.keepassxc
     pkgs.inkscape
     pkgs.gimp
     pkgs.nmap
