@@ -35,7 +35,6 @@ in
         in
         [
           "--exclude-file=${ignoreFile}"
-          "-vv"
         ];
       pruneOpts = [
         "--keep-daily 7"
