@@ -45,7 +45,7 @@ in
     createDirectories = true;
   };
   home.sessionVariables = {
-    BROWSER = "google-chrome-stable";
+    BROWSER = "brave";
     TERMINAL = "alacritty";
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
     GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
