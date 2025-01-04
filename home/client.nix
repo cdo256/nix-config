@@ -64,10 +64,6 @@ in
         secure
       ";
     };
-    ".config/fish" = {
-      source = "${files}/fish";
-      recursive = true;
-    };
     ".config/sway" = {
       source = "${files}/sway";
       recursive = true;
@@ -103,7 +99,15 @@ in
   };
   xdg.mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    loginShellInit = ''
+      set -x PATH ~/.local/bin $PATH
+      set -x GPG_TTY (tty)
+      set -g fish_key_bindings fish_vi_key_bindings
+      direnv hook fish | source
+    '';
+  };
 
   home.packages = [
     # Stable
