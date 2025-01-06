@@ -113,7 +113,7 @@
         };
       };
       homeConfigurations = {
-        "cdo" = home-manager.lib.homeManagerConfiguration {
+        "client" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
             inherit inputs;
             inherit files;
@@ -121,6 +121,16 @@
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
             ./home/client.nix
+          ];
+        };
+        "server" = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit files;
+          };
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          modules = [
+            ./home/server.nix
           ];
         };
       };
