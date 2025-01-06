@@ -45,3 +45,6 @@ try-add-sops-key:
     -! grep {{HOST}} .sops.yaml && just add-sops-key
 
 bootstrap: try-add-sops-key
+
+add-age-key-to-secrets key:
+  sops -r -i --add-age {{key}} secrets/secrets.yaml
