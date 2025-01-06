@@ -1,9 +1,11 @@
 keys:
+  - &rhiannon age15ulhsq96fxhmtn8tgm9790kxjwjhwm95zm6xx4j4zswvjwv98cus7p7us0
   - &peter age19yqwfjm9jxt6gu2wey0xd5hg3jc488mw93g0mg9y3yxzkmekhfqs6qlx9v
   - &halley age17ymvtzr39spfpawgwu7tdue2tfvgu0xh0wluzd8tkal3a2fkr5yqmqrqnf
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
     - age:
+      - *rhiannon
       - *peter
       - *halley
