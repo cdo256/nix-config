@@ -1,0 +1,8 @@
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
+setopt nomatch
+unsetopt appendhistory autocd beep extendedglob
+autoload -Uz compinit
+
+eval "${direnv hook bash}"

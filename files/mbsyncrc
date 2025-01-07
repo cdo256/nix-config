@@ -1,0 +1,22 @@
+IMAPAccount cdo-mutix
+Host mutix.org
+User cdo
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine mutix.org login cdo/ {print $NF}'"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore cdo-mutix-remote
+Account cdo-mutix
+
+MaildirStore cdo-mutix-local
+Subfolders Verbatim
+Path ~/.local/data/mail/
+Inbox ~/.local/data/mail/Inbox
+
+Channel cdo-mutix
+Far :cdo-mutix-remote:
+Near :cdo-mutix-local:
+Patterns *
+Create Both
+#Expunge Both
+SyncState *
