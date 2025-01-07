@@ -5,6 +5,8 @@
   ...
 }:
 
+# TODO: Keybindings.
+
 let
   hyprland-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
 in
@@ -15,9 +17,17 @@ in
     portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
   };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-gtk ];
+  };
   environment = {
     systemPackages = [
+      pkgs.waybar
       pkgs.kitty # Default terminal
+      pkgs.dunst # Notification daemon
+      pkgs.libnotify
+      pkgs.wofi
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
