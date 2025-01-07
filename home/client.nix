@@ -84,6 +84,10 @@ in
       source = "${files}/obs-studio";
       recursive = true;
     };
+    ".config/hypr" = {
+      source = "${files}/hypr";
+      recursive = true;
+    };
 
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
