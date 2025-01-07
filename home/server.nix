@@ -45,6 +45,7 @@ in
     createDirectories = true;
   };
   home.sessionVariables = {
+    EDITOR = "nvim";
     TERMINAL = "alacritty";
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
     GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";

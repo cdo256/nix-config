@@ -46,6 +46,7 @@ in
     createDirectories = true;
   };
   home.sessionVariables = {
+    EDITOR = "nvim";
     BROWSER = "brave";
     TERMINAL = "alacritty";
     BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
