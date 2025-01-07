@@ -1,4 +1,5 @@
 {
+  pkgs,
   inputs,
   system,
   ...
@@ -10,4 +11,7 @@
     package = inputs.hyprland.packages.${system}.hyprland;
     portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
   };
+  environment.systemPackages = [
+    pkgs.kitty # Default terminal
+  ];
 }
