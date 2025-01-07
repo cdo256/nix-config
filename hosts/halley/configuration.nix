@@ -18,10 +18,10 @@ in
   imports = [
     ./hardware-configuration.nix
     ../devices.nix
-    ../../modules/syncnet.nix
-    ../../modules/borgbase.nix
-    ../../modules/sops.nix
-    ../../modules/hyprland.nix
+    ../../os-modules/syncnet.nix
+    ../../os-modules/borgbase.nix
+    ../../os-modules/sops.nix
+    ../../os-modules/hyprland.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];

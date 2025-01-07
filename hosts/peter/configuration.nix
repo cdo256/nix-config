@@ -18,9 +18,9 @@ in
   imports = [
     ./hardware-configuration.nix
     ../devices.nix
-    ../../modules/syncnet.nix
-    ../../modules/borgbase.nix
-    ../../modules/sops.nix
+    ../../os-modules/syncnet.nix
+    ../../os-modules/borgbase.nix
+    ../../os-modules/sops.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];
