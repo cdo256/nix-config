@@ -19,7 +19,7 @@ in
   };
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   environment = {
     systemPackages = [
@@ -27,7 +27,8 @@ in
       pkgs.kitty # Default terminal
       pkgs.dunst # Notification daemon
       pkgs.libnotify
-      pkgs.wofi
+      pkgs.wofi # Launcher
+      pkgs.swww # Wallpaper daemon
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";

@@ -173,7 +173,6 @@ in
       libinput.enable = true;
       openssh.enable = true;
       printing.enable = true;
-      sound.enable = true;
       pipewire = {
         enable = true;
         alsa.enable = true;
