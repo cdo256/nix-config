@@ -110,6 +110,7 @@ in
     pkgs.grc
     pkgs.fishPlugins.grc
     pkgs.delta
+    pkgs.git-imerge
   ];
 
   nixpkgs.config.allowUnfree = true;

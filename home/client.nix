@@ -164,6 +164,7 @@ in
     pkgs.fishPlugins.grc
     pkgs.brave
     pkgs.delta
+    pkgs.git-imerge
   ];
   services = {
     gammastep = {
