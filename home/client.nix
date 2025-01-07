@@ -16,6 +16,7 @@ let
 in
 {
   imports = [
+    ../modules/hyprland.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -84,10 +85,10 @@ in
       source = "${files}/obs-studio";
       recursive = true;
     };
-    ".config/hypr" = {
-      source = "${files}/hypr";
-      recursive = true;
-    };
+    #".config/hypr" = {
+    #  source = "${files}/hypr";
+    #  recursive = true;
+    #};
 
     ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
     ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
@@ -142,6 +143,7 @@ in
     pkgs.just
     pkgs.lazygit
     pkgs.google-chrome
+    pkgs.htop
 
     # Broken
     pkgs.zoom # Screen sharing never worked, but browser sharing did.
