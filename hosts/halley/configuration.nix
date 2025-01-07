@@ -21,6 +21,7 @@ in
     ../../modules/syncnet.nix
     ../../modules/borgbase.nix
     ../../modules/sops.nix
+    ../../modules/hyprland.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];

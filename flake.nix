@@ -20,6 +20,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+    };
   };
 
   outputs =
@@ -75,6 +78,7 @@
             inherit inputs;
             inherit files;
             inherit bootstrap;
+            inherit system;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -88,6 +92,7 @@
             inherit inputs;
             inherit files;
             inherit bootstrap;
+            inherit system;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -102,6 +107,7 @@
             inherit inputs;
             inherit files;
             inherit bootstrap;
+            inherit system;
             devices = import hosts/devices.nix;
           };
           modules = [
@@ -117,6 +123,7 @@
           extraSpecialArgs = {
             inherit inputs;
             inherit files;
+            inherit system;
           };
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
@@ -127,6 +134,7 @@
           extraSpecialArgs = {
             inherit inputs;
             inherit files;
+            inherit system;
           };
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
