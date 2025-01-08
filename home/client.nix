@@ -173,6 +173,7 @@ in
     pkgs.brave
     pkgs.delta
     pkgs.git-imerge
+    pkgs.obsidian
   ];
   services = {
     gammastep = {
