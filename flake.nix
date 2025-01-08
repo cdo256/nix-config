@@ -22,6 +22,12 @@
     };
     hyprland = {
       url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -32,6 +38,8 @@
       flake-utils,
       home-manager,
       nixvim,
+      hyprland,
+      hyprpanel,
       ...
     }@inputs:
     let

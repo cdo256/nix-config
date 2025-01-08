@@ -20,7 +20,7 @@ in
       exec = [
         #FIXME: This is a hack. hyprland needs to implement an exec-reload keyword.
         "pkill nm-applet; ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &"
-        "pkill waybar; ${pkgs.waybar}/bin/waybar &"
+        "pkill waybar; pkill hyprpanel; ${pkgs.hyprpanel}/bin/hyprpanel &"
         "pkill dunst; ${pkgs.dunst}/bin/dunst"
       ];
       env = [
