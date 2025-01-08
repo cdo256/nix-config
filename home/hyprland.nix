@@ -34,20 +34,36 @@ in
       bind = [
         "SUPER, T, exec, ${terminal}"
         "SUPER, B, exec, ${browser}"
-        "SUPER, C, killactive,"
-        "SUPER, M, exit,"
         "SUPER, E, exec, ${fileManager}"
         "SUPER, V, togglefloating,"
         "SUPER, R, exec, ${menu}"
-        "SUPER, P, pseudo, # dwindle"
+        #"SUPER, P, pseudo, # dwindle"
         "SUPER, J, togglesplit, # dwindle"
-        "SUPER, F4, killactive"
+        "SUPER, D, killactive,"
+        "SUPER, F4, killactive,"
+        "SUPER ALT, F4, killactive,"
+        "ALT, F4, killactive,"
+        "SUPER ALT SHIFT, F4, exit,"
 
-        # Move focus with mainMod + arrow keys
+        # Move focus
         "SUPER, left, movefocus, l"
-        "SUPER, right, movefocus, r"
         "SUPER, up, movefocus, u"
         "SUPER, down, movefocus, d"
+        "SUPER, right, movefocus, r"
+        "SUPER, H, movefocus, l"
+        "SUPER, J, movefocus, d"
+        "SUPER, K, movefocus, u"
+        "SUPER, L, movefocus, r"
+
+        # Move window
+        "SUPER SHIFT, left, movewindow, l"
+        "SUPER SHIFT, up, movewindow, u"
+        "SUPER SHIFT, down, movewindow, d"
+        "SUPER SHIFT, right, movewindow, r"
+        "SUPER SHIFT, H, movewindow, l"
+        "SUPER SHIFT, J, movewindow, d"
+        "SUPER SHIFT, K, movewindow, u"
+        "SUPER SHIFT, L, movewindow, r"
 
         # Switch workspaces with mainMod + [0-9]
         "SUPER, 1, workspace, 1"
@@ -74,12 +90,38 @@ in
         "SUPER SHIFT, 0, movetoworkspace, 10"
 
         # Example special workspace (scratchpad)"
+        # TODO: How to get windows out of the scratchpad?!
         "SUPER, S, togglespecialworkspace, magic"
         "SUPER SHIFT, S, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll"
-        "SUPER, mouse_down, workspace, e+1"
-        "SUPER, mouse_up, workspace, e-1"
+        "SUPER ALT, mouse_down, workspace, e+1"
+        "SUPER ALT, mouse_up, workspace, e-1"
+        "SUPER ALT SHIFT, mouse_down, movetoworkspace, e+1"
+        "SUPER ALT SHIFT, mouse_up, movetoworkspace, e-1"
+        "SUPER ALT, left, workspace, e-1"
+        "SUPER ALT, right, workspace, e+1"
+        "SUPER ALT SHIFT, left, movetoworkspace, e-1"
+        "SUPER ALT SHIFT, right, movetoworkspace, e+1"
+        "SUPER ALT, O, workspace, e-1"
+        "SUPER ALT, P, workspace, e+1"
+        "SUPER ALT SHIFT, O, movetoworkspace, e-1"
+        "SUPER ALT SHIFT, P, movetoworkspace, e+1"
+        "SUPER, O, workspace, e-1"
+        "SUPER, P, workspace, e+1"
+        "SUPER SHIFT, O, movetoworkspace, e-1"
+        "SUPER SHIFT, P, movetoworkspace, e+1"
+
+        # Move workspaces between monitors
+        "SUPER SHIFT, [,  movecurrentworkspacetomonitor, -1"
+        "SUPER SHIFT, [,  movecurrentworkspacetomonitor, -1"
+        "SUPER ALT SHIFT, ], movecurrentworkspacetomonitor, +1"
+        "SUPER ALT SHIFT, ], movecurrentworkspacetomonitor, +1"
+
+        # Grouping
+        "SUPER SHIFT, G, togglegroup"
+        "SUPER, U, changegroupactive, b"
+        "SUPER, I, changegroupactive, f"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
