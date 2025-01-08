@@ -45,26 +45,15 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      bootstrap = false;
-      files =
-        if bootstrap then
-          pkgs.stdenv.mkDerivation {
-            name = "files";
-            src = ./.;
-            buildPhase = "true"; # Do nothing.
-            installPhase = ''
-              mkdir -p $out
-              cp -r $src/* $out/
-            '';
-          }
-        else
-          pkgs.fetchFromGitHub {
-            owner = "cdo256";
-            repo = "cdo-config";
-            rev = "4ce2a70cbb2b5e47a0187a8367f321f63008a966";
-            sha256 = "sha256-PoKR5QFWtVki6W5qfv/rCXslkpc3qvDA7TkFYw3ORKI=";
-            private = true;
-          };
+      files = pkgs.stdenv.mkDerivation {
+        name = "files";
+        src = ./.;
+        buildPhase = "true"; # Do nothing.
+        installPhase = ''
+          mkdir -p $out
+          cp -r $src/files/* $out/
+        '';
+      };
     in
     {
       packages.x86_64-linux = {
@@ -85,7 +74,6 @@
           specialArgs = {
             inherit inputs;
             inherit files;
-            inherit bootstrap;
             inherit system;
             devices = import hosts/devices.nix;
           };
@@ -99,7 +87,6 @@
           specialArgs = {
             inherit inputs;
             inherit files;
-            inherit bootstrap;
             inherit system;
             devices = import hosts/devices.nix;
           };
@@ -114,7 +101,6 @@
           specialArgs = {
             inherit inputs;
             inherit files;
-            inherit bootstrap;
             inherit system;
             devices = import hosts/devices.nix;
           };
