@@ -22,6 +22,7 @@ in
     ../../os-modules/borgbase.nix
     ../../os-modules/sops.nix
     ../../os-modules/hyprland.nix
+    ../../os-modules/fonts.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];
