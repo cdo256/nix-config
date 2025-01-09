@@ -20,6 +20,7 @@ in
     ../../os-modules/syncnet.nix
     ../../os-modules/borgbase.nix
     ../../os-modules/sops.nix
+    ../../os-modules/hyprland.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];
@@ -95,6 +96,9 @@ in
       extraSpecialArgs = {
         inherit inputs;
         inherit files;
+        extraImports = [
+          ./home/hyprland.nix
+        ];
       };
       users.cdo = import ../../home/client.nix;
     };

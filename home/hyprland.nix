@@ -20,8 +20,8 @@ in
       exec = [
         #FIXME: This is a hack. hyprland needs to implement an exec-reload keyword.
         "pkill nm-applet; ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &"
+        # Hyprland starts dunst.
         "pkill waybar; pkill hyprpanel; ${pkgs.hyprpanel}/bin/hyprpanel &"
-        "pkill dunst; ${pkgs.dunst}/bin/dunst"
       ];
       env = [
         "XCURSOR_SIZE,24"
@@ -144,12 +144,34 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   home.packages = [
+    # TODO: Shrink this list down to just the ones I'm using.
     pkgs.waybar
     pkgs.kitty # Default terminal
     pkgs.dunst # Notification daemon
     pkgs.libnotify
     pkgs.wofi # Launcher
     pkgs.swww # Wallpaper daemon
+    pkgs.hyprshot
+    pkgs.hyprpicker
+    pkgs.swappy
+    pkgs.imv
+    pkgs.wf-recorder
+    pkgs.wl-clipboard
+    pkgs.brightnessctl
+    pkgs.gnome-themes-extra
+    pkgs.libva
+    pkgs.dconf
+    pkgs.qt6.qtwayland
+    pkgs.wayland-utils
+    pkgs.wayland-protocols
+    pkgs.glib
+    pkgs.bluez
+    pkgs.wireplumber
+    pkgs.libgtop
+    pkgs.networkmanager
+    pkgs.dart-sass
+    pkgs.upower
+    pkgs.gvfs
   ];
   xdg.portal.configPackages = [ pkgs.gnome-session ];
 }
