@@ -115,6 +115,9 @@ in
       extraSpecialArgs = {
         inherit inputs;
         inherit files;
+        extraImports = [
+          ./home/hyprland.nix
+        ];
       };
       users.cdo = import ../../home/client.nix;
     };
