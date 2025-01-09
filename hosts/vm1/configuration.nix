@@ -7,7 +7,6 @@
   stdenv,
   inputs,
   files,
-  bootstrap,
   ...
 }:
 
@@ -93,18 +92,14 @@ in
       shell = pkgs.fish;
     };
 
-    home-manager =
-      if bootstrap then
-        { }
-      else
-        {
-          backupFileExtension = "nix.bak";
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit files;
-          };
-          users.cdo = import ../../home/client.nix;
+    home-manager = {
+        backupFileExtension = "nix.bak";
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit files;
         };
+        users.cdo = import ../../home/client.nix;
+      };
 
     xdg.portal = {
       enable = true;

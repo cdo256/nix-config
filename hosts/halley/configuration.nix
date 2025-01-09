@@ -7,7 +7,6 @@
   stdenv,
   inputs,
   files,
-  bootstrap,
   ...
 }:
 
