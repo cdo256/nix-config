@@ -101,6 +101,7 @@ in
     inputs.nixvim.packages.x86_64-linux.default
     pkgs.just
     pkgs.lazygit
+    pkgs.htop
 
     # Trying
     pkgs.fishPlugins.done
