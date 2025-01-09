@@ -122,6 +122,14 @@ in
         "SUPER SHIFT, G, togglegroup"
         "SUPER, U, changegroupactive, b"
         "SUPER, I, changegroupactive, f"
+        "SUPER ALT SHIFT, left, moveintogroup, l"
+        "SUPER ALT SHIFT, up, moveintogroup, u"
+        "SUPER ALT SHIFT, down, moveintogroup, d"
+        "SUPER ALT SHIFT, right, moveintogroup, r"
+        "SUPER ALT SHIFT, H, moveintogroup, l"
+        "SUPER ALT SHIFT, J, moveintogroup, d"
+        "SUPER ALT SHIFT, K, moveintogroup, u"
+        "SUPER ALT SHIFT, L, moveintogroup, r"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
