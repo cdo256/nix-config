@@ -93,13 +93,13 @@ in
     };
 
     home-manager = {
-        backupFileExtension = "nix.bak";
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit files;
-        };
-        users.cdo = import ../../home/client.nix;
+      backupFileExtension = "nix.bak";
+      extraSpecialArgs = {
+        inherit inputs;
+        inherit files;
       };
+      users.cdo = import ../../home/client.nix;
+    };
 
     xdg.portal = {
       enable = true;
