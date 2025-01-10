@@ -175,6 +175,7 @@ in
     pkgs.delta
     pkgs.git-imerge
     pkgs.obsidian
+    pkgs.zotero # Reference manager
   ];
   services = {
     gammastep = {
