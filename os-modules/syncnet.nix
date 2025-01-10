@@ -34,6 +34,10 @@ in
             path = "/home/cdo/sync/org-roam";
             devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
           };
+          "obsidian" = {
+            path = "/home/cdo/sync/obsidian";
+            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+          };
           "secure" = {
             path = "/home/cdo/sync/secure";
             devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
