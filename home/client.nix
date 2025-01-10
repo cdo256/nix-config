@@ -147,6 +147,7 @@ in
     pkgs.lazygit
     pkgs.google-chrome
     pkgs.htop
+    pkgs.brave
 
     # Broken
     pkgs.zoom # Screen sharing never worked, but browser sharing did.
@@ -171,7 +172,6 @@ in
     pkgs.fishPlugins.hydro
     pkgs.grc
     pkgs.fishPlugins.grc
-    pkgs.brave
     pkgs.delta
     pkgs.git-imerge
     pkgs.obsidian
