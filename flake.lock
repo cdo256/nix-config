@@ -802,11 +802,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1735780415,
-        "narHash": "sha256-gcPe6Ea5QbCw7oLrmeM0M+/DLUBmMd3/CP18tT8EGNo=",
+        "lastModified": 1736694160,
+        "narHash": "sha256-kvPo84bW56wSymGv6mbS73U2bE0+OjBR5hSDMFISLeI=",
         "owner": "cdo256",
         "repo": "nixvim-config",
-        "rev": "c36160123ec4466c2df494ec4817896a2b496107",
+        "rev": "272337817522e0d00b8bd3614efceb6c565e6f9d",
         "type": "github"
       },
       "original": {
