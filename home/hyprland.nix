@@ -162,15 +162,8 @@ in
     pkgs.libva
     pkgs.dconf
     pkgs.qt6.qtwayland
-    pkgs.wayland-utils
-    pkgs.wayland-protocols
-    pkgs.glib
-    pkgs.bluez
-    pkgs.wireplumber
     pkgs.libgtop
-    pkgs.networkmanager
     pkgs.dart-sass
-    pkgs.upower
     pkgs.gvfs
   ];
   xdg.portal.configPackages = [ pkgs.gnome-session ];
