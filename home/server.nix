@@ -72,21 +72,8 @@ in
 
   # For Dolphin
 
-  programs.fish = {
-    enable = true;
-    loginShellInit = ''
-      set -x PATH ~/.local/bin $PATH
-      set -x GPG_TTY (tty)
-      set -g fish_key_bindings fish_vi_key_bindings
-      direnv hook fish | source
-    '';
-  };
-
   home.packages = [
     # Stable
-    pkgs.fish
-    pkgs.fzf
-    pkgs.fishPlugins.foreign-env
     pkgs.vim # In a pinch
     pkgs.nmon
     pkgs.direnv
@@ -105,13 +92,6 @@ in
     pkgs.htop
 
     # Trying
-    pkgs.fishPlugins.done
-    pkgs.fishPlugins.autopair
-    pkgs.fishPlugins.fzf-fish
-    pkgs.fishPlugins.forgit
-    pkgs.fishPlugins.hydro
-    pkgs.grc
-    pkgs.fishPlugins.grc
     pkgs.delta
     pkgs.git-imerge
   ];
