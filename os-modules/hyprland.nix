@@ -60,6 +60,7 @@ in
     driSupport32Bit = true;
     package32 = hyprland-pkgs.pkgsi686Linux.mesa.drivers;
   };
+  services.upower.enable = true;
   # Optional
   security.pam.services.hyprlock = { };
 }
