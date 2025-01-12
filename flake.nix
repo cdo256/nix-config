@@ -118,6 +118,7 @@
             inherit inputs;
             inherit files;
             inherit system;
+            extraImports = [ ];
           };
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [
@@ -129,6 +130,7 @@
             inherit inputs;
             inherit files;
             inherit system;
+            extraImports = [ ];
           };
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           modules = [

@@ -115,6 +115,7 @@ in
       extraSpecialArgs = {
         inherit inputs;
         inherit files;
+        extraImports = [ ];
       };
       users.cdo = import ../../home/client.nix;
     };

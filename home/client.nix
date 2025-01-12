@@ -7,7 +7,7 @@
   nixpkgs,
   stdenv,
   files,
-  extraImports ? [ ],
+  extraImports,
   ...
 }:
 
