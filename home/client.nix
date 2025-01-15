@@ -151,6 +151,7 @@ in
     pkgs.okular
     pkgs.inkscape
     pkgs.gimp
+    pkgs.file
 
     # Trying
     pkgs.delta

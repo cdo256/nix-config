@@ -91,6 +91,7 @@ in
     pkgs.just
     pkgs.lazygit
     pkgs.htop
+    pkgs.file
 
     # Trying
     pkgs.delta
