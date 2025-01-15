@@ -130,6 +130,10 @@ in
         "SUPER ALT SHIFT, J, moveintogroup, d"
         "SUPER ALT SHIFT, K, moveintogroup, u"
         "SUPER ALT SHIFT, L, moveintogroup, r"
+
+        "SUPER, PRINT, exec, hyprshot -m window"
+        ", PRINT, exec, hyprshot -m output"
+        "SHIFT, PRINT, exec, hyprshot -m region"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -144,12 +148,17 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
   home.packages = [
-    pkgs.waybar
+    pkgs.hyprshot
+    pkgs.jq
+    pkgs.grim
+    pkgs.slurp
+    pkgs.wl-clipboard
     pkgs.kitty # Default terminal
     pkgs.dunst # Notification daemon
     pkgs.libnotify
     pkgs.wofi # Launcher
     pkgs.swww # Wallpaper daemon
+    pkgs.waybar
   ];
   xdg.portal.configPackages = [ pkgs.gnome-session ];
 }
