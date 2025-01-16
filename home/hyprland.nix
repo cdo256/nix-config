@@ -11,6 +11,8 @@ let
   browser = "${pkgs.brave}/bin/brave";
   launcher = "${pkgs.wofi}/bin/wofi";
   fileManager = "${pkgs.dolphin}/bin/dolphin";
+  emailProgram = "${pkgs.thunderbird}/bin/thunderbird";
+  passwordManager = "${pkgs.keepassxc}/bin/keepassxc";
   menu = "${launcher} -S run";
 in
 {
@@ -22,6 +24,9 @@ in
         "pkill nm-applet; ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &"
         "pkill waybar; pkill hyprpanel; ${pkgs.hyprpanel}/bin/hyprpanel &"
         "pkill dunst; ${pkgs.dunst}/bin/dunst"
+      ];
+      exec-once = [
+        "${passwordManager} &"
       ];
       env = [
         "XCURSOR_SIZE,24"
@@ -35,6 +40,7 @@ in
         "SUPER SHIFT, T, exec, ${terminal}"
         "SUPER SHIFT, B, exec, ${browser}"
         "SUPER SHIFT, F, exec, ${fileManager}"
+        "SUPER SHIFT, W, exec, ${emailProgram}"
         "SUPER SHIFT, V, togglefloating,"
         "SUPER, R, exec, ${menu}"
         #"SUPER, P, pseudo, # dwindle"
