@@ -14,6 +14,21 @@ let
   emailProgram = "${pkgs.thunderbird}/bin/thunderbird";
   passwordManager = "${pkgs.keepassxc}/bin/keepassxc";
   menu = "${launcher} -S run";
+  createWorkspace = pkgs.writeShellApplication {
+    name = "create-workspace";
+    runtimeInputs = [
+      pkgs.hyprland
+      pkgs.wofi
+      pkgs.jq
+    ];
+    text = ''
+      echo running >/tmp/y
+      workspaces=/tmp/x #$(mktemp)
+      hyprctl -j workspaces | jq '.[].name' | tr -d '"' >"$workspaces"
+      new=$(wofi -d <"$workspaces")
+      hyprctl dispatch workspace name:"$new"
+    '';
+  };
 in
 {
   wayland.windowManager.hyprland = {
@@ -70,6 +85,8 @@ in
         "SUPER SHIFT, J, movewindow, d"
         "SUPER SHIFT, K, movewindow, u"
         "SUPER SHIFT, L, movewindow, r"
+
+        "SUPER SHIFT, EQUAL, exec, ${createWorkspace}/bin/create-workspace"
 
         # Switch workspaces with mainMod + [0-9]
         "SUPER, 1, workspace, 1"
