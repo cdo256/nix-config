@@ -32,10 +32,10 @@ in
         follow_mouse = "1";
       };
       bind = [
-        "SUPER, T, exec, ${terminal}"
-        "SUPER, B, exec, ${browser}"
-        "SUPER, E, exec, ${fileManager}"
-        "SUPER, V, togglefloating,"
+        "SUPER SHIFT, T, exec, ${terminal}"
+        "SUPER SHIFT, B, exec, ${browser}"
+        "SUPER SHIFT, F, exec, ${fileManager}"
+        "SUPER SHIFT, V, togglefloating,"
         "SUPER, R, exec, ${menu}"
         #"SUPER, P, pseudo, # dwindle"
         "SUPER, J, togglesplit, # dwindle"
