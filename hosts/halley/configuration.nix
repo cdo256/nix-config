@@ -191,6 +191,7 @@ in
           '';
         };
       };
+      upower.enable = true;
     };
   };
 }
