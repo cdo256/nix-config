@@ -6,11 +6,26 @@
 }:
 host:
 {
-  modules ? [ ],
   type,
+  arch,
+  modules,
+  roles,
   ...
 }:
 let
   inherit (inputs.nixpkgs.lib) nixosSystem;
+  mkSystemRole = role: role;
+  mkSystemRoles = map mkSystemRole;
 in
-nixosSystem { }
+nixosSystem {
+  system = null;
+  #  #modules = modules ++ mkSystemRoles roles.system;
+  modules = modules ++ [
+    {
+      nixpkgs.hostPlatform = arch;
+      environment.systemPackages = [
+        inputs.nixpkgs.legacyPackages.${arch}.nil
+      ];
+    }
+  ];
+}
