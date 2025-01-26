@@ -1,11 +1,16 @@
 {
   description = "Nixos config flake";
 
-  outputs = inputs: import ./outputs inputs;
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ ./outputs ]; };
+
   #input: inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ ./modules/flake ]; };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils"; # Utility functions for flakes
     home-manager = {
       url = "github:nix-community/home-manager";
