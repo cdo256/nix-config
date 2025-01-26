@@ -4,5 +4,6 @@
     ./lib
     ./vars
     ./packages.nix
+    ./shells.nix
   ];
 }
