@@ -4,7 +4,10 @@
   lib,
   ...
 }:
-host: system:
-let
-in
-{ }
+host:
+{
+  modules ? [ ],
+  type,
+  ...
+}:
+lib.nixosSystem { }
