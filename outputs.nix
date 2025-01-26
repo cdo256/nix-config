@@ -5,5 +5,6 @@
     ./vars
     ./packages.nix
     ./shells.nix
+    ./systems
   ];
 }
