@@ -1,7 +1,20 @@
-{ self, lib, ... }:
+{
+  self,
+  inputs,
+  lib,
+  nixpkgs,
+  ...
+}:
 let
   cdolib = {
-    mkNixosSystem = import ./mkNixosSystem.nix;
+    mkNixosSystem = import ./mkNixosSystem.nix {
+      inherit
+        self
+        inputs
+        lib
+        nixpkgs
+        ;
+    };
   };
 in
 {

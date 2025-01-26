@@ -10,4 +10,7 @@ host:
   type,
   ...
 }:
-lib.nixosSystem { }
+let
+  inherit (inputs.nixpkgs.lib) nixosSystem;
+in
+nixosSystem { }
