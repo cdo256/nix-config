@@ -1,10 +1,11 @@
 {
   self,
+  inputs,
   ...
-}@inputs:
+}:
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, system, ... }:
     {
       devShells = {
         default = pkgs.mkShell {
@@ -12,7 +13,7 @@
             pkgs.gnumake
             pkgs.sops
             pkgs.just
-            pkgs.nh
+            inputs.nh.packages.${system}.nh
           ];
         };
       };

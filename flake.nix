@@ -42,6 +42,12 @@
       inputs.hyprland.follows = "hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nh = {
+      type = "github";
+      owner = "cdo256";
+      repo = "nh";
+      ref = "build-vm";
+    };
   };
 
 }
