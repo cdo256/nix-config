@@ -10,6 +10,7 @@ host:
   arch,
   modules,
   roles,
+  args ? { },
   ...
 }:
 let
@@ -30,5 +31,5 @@ nixosSystem {
   ];
   extraArgs = {
     inherit inputs;
-  };
+  } // args;
 }

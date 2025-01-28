@@ -2,22 +2,20 @@
   self,
   inputs,
   lib,
-  nixpkgs,
+  withSystem,
   ...
-}:
-let
-  cdolib = {
-    mkNixosSystem = import ./mkNixosSystem.nix {
+}@args:
+{
+  flake.lib = {
+    mkNixosSystem = import ./mkNixosSystem.nix args;
+    mkPackageList = import ./mkPackageList.nix {
       inherit
         self
         inputs
         lib
-        nixpkgs
+        withSystem
         ;
     };
   };
-in
-{
-  flake.lib = cdolib;
-  perSystem._module.args.lib = cdolib;
+  perSystem._module.args.lib = self.lib;
 }
