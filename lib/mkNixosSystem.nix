@@ -28,4 +28,7 @@ nixosSystem {
       ];
     }
   ];
+  extraArgs = {
+    inherit inputs;
+  };
 }

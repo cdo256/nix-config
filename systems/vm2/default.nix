@@ -6,6 +6,12 @@
       home = [ ];
       system = [ ];
     };
-    modules = [ ];
+    modules =
+      #let
+      #  modules = ../../modules;
+      #in
+      [
+        ./nixos.nix
+      ];
   };
 }
