@@ -14,8 +14,8 @@
 let
   packages = flake.lib.mkPackageList {
     modules = [
-      #"/base.nix"
-      #"/system.nix"
+      "/base.nix"
+      "/system.nix"
     ];
     inherit (config.nixpkgs.hostPlatform) system;
   };

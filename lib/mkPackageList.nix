@@ -12,15 +12,18 @@
   system,
   ...
 }:
-let
-  args = {
-    inherit self inputs lib;
-  } // extraArgs;
-in
-map (
-  module:
+(withSystem system (
+  { pkgs, ... }:
   let
-    package = import (basePath + module) args;
+    inherit (inputs.nixpkgs.lib) concatMap;
+    args = {
+      inherit
+        self
+        inputs
+        lib
+        pkgs
+        ;
+    } // extraArgs;
   in
-  withSystem system ({ pkgs, ... }: pkgs.callPackage package)
-) modules
+  concatMap (module: import (basePath + module) args) modules
+))
