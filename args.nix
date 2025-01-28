@@ -1,5 +1,6 @@
 { inputs, ... }:
 {
+  flake.baseDir = ./.;
   systems = import inputs.systems;
   perSystem =
     { system, ... }:
