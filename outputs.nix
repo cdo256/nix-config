@@ -6,5 +6,6 @@
     ./packages.nix
     ./shells.nix
     ./systems
+    ./debug.nix
   ];
 }
