@@ -7,8 +7,6 @@
       imports = [ ./outputs.nix ];
     };
 
-  #input: inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ ./modules/flake ]; };
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts = {
@@ -16,15 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     systems.url = "github:nix-systems/default";
-    flake-utils.url = "github:numtide/flake-utils"; # Utility functions for flakes
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nixvim = {
-    #  url = "github:nix-community/nixvim";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
     nixvim = {
       url = "github:cdo256/nixvim-config";
       inputs.nixpkgs.follows = "nixpkgs";
