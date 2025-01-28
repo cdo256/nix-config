@@ -1,3 +1,4 @@
+{ self, inputs, ... }:
 {
   flake.systems.vm2 = {
     type = "vm";
@@ -8,14 +9,17 @@
     };
     modules =
       let
-        modules = ../../modules;
+        root = ../../modules;
       in
       [
         ./nixos.nix
-        (modules + "/nixos/base.nix")
-        (modules + "/nixos/nix.nix")
-        (modules + "/nixos/unfree.nix")
-        (modules + "/nixos/virtual.nix")
+        (root + "/nixos/base.nix")
+        (root + "/nixos/nix.nix")
+        (root + "/nixos/unfree.nix")
+        (root + "/nixos/virtual.nix")
       ];
+    args = {
+      flake = self;
+    };
   };
 }
