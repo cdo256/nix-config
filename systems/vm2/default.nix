@@ -13,8 +13,10 @@
       in
       [
         ./nixos.nix
+        inputs.home-manager.nixosModules.home-manager
         (root + "/nixos/base.nix")
         (root + "/nixos/cdo.nix")
+        (root + "/nixos/hm.nix")
         (root + "/nixos/locale.nix")
         (root + "/nixos/nix.nix")
         (root + "/nixos/security.nix")
@@ -25,6 +27,7 @@
       ];
     args = {
       flake = self;
+      moduleRoot = ../../modules;
     };
   };
 }
