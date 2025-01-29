@@ -16,6 +16,7 @@
         inputs.home-manager.nixosModules.home-manager
         (root + "/nixos/base.nix")
         (root + "/nixos/cdo.nix")
+        (root + "/nixos/fonts.nix")
         (root + "/nixos/hm.nix")
         (root + "/nixos/locale.nix")
         (root + "/nixos/nix.nix")
