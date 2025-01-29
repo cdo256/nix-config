@@ -4,6 +4,7 @@
   config,
   lib,
   pkgs,
+  cdo,
   nixpkgs,
   stdenv,
   #files,
@@ -15,93 +16,14 @@ let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
 in
 {
-  imports = [ ];
-
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "cdo";
-  home.homeDirectory = "/home/cdo";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  xdg.enable = true;
-  xdg.userDirs = {
-    enable = true;
-    download = "/home/cdo/downloads";
-    pictures = "/home/cdo/images";
-    templates = "/home/cdo";
-    videos = "/home/cdo";
-    desktop = "/home/cdo";
-    documents = "/home/cdo";
-    music = "/home/cdo";
-    createDirectories = true;
-  };
   home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "brave";
-    TERMINAL = "alacritty";
-    BASH_HISTORY = "${config.xdg.configHome}/shell/histfile";
-    GNUPGHOME = "${config.home.homeDirectory}/.local/secure/gnupg";
-    HISTFILE = "${config.xdg.stateHome}/shell/histfile";
-    MAILDIR = "${config.xdg.dataHome}/mail/"; # Trailing slash required.
-    SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
+    EDITOR = "${inputs.nixvim.packages.${cdo.arch}.default}/bin/nvim";
+    BROWSER = "${pkgs.brave}/bin/brave";
+    TERMINAL = "${pkgs.kitty}/bin/kitty";
   };
-
-  #home.file = {
-  #  "sync/.stignore" = {
-  #    source = builtins.toFile "stignore" "
-  #      s9
-  #      a34
-  #      org
-  #      org-roam
-  #      secure
-  #    ";
-  #  };
-  #  ".config/sway" = {
-  #    source = "${files}/sway";
-  #    recursive = true;
-  #  };
-  #  ".config/spacemacs" = {
-  #    source = "${files}/spacemacs";
-  #    recursive = true;
-  #  };
-  #  ".config/git" = {
-  #    source = "${files}/git";
-  #    recursive = true;
-  #  };
-  #  #".config/nvim" = {
-  #  #  source = "${files}/nvim";
-  #  #  recursive = true;
-  #  #};
-  #  ".config/obs-studio" = {
-  #    source = "${files}/obs-studio";
-  #    recursive = true;
-  #  };
-  #  #".config/hypr" = {
-  #  #  source = "${files}/hypr";
-  #  #  recursive = true;
-  #  #};
-
-  #  ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
-  #  ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
-  #};
-
-  # For Dolphin
-  qt = {
-    enable = true;
-    platformTheme.name = "adwaita";
-    style = {
-      name = "adwaita-dark";
-    };
-  };
-  xdg.mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
 
   home.packages = [
     # Stable

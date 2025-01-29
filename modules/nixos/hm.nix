@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   flake,
   moduleRoot,
   ...
@@ -10,6 +11,7 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit moduleRoot;
+      inherit (config) cdo;
     };
     #users.cdo = {
     #  home.stateVersion = "24.05";
