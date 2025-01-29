@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   users.users.cdo = {
     uid = 1000;
@@ -12,5 +13,4 @@
     ];
     shell = pkgs.fish;
   };
-
 }

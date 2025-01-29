@@ -14,9 +14,14 @@
       [
         ./nixos.nix
         (root + "/nixos/base.nix")
+        (root + "/nixos/cdo.nix")
+        (root + "/nixos/locale.nix")
         (root + "/nixos/nix.nix")
+        (root + "/nixos/security.nix")
+        (root + "/nixos/shell.nix")
         (root + "/nixos/unfree.nix")
         (root + "/nixos/virtual.nix")
+        (root + "/nixos/vm-networking.nix")
       ];
     args = {
       flake = self;

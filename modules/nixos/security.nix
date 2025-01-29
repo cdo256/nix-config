@@ -8,4 +8,10 @@
     };
   };
   users.users.root.initialPassword = "";
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
 }
