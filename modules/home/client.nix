@@ -6,8 +6,7 @@
   pkgs,
   nixpkgs,
   stdenv,
-  files,
-  extraImports,
+  #files,
   ...
 }:
 
@@ -16,11 +15,7 @@ let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
 in
 {
-  imports = [
-    ./hyprland.nix
-    ./hyprpanel.nix
-    ./fish.nix
-  ] ++ extraImports;
+  imports = [ ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -59,44 +54,44 @@ in
     SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
   };
 
-  home.file = {
-    "sync/.stignore" = {
-      source = builtins.toFile "stignore" "
-        s9
-        a34
-        org
-        org-roam
-        secure
-      ";
-    };
-    ".config/sway" = {
-      source = "${files}/sway";
-      recursive = true;
-    };
-    ".config/spacemacs" = {
-      source = "${files}/spacemacs";
-      recursive = true;
-    };
-    ".config/git" = {
-      source = "${files}/git";
-      recursive = true;
-    };
-    #".config/nvim" = {
-    #  source = "${files}/nvim";
-    #  recursive = true;
-    #};
-    ".config/obs-studio" = {
-      source = "${files}/obs-studio";
-      recursive = true;
-    };
-    #".config/hypr" = {
-    #  source = "${files}/hypr";
-    #  recursive = true;
-    #};
+  #home.file = {
+  #  "sync/.stignore" = {
+  #    source = builtins.toFile "stignore" "
+  #      s9
+  #      a34
+  #      org
+  #      org-roam
+  #      secure
+  #    ";
+  #  };
+  #  ".config/sway" = {
+  #    source = "${files}/sway";
+  #    recursive = true;
+  #  };
+  #  ".config/spacemacs" = {
+  #    source = "${files}/spacemacs";
+  #    recursive = true;
+  #  };
+  #  ".config/git" = {
+  #    source = "${files}/git";
+  #    recursive = true;
+  #  };
+  #  #".config/nvim" = {
+  #  #  source = "${files}/nvim";
+  #  #  recursive = true;
+  #  #};
+  #  ".config/obs-studio" = {
+  #    source = "${files}/obs-studio";
+  #    recursive = true;
+  #  };
+  #  #".config/hypr" = {
+  #  #  source = "${files}/hypr";
+  #  #  recursive = true;
+  #  #};
 
-    ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
-    ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
-  };
+  #  ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
+  #  ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
+  #};
 
   # For Dolphin
   qt = {
