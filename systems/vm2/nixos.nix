@@ -12,13 +12,7 @@
   ...
 }:
 let
-  packages = flake.lib.mkPackageList {
-    modules = [
-      "/base.nix"
-      "/system.nix"
-    ];
-    inherit (config.nixpkgs.hostPlatform) system;
-  };
+  arch = "x86_64-linux";
 in
 {
   imports = [
@@ -30,8 +24,19 @@ in
   ];
 
   config = {
+    args = {
+      inherit arch;
+      type = "vm";
+      owner = "cdo";
+    };
     environment = {
-      systemPackages = packages;
+      systemPackages = flake.lib.mkPackageList {
+        modules = [
+          "/base.nix"
+          "/system.nix"
+        ];
+        system = arch;
+      };
     };
     services.printing.enable = true;
     services = {

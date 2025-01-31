@@ -9,6 +9,7 @@ host:
   type,
   arch,
   modules,
+  owner,
   args ? { },
   ...
 }:
@@ -19,9 +20,10 @@ nixosSystem {
   system = null;
   modules = modules ++ [
     {
-      config.cdo = {
+      config.args = {
         inherit type;
         inherit arch;
+        inherit owner;
       };
     }
   ];

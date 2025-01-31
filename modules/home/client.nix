@@ -4,7 +4,7 @@
   config,
   lib,
   pkgs,
-  cdo,
+  args,
   nixpkgs,
   stdenv,
   #files,
@@ -20,7 +20,7 @@ in
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.sessionVariables = {
-    EDITOR = "${inputs.nixvim.packages.${cdo.arch}.default}/bin/nvim";
+    EDITOR = "${inputs.nixvim.packages.${args.arch}.default}/bin/nvim";
     BROWSER = "${pkgs.brave}/bin/brave";
     TERMINAL = "${pkgs.kitty}/bin/kitty";
   };
