@@ -3,6 +3,7 @@
   flake.systems.vm2 = {
     type = "vm";
     arch = "x86_64-linux";
+    owner = "cdo";
     roles = {
       home = [ ];
       system = [ ];
@@ -16,8 +17,9 @@
         inputs.home-manager.nixosModules.home-manager
         (root + "/nixos/base.nix")
         (root + "/nixos/cdo.nix")
-        (root + "/nixos/fonts.nix")
+        (root + "/nixos/superuser.nix")
         (root + "/nixos/hm.nix")
+        (root + "/nixos/fonts.nix")
         (root + "/nixos/locale.nix")
         (root + "/nixos/nix.nix")
         (root + "/nixos/security.nix")

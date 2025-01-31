@@ -16,6 +16,6 @@
     #users.cdo = {
     #  home.stateVersion = "24.05";
     #};
-    users.cdo = import (moduleRoot + "/home");
+    users.${config.args.owner} = import (moduleRoot + "/home");
   };
 }
