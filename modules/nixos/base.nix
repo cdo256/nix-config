@@ -13,11 +13,14 @@ in
 {
   options.args = {
     arch = mkOption {
-      type = types.string;
+      type = types.str;
+      description = "Architecture string eg x86_64-linux";
     };
     type = mkOption {
       # TODO: Should be from a list of strings.
-      type = types.string;
+      type = types.str;
+      description = "server, laptop, destop, vm, etc.";
+    };
     owner = mkOption {
       type = types.str;
       description = "String of username of person who owns this system.";
