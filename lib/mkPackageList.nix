@@ -21,6 +21,7 @@
         self
         inputs
         lib
+        system
         pkgs
         ;
     } // extraArgs;

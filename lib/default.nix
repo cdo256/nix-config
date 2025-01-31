@@ -8,14 +8,7 @@
 {
   flake.lib = {
     mkNixosSystem = import ./mkNixosSystem.nix args;
-    mkPackageList = import ./mkPackageList.nix {
-      inherit
-        self
-        inputs
-        lib
-        withSystem
-        ;
-    };
+    mkPackageList = import ./mkPackageList.nix args;
   };
   perSystem._module.args.lib = self.lib;
 }
