@@ -29,6 +29,11 @@ in
       type = types.str;
       description = "The name of the machine.";
     };
+    graphical = mkOption {
+      type = types.bool;
+      default = config.args.type == "laptop" || config.args.type == "desktop";
+      description = "Does this machine have a graphical display output.";
+    };
   };
   config = {
     system.stateVersion = "24.05";

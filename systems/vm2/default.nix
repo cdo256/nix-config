@@ -4,6 +4,7 @@
     type = "vm";
     hostname = "vm2";
     arch = "x86_64-linux";
+    graphical = true;
     owner = "cdo";
     roles = {
       home = [ ];

@@ -11,6 +11,7 @@ host:
   modules,
   owner,
   hostname,
+  graphical,
   args ? { },
   ...
 }:
@@ -27,6 +28,7 @@ nixosSystem {
           arch
           owner
           hostname
+          graphical
           ;
       };
     }
