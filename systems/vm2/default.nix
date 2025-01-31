@@ -2,6 +2,7 @@
 {
   flake.systems.vm2 = {
     type = "vm";
+    hostname = "vm2";
     arch = "x86_64-linux";
     owner = "cdo";
     roles = {

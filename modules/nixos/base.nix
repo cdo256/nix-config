@@ -25,10 +25,15 @@ in
       type = types.str;
       description = "String of username of person who owns this system.";
     };
+    hostname = mkOption {
+      type = types.str;
+      description = "The name of the machine.";
+    };
   };
   config = {
     system.stateVersion = "24.05";
     nixpkgs.hostPlatform = config.args.arch;
+    networking.hostName = config.args.hostname;
     environment.systemPackages = [
       inputs.nixpkgs.legacyPackages.${config.args.arch}.nil
     ];
