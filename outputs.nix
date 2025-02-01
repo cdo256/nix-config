@@ -3,7 +3,7 @@
     ./args.nix
     ./lib
     ./vars
-    ./packages.nix
+    ./packages
     ./shells.nix
     ./systems
     ./debug.nix
