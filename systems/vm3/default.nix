@@ -1,10 +1,10 @@
 { self, inputs, ... }:
 {
-  flake.systems.vm2 = {
+  flake.systems.vm3 = {
     type = "vm";
-    hostname = "vm2";
+    hostname = "vm3";
     arch = "x86_64-linux";
-    graphical = false;
+    graphical = true;
     owner = "cdo";
     roles = {
       home = [ ];
