@@ -31,9 +31,9 @@ nixosSystem {
           graphical
           ;
       };
+      config._module.args = {
+        inherit inputs;
+      } // args;
     }
   ];
-  extraArgs = {
-    inherit inputs;
-  } // args;
 }
