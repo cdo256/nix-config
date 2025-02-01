@@ -11,7 +11,7 @@ host:
   modules,
   owner,
   hostname,
-  graphical,
+  graphical ? (type == "laptop" || type == "desktop"),
   args ? { },
   ...
 }:
