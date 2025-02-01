@@ -11,6 +11,7 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit moduleRoot;
+      inherit flake;
       inherit (config) args;
     };
     #users.cdo = {
