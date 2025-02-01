@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   qt = {
     enable = true;
@@ -7,4 +8,8 @@
     };
   };
   xdg.mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
+  environment.systemPckages = [
+    pkgs.kdePackages.dolphin
+    pkgs.kdePackages.qtwayland
+  ];
 }

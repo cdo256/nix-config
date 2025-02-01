@@ -29,15 +29,6 @@ in
       type = "vm";
       owner = "cdo";
     };
-    environment = {
-      systemPackages = flake.lib.mkPackageList {
-        modules = [
-          "/base.nix"
-          "/system.nix"
-        ];
-        system = arch;
-      };
-    };
     services.printing.enable = true;
     services = {
       #borgbase.enable = false;

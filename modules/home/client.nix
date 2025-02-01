@@ -16,6 +16,7 @@ let
   scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
 in
 {
+
   home.username = "cdo";
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
@@ -53,6 +54,7 @@ in
     pkgs.google-chrome
     pkgs.htop
     pkgs.brave
+    pkgs.obsidian
 
     # Broken
     pkgs.zoom # Screen sharing never worked, but browser sharing did.
@@ -73,7 +75,6 @@ in
     # Trying
     pkgs.delta
     pkgs.git-imerge
-    pkgs.obsidian
     pkgs.zotero # Reference manager
   ];
   services = {

@@ -20,6 +20,7 @@
         (root + "/nixos/base.nix")
         (root + "/nixos/cdo.nix")
         (root + "/nixos/superuser.nix")
+        (root + "/nixos/system-packages.nix")
         (root + "/nixos/hm.nix")
         (root + "/nixos/fonts.nix")
         (root + "/nixos/locale.nix")

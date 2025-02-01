@@ -7,17 +7,17 @@
   ...
 }:
 {
-  #imports = [
-  #  #  ./hardware-configuration.nix
-  #  #  ../devices.nix
-  #  #  ../../os-modules/syncnet.nix
-  #  #  ../../os-modules/borgbase.nix
-  #  #  ../../os-modules/sops.nix
-  #  #  ../../os-modules/hyprland.nix
-  #  #  ../../os-modules/fonts.nix
-  #  #  inputs.home-manager.nixosModules.default
-  #  #  inputs.sops-nix.nixosModules.sops
-  #];
+  imports = [
+    #  ./hardware-configuration.nix
+    #  ../devices.nix
+    #  ../../os-modules/syncnet.nix
+    #  ../../os-modules/borgbase.nix
+    #  ../../os-modules/sops.nix
+    #  ../../os-modules/hyprland.nix
+    #  ../../os-modules/fonts.nix
+    #  inputs.home-manager.nixosModules.default
+    #  inputs.sops-nix.nixosModules.sops
+  ];
 
   #config = {
   #  #  nixpkgs.config.allowUnfree = true;
