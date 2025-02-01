@@ -17,7 +17,7 @@ let
 in
 {
   imports = [
-    # ./halley
+    ./halley
     ./vm2
     ./vm3
   ];
