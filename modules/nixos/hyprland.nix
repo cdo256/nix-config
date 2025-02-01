@@ -1,11 +1,12 @@
 {
   pkgs,
   inputs,
-  system,
+  config,
   ...
 }:
 
 let
+  system = config.args.arch;
   hyprland-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
 in
 {

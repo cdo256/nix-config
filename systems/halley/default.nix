@@ -32,6 +32,7 @@
         (root + "/nixos/shell.nix")
         (root + "/nixos/xserver.nix")
         (root + "/nixos/graphical.nix")
+        (root + "/nixos/hyprland.nix")
         (root + "/nixos/video.nix")
         (root + "/nixos/vpn.nix")
         (root + "/nixos/unfree.nix")
