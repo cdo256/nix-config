@@ -17,7 +17,7 @@
 
   config = {
     home-manager.users.${config.args.owner}.wayland.windowManager.hyprland.settings.monitor = [
-      "eDP-1, 1920x1080, 0x0, 0.5"
+      "eDP-1, 1920x1080, 0x0, 1"
     ];
     services = {
       printing.enable = true;
