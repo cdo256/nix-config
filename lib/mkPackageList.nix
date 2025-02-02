@@ -1,6 +1,7 @@
 {
   self,
   inputs,
+  config,
   lib,
   withSystem,
   ...
@@ -8,7 +9,7 @@
 {
   modules,
   extraArgs ? { },
-  basePath ? ../packages,
+  basePath ? (config.flake.repoRoot + "/manifests"),
   system,
   ...
 }:
@@ -26,5 +27,11 @@
         ;
     } // extraArgs;
   in
-  concatMap (module: import (basePath + module) args) modules
+  concatMap (
+    module:
+    if lib.isPath module then # .
+      import module args
+    else
+      import (basePath + module) args
+  ) modules
 ))

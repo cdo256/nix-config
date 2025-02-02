@@ -10,6 +10,7 @@ host:
   arch,
   modules,
   owner,
+  packages,
   hostname,
   graphical ? (type == "laptop" || type == "desktop"),
   args ? { },
@@ -28,8 +29,10 @@ nixosSystem {
           arch
           owner
           hostname
+          packages
           graphical
           ;
+        repoRoot = ../.;
       };
       config._module.args = {
         inherit inputs;
