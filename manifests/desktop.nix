@@ -11,6 +11,7 @@
   pkgs.google-chrome
   pkgs.brave
   pkgs.obsidian
+  pkgs.anki
 
   # Broken
   pkgs.zoom # Screen sharing never worked, but browser sharing did.
@@ -25,4 +26,6 @@
 
   # Trying
   pkgs.zotero # Reference manager
+  pkgs.ncpamixer
+  pkgs.pavucontrol
 ]

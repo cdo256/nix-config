@@ -5,4 +5,5 @@
   pkgs.just
   pkgs.direnv
   pkgs.fd
+  pkgs.zip
 ]
