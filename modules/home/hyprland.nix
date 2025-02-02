@@ -49,8 +49,8 @@ in
       };
       bind = [
         "SUPER SHIFT, T, exec, ${terminal}"
-        "SUPER SHIFT, B, exec, ${browser}"
-        "SUPER SHIFT, F, exec, ${fileManager}"
+        "SUPER SHIFT, F, exec, ${browser}"
+        "SUPER SHIFT, E, exec, ${fileManager}"
         "SUPER SHIFT, W, exec, ${emailProgram}"
         "SUPER SHIFT, V, togglefloating,"
         "SUPER, R, exec, ${menu}"

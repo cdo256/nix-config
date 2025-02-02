@@ -1,4 +1,9 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  config,
+  ...
+}:
 {
   flake.systems.vm3 = {
     type = "vm";
@@ -33,7 +38,7 @@
       ];
     args = {
       flake = self;
-      moduleRoot = ../../modules;
+      inherit (config.flake) repoRoot;
     };
   };
 }

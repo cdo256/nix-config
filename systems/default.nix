@@ -11,7 +11,7 @@ let
   inherit (self.lib) mkNixosSystem;
   inherit (lib) mapAttrs mkOption;
   inherit (lib.attrsets) mergeAttrsList;
-  inherit (lib.types) lazyAttrsOf attrs;
+  inherit (lib.types) lazyAttrsOf attrs path;
   inherit (inputs.flake-parts.lib) mkSubmoduleOptions;
   args = { inherit inputs lib config; };
 in
@@ -30,5 +30,6 @@ in
       '';
     };
   };
+  config.flake.repoRoot = ../.;
   config.flake.nixosConfigurations = mapAttrs mkNixosSystem self.systems;
 }

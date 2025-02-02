@@ -1,4 +1,9 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  config,
+  ...
+}:
 {
   flake.systems.halley = {
     type = "laptop";
@@ -6,12 +11,30 @@
     arch = "x86_64-linux";
     owner = "cdo";
     roles = {
-      home = [ ];
       system = [ ];
+      home = [ ];
     };
+    packages =
+      let
+        root = config.flake.repoRoot + "/manifests";
+      in
+      {
+        system = [
+          (root + "/base.nix")
+          (root + "/system.nix")
+          (root + "/terminal.nix")
+        ];
+        home = [
+          (root + "/base.nix")
+          (root + "/desktop.nix")
+          (root + "/development.nix")
+          (root + "/terminal.nix")
+          (root + "/sysadmin.nix")
+        ];
+      };
     modules =
       let
-        root = ../../modules;
+        root = config.flake.repoRoot + "/modules";
       in
       [
         ./nixos.nix
@@ -39,7 +62,7 @@
       ];
     args = {
       flake = self;
-      moduleRoot = ../../modules;
+      inherit (config.flake) repoRoot;
     };
   };
 }

@@ -2,10 +2,7 @@
 {
   config.environment = {
     systemPackages = flake.lib.mkPackageList {
-      modules = [
-        "/base.nix"
-        "/system.nix"
-      ];
+      modules = config.args.packages.system;
       system = config.args.arch;
     };
   };

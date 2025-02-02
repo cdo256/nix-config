@@ -34,6 +34,22 @@ in
       default = config.args.type == "laptop" || config.args.type == "desktop";
       description = "Does this machine have a graphical display output.";
     };
+    packages = {
+      home = mkOption {
+        type = types.listOf types.path;
+        default = [ ];
+        description = "List of manifests packages to run on the owner's home-manager configuration.";
+      };
+      system = mkOption {
+        type = types.listOf types.path;
+        default = [ ];
+        description = "List of system manifests to run on this system.";
+      };
+    };
+    repoRoot = mkOption {
+      type = types.path;
+      description = "Root of the repo.";
+    };
   };
   config = {
     system.stateVersion = "24.05";

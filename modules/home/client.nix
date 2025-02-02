@@ -11,15 +11,7 @@
   ...
 }:
 
-let
-  symlink = config.lib.file.mkOutOfStoreSymlink;
-  scriptsPackage = pkgs.callPackage ./scripts/default.nix { };
-in
 {
-
-  home.username = "cdo";
-  home.stateVersion = "24.05"; # Please read the comment before changing.
-
   home.sessionVariables = {
     EDITOR = "${inputs.nixvim.packages.${args.arch}.default}/bin/nvim";
     BROWSER = "${pkgs.brave}/bin/brave";

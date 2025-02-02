@@ -2,21 +2,24 @@
   inputs,
   config,
   flake,
-  moduleRoot,
   ...
 }:
 {
   home-manager = {
     backupFileExtension = "nix.bak";
     extraSpecialArgs = {
-      inherit inputs;
-      inherit moduleRoot;
-      inherit flake;
-      inherit (config) args;
+      inherit
+        inputs
+        flake
+        ;
+      inherit (config)
+        args
+        ;
     };
-    #users.cdo = {
-    #  home.stateVersion = "24.05";
-    #};
-    users.${config.args.owner} = import (moduleRoot + "/home");
+    users.${config.args.owner} =
+      let
+        root = config.args.repoRoot + "/modules/home";
+      in
+      import (root + "/${config.args.owner}");
   };
 }
