@@ -1,0 +1,15 @@
+{ pkgs, ... }:
+[
+  pkgs.ifuse
+  pkgs.usbmuxd
+  pkgs.restic
+  pkgs.nmap
+  pkgs.nvd
+  pkgs.nix-output-monitor
+  pkgs.powertop
+  pkgs.powerstat
+  pkgs.htop
+  pkgs.btop
+  pkgs.nmon
+  pkgs.wavemon
+]
