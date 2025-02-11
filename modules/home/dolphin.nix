@@ -8,7 +8,7 @@
     };
   };
   xdg.mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
-  environment.systemPckages = [
+  environment.systemPackages = [
     pkgs.kdePackages.dolphin
     pkgs.kdePackages.qtwayland
   ];
