@@ -15,5 +15,6 @@ in
     (root + "/hyprland.nix")
     (root + "/hyprpanel.nix")
     (root + "/packages.nix")
+    (root + "/dolphin.nix")
   ];
 }
