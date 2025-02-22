@@ -11,13 +11,13 @@ build host=HOST:
     nh os build . -H {{host}} --out-link ./results/system -- --show-trace
 
 switch host=HOST:
-    nh os switch . -H {{host}} 
+    nh os switch . -H {{host}} -- --show-trace
 
 build-home kind="client":
     nh home build . -c {{kind}} --out-link ./results/home -- --show-trace
 
 switch-home kind="client":
-    nh home switch . -c {{kind}}
+    nh home switch . -c {{kind}} -- --show-trace
 
 build-vm host=VM:
     nixos-rebuild build-vm --flake .#{{host}} --out-link ./results/vm
