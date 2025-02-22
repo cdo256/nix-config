@@ -15,7 +15,9 @@
       home = [ ];
       system = [ ];
     };
-    modules =
+    packages.system = [ ];
+    packages.home = [ ];
+    modules.nixos =
       let
         root = ../../modules;
       in
@@ -36,6 +38,7 @@
         (root + "/nixos/virtual.nix")
         (root + "/nixos/vm-networking.nix")
       ];
+    modules.home = [ ];
     args = {
       flake = self;
       inherit (config.flake) repoRoot;

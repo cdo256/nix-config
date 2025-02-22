@@ -46,6 +46,18 @@ in
         description = "List of system manifests to run on this system.";
       };
     };
+    modules = {
+      home = mkOption {
+        type = types.listOf types.path;
+        default = [ ];
+        description = "List of home-manager modules.";
+      };
+      nixos = mkOption {
+        type = types.listOf types.path;
+        default = [ ];
+        description = "List of nixos modules.";
+      };
+    };
     repoRoot = mkOption {
       type = types.path;
       description = "Root of the repo.";

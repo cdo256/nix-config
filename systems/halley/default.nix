@@ -32,7 +32,7 @@
           (root + "/sysadmin.nix")
         ];
       };
-    modules =
+    modules.nixos =
       let
         root = config.flake.repoRoot + "/modules";
       in
@@ -61,6 +61,9 @@
         (root + "/nixos/vpn.nix")
         (root + "/nixos/unfree.nix")
       ];
+    modules.home = [
+      ./home/hyprland.nix
+    ];
     args = {
       flake = self;
       inherit (config.flake) repoRoot;

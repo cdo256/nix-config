@@ -16,5 +16,5 @@ in
     (root + "/hyprland.nix")
     (root + "/hyprpanel.nix")
     (root + "/packages.nix")
-  ];
+  ] ++ args.modules.home;
 }

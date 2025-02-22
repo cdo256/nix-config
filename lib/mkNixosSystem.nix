@@ -21,7 +21,7 @@ let
 in
 nixosSystem {
   system = null;
-  modules = modules ++ [
+  modules = modules.nixos ++ [
     {
       config.args = {
         inherit
@@ -31,6 +31,7 @@ nixosSystem {
           hostname
           packages
           graphical
+          modules
           ;
         repoRoot = ../.;
       };
