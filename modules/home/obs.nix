@@ -1,0 +1,3 @@
+{
+  programs.obs.enable = true;
+}
