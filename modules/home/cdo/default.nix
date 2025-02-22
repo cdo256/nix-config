@@ -11,6 +11,7 @@ in
   imports = [
     ./vars.nix
     (root + "/base.nix")
+    (root + "/fish.nix")
     (root + "/fs.nix")
     (root + "/hyprland.nix")
     (root + "/hyprpanel.nix")
