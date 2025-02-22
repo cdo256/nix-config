@@ -20,7 +20,7 @@ switch-home kind="client":
     nh home switch . -c {{kind}} -- --show-trace
 
 build-vm host=VM:
-    nixos-rebuild build-vm --flake .#{{host}} --out-link ./results/vm
+    nh os build-vm -H {{host}} --out-link ./results/vm -- --show-trace
 
 run-vm host=VM: build-vm
     sudo ./results/vm/bin/run-{{host}}-vm
