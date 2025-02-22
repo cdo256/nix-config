@@ -16,7 +16,6 @@
   ];
 
   config = {
-    programs.obs.enable = true;
     home-manager.users.${config.args.owner}.wayland.windowManager.hyprland.settings.monitor = [
       #TODO
       "DP-1, 1920x1080, 0x0, 1"

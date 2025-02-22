@@ -39,10 +39,11 @@
     ];
   };
 
-  fileSystems."/mnt/guix-home" = {
-    device = "/dev/disk/by-uuid/12e48f4c-68b0-4819-a122-989eb034f1f2";
-    fsType = "ext4";
-  };
+  # Note: This appears to no longer be in use. Disable mounting.
+  #fileSystems."/mnt/guix-home" = {
+  #  device = "/dev/disk/by-uuid/12e48f4c-68b0-4819-a122-989eb034f1f2";
+  #  fsType = "ext4";
+  #};
 
   swapDevices = [ ];
 

@@ -5,9 +5,9 @@
   ...
 }:
 {
-  flake.systems.vm2 = {
+  flake.systems.peter = {
     type = "vm";
-    hostname = "vm2";
+    hostname = "peter";
     arch = "x86_64-linux";
     graphical = false;
     owner = "cdo";
@@ -33,12 +33,13 @@
           (root + "/sysadmin.nix")
         ];
       };
-    modules =
+    modules.nixos =
       let
         root = ../../modules;
       in
       [
         ./nixos.nix
+        ./boot.nix
         ./hardware.nix
         inputs.home-manager.nixosModules.home-manager
         (root + "/nixos/base.nix")
@@ -60,6 +61,9 @@
         (root + "/nixos/vpn.nix")
         (root + "/nixos/unfree.nix")
       ];
+    modules.home = [
+      #./home/hyprland.nix
+    ];
     args = {
       flake = self;
       inherit (config.flake) repoRoot;

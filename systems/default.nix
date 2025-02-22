@@ -18,6 +18,7 @@ in
 {
   imports = [
     ./halley
+    ./peter
     ./vm2
     ./vm3
   ];
