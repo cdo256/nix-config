@@ -6,4 +6,5 @@
   pkgs.direnv
   pkgs.fd
   pkgs.zip
+  pkgs.file
 ]

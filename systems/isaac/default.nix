@@ -8,6 +8,8 @@
   flake.systems.halley = {
     type = "laptop";
     hostname = "halley";
+    syncthingId = "5Y5D72K-I4AOOJS-MAXNQUR-ISK7SGZ-QWQ6VN6-FGK37VW-QJFWOHY-UAKJUQZ";
+    sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqDnhdlknFB0KhLATaKouZW1jlqchpzuAcScrlOn4XG cdo@halley";
     arch = "x86_64-linux";
     owner = "cdo";
     roles = {
@@ -43,7 +45,6 @@
         inputs.home-manager.nixosModules.home-manager
         (root + "/nixos/base.nix")
         (root + "/nixos/cdo.nix")
-        (root + "/nixos/dolphin.nix")
         (root + "/nixos/superuser.nix")
         (root + "/nixos/system-packages.nix")
         (root + "/nixos/laptop.nix")
