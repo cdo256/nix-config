@@ -56,10 +56,10 @@ in
     #  source = "${files}/nvim";
     #  recursive = true;
     #};
-    ".config/obs-studio" = {
-      source = "${files}/obs-studio";
-      recursive = true;
-    };
+    #".config/obs-studio" = {
+    #  source = "${files}/obs-studio";
+    #  recursive = true;
+    #};
     #".config/hypr" = {
     #  source = "${files}/hypr";
     #  recursive = true;
