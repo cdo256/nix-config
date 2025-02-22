@@ -62,7 +62,7 @@
         (root + "/nixos/unfree.nix")
       ];
     modules.home = [
-      ./home/hyprland.nix
+      ./hyprland.nix
     ];
     args = {
       flake = self;
