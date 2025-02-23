@@ -24,6 +24,7 @@
       [
         ./nixos.nix
         inputs.home-manager.nixosModules.home-manager
+        inputs.sops-nix.nixosModules.sops
         (root + "/nixos/base.nix")
         (root + "/nixos/cdo.nix")
         (root + "/nixos/superuser.nix")
@@ -37,6 +38,10 @@
         (root + "/nixos/unfree.nix")
         (root + "/nixos/virtual.nix")
         (root + "/nixos/vm-networking.nix")
+        (root + "/nixos/devices.nix")
+        (root + "/nixos/syncnet.nix")
+        (root + "/nixos/borgbase.nix")
+        (root + "/nixos/sops.nix")
       ];
     modules.home = [ ];
     args = {

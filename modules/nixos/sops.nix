@@ -7,7 +7,7 @@
 
 {
   sops = {
-    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFile = config.args.repoRoot + "/secrets/secrets.yaml";
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/cdo/.config/sops/age/keys.txt";
     secrets = {

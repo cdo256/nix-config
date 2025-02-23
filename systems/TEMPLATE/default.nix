@@ -40,6 +40,7 @@
         ./hardware.nix
         ./boot.nix
         inputs.home-manager.nixosModules.home-manager
+        inputs.sops-nix.nixosModules.sops
         (root + "/base.nix")
         (root + "/cdo.nix")
         (root + "/superuser.nix")
@@ -58,6 +59,10 @@
         (root + "/video.nix")
         (root + "/vpn.nix")
         (root + "/unfree.nix")
+        (root + "/devices.nix")
+        (root + "/syncnet.nix")
+        (root + "/borgbase.nix")
+        (root + "/sops.nix")
       ];
     args = {
       flake = self;
