@@ -7,4 +7,7 @@
       '';
     };
   };
+  systemd.services.openvpn-surfshark = {
+    enable = false; # FIXME: This needs extra config to get working.
+  };
 }
