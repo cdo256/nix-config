@@ -21,26 +21,27 @@ in
   config =
     let
       folders =
+        with config.devices;
         {
           "sync" = {
             path = "/home/cdo/sync";
-            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+            devices = pcs ++ androidDevices;
           };
           "org" = {
             path = "/home/cdo/sync/org";
-            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+            devices = pcs ++ androidDevices;
           };
           "org-roam" = {
             path = "/home/cdo/sync/org-roam";
-            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+            devices = pcs ++ androidDevices;
           };
           "obsidian" = {
             path = "/home/cdo/sync/obsidian";
-            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+            devices = pcs ++ androidDevices;
           };
           "secure" = {
             path = "/home/cdo/sync/secure";
-            devices = cfg.devices.pcs ++ cfg.devices.androidDevices;
+            devices = pcs ++ androidDevices;
           };
         }
         // builtins.listToAttrs (
@@ -48,9 +49,9 @@ in
             name = androidDevice.name + "-root";
             value = {
               path = "/home/cdo/sync/" + androidDevice.name;
-              devices = [ androidDevice ] ++ cfg.devices.pcs;
+              devices = [ androidDevice ] ++ pcs;
             };
-          }) cfg.devices.androidDevices
+          }) androidDevices
         );
     in
     {
@@ -58,7 +59,7 @@ in
         map (device: {
           name = device.ipAddr;
           value = [ device.name ];
-        }) (builtins.filter (device: device ? "ipAddr") cfg.devices.allDevices)
+        }) (builtins.filter (device: device ? "ipAddr") config.devices.allDevices)
       );
       services.syncthing = {
         enable = true;
@@ -75,7 +76,7 @@ in
                 id = device.syncthingId;
                 introducer = false;
               };
-            }) (builtins.filter (device: device ? "syncthingId") cfg.devices.allDevices)
+            }) (builtins.filter (device: device ? "syncthingId") config.devices.allDevices)
           );
           folders = builtins.mapAttrs (name: folder: {
             enable = true;
