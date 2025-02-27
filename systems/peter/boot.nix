@@ -1,16 +1,18 @@
-{ config, lib, ... }:
-let
-  inherit (lib) mkIf;
-in
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   config.boot = {
     loader = {
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        device = "/dev/disk/by-uuid/3DD8-219F";
-        useOSProber = true;
-      };
     };
   };
+  config.environment.systemPackages = [
+    pkgs.grub2
+    pkgs.os-prober
+  ];
 }
