@@ -36,32 +36,32 @@ This function should only modify configuration layer settings."
      agda-editor-tactics
      auto-completion
      better-defaults
-     chrome
-     clojure
+     ;chrome
+     ;clojure
      emacs-lisp
-     (erc :variables
-          erc-enable-sasl-auth t
-          erc-hide-list '("JOIN" "PART" "QUIT")
-          erc-server-list
-          '(("irc.libera.chat"
-             :port 6697
-             :ssl t
-             :nick "cdo256")
-            ("irc.oftc.net"
-             :port 6697
-             :ssl t
-             :nick "cdo256")))
+     ;(erc :variables
+     ;     erc-enable-sasl-auth t
+     ;     erc-hide-list '("JOIN" "PART" "QUIT")
+     ;     erc-server-list
+     ;     '(("irc.libera.chat"
+     ;        :port 6697
+     ;        :ssl t
+     ;        :nick "cdo256")
+     ;       ("irc.oftc.net"
+     ;        :port 6697
+     ;        :ssl t
+     ;        :nick "cdo256")))
      git
-     gnus
-     go
+     ;gnus
+     ;go
      (helm :variables
            ;; These would conflict with my windwo navigation bindings.
            hybrid-style-enable-hjkl-bindings nil)
-     html
-     javascript
-     lsp
-     lua
-     markdown
+     ;html
+     ;javascript
+     ;lsp
+     ;lua
+     ;markdown
      ;;; TODO: Diagnose why this might be broken.
      ;; (mu4e :variables
      ;;       mu4e-attachment-dir "~/downloads"
@@ -74,18 +74,18 @@ This function should only modify configuration layer settings."
      ;;       mu4e-refile-folder "/Archives"
      ;;       mu4e-trash-folder "/trash")
      multiple-cursors
-     nginx
-     notmuch
-     (org :variables
-          org-roam-directory "~/org-roam/"
-          org-enable-roam-support t)
-     python
-     scheme
-     ruby
-     rust
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+     ;nginx
+     ;notmuch
+     ;(org :variables
+     ;     org-roam-directory "~/org-roam/"
+     ;     org-enable-roam-support t)
+     ;python
+     ;scheme
+     ;ruby
+     ;rust
+     ;(shell :variables
+     ;       shell-default-height 30
+     ;       shell-default-position 'bottom)
      spacemacs-defaults
      spacemacs-editing
      (spacemacs-evil :variables
@@ -97,15 +97,16 @@ This function should only modify configuration layer settings."
      spacemacs-navigation
      spacemacs-project
      spacemacs-purpose
-     spell-checking
-     syntax-checking
-     systemd
+     ;spell-checking
+     ;syntax-checking
+     ;systemd
      treemacs
      tree-sitter
-     (vinegar :variables
-              vinegar-reuse-dired-buffer t)
-     version-control
-     yaml)
+     ;(vinegar :variables
+     ;         vinegar-reuse-dired-buffer t)
+     ;version-control
+     ;yaml
+     )
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
@@ -297,8 +298,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(deeper-blue
+                         )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
