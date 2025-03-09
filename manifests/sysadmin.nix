@@ -17,4 +17,5 @@
   pkgs.sysstat
   pkgs.inetutils
   pkgs.nh
+  pkgs.isd
 ]
