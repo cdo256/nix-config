@@ -10,7 +10,7 @@ let
   terminal = "${pkgs.kitty}/bin/kitty";
   browser = "${pkgs.brave}/bin/brave";
   launcher = "${pkgs.wofi}/bin/wofi";
-  fileManager = "${pkgs.dolphin}/bin/dolphin";
+  fileManager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
   emailProgram = "${pkgs.thunderbird}/bin/thunderbird";
   passwordManager = "${pkgs.keepassxc}/bin/keepassxc";
   menu = "${launcher} -S run";

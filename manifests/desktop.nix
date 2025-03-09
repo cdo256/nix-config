@@ -20,7 +20,7 @@
   pkgs.vscodium
   pkgs.emacs
   pkgs.signal-desktop
-  pkgs.okular
+  pkgs.kdePackages.okular
   pkgs.inkscape
   pkgs.gimp
 
