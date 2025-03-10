@@ -14,6 +14,8 @@
             pkgs.sops
             pkgs.just
             inputs.nh.packages.${system}.nh
+            pkgs.screen
+            pkgs.restic
           ];
         };
       };
