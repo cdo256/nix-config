@@ -48,5 +48,8 @@ nix-env -i nh
 nix-env -i sops
 nix-env -i just
 nix-env -i yq
+nix-env -i screen
+# For terminfo
+nix-env -i kitty
 direnv allow
 
