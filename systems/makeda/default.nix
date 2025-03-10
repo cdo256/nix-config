@@ -37,8 +37,7 @@
         ./nixos.nix
         ./hardware.nix
         ./boot.nix
-	
-	./sshd.nix
+        ./sshd.nix
         inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
         (root + "/base.nix")
