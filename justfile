@@ -8,10 +8,10 @@ default:
     @just switch
 
 build host=HOST:
-    nh os build . -R -H {{host}} --out-link ./results/system -- --show-trace
+    nh os build . -H {{host}} --out-link ./results/system -- --show-trace
 
 switch host=HOST:
-    nh os switch . -R -H {{host}} -- --show-trace
+    nh os switch . -H {{host}} -- --show-trace
 
 build-home kind="client":
     nh home build . -c {{kind}} --out-link ./results/home -- --show-trace
