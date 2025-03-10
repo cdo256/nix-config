@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/usr/bin/env -S bash -ex
 
 export MIN_VERSION="2.22.0"
 export NIX_CONFIG="experimental-features = nix-command flakes"
@@ -9,7 +9,7 @@ which nix || {
 	sudo ./nix-install.sh --daemon --yes
 }
 
-VERSION=$(nix --version | grep -oP '\d+(\.\d+)*')
+VERSION=$(nix --version | grep -oP '\d+(\.\d+)+')
 
 if [[ -z "$VERSION" ]]; then
 	echo "Failed to extract version from nix"
@@ -17,6 +17,8 @@ if [[ -z "$VERSION" ]]; then
 fi
 
 echo "Detected version: $VERSION"
+echo "Upgrading to nix unstable..."
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 
 version_gt() {
 	# Returns true if $1 >= $2
@@ -30,13 +32,14 @@ fi
 
 grep 'direnv' ~/.bashrc || echo 'eval "$(direnv hook bash)"' >>~/.bashrc
 grep 'NIX_CONFIG' /etc/profile.d/nix.sh || echo 'export NIX_CONFIG="experimental-features = nix-command flakes"' | sudo tee -a /etc/profile.d/nix.sh
+source /etc/profile.d/nix.sh
 
-source ~/.profile
+[[ -e ~/.profile ]] && source ~/.profile
 
-nix-env -iA nixpkgs.direnv
-nix-env -iA nixpkgs.nh
-nix-env -iA nixpkgs.sops
-nix-env -iA nixpkgs.just
-nix-env -iA nixpkgs.yq
+nix-env -i direnv
+nix-env -i nh
+nix-env -i sops
+nix-env -i just
+nix-env -i yq
 direnv allow
 

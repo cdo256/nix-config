@@ -1,0 +1,5 @@
+{
+  services = {
+    borgbase.enable = true;
+  };
+}

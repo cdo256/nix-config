@@ -19,6 +19,7 @@ in
   imports = [
     ./halley
     ./peter
+    ./makeda
     ./vm2
     ./vm3
   ];

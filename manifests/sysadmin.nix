@@ -12,4 +12,9 @@
   pkgs.btop
   pkgs.nmon
   pkgs.wavemon
+  pkgs.mtr
+  pkgs.dig
+  pkgs.sysstat
+  pkgs.inetutils
+  pkgs.nh
 ]

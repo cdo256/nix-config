@@ -2,5 +2,4 @@
 [
   pkgs.ifuse
   pkgs.usbmuxd
-  pkgs.nh
 ]

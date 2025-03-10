@@ -15,6 +15,8 @@
       "restic/halley/key" = { };
       "restic/peter/url" = { };
       "restic/peter/key" = { };
+      "restic/makeda/url" = { };
+      "restic/makeda/key" = { };
       "restic/rhiannon/url" = { };
       "restic/rhiannon/key" = { };
     };
