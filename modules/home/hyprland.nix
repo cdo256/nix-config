@@ -1,5 +1,6 @@
 {
   pkgs,
+  args,
   inputs,
   system,
   ...
@@ -32,7 +33,7 @@ let
 in
 {
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = args.graphical;
     settings = {
       exec-once = [
         "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &"

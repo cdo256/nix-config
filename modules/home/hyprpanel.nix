@@ -1,13 +1,12 @@
 # Hyprpanel is the bar on top of the screen
 # Display informations like workspaces, battery, wifi, ...
-{ inputs, config, ... }:
+{ inputs, config, args, ... }:
 
 {
-
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
 
   programs.hyprpanel = {
-    enable = true;
+    enable = args.graphical;
     systemd.enable = true;
     hyprland.enable = true;
     overwrite.enable = true;
