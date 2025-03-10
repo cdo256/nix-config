@@ -8,7 +8,7 @@
   flake.systems.makeda = {
     type = "server";
     os = "nixos";
-    hostname = "maked";
+    hostname = "makeda";
     #sshPublicKey = "ssh-ed25519 XXXXXXXXXXXXXXXXXXXXXXXXXXXX cdo@HOSTNAME";
     arch = "x86_64-linux";
     owner = "cdo";
