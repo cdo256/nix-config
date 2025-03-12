@@ -54,5 +54,4 @@ add-age-key-to-secrets key:
 
 bootstrap:
   just try-add-sops-key
-  just add-age-key-to-secrets ~/.config/sops/age/keys.txt
 
