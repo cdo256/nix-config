@@ -47,7 +47,10 @@ add-sops-key: generate-age-key
 try-add-sops-key:
     -! grep {{HOST}} .sops.yaml && just add-sops-key
 
-bootstrap: try-add-sops-key
-
 add-age-key-to-secrets key:
   sops -r -i --add-age {{key}} secrets/secrets.yaml
+
+bootstrap:
+  just try-add-sops-key
+  just add-age-key-to-secrets ~/.config/sops/age/keys.txt
+
