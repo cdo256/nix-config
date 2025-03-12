@@ -38,6 +38,9 @@ generate-age-key: generate-ssh-key
 add-sops-key: generate-age-key
     #!/usr/bin/env -S bash -x
     AGE_KEY=`nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt`
+    if grep -i "{{HOST}}" .sops.yaml; then
+      echo "{{HOST}} is already present in ``.sops.yaml``. Refusing to override."
+      exit 1
     sed -i "/^keys:/a\\  - &{{HOST}} $AGE_KEY" .sops.yaml 
     sed -i "/^    - age:/a\\      - *{{HOST}}" .sops.yaml 
 
