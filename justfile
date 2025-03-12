@@ -44,7 +44,7 @@ add-sops-key: generate-age-key
       exit 1
     fi
     sed -i "/^keys:/a\\  - &{{HOST}} $AGE_KEY" .sops.yaml 
-    sed -i "/^    - age:/a\\      - *{{HOST}}" .sops.yaml 
+    sed -i "/^      - age:/a\\          - *{{HOST}}" .sops.yaml 
 
 try-add-sops-key:
     -! grep {{HOST}} .sops.yaml && just add-sops-key
