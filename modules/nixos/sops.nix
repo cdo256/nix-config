@@ -19,6 +19,9 @@
       "restic/makeda/key" = { };
       "restic/rhiannon/url" = { };
       "restic/rhiannon/key" = { };
+      "cdo/git-credentials" = {
+        owner = "cdo";
+      };
     };
   };
 }
