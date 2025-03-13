@@ -23,6 +23,11 @@ let
       type = "server";
       ipAddr = "139.162.147.31";
     };
+    makeda = {
+      name = "makeda";
+      type = "server";
+      ipAddr = "172.104.147.15";
+    };
     peter = {
       name = "peter";
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
@@ -67,11 +72,13 @@ in
       machines.algernon
       machines.eugenia
       machines.rhiannon
+      machines.makeda
       machines.isaac
       machines.peter
       machines.halley
     ];
     nixosDevices = [
+      machines.makeda
       machines.isaac
       machines.peter
       machines.halley
@@ -84,6 +91,7 @@ in
       machines.algernon
       machines.eugenia
       machines.rhiannon
+      machines.makeda
       machines.isaac
       machines.peter
       machines.halley
