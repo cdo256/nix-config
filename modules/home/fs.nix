@@ -13,13 +13,13 @@ in
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
-    download = "/home/cdo/downloads";
-    pictures = "/home/cdo/images";
-    templates = "/home/cdo";
-    videos = "/home/cdo";
-    desktop = "/home/cdo";
-    documents = "/home/cdo";
-    music = "/home/cdo";
+    download = "${config.home.homeDirectory}/downloads";
+    pictures = "${config.home.homeDirectory}/images";
+    templates = "${config.home.homeDirectory}";
+    videos = "${config.home.homeDirectory}";
+    desktop = "${config.home.homeDirectory}";
+    documents = "${config.home.homeDirectory}";
+    music = "${config.home.homeDirectory}";
     createDirectories = true;
   };
   home.sessionVariables = {
@@ -65,7 +65,7 @@ in
     #  recursive = true;
     #};
 
-    ".thunderbird".source = symlink "/home/cdo/.config/thunderbird";
-    ".mozilla/firefox".source = symlink "/home/cdo/.config/firefox";
+    ".thunderbird".source = symlink "${config.home.homeDirectory}/.config/thunderbird";
+    ".mozilla/firefox".source = symlink "${config.home.homeDirectory}/.config/firefox";
   };
 }
