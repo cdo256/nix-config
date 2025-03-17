@@ -62,6 +62,7 @@ in
         "SUPER ALT, F4, killactive,"
         "ALT, F4, killactive,"
         "SUPER ALT SHIFT, F4, exit,"
+        "SUPER, F4, exec, sudo systemctl suspend"
 
         # Move focus
         "SUPER, left, movefocus, l"
