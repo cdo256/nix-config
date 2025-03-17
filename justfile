@@ -31,17 +31,17 @@ generate-ssh-key:
 generate-age-key: generate-ssh-key
     #!/usr/bin/env -S bash -x
     mkdir -p ~/.config/sops/age/
-    if ! [[ -s ~/.config/sops/age/keys.txt ]]; then
-        nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 >~/.config/sops/age/keys.txt
-        chmod 0600 ~/.config/sops/age/keys.txt
+    if ! [[ -s /etc/sops/age/keys.txt ]]; then
+        sudo nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 | sudo tee ~/.config/sops/age/keys.txt
+        sudo chmod 0600 /etc/sops/age/keys.txt
     fi
 
 add-sops-key: generate-age-key
     #!/usr/bin/env -S bash -x
-    AGE_KEY=`nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt`
+    AGE_KEY=`sudo nix shell nixpkgs#age -c age-keygen -y /etc/sops/age/keys.txt`
     if grep -i "{{HOST}}" .sops.yaml; then
-      echo "NOTE: {{HOST}} is already present in '.sops.yaml'. Refusing to override."
-      exit 1
+        echo "NOTE: {{HOST}} is already present in '.sops.yaml'. Refusing to override."
+        exit 1
     fi
     sed -i "/^keys:/a\\  - &{{HOST}} $AGE_KEY" .sops.yaml 
     sed -i "/^      - age:/a\\          - *{{HOST}}" .sops.yaml 
@@ -50,8 +50,8 @@ try-add-sops-key:
     -! grep {{HOST}} .sops.yaml && just add-sops-key
 
 add-age-key-to-secrets key:
-  sops -r -i --add-age {{key}} secrets/secrets.yaml
+    sops -r -i --add-age {{key}} secrets/secrets.yaml
 
 bootstrap:
-  just try-add-sops-key
+    just try-add-sops-key
 
