@@ -41,7 +41,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
         (root + "/base.nix")
-        (root + "/cdo.nix")
+        (root + "/cdo")
         (root + "/superuser.nix")
         (root + "/system-packages.nix")
         (root + "/hm.nix")

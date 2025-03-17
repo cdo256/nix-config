@@ -45,7 +45,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
         (root + "/nixos/base.nix")
-        (root + "/nixos/cdo.nix")
+        (root + "/nixos/cdo")
         (root + "/nixos/superuser.nix")
         (root + "/nixos/system-packages.nix")
         (root + "/nixos/laptop.nix")
@@ -63,7 +63,6 @@
         (root + "/nixos/vpn.nix")
         (root + "/nixos/unfree.nix")
         (root + "/nixos/devices.nix")
-        (root + "/nixos/syncnet.nix")
         (root + "/nixos/borgbase.nix")
         (root + "/nixos/sops.nix")
       ];

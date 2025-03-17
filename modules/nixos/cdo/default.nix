@@ -1,9 +1,12 @@
 { pkgs, ... }:
 {
-  users.users.cdo = {
+  imports = [
+    ./syncnet.nix
+  ];
+  config.users.users.cdo = {
     description = "Christina O'Donnell";
     initialPassword = "";
     shell = pkgs.fish;
   };
-  programs.fish.enable = true;
+  config.programs.fish.enable = true;
 }
