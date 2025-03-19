@@ -118,14 +118,15 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(all-the-icons
-     atomic-chrome
-     ein ;; Jupyter Notebook integration
+     ;atomic-chrome
+     ;ein ;; Jupyter Notebook integration
      no-littering
-     org-roam
-     simple-httpd
-     symex
+     ;org-roam
+     ;simple-httpd
+     ;symex
      sync-recentf
-     combobulate)
+     ;combobulate
+     )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -662,8 +663,8 @@ before packages are loaded."
   (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
   (global-tree-sitter-mode t)
 
-  (require 'org-roam)
-  (org-roam-db-autosync-enable)
+  ;(require 'org-roam)
+  ;(org-roam-db-autosync-enable)
 
   ;;; Disable symex globally - paredit breaks spacing on non-lisp languages
   ;; (require 'symex)
@@ -718,14 +719,14 @@ before packages are loaded."
         kept-old-versions 2
         version-control t)
 
-  (require 'geiser)
-  (with-eval-after-load 'geiser-guile
-    (add-to-list 'geiser-guile-load-path "~/src/guix"))
+  ;(require 'geiser)
+  ;(with-eval-after-load 'geiser-guile
+  ;  (add-to-list 'geiser-guile-load-path "~/src/guix"))
 
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program (getenv "BROWSER"))
 
-  (require 'combobulate)
+  ;(require 'combobulate)
   (require 'sync-recentf)
   )
 
