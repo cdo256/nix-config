@@ -631,103 +631,103 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (setq user-mail-address "cdo@mutix.org")
+  ;(setq user-mail-address "cdo@mutix.org")
 
-  (setq helm-allow-mouse nil) ;; Workaround for https://github.com/yasuyk/helm-git-grep/issues/52
+  ;(setq helm-allow-mouse nil) ;; Workaround for https://github.com/yasuyk/helm-git-grep/issues/52
 
-  (setq use-short-answers t)
-  (setq confirm-nonexistent-file-or-buffer nil)
+  ;(setq use-short-answers t)
+  ;(setq confirm-nonexistent-file-or-buffer nil)
 
-  (global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
-  (global-set-key (kbd "C-c n f") 'org-roam-node-find)
-  (global-set-key (kbd "C-c n i") 'org-roam-node-insert)
-  (global-set-key (kbd "C-s") 'save-buffer)
-  (global-set-key (kbd "C-x p") 'toggle-truncate-lines)
-  (global-set-key (kbd "C-h") 'evil-window-left)
-  (global-set-key (kbd "C-j") 'evil-window-down)
-  (global-set-key (kbd "C-k") 'evil-window-up)
-  (global-set-key (kbd "C-l") 'evil-window-right)
+  ;(global-set-key (kbd "C-c n l") 'org-roam-buffer-toggle)
+  ;(global-set-key (kbd "C-c n f") 'org-roam-node-find)
+  ;(global-set-key (kbd "C-c n i") 'org-roam-node-insert)
+  ;(global-set-key (kbd "C-s") 'save-buffer)
+  ;(global-set-key (kbd "C-x p") 'toggle-truncate-lines)
+  ;(global-set-key (kbd "C-h") 'evil-window-left)
+  ;(global-set-key (kbd "C-j") 'evil-window-down)
+  ;(global-set-key (kbd "C-k") 'evil-window-up)
+  ;(global-set-key (kbd "C-l") 'evil-window-right)
 
-  (setq dotspacemacs-whitespace-cleanup t)
-  (global-set-key (kbd "C-c w") 'spacemacs-whitespace-cleanup-mode)
+  ;(setq dotspacemacs-whitespace-cleanup t)
+  ;(global-set-key (kbd "C-c w") 'spacemacs-whitespace-cleanup-mode)
 
-  (require 'evil)
-  (setq global-visual-line-mode t)
+  ;(require 'evil)
+  ;(setq global-visual-line-mode t)
 
-  (require 'epa-file)
-  ;; (require 'exwm)
-  ;; (exwm-config-example)
+  ;(require 'epa-file)
+  ;;; (require 'exwm)
+  ;;; (exwm-config-example)
 
-  (require 'tree-sitter)
-  ;;; Enable all language grammars
-  (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
-  (global-tree-sitter-mode t)
+  ;(require 'tree-sitter)
+  ;;;; Enable all language grammars
+  ;(mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
+  ;(global-tree-sitter-mode t)
 
-  ;(require 'org-roam)
-  ;(org-roam-db-autosync-enable)
+  ;;(require 'org-roam)
+  ;;(org-roam-db-autosync-enable)
 
-  ;;; Disable symex globally - paredit breaks spacing on non-lisp languages
-  ;; (require 'symex)
-  ;; (symex-modal-backend 'evil)
-  ;; (symex-initialize)
-  ;; (global-set-key (kbd "C-c x") 'symex-mode-interface)
+  ;;;; Disable symex globally - paredit breaks spacing on non-lisp languages
+  ;;; (require 'symex)
+  ;;; (symex-modal-backend 'evil)
+  ;;; (symex-initialize)
+  ;;; (global-set-key (kbd "C-c x") 'symex-mode-interface)
 
-  (require 'dired)
-  (define-key dired-mode-map (kbd "E") 'make-directory)
+  ;(require 'dired)
+  ;(define-key dired-mode-map (kbd "E") 'make-directory)
 
-  (require 'company)
-  (define-key company-active-map (kbd "<return>") nil)
-  (define-key company-active-map (kbd "RET") nil)
-  (define-key company-active-map (kbd "ESC") 'company-abort)
+  ;(require 'company)
+  ;(define-key company-active-map (kbd "<return>") nil)
+  ;(define-key company-active-map (kbd "RET") nil)
+  ;(define-key company-active-map (kbd "ESC") 'company-abort)
 
-  (require 'magit)
-  (with-eval-after-load 'magit
-    (define-key magit-mode-map (kbd "ESC") 'keyboard-quit)
-    (setq magit-diff-visit-previous-blob nil))
+  ;(require 'magit)
+  ;(with-eval-after-load 'magit
+  ;  (define-key magit-mode-map (kbd "ESC") 'keyboard-quit)
+  ;  (setq magit-diff-visit-previous-blob nil))
 
-  (with-eval-after-load 'helm-files
-    (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
+  ;(with-eval-after-load 'helm-files
+  ;  (define-key helm-find-files-map (kbd "<tab>") 'helm-execute-persistent-action))
 
-  (with-eval-after-load 'helm
-    (evil-define-key 'normal helm-map (kbd "j") 'helm-next-line)
-    (evil-define-key 'normal helm-map (kbd "k") 'helm-previous-line))
+  ;(with-eval-after-load 'helm
+  ;  (evil-define-key 'normal helm-map (kbd "j") 'helm-next-line)
+  ;  (evil-define-key 'normal helm-map (kbd "k") 'helm-previous-line))
 
-  (setq tramp-default-method "ssh")
-  (set-default 'tramp-default-proxies-alist
-               '((".*" "\\`root\\'" "/ssh:%h:")))
+  ;(setq tramp-default-method "ssh")
+  ;(set-default 'tramp-default-proxies-alist
+  ;             '((".*" "\\`root\\'" "/ssh:%h:")))
 
-  (setq gnus-select-method
-        '(nnimap "mutix.org"
-                 (nnimap-address "mutix.org")
-                 (nnimap-server-port 143)
-                 (nnimap-stream starttls)
-                 (nnimap-user "cdo")))
+  ;(setq gnus-select-method
+  ;      '(nnimap "mutix.org"
+  ;               (nnimap-address "mutix.org")
+  ;               (nnimap-server-port 143)
+  ;               (nnimap-stream starttls)
+  ;               (nnimap-user "cdo")))
 
-  (defun copy-filename ()
-    (interactive)
-    (let ((filename (buffer-file-name)))
-      (when filename
-        (kill-new filename))))
+  ;(defun copy-filename ()
+  ;  (interactive)
+  ;  (let ((filename (buffer-file-name)))
+  ;    (when filename
+  ;      (kill-new filename))))
 
-  (global-set-key (kbd "C-c y") copy-filename)
-  (setq-default evil-cross-lines t)
-  (setq-default word-wrap-whitespace-mode t)
-  (setq backup-by-copying t)
-  (setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
-  (setq delete-old-versions t
-        kept-new-versions 6
-        kept-old-versions 2
-        version-control t)
+  ;(global-set-key (kbd "C-c y") copy-filename)
+  ;(setq-default evil-cross-lines t)
+  ;(setq-default word-wrap-whitespace-mode t)
+  ;(setq backup-by-copying t)
+  ;(setq backup-directory-alist `(("." . "~/.local/share/emacs/backups/")))
+  ;(setq delete-old-versions t
+  ;      kept-new-versions 6
+  ;      kept-old-versions 2
+  ;      version-control t)
 
-  ;(require 'geiser)
-  ;(with-eval-after-load 'geiser-guile
-  ;  (add-to-list 'geiser-guile-load-path "~/src/guix"))
+  ;;(require 'geiser)
+  ;;(with-eval-after-load 'geiser-guile
+  ;;  (add-to-list 'geiser-guile-load-path "~/src/guix"))
 
-  (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program (getenv "BROWSER"))
+  ;(setq browse-url-browser-function 'browse-url-generic
+  ;      browse-url-generic-program (getenv "BROWSER"))
 
-  ;(require 'combobulate)
-  (require 'sync-recentf)
+  ;;(require 'combobulate)
+  ;(require 'sync-recentf)
   )
 
 (setq custom-file "~/.config/spacemacs/custom.el")
