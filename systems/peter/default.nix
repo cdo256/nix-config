@@ -64,6 +64,7 @@
         (root + "/nixos/devices.nix")
         (root + "/nixos/borgbase.nix")
         (root + "/nixos/sops.nix")
+        (root + "/nixos/steam.nix")
       ];
     modules.home = [
       #./home/hyprland.nix
