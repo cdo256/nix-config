@@ -9,7 +9,7 @@
     type = "vm";
     hostname = "peter";
     arch = "x86_64-linux";
-    graphical = false;
+    graphical = true;
     owner = "cdo";
     roles = {
       home = [ ];
