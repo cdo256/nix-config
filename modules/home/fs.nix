@@ -64,5 +64,6 @@ in
     ".git-credentials".source = symlink "/run/secrets/${config.home.username}/git-credentials";
     ".thunderbird".source = symlink "${config.home.homeDirectory}/.config/thunderbird";
     ".mozilla/firefox".source = symlink "${config.home.homeDirectory}/.config/firefox";
+    "Zotero".source = symlink "${config.home.homeDirectory}/sync/Zotero";
   };
 }
