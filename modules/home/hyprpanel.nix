@@ -1,6 +1,11 @@
 # Hyprpanel is the bar on top of the screen
 # Display informations like workspaces, battery, wifi, ...
-{ inputs, config, args, ... }:
+{
+  inputs,
+  config,
+  args,
+  ...
+}:
 
 {
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
@@ -11,27 +16,6 @@
     hyprland.enable = true;
     overwrite.enable = true;
     overlay.enable = true;
-    layout = {
-      "bar.layouts" = {
-        "0" = {
-          "left" = [
-            "dashboard"
-            "workspaces"
-            "windowtitle"
-          ];
-          "middle" = [ "media" ];
-          "right" = [
-            "systray"
-            "volume"
-            "bluetooth"
-            "battery"
-            "network"
-            "clock"
-            "notifications"
-          ];
-        };
-      };
-    };
 
     override = {
       "bar.launcher.icon" = "";
