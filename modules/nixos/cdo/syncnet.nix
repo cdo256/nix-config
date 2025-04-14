@@ -1,4 +1,5 @@
 {
+  flake,
   config,
   pkgs,
   lib,
@@ -7,6 +8,11 @@
 
 let
   cfg = config.services.syncnet;
+  homeDirectory = "/home/${config.args.owner}";
+  inherit (lib) filter;
+  inherit (lib.attrsets) mapAttrs' mapAttrsToList;
+  inherit (lib.strings) concatLines;
+  isNull = x: x == null;
 in
 {
   options = {
@@ -24,23 +30,23 @@ in
         with config.devices;
         {
           "sync" = {
-            path = "/home/cdo/sync";
+            path = "sync";
             devices = pcs ++ androidDevices;
           };
           "org" = {
-            path = "/home/cdo/sync/org";
+            path = "sync/org";
             devices = pcs ++ androidDevices;
           };
           "org-roam" = {
-            path = "/home/cdo/sync/org-roam";
+            path = "sync/org-roam";
             devices = pcs ++ androidDevices;
           };
           "obsidian" = {
-            path = "/home/cdo/sync/obsidian";
+            path = "sync/obsidian";
             devices = pcs ++ androidDevices;
           };
           "secure" = {
-            path = "/home/cdo/sync/secure";
+            path = "sync/secure";
             devices = pcs ++ androidDevices;
           };
         }
@@ -48,13 +54,35 @@ in
           map (androidDevice: {
             name = androidDevice.name + "-root";
             value = {
-              path = "/home/cdo/sync/" + androidDevice.name;
+              path = "sync/" + androidDevice.name;
               devices = [ androidDevice ] ++ pcs;
             };
           }) androidDevices
         );
     in
     {
+      home-manager.users.${config.args.owner}.home.file = mapAttrs' (
+        name:
+        { path, devices }:
+        {
+          name = "${path}/.stignore";
+          value = {
+            source = builtins.toFile "stignore" (
+              concatLines (
+                filter (x: x != null) (
+                  mapAttrsToList (
+                    _: other:
+                    let
+                      sub = flake.lib.getRelativePath path other.path;
+                    in
+                    if sub == null || sub == "" then null else sub
+                  ) folders
+                )
+              )
+            );
+          };
+        }
+      ) folders;
       networking.hosts = builtins.listToAttrs (
         map (device: {
           name = device.ipAddr;
@@ -63,9 +91,9 @@ in
       );
       services.syncthing = {
         enable = true;
-        user = "cdo";
-        dataDir = "/home/cdo/";
-        configDir = "/home/cdo/.config/syncthing";
+        user = config.args.owner;
+        dataDir = homeDirectory;
+        configDir = "${homeDirectory}/.config/syncthing";
         overrideDevices = true;
         overrideFolders = true;
         settings = {
@@ -80,8 +108,8 @@ in
           );
           folders = builtins.mapAttrs (name: folder: {
             enable = true;
-            path = folder.path;
-            devices = (map (device: device.name) folder.devices);
+            path = homeDirectory + folder.path;
+            devices = map (device: device.name) folder.devices;
             versioning = {
               type = "staggered";
               params.maxAge = "365";

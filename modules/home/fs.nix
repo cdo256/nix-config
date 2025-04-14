@@ -31,15 +31,6 @@ in
   };
 
   home.file = {
-    "sync/.stignore" = {
-      source = builtins.toFile "stignore" "
-        s9
-        a34
-        org
-        org-roam
-        secure
-      ";
-    };
     ".config/sway" = {
       source = "${files}/sway";
       recursive = true;
