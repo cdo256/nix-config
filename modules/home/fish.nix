@@ -14,7 +14,10 @@
     '';
     shellAbbrs = {
       gla = "git log --graph --all --simplify-by-decoration --oneline";
+      lg = "lazygit";
       nv = "nvim";
+      usd = "systemctl --user";
+      ssd = "sudo systemctl";
     };
   };
 
