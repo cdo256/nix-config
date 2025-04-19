@@ -103,17 +103,17 @@ in
   ];
 
   # Notify on low battery
-  #systemd.user.services.batsignal = {
-  #  Install.WantedBy = [ "graphical-session.target" ];
-  #  Unit = {
-  #    Description = "Battery status daemon";
-  #    PartOf = [ "graphical-session.target" ];
-  #  };
-  #  Service = {
-  #    Type = "simple";
-  #    ExecStart = batsignal;
-  #  };
-  #};
+  systemd.user.services.batsignal = {
+    Install.WantedBy = [ "graphical-session.target" ];
+    Unit = {
+      Description = "Battery status daemon";
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = batsignal;
+    };
+  };
 
   #home.file = {
   #  lockScript = {
