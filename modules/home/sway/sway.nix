@@ -115,45 +115,45 @@ in
     };
   };
 
-  #home.file = {
-  #  lockScript = {
-  #    target = ".config/sway/lock.sh";
-  #    executable = true;
-  #    text = ''
-  #      #!${pkgs.bash}/bin/bash
-  #      set -e
-  #      cache="${config.xdg.cacheHome}/sway"
-  #      list="$cache/lockscreen-wallpapers.txt"
-  #      #wallpapers="${config.xdg.configHome}/sway/wallpapers"
+  home.file = {
+    lockScript = {
+      target = ".config/sway/lock.sh";
+      executable = true;
+      text = ''
+        #!${pkgs.bash}/bin/bash
+        set -e
+        cache="${config.xdg.cacheHome}/sway"
+        list="$cache/lockscreen-wallpapers.txt"
+        #wallpapers="${config.xdg.configHome}/sway/wallpapers"
 
-  #      mkdir -p "$cache"
+        mkdir -p "$cache"
 
-  #      #if [ ! -e "$list" ]; then
-  #      #  ls "$wallpapers" | shuf > "$list"
-  #      #fi
+        #if [ ! -e "$list" ]; then
+        #  ls "$wallpapers" | shuf > "$list"
+        #fi
 
-  #      #file=$(head -n1 "$list")
-  #      #sed '1d' -i "$list"
+        #file=$(head -n1 "$list")
+        #sed '1d' -i "$list"
 
-  #      #if [[ -z $(grep '[^[:space:]]' "$list") ]]; then
-  #      #  rm "$list"
-  #      #fi
+        #if [[ -z $(grep '[^[:space:]]' "$list") ]]; then
+        #  rm "$list"
+        #fi
 
-  #      #systemd-cat --identifier swaylock ${swaylock} --indicator-idle-visible -d -ef -i "$wallpapers/$file"
-  #      systemd-cat --identifier swaylock ${swaylock} --indicator-idle-visible -d -ef
-  #    '';
-  #  };
+        #systemd-cat --identifier swaylock ${swaylock} --indicator-idle-visible -d -ef -i "$wallpapers/$file"
+        systemd-cat --identifier swaylock ${swaylock} --indicator-idle-visible -d -ef
+      '';
+    };
 
-  #  xdgPortal = {
-  #    target = ".config/xdg-desktop-portal-wlr/config";
-  #    text = ''
-  #      [screencast]
-  #      max_fps=30
-  #      chooser_type=simple
-  #      chooser_cmd=slurp -f %o -or
-  #    '';
-  #  };
-  #};
+    xdgPortal = {
+      target = ".config/xdg-desktop-portal-wlr/config";
+      text = ''
+        [screencast]
+        max_fps=30
+        chooser_type=simple
+        chooser_cmd=slurp -f %o -or
+      '';
+    };
+  };
 
   wayland.windowManager.sway = {
     enable = true;
