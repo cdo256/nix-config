@@ -86,7 +86,7 @@ in
 {
   imports = [
     # ./kanshi.nix
-    # ./waybar.nix
+    ./waybar.nix
     # ./fnott.nix
   ];
 
