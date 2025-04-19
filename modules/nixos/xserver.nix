@@ -4,7 +4,10 @@
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
     desktopManager.gnome.enable = true;
-    xkb.layout = "gb";
-    xkb.variant = "";
+    xkb = {
+      layout = "gb";
+      variant = "";
+      options = "caps:escape";
+    };
   };
 }
