@@ -56,13 +56,13 @@ in
         "SUPER SHIFT, V, togglefloating,"
         "SUPER, R, exec, ${menu}"
         #"SUPER, P, pseudo, # dwindle"
-        "SUPER, J, togglesplit, # dwindle"
-        "SUPER, D, killactive,"
+        #"SUPER, J, togglesplit, # dwindle"
+        #"SUPER, D, killactive,"
         "SUPER, F4, killactive,"
         "SUPER ALT, F4, killactive,"
         "ALT, F4, killactive,"
         "SUPER ALT SHIFT, F4, exit,"
-        "SUPER, F4, exec, sudo systemctl suspend"
+        "SUPER CTRL, F4, exec, sudo systemctl suspend"
 
         # Move focus
         "SUPER, left, movefocus, l"
