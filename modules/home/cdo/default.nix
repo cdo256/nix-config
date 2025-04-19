@@ -16,5 +16,6 @@ in
     (root + "/hyprland.nix")
     (root + "/hyprpanel.nix")
     (root + "/packages.nix")
+    (root + "/sway/sway.nix")
   ] ++ args.modules.home;
 }

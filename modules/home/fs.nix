@@ -31,10 +31,6 @@ in
   };
 
   home.file = {
-    ".config/sway" = {
-      source = "${files}/sway";
-      recursive = true;
-    };
     ".config/spacemacs" = {
       source = "${files}/spacemacs";
       recursive = true;
