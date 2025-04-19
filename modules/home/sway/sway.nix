@@ -155,6 +155,17 @@ in
     };
   };
 
+  services.dunst = {
+    enable = true;
+  };
+
+  services.kanshi = {
+    enable = true;
+    systemdTarget = "sway-session.target";
+  };
+
+  wayland.systemd.target = "sway-session.target";
+
   wayland.windowManager.sway = {
     enable = true;
     checkConfig = false;
@@ -200,13 +211,6 @@ in
       };
 
       output."*".bg = "${./wallpaper.png} fit";
-
-      startup = [
-        {
-          command = "systemctl --user restart kanshi";
-          always = true;
-        }
-      ];
 
       keybindings =
         numericBindings
@@ -286,6 +290,7 @@ in
           "XF86AudioNext" = "exec ${playerctl} next";
           "XF86AudioPrev" = "exec ${playerctl} previous";
         };
+
     };
   };
 }
