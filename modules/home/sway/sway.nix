@@ -173,21 +173,6 @@ in
     };
     systemd.enable = true;
 
-    #extraSessionCommands = ''
-    #  export SDL_VIDEODRIVER=wayland
-    #  export QT_QPA_PLATFix-config/tree/master/swayORM=wayland
-    #  export QT_WAYLAND_DISABLE_WINOWDECORATION="1"
-    #  export MOZ_ENABLE_WAYLAND=1
-    #  export _JAVA_AWT_WM_NONREPARENTING=1
-    #'';
-
-    #extraConfig = ''
-    #  for_window [app_id="at.yrlf.wl_mirror"] fullscreen enable
-    #  for_window [title="Identity Chooser – Mozilla Thunderbird"] floating enable
-
-    #  exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY SWAYSOCK
-    #'';
-
     config = {
       bars = [ ];
       modifier = super;
