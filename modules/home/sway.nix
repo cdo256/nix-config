@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  args,
   ...
 }:
 let
@@ -114,36 +115,7 @@ in
   };
 
   home.file = {
-    lockScript = {
-      target = ".config/sway/lock.sh";
-      executable = true;
-      text = ''
-        #!${pkgs.bash}/bin/bash
-        set -e
-        cache="${config.xdg.cacheHome}/sway"
-        list="$cache/lockscreen-wallpapers.txt"
-        #wallpapers="${config.xdg.configHome}/sway/wallpapers"
-
-        mkdir -p "$cache"
-
-        #if [ ! -e "$list" ]; then
-        #  ls "$wallpapers" | shuf > "$list"
-        #fi
-
-        #file=$(head -n1 "$list")
-        #sed '1d' -i "$list"
-
-        #if [[ -z $(grep '[^[:space:]]' "$list") ]]; then
-        #  rm "$list"
-        #fi
-
-        #systemd-cat --identifier swaylock ${swaylock} --indicator-idle-visible -d -ef -i "$wallpapers/$file"
-        systemd-cat --identifier swaylock ${swaylock} --indicator-idle-visible -d -ef
-      '';
-    };
-
-    xdgPortal = {
-      target = ".config/xdg-desktop-portal-wlr/config";
+    ".config/xdg-desktop-portal-wlr/config" = {
       text = ''
         [screencast]
         max_fps=30
@@ -193,7 +165,7 @@ in
         };
       };
 
-      output."*".bg = "${./wallpaper.png} fit";
+      output."*".bg = "${args.repoRoot + "/files/wallpaper.png"} fit";
 
       keybindings =
         numericBindings
