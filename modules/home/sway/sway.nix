@@ -85,9 +85,7 @@ let
 in
 {
   imports = [
-    # ./kanshi.nix
     ./waybar.nix
-    # ./fnott.nix
   ];
 
   home.packages = [
@@ -219,10 +217,10 @@ in
           # System controls
           "${super}+Ctrl+F2" = "exec ${change-workspace}";
           "${super}+Ctrl+Shift+F2" = "exec ${rename-workspace}";
+          "${super}+Ctrl+F4" = "exit";
           "${super}+Ctrl+F5" = "reload";
-          "${super}+Ctrl+Shift+F4" = "exit";
-          "${super}+Ctrl+Shift+F6" = "exec sudo systemctl suspend";
-          "${super}+Ctrl+Shift+F7" = "exec sudo systemctl poweroff";
+          "${super}+Ctrl+F6" = "exec sudo systemctl suspend";
+          "${super}+Ctrl+F7" = "exec sudo systemctl poweroff";
 
           # Launch
           "${super}+Shift+t" = "exec ${defaults.terminal}";
@@ -241,7 +239,7 @@ in
           "${super}+Shift+g" = "layout tabbed";
           "${super}+Shift+${alt}+g" = "layout tabbed";
           "${super}+Shift+${alt}+e" = "layout toggle split";
-          "${super}+${alt}+Shift+p" = "focus parent";
+          "${super}+${alt}+p" = "focus parent";
 
           "${super}+${alt}+f" = "focus mode_toggle";
           "${super}+Shift+${alt}+f" = "floating toggle";
