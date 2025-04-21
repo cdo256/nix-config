@@ -8,6 +8,7 @@
 {
   flake.lib = {
     mkNixosSystem = import ./mkNixosSystem.nix args;
+    mkHomeConfiguration = import ./mkHomeConfiguration.nix args;
     mkPackageList = import ./mkPackageList.nix args;
     getRelativePath = import ./getRelativePath.nix args;
     withDefaultPath = import ./withDefaultPath.nix args;
