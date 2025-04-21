@@ -10,6 +10,7 @@
     mkNixosSystem = import ./mkNixosSystem.nix args;
     mkPackageList = import ./mkPackageList.nix args;
     getRelativePath = import ./getRelativePath.nix args;
+    withDefaultPath = import ./withDefaultPath.nix args;
   };
   perSystem._module.args.lib = self.lib;
 }
