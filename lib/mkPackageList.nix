@@ -7,31 +7,25 @@
   ...
 }:
 {
-  modules,
+  manifests,
+  arch,
   extraArgs ? { },
-  basePath ? (self.root + "/manifests"),
-  system,
   ...
 }:
-(withSystem system (
+withSystem arch (
   { pkgs, ... }:
   let
     inherit (inputs.nixpkgs.lib) concatMap;
+    inherit (self.lib) withDefaultPath;
     args = {
       inherit
         self
         inputs
         lib
-        system
+        arch
         pkgs
         ;
     } // extraArgs;
   in
-  concatMap (
-    module:
-    if lib.isPath module then # .
-      import module args
-    else
-      import (basePath + module) args
-  ) modules
-))
+  concatMap (modules: import modules args) (map (withDefaultPath "/manifests") manifests)
+)

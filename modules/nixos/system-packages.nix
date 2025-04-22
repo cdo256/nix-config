@@ -1,9 +1,12 @@
 { config, flake, ... }:
+let
+  inherit (flake.lib) mkPackageList;
+in
 {
   config.environment = {
-    systemPackages = flake.lib.mkPackageList {
-      modules = config.args.packages.system;
-      system = config.args.arch;
+    systemPackages = mkPackageList {
+      manifests = config.args.packages.system;
+      inherit (config.args) arch;
     };
   };
 }

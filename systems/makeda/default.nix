@@ -24,6 +24,7 @@
         ];
         home = [
           (root + "/base.nix")
+          (root + "/desktop.nix")
           (root + "/development.nix")
           (root + "/terminal.nix")
           (root + "/sysadmin.nix")

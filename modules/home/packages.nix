@@ -6,7 +6,7 @@
 }:
 {
   home.packages = flake.lib.mkPackageList {
-    modules = args.packages.home;
-    system = args.arch;
+    manifests = args.packages.home;
+    inherit (args) arch;
   };
 }

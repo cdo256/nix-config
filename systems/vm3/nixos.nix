@@ -14,11 +14,11 @@ in
     };
     environment = {
       systemPackages = flake.lib.mkPackageList {
-        modules = [
+        manifests = [
           "/base.nix"
           "/system.nix"
         ];
-        system = arch;
+        inherit arch;
       };
     };
     services.printing.enable = true;
