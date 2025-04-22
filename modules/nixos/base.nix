@@ -58,10 +58,6 @@ in
         description = "List of nixos modules.";
       };
     };
-    repoRoot = mkOption {
-      type = types.path;
-      description = "Root of the repo.";
-    };
   };
   config = {
     system.stateVersion = "24.05";

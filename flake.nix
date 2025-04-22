@@ -5,6 +5,9 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ ./outputs.nix ];
+      flake = {
+        root = ./.;
+      };
     };
 
   inputs = {

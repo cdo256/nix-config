@@ -14,7 +14,7 @@
     owner = "cdo";
     packages =
       let
-        root = config.flake.repoRoot + "/manifests";
+        root = self.root + "/manifests";
       in
       {
         system = [
@@ -31,7 +31,7 @@
       };
     modules.nixos =
       let
-        root = config.flake.repoRoot + "/modules/nixos";
+        root = self.root + "/modules/nixos";
       in
       [
         ./nixos.nix
@@ -58,7 +58,6 @@
       ];
     args = {
       flake = self;
-      inherit (config.flake) repoRoot;
     };
   };
 }

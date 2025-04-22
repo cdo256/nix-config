@@ -18,7 +18,7 @@
     };
     users.${config.args.owner} =
       let
-        root = config.args.repoRoot + "/modules/home";
+        root = flake.root + "/modules/home";
       in
       import (root + "/${config.args.owner}");
   };

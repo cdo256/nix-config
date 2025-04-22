@@ -1,11 +1,12 @@
 {
+  flake,
   inputs,
   pkgs,
   args,
   ...
 }:
 let
-  root = args.repoRoot + "/modules/home";
+  root = flake.root + "/modules/home";
 in
 {
   imports = [

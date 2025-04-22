@@ -9,7 +9,7 @@
 {
   modules,
   extraArgs ? { },
-  basePath ? (config.flake.repoRoot + "/manifests"),
+  basePath ? (self.root + "/manifests"),
   system,
   ...
 }:

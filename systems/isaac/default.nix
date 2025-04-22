@@ -18,7 +18,7 @@
     };
     packages =
       let
-        root = config.flake.repoRoot + "/manifests";
+        root = self.root + "/manifests";
       in
       {
         system = [
@@ -36,7 +36,7 @@
       };
     modules =
       let
-        root = config.flake.repoRoot + "/modules";
+        root = self.root + "/modules";
       in
       [
         ./nixos.nix
@@ -68,7 +68,6 @@
       ];
     args = {
       flake = self;
-      inherit (config.flake) repoRoot;
     };
   };
 }

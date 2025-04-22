@@ -32,6 +32,5 @@ in
       '';
     };
   };
-  config.flake.repoRoot = ../.;
   config.flake.nixosConfigurations = mapAttrs mkNixosSystem self.systems;
 }

@@ -1,5 +1,6 @@
 # Derived from https://github.com/jvanbruegge/nix-config/tree/master/sway
 {
+  flake,
   config,
   pkgs,
   lib,
@@ -165,7 +166,7 @@ in
         };
       };
 
-      output."*".bg = "${args.repoRoot + "/files/wallpaper.png"} fit";
+      output."*".bg = "${flake.root + "/files/wallpaper.png"} fit";
 
       keybindings =
         numericBindings

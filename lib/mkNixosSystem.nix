@@ -33,7 +33,6 @@ nixosSystem {
           graphical
           modules
           ;
-        repoRoot = ../.;
       };
       config._module.args = {
         inherit inputs;

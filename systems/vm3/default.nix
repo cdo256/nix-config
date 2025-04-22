@@ -45,7 +45,6 @@
     modules.home = [ ];
     args = {
       flake = self;
-      inherit (config.flake) repoRoot;
     };
   };
 }
