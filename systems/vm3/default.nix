@@ -15,7 +15,10 @@
       home = [ ];
       system = [ ];
     };
-    packages.system = [ ];
+    packages.system = [
+      "base.nix"
+      "system.nix"
+    ];
     packages.home = [ ];
     modules.nixos =
       let
