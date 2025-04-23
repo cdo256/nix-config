@@ -6,17 +6,19 @@
   ...
 }:
 let
-  root = flake.root + "/modules/home";
+  inherit (flake.lib) withDefaultPath;
+  baseModules = [
+    ./vars.nix
+    "/base.nix"
+    "/fish.nix"
+    "/fs.nix"
+    "/hyprland.nix"
+    "/hyprpanel.nix"
+    "/packages.nix"
+    "/sway.nix"
+  ];
+  modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in
 {
-  imports = [
-    ./vars.nix
-    (root + "/base.nix")
-    (root + "/fish.nix")
-    (root + "/fs.nix")
-    (root + "/hyprland.nix")
-    (root + "/hyprpanel.nix")
-    (root + "/packages.nix")
-    (root + "/sway.nix")
-  ] ++ args.modules.home;
+  imports = modules;
 }
