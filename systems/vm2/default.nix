@@ -17,31 +17,27 @@
     };
     package.system = [ ];
     packages.home = [ ];
-    modules.nixos =
-      let
-        root = ../../modules;
-      in
-      [
-        ./nixos.nix
-        inputs.home-manager.nixosModules.home-manager
-        inputs.sops-nix.nixosModules.sops
-        (root + "/nixos/base.nix")
-        (root + "/nixos/cdo")
-        (root + "/nixos/superuser.nix")
-        (root + "/nixos/system-packages.nix")
-        (root + "/nixos/hm.nix")
-        (root + "/nixos/fonts.nix")
-        (root + "/nixos/locale.nix")
-        (root + "/nixos/nix.nix")
-        (root + "/nixos/security.nix")
-        (root + "/nixos/shell.nix")
-        (root + "/nixos/unfree.nix")
-        (root + "/nixos/virtual.nix")
-        (root + "/nixos/vm-networking.nix")
-        (root + "/nixos/devices.nix")
-        (root + "/nixos/borgbase.nix")
-        (root + "/nixos/sops.nix")
-      ];
+    modules.nixos = [
+      ./nixos.nix
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.sops
+      "base.nix"
+      "cdo"
+      "superuser.nix"
+      "system-packages.nix"
+      "hm.nix"
+      "fonts.nix"
+      "locale.nix"
+      "nix.nix"
+      "security.nix"
+      "shell.nix"
+      "unfree.nix"
+      "virtual.nix"
+      "vm-networking.nix"
+      "devices.nix"
+      "borgbase.nix"
+      "sops.nix"
+    ];
     modules.home = [ ];
     args = {
       flake = self;

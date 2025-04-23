@@ -9,6 +9,15 @@ let
     mkOption
     types
     ;
+  relpathType = types.oneOf [
+    types.str
+    types.path
+  ];
+  moduleType = types.oneOf [
+    types.str
+    types.path
+    types.attrs
+  ];
 in
 {
   options.args = {
@@ -36,24 +45,24 @@ in
     };
     packages = {
       home = mkOption {
-        type = types.listOf types.path;
+        type = types.listOf relpathType;
         default = [ ];
         description = "List of manifests packages to run on the owner's home-manager configuration.";
       };
       system = mkOption {
-        type = types.listOf types.path;
+        type = types.listOf relpathType;
         default = [ ];
         description = "List of system manifests to run on this system.";
       };
     };
     modules = {
       home = mkOption {
-        type = types.listOf types.path;
+        type = types.listOf moduleType;
         default = [ ];
         description = "List of home-manager modules.";
       };
       nixos = mkOption {
-        type = types.listOf types.path;
+        type = types.listOf moduleType;
         default = [ ];
         description = "List of nixos modules.";
       };

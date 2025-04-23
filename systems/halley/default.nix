@@ -14,58 +14,50 @@
       system = [ ];
       home = [ ];
     };
-    packages =
-      let
-        root = self.root + "/manifests";
-      in
-      {
-        system = [
-          (root + "/base.nix")
-          (root + "/system.nix")
-          (root + "/terminal.nix")
-        ];
-        home = [
-          (root + "/base.nix")
-          (root + "/desktop.nix")
-          (root + "/development.nix")
-          (root + "/terminal.nix")
-          (root + "/sysadmin.nix")
-        ];
-      };
-    modules.nixos =
-      let
-        root = self.root + "/modules";
-      in
-      [
-        ./nixos.nix
-        ./hardware.nix
-        ./boot.nix
-        inputs.home-manager.nixosModules.home-manager
-        inputs.sops-nix.nixosModules.sops
-        (root + "/nixos/base.nix")
-        (root + "/nixos/cdo")
-        (root + "/nixos/dolphin.nix")
-        (root + "/nixos/superuser.nix")
-        (root + "/nixos/system-packages.nix")
-        (root + "/nixos/laptop.nix")
-        (root + "/nixos/hm.nix")
-        (root + "/nixos/fonts.nix")
-        (root + "/nixos/locale.nix")
-        (root + "/nixos/nix.nix")
-        (root + "/nixos/security.nix")
-        (root + "/nixos/networking.nix")
-        (root + "/nixos/shell.nix")
-        (root + "/nixos/xserver.nix")
-        (root + "/nixos/graphical.nix")
-        (root + "/nixos/hyprland.nix")
-        (root + "/nixos/video.nix")
-        (root + "/nixos/vpn.nix")
-        (root + "/nixos/unfree.nix")
-        (root + "/nixos/devices.nix")
-        (root + "/nixos/borgbase.nix")
-        (root + "/nixos/sops.nix")
-        (root + "/nixos/sway.nix")
+    packages = {
+      system = [
+        "base.nix"
+        "system.nix"
+        "terminal.nix"
       ];
+      home = [
+        "base.nix"
+        "desktop.nix"
+        "development.nix"
+        "terminal.nix"
+        "sysadmin.nix"
+      ];
+    };
+    modules.nixos = [
+      ./nixos.nix
+      ./hardware.nix
+      ./boot.nix
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.sops
+      "base.nix"
+      "cdo"
+      "dolphin.nix"
+      "superuser.nix"
+      "system-packages.nix"
+      "laptop.nix"
+      "hm.nix"
+      "fonts.nix"
+      "locale.nix"
+      "nix.nix"
+      "security.nix"
+      "networking.nix"
+      "shell.nix"
+      "xserver.nix"
+      "graphical.nix"
+      "hyprland.nix"
+      "video.nix"
+      "vpn.nix"
+      "unfree.nix"
+      "devices.nix"
+      "borgbase.nix"
+      "sops.nix"
+      "sway.nix"
+    ];
     modules.home = [
       ./hyprland.nix
     ];

@@ -14,12 +14,7 @@
   ...
 }:
 let
-  inherit (self.lib) withDefaultPath mkPackageList;
-  modules' = modules ++ [
-    {
-      home.packages = mkPackageList { inherit manifests arch; };
-    }
-  ];
+  inherit (self.lib) withDefaultPath;
 in
 withSystem arch (
   { pkgs, ... }:
@@ -28,7 +23,7 @@ withSystem arch (
       inherit inputs args;
       flake = self;
     };
-    modules = map (withDefaultPath "/modules/home") modules';
+    modules = map (withDefaultPath "/modules/home") modules;
     inherit pkgs;
   }
 )

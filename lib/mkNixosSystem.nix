@@ -18,10 +18,12 @@ host:
 }:
 let
   inherit (inputs.nixpkgs.lib) nixosSystem;
+  inherit (self.lib) withDefaultPath;
+  nixosModules = map (withDefaultPath "/modules/nixos") modules.nixos;
 in
 nixosSystem {
   system = null;
-  modules = modules.nixos ++ [
+  modules = nixosModules ++ [
     {
       config.args = {
         inherit
