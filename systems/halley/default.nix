@@ -10,20 +10,18 @@
     hostname = "halley";
     arch = "x86_64-linux";
     owner = "cdo";
-    packages = {
-      system = [
-        "base.nix"
-        "system.nix"
-        "terminal.nix"
-      ];
-      home = [
-        "base.nix"
-        "desktop.nix"
-        "development.nix"
-        "terminal.nix"
-        "sysadmin.nix"
-      ];
-    };
+    packages.system = [
+      "base.nix"
+      "system.nix"
+      "terminal.nix"
+    ];
+    packages.home = [
+      "base.nix"
+      "desktop.nix"
+      "development.nix"
+      "terminal.nix"
+      "sysadmin.nix"
+    ];
     modules.nixos = [
       ./nixos.nix
       ./hardware.nix
