@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  inputs,
+  arch,
+  pkgs,
+  ...
+}:
 [
   pkgs.ifuse
   pkgs.usbmuxd
@@ -16,6 +21,6 @@
   pkgs.dig
   pkgs.sysstat
   pkgs.inetutils
-  pkgs.nh
+  inputs.nh.packages.${arch}.default
   pkgs.isd
 ]
