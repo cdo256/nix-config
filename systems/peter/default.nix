@@ -52,10 +52,9 @@
       "sops.nix"
       "steam.nix"
       "dolphin.nix"
+      "sway.nix"
     ];
-    modules.home = [
-      #./home/hyprland.nix
-    ];
+    modules.home = [ ];
     args = {
       flake = self;
     };
