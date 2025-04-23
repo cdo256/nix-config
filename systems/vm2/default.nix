@@ -11,10 +11,6 @@
     arch = "x86_64-linux";
     graphical = false;
     owner = "cdo";
-    roles = {
-      home = [ ];
-      system = [ ];
-    };
     package.system = [ ];
     packages.home = [ ];
     modules.nixos = [

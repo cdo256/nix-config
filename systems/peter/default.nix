@@ -11,10 +11,6 @@
     arch = "x86_64-linux";
     graphical = true;
     owner = "cdo";
-    roles = {
-      home = [ ];
-      system = [ ];
-    };
     packages = {
       system = [
         "base.nix"

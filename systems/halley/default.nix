@@ -10,10 +10,6 @@
     hostname = "halley";
     arch = "x86_64-linux";
     owner = "cdo";
-    roles = {
-      system = [ ];
-      home = [ ];
-    };
     packages = {
       system = [
         "base.nix"
