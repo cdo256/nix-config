@@ -9,6 +9,7 @@
       pull.ff = true;
       pull.rebase = "true";
       push.autoSetupRemote = true;
+      credential.helper = "store"; # Read from .git-credentials
     };
   };
 }
