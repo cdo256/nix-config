@@ -56,20 +56,33 @@ in
             value = {
               path = "sync/" + androidDevice.name;
               devices = [ androidDevice ] ++ pcs;
+              ignores = [
+                "sync"
+                "org"
+                "org-roam"
+                "obsidian"
+                "secure"
+              ];
             };
           }) androidDevices
         );
     in
     {
+      # TODO: Filter by devce.
       home-manager.users.${config.args.owner}.home.file = mapAttrs' (
         name:
-        { path, devices }:
+        {
+          path,
+          devices,
+          ignores ? [ ],
+        }:
         {
           name = "${path}/.stignore";
           value = {
             source = builtins.toFile "stignore" (
               concatLines (
-                filter (x: x != null) (
+                ignores
+                ++ filter (x: x != null) (
                   mapAttrsToList (
                     _: other:
                     let
