@@ -12,6 +12,7 @@ let
     "/base.nix"
     "/fish.nix"
     "/fs.nix"
+    "/git.nix"
     "/hyprland.nix"
     "/hyprpanel.nix"
     "/packages.nix"
