@@ -35,10 +35,6 @@ in
       source = "${files}/spacemacs";
       recursive = true;
     };
-    ".config/git" = {
-      source = "${files}/git";
-      recursive = true;
-    };
     #".config/nvim" = {
     #  source = "${files}/nvim";
     #  recursive = true;
