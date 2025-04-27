@@ -100,6 +100,7 @@ in
         map (device: {
           name = device.ipAddr;
           value = [ device.name ];
+          type = "receiveonly";
         }) (builtins.filter (device: device ? "ipAddr") config.devices.allDevices)
       );
       services.syncthing = {
@@ -119,15 +120,24 @@ in
               };
             }) (builtins.filter (device: device ? "syncthingId") config.devices.allDevices)
           );
-          folders = builtins.mapAttrs (name: folder: {
-            enable = true;
-            devices = map (device: device.name) folder.devices;
-            versioning = {
-              type = "staggered";
-              params.maxAge = "365";
-            };
-          }) folders;
+          folders = builtins.mapAttrs (
+            name:
+            {
+              path,
+              devices,
+              type ? "sendreceive",
+            }:
+            {
+              enable = true;
               path = homeDirectory + ("/" + path);
+              devices = map (device: device.name) devices;
+              inherit type;
+              versioning = {
+                type = "staggered";
+                params.maxAge = "365";
+              };
+            }
+          ) folders;
         };
       };
     };
