@@ -8,7 +8,7 @@
 
 let
   cfg = config.services.syncnet;
-  homeDirectory = "/home/${config.args.owner}";
+  homeDirectory = "/home/${config.args.owner}/";
   inherit (lib) filter;
   inherit (lib.attrsets) mapAttrs' mapAttrsToList;
   inherit (lib.strings) concatLines;
