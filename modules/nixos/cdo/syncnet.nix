@@ -33,22 +33,22 @@ in
             path = "sync";
             devices = pcs ++ androidDevices;
           };
-          "org" = {
-            path = "sync/org";
-            devices = pcs ++ androidDevices;
-          };
-          "org-roam" = {
-            path = "sync/org-roam";
-            devices = pcs ++ androidDevices;
-          };
-          "obsidian" = {
-            path = "sync/obsidian";
-            devices = pcs ++ androidDevices;
-          };
-          "secure" = {
-            path = "sync/secure";
-            devices = pcs ++ androidDevices;
-          };
+          #"org" = {
+          #  path = "sync/org";
+          #  devices = pcs ++ androidDevices;
+          #};
+          #"org-roam" = {
+          #  path = "sync/org-roam";
+          #  devices = pcs ++ androidDevices;
+          #};
+          #"obsidian" = {
+          #  path = "sync/obsidian";
+          #  devices = pcs ++ androidDevices;
+          #};
+          #"secure" = {
+          #  path = "sync/secure";
+          #  devices = pcs ++ androidDevices;
+          #};
         }
         // builtins.listToAttrs (
           map (androidDevice: {
