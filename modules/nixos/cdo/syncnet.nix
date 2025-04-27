@@ -121,13 +121,13 @@ in
           );
           folders = builtins.mapAttrs (name: folder: {
             enable = true;
-            path = homeDirectory + folder.path;
             devices = map (device: device.name) folder.devices;
             versioning = {
               type = "staggered";
               params.maxAge = "365";
             };
           }) folders;
+              path = homeDirectory + ("/" + path);
         };
       };
     };
