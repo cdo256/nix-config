@@ -53,6 +53,7 @@
       "steam.nix"
       "dolphin.nix"
       "sway.nix"
+      "oom.nix"
     ];
     modules.home = [ ];
     args = {
