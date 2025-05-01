@@ -30,6 +30,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/bak" = {
+    device = "/dev/disk/by-uuid/db250592-fef3-4b4d-a1e2-3d31167a0037";
+    fsType = "ext4";
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/3DD8-219F";
     fsType = "vfat";
