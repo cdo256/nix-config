@@ -8,7 +8,7 @@
 
 let
   cfg = config.services.syncnet;
-  homeDirectory = "/home/${config.args.owner}/";
+  homeDirectory = "/home/${config.args.owner}";
   inherit (lib) filter;
   inherit (lib.attrsets) mapAttrs' mapAttrsToList;
   inherit (lib.strings) concatLines;
@@ -33,22 +33,22 @@ in
             path = "sync";
             devices = pcs ++ androidDevices;
           };
-          #"org" = {
-          #  path = "sync/org";
-          #  devices = pcs ++ androidDevices;
-          #};
-          #"org-roam" = {
-          #  path = "sync/org-roam";
-          #  devices = pcs ++ androidDevices;
-          #};
-          #"obsidian" = {
-          #  path = "sync/obsidian";
-          #  devices = pcs ++ androidDevices;
-          #};
-          #"secure" = {
-          #  path = "sync/secure";
-          #  devices = pcs ++ androidDevices;
-          #};
+          "org" = {
+            path = "sync/org";
+            devices = pcs ++ androidDevices;
+          };
+          "org-roam" = {
+            path = "sync/org-roam";
+            devices = pcs ++ androidDevices;
+          };
+          "obsidian" = {
+            path = "sync/obsidian";
+            devices = pcs ++ androidDevices;
+          };
+          "secure" = {
+            path = "sync/secure";
+            devices = pcs ++ androidDevices;
+          };
         }
         // builtins.listToAttrs (
           map (androidDevice: {
@@ -63,6 +63,7 @@ in
                 "obsidian"
                 "secure"
               ];
+              type = "receiveonly";
             };
           }) androidDevices
         );
@@ -73,8 +74,8 @@ in
         name:
         {
           path,
-          devices,
           ignores ? [ ],
+          ...
         }:
         {
           name = "${path}/.stignore";
@@ -100,7 +101,6 @@ in
         map (device: {
           name = device.ipAddr;
           value = [ device.name ];
-          type = "receiveonly";
         }) (builtins.filter (device: device ? "ipAddr") config.devices.allDevices)
       );
       services.syncthing = {
@@ -126,6 +126,7 @@ in
               path,
               devices,
               type ? "sendreceive",
+              ...
             }:
             {
               enable = true;
