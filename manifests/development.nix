@@ -6,4 +6,5 @@
   pkgs.git-imerge
   inputs.nixvim.packages.x86_64-linux.default
   pkgs.delta
+  pkgs.zed-editor
 ]
