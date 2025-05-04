@@ -14,8 +14,8 @@
     #TODO: More patterns?
     extraArgs = [
       "-g"
-      "--prefer '^(brave|chrome|chromium|firefox|nix-daemon|nix)$'"
-      "--avoid '^(sway|hyprland|kitty)$'"
+      "--prefer=^(brave|chrome|chromium|firefox|nix-daemon|nix)$"
+      "--avoid=^(sway|hyprland|kitty)$"
     ];
   };
 }
