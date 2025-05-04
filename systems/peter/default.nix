@@ -22,6 +22,7 @@
       "development.nix"
       "terminal.nix"
       "sysadmin.nix"
+      "video.nix"
     ];
     modules.nixos = [
       ./nixos.nix
