@@ -16,6 +16,7 @@ let
     "hyprland.nix"
     "hyprpanel.nix"
     "packages.nix"
+    "readline.nix"
     "sway.nix"
     "waybar.nix"
     "wofi.nix"
