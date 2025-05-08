@@ -17,7 +17,9 @@
       lg = "lazygit";
       nv = "nvim";
       usd = "systemctl --user";
+      ujd = "journalctl --user";
       ssd = "sudo systemctl";
+      sjd = "sudo journalctl";
       zed = "zeditor";
     };
   };
