@@ -51,6 +51,8 @@ try-add-sops-key:
 
 add-age-key-to-secrets key:
     sops -r -i --add-age {{key}} secrets/secrets.yaml
+    git add secrets
+    git commit -m "Add {{HOST}} key to secrets.yaml."
 
 bootstrap:
     just try-add-sops-key
