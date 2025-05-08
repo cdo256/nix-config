@@ -124,6 +124,14 @@ in
     };
   };
 
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "063F62";
+      show-failed-attempts = true;
+    };
+  };
+
   services.dunst = {
     enable = true;
   };
@@ -209,9 +217,9 @@ in
           "${alt}+F4" = "kill";
 
           # Lock screen
-          "${super}+Shift+Return" = "exec ${config.xdg.configHome}/sway/lock.sh";
+          "${super}+Shift+Return" = "exec ${swaylock}";
 
-          # Screen mirror
+          # Screen mirror (untested)
           #"${super}+Shift+p" = "exec wl-mirror $(slurp -o -f '%o')";
 
           # Move workspaces to other monitors
