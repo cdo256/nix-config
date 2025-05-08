@@ -12,6 +12,7 @@
     mkPackageList = import ./mkPackageList.nix args;
     getRelativePath = import ./getRelativePath.nix args;
     withDefaultPath = import ./withDefaultPath.nix args;
+    types = import ./types.nix args;
   };
   perSystem._module.args.lib = self.lib;
 }
