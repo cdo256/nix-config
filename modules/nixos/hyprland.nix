@@ -27,9 +27,9 @@ in
   };
   hardware.opengl = {
     enable = true;
-    package = hyprland-pkgs.mesa.drivers;
+    package = hyprland-pkgs.mesa;
     driSupport32Bit = true;
-    package32 = hyprland-pkgs.pkgsi686Linux.mesa.drivers;
+    package32 = hyprland-pkgs.pkgsi686Linux.mesa;
   };
   # Optional
   security.pam.services.hyprlock = { };
