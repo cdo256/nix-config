@@ -14,6 +14,7 @@
       "base.nix"
       "system.nix"
       "terminal.nix"
+      "services.nix"
     ];
     packages.home = [
       "base.nix"
