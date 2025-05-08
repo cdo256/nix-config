@@ -6,6 +6,7 @@
     ./packages
     ./shells.nix
     ./systems
-    ./debug.nix
+    #./debug.nix # Suddenly causing a stack overflow
+    ./users
   ];
 }
