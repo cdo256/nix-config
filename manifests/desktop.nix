@@ -8,24 +8,21 @@
   pkgs.libreoffice
   pkgs.vlc
   pkgs.xdg-desktop-portal
-  pkgs.google-chrome
   pkgs.brave
   pkgs.obsidian
   pkgs.anki
+  pkgs.zotero # Reference manager
+  pkgs.ncpamixer
+  pkgs.pavucontrol
 
   # Broken
   pkgs.zoom # Screen sharing never worked, but browser sharing did.
 
   # Less used
-  pkgs.vscodium
-  pkgs.emacs
   pkgs.signal-desktop
   pkgs.kdePackages.okular
   pkgs.inkscape
   pkgs.gimp
-
-  # Trying
-  pkgs.zotero # Reference manager
-  pkgs.ncpamixer
-  pkgs.pavucontrol
+  pkgs.google-chrome
+  pkgs.remmina # RDP client
 ]
