@@ -1,7 +1,5 @@
 {
   flake,
-  inputs,
-  pkgs,
   args,
   ...
 }:

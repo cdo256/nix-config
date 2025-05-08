@@ -4,11 +4,9 @@
   config,
   pkgs,
   lib,
-  args,
   ...
 }:
 let
-  cfg = config.wayland.windowManager.sway.config;
   inherit (lib) foldl';
   inherit (pkgs) writeShellScriptBin;
   inherit (config.home) defaults;
