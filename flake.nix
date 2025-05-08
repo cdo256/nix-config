@@ -14,7 +14,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     systems.url = "github:nix-systems/default";
     home-manager = {
@@ -35,7 +34,6 @@
     };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.hyprland.follows = "hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nh = {
