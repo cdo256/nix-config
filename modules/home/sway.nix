@@ -229,8 +229,8 @@ in
 
           # Screenshots
           "Print" = "exec grim -g \"$(slurp)\" - | wl-copy";
-          "${super}+Print" =
-            "exec mkdir -p ~/Screenshots && grim -g \"$(slurp)\" - >~/Screenshots/$(date -Iseconds).png";
+          "Shift+Print" =
+            "exec mkdir -p ~/images && grim -g \"$(slurp)\" - >~/images/screenshot_$(date -Iseconds).png";
 
           # Volume control
           "XF86AudioRaiseVolume" = "exec ${pamixer} --increase 5";
