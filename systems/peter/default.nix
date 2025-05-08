@@ -57,8 +57,5 @@
       "oom.nix"
     ];
     modules.home = [ ];
-    args = {
-      flake = self;
-    };
   };
 }

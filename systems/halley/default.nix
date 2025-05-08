@@ -1,7 +1,5 @@
 {
-  self,
   inputs,
-  config,
   ...
 }:
 {
@@ -58,8 +56,5 @@
       ./home/hyprland.nix
       ./home/waybar.nix
     ];
-    args = {
-      flake = self;
-    };
   };
 }

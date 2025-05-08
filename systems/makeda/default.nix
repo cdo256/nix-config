@@ -46,8 +46,5 @@
       "sops.nix"
       "linode.nix"
     ];
-    args = {
-      flake = self;
-    };
   };
 }

@@ -35,8 +35,5 @@
       "sops.nix"
     ];
     modules.home = [ ];
-    args = {
-      flake = self;
-    };
   };
 }

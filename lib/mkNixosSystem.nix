@@ -38,7 +38,8 @@ nixosSystem {
       };
       config._module.args = {
         inherit inputs;
-      } // args;
+        flake = self;
+      };
     }
   ];
 }
