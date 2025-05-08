@@ -44,10 +44,11 @@ in
     #  recursive = true;
     #};
 
+    # Symlinks
     ".git-credentials".source = symlink "/run/secrets/${config.home.username}/git-credentials";
     ".thunderbird".source = symlink "${config.home.homeDirectory}/.config/thunderbird";
     ".mozilla/firefox".source = symlink "${config.home.homeDirectory}/.config/firefox";
-    "Zotero".source = symlink "${config.home.homeDirectory}/sync/Zotero";
+    #"Zotero".source = symlink "${config.home.homeDirectory}/sync/Zotero";
     ".config/fish/fish_variables".source =
       symlink "${config.home.homeDirectory}/sync/config/fish/fish_variables";
   };
