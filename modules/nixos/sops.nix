@@ -20,9 +20,8 @@
       "restic/makeda/key" = { };
       "restic/rhiannon/url" = { };
       "restic/rhiannon/key" = { };
-      "cdo/git-credentials" = {
-        owner = "cdo";
-      };
+      "cdo/git-credentials" = { owner = "cdo"; };
+      "cdo/mutix-password" = { owner = "cdo"; };
     };
   };
 }
