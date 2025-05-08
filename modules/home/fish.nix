@@ -18,6 +18,7 @@
       nv = "nvim";
       usd = "systemctl --user";
       ssd = "sudo systemctl";
+      zed = "zeditor";
     };
   };
 
