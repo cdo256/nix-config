@@ -17,6 +17,8 @@ let
     "hyprpanel.nix"
     "packages.nix"
     "sway.nix"
+    "waybar.nix"
+    "wofi.nix"
   ];
   modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in
