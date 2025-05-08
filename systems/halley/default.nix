@@ -54,7 +54,8 @@
       "oom.nix"
     ];
     modules.home = [
-      ./hyprland.nix
+      ./home/hyprland.nix
+      ./home/waybar.nix
     ];
     args = {
       flake = self;
