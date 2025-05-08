@@ -9,6 +9,7 @@ let
   inherit (flake.lib) withDefaultPath;
   baseModules = [
     ./vars.nix
+    ./mbsync.nix
     "base.nix"
     "fish.nix"
     "fs.nix"
