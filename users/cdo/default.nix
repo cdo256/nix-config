@@ -9,6 +9,7 @@ let
     ./vars.nix
     ./email.nix
     "base.nix"
+    "direnv.nix"
     "fish.nix"
     "fs.nix"
     "git.nix"
