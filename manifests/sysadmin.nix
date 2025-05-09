@@ -23,6 +23,6 @@
   pkgs.inetutils
   inputs.nh.packages.${arch}.default
   pkgs.isd
-  pkgs.net-tools
+  pkgs.nettools
   pkgs.arp-scan
 ]
