@@ -55,6 +55,7 @@
       "dolphin.nix"
       "sway.nix"
       "oom.nix"
+      "netbird.nix"
     ];
     modules.home = [ ];
   };

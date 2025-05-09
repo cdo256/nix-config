@@ -25,4 +25,5 @@
   pkgs.isd
   pkgs.nettools
   pkgs.arp-scan
+  pkgs.netbird
 ]
