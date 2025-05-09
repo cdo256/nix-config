@@ -2,18 +2,14 @@
   self,
   inputs,
   lib,
-  options,
-  config,
   ...
 }:
 let
-  inherit (builtins) attrNames attrValues listToAttrs;
   inherit (self.lib) mkNixosSystem;
   inherit (lib) mapAttrs mkOption;
-  inherit (lib.attrsets) mergeAttrsList;
-  inherit (lib.types) lazyAttrsOf attrs path;
   inherit (inputs.flake-parts.lib) mkSubmoduleOptions;
-  args = { inherit inputs lib config; };
+  inherit (lib.types) attrs lazyAttrsOf;
+  inherit (self.lib.types) system;
 in
 {
   imports = [
@@ -25,7 +21,7 @@ in
   ];
   options.flake = mkSubmoduleOptions {
     systems = mkOption {
-      type = lazyAttrsOf attrs;
+      type = lazyAttrsOf system;
       default = { };
       description = ''
         Input list of systems;

@@ -8,6 +8,7 @@
     hostname = "halley";
     arch = "x86_64-linux";
     owner = "cdo";
+    graphical = true;
     packages.system = [
       "base.nix"
       "system.nix"

@@ -11,7 +11,7 @@
     arch = "x86_64-linux";
     graphical = false;
     owner = "cdo";
-    package.system = [ ];
+    packages.system = [ ];
     packages.home = [ ];
     modules.nixos = [
       ./nixos.nix

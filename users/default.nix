@@ -5,8 +5,9 @@
   ...
 }:
 let
-  inherit (self.lib) mkHomeConfiguration types;
+  inherit (self.lib) mkHomeConfiguration;
   inherit (lib) mapAttrs mkOption;
+  inherit (lib.types) lazyAttrsOf attrs;
   inherit (inputs.flake-parts.lib) mkSubmoduleOptions;
 in
 {
@@ -15,7 +16,7 @@ in
   ];
   options.flake = mkSubmoduleOptions {
     users = mkOption {
-      type = types.lazyAttrsOf types.system;
+      type = lazyAttrsOf attrs; #user;
       default = { };
       description = ''
         Input list of users.

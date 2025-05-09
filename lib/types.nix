@@ -13,10 +13,9 @@ let
     listOf
     attrsOf
     submodule
+    submoduleWith
     ;
-in
-types
-// rec {
+in rec {
   defaultPath = oneOf [
     str
     path
@@ -26,7 +25,7 @@ types
     path
     attrs
   ];
-  mkSubmoduleType = (attrs: types.submoduleWith { modules = [ attrs ]; });
+  mkSubmoduleType = (attrs: submoduleWith { modules = [ attrs ]; });
   system = mkSubmoduleType {
     options = {
       arch = mkOption {
@@ -49,7 +48,7 @@ types
       graphical = mkOption {
         type = bool;
         #default = config.args.type == "laptop" || config.args.type == "desktop";
-        description = "Does this machine have a graphical display output.";
+        description = "Does this machine have a graphical display output?";
       };
       packages = {
         home = mkOption {
