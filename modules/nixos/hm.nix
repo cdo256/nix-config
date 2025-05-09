@@ -17,9 +17,6 @@
         ;
     };
     users.${config.args.owner} =
-      let
-        root = flake.root + "/modules/home";
-      in
-      import (root + "/${config.args.owner}");
+      import (flake + "/users/${config.args.owner}");
   };
 }
