@@ -172,7 +172,7 @@ in
         };
       };
 
-      output."*".bg = "${flake.root + "/files/wallpaper.png"} fit";
+      output."*".bg = "${flake + "/files/wallpaper.png"} fit";
 
       keybindings =
         numericBindings

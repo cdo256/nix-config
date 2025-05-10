@@ -5,7 +5,7 @@
 
 {
   sops = {
-    defaultSopsFile = flake.root + "/secrets/secrets.yaml";
+    defaultSopsFile = flake + "/secrets/secrets.yaml";
     defaultSopsFormat = "yaml";
     age.keyFile = "/etc/sops/age/keys.txt";
     secrets = {
