@@ -2,11 +2,12 @@
   inputs,
   config,
   flake,
+  pkgs,
   ...
 }:
 {
   home-manager = {
-    backupFileExtension = "nix.bak";
+    backupCommand = "${pkgs.trash-cli}/bin/trash";
     extraSpecialArgs = {
       inherit
         inputs
