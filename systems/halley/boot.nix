@@ -1,7 +1,4 @@
-{ config, lib, ... }:
-let
-  inherit (lib) mkIf;
-in
+{ ... }:
 {
   config.boot = {
     loader.grub = {

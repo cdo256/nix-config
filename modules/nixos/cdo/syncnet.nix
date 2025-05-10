@@ -1,25 +1,25 @@
 {
   flake,
+  inputs,
   config,
-  pkgs,
-  lib,
   ...
 }:
 
 let
   cfg = config.services.syncnet;
   homeDirectory = "/home/${config.args.owner}";
-  inherit (lib) filter;
-  inherit (lib.attrsets) mapAttrs' mapAttrsToList;
-  inherit (lib.strings) concatLines;
+  inherit (inputs.nixpkgs.lib) filter mkEnableOption mkOption;
+  inherit (inputs.nixpkgs.lib.types) anything;
+  inherit (inputs.nixpkgs.lib.attrsets) mapAttrs' mapAttrsToList;
+  inherit (inputs.nixpkgs.lib.strings) concatLines;
   isNull = x: x == null;
 in
 {
   options = {
     services.syncnet = {
-      enable = lib.mkEnableOption "Enable Syncnet";
-      devices = lib.mkOption {
-        type = lib.types.anything; # TODO: Refine
+      enable = mkEnableOption "Enable Syncnet";
+      devices = mkOption {
+        type = anything; # TODO: Refine
         default = { };
       };
     };

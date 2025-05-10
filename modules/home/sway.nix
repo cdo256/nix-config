@@ -1,13 +1,13 @@
 # Derived from https://github.com/jvanbruegge/nix-config/tree/master/sway
 {
   flake,
+  inputs,
   config,
   pkgs,
-  lib,
   ...
 }:
 let
-  inherit (lib) foldl';
+  inherit (inputs.nixpkgs.lib) foldl' getExe;
   inherit (pkgs) writeShellScriptBin;
   inherit (config.home) defaults;
   swaylock = "${pkgs.swaylock}/bin/swaylock";
@@ -159,7 +159,7 @@ in
       window.border = 0;
       floating.border = 0;
 
-      terminal = lib.getExe config.programs.kitty.package;
+      terminal = getExe config.programs.kitty.package;
       inherit menu;
 
       input = with config.home.kbLayout; {

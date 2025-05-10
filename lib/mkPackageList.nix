@@ -2,7 +2,6 @@
   self,
   inputs,
   config,
-  lib,
   withSystem,
   ...
 }:
@@ -21,7 +20,6 @@ withSystem arch (
       inherit
         self
         inputs
-        lib
         arch
         pkgs
         ;

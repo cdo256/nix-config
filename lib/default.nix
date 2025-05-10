@@ -1,8 +1,5 @@
 {
   self,
-  inputs,
-  lib,
-  withSystem,
   ...
 }@args:
 {

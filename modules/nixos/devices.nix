@@ -1,11 +1,12 @@
 {
-  config,
-  pkgs,
-  lib,
+  inputs,
   ...
 }:
 
 let
+  inherit (inputs.nixpkgs.lib) mkOption;
+  inherit (inputs.nixpkgs.lib.types) attrsOf anything;
+
   machines = {
     algernon = {
       name = "algernon";
@@ -63,8 +64,8 @@ let
   };
 in
 {
-  options.devices = lib.mkOption {
-    type = lib.types.attrsOf lib.types.anything;
+  options.devices = mkOption {
+    type = attrsOf anything;
     description = "A set of machine configurations.";
   };
   config.devices = machines // {

@@ -1,14 +1,13 @@
 {
   self,
   inputs,
-  lib,
   ...
 }:
 let
   inherit (self.lib) mkNixosSystem;
-  inherit (lib) mapAttrs mkOption;
+  inherit (inputs.nixpkgs.lib) mapAttrs mkOption;
+  inherit (inputs.nixpkgs.lib.types) attrs lazyAttrsOf;
   inherit (inputs.flake-parts.lib) mkSubmoduleOptions;
-  inherit (lib.types) attrs lazyAttrsOf;
   inherit (self.lib.types) system;
 in
 {

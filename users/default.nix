@@ -1,13 +1,12 @@
 {
   self,
   inputs,
-  lib,
   ...
 }:
 let
   inherit (self.lib) mkHomeConfiguration;
-  inherit (lib) mapAttrs mkOption;
-  inherit (lib.types) lazyAttrsOf attrs;
+  inherit (inputs.nixpkgs.lib) mapAttrs mkOption;
+  inherit (inputs.nixpkgs.lib.types) lazyAttrsOf attrs;
   inherit (inputs.flake-parts.lib) mkSubmoduleOptions;
 in
 {

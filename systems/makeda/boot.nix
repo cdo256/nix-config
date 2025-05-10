@@ -6,4 +6,3 @@
     timeout = 10; # Allow time for LISH to connect.
   };
 }
-
