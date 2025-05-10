@@ -14,14 +14,12 @@ in
   imports = [
     #./cdo
   ];
-  options.flake = mkSubmoduleOptions {
-    users = mkOption {
-      type = lazyAttrsOf attrs; #user;
-      default = { };
-      description = ''
-        Input list of users.
-      '';
-    };
+  options.flake.users = mkOption {
+    type = lazyAttrsOf attrs; # user;
+    default = { };
+    description = ''
+      Input list of users.
+    '';
   };
   config.flake.homeConfigurations = mapAttrs mkHomeConfiguration self.users;
 }

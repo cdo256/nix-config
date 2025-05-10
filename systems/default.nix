@@ -19,14 +19,12 @@ in
     ./vm2
     ./vm3
   ];
-  options.flake = mkSubmoduleOptions {
-    systems = mkOption {
-      type = lazyAttrsOf system;
-      default = { };
-      description = ''
-        Input list of systems;
-      '';
-    };
+  options.flake.systems = mkOption {
+    type = lazyAttrsOf system;
+    default = { };
+    description = ''
+      Input list of systems;
+    '';
   };
   config.flake.nixosConfigurations = mapAttrs mkNixosSystem self.systems;
 }
