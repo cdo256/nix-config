@@ -11,29 +11,57 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
+    nixpkgs = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
     };
-    systems.url = "github:nix-systems/default";
+    flake-parts = {
+      type = "github";
+      owner = "hercules-ci";
+      repo = "flake-parts";
+      ref = "main";
+    };
+    systems = {
+      type = "github";
+      owner = "nix-systems";
+      repo = "default";
+      ref = "main";
+    };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      type = "github";
+      owner = "cdo256";
+      repo = "home-manager";
+      ref = "backup-command";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:cdo256/nixvim-config";
+      type = "github";
+      owner = "cdo256";
+      repo = "nixvim-config";
+      ref = "main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
-      url = "github:Mic92/sops-nix";
+      type = "github";
+      owner = "Mic92";
+      repo = "sops-nix";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/hyprland";
+      type = "github";
+      owner = "hyprwm";
+      repo = "hyprland";
+      ref = "main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
+      type = "github";
+      owner = "Jas-SinghFSU";
+      repo = "HyprPanel";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nh = {
