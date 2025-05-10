@@ -7,4 +7,5 @@
   pkgs.fd
   pkgs.zip
   pkgs.file
+  pkgs.llm
 ]
