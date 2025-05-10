@@ -20,12 +20,6 @@
       repo = "flake-parts";
       ref = "main";
     };
-    systems = {
-      type = "github";
-      owner = "nix-systems";
-      repo = "default";
-      ref = "main";
-    };
     home-manager = {
       type = "github";
       owner = "cdo256";
