@@ -7,6 +7,7 @@
     type = "laptop";
     hostname = "halley";
     arch = "x86_64-linux";
+    os = "nixos";
     owner = "cdo";
     graphical = true;
     packages.system = [

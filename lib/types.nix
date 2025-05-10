@@ -15,7 +15,8 @@ let
     submodule
     submoduleWith
     ;
-in rec {
+in
+rec {
   defaultPath = oneOf [
     str
     path
@@ -35,7 +36,11 @@ in rec {
       type = mkOption {
         # TODO: Should be from a list of strings.
         type = str;
-        description = "server, laptop, destop, vm, etc.";
+        description = "Kind of system, eg. server, laptop, destop, vm.";
+      };
+      os = mkOption {
+        type = str;
+        description = "Name of the OS, e.g. nixos, debian.";
       };
       owner = mkOption {
         type = str;

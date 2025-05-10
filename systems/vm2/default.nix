@@ -9,8 +9,9 @@
     type = "vm";
     hostname = "vm2";
     arch = "x86_64-linux";
-    graphical = false;
+    os = "nixos";
     owner = "cdo";
+    graphical = false;
     packages.system = [ ];
     packages.home = [ ];
     modules.nixos = [

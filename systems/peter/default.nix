@@ -9,8 +9,9 @@
     type = "desktop";
     hostname = "peter";
     arch = "x86_64-linux";
-    graphical = true;
+    os = "nixos";
     owner = "cdo";
+    graphical = true;
     packages.system = [
       "base.nix"
       "system.nix"
