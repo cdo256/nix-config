@@ -15,6 +15,7 @@ let
     "git.nix"
     "hyprland.nix"
     "hyprpanel.nix"
+    "jujutsu.nix"
     "packages.nix"
     "readline.nix"
     "sway.nix"
