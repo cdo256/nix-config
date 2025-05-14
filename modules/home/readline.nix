@@ -7,7 +7,6 @@
       "K" = "history-search-forward";
       "TAB" = "menu-complete";
       "<shift-tab>" = "menu-complete-backward";
-      "v" = "edit-and-execute-command";
     };
 
     variables = {
@@ -24,5 +23,12 @@
       "show-all-if-ambiguous" = "on";
       "bell-style" = "none";
     };
+
+    extraConfig = ''
+      $if mode=vi
+        set keymap vi-command
+        "v": edit-and-execute-command
+      $endif
+    '';
   };
 }
