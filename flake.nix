@@ -61,5 +61,12 @@
       repo = "nh";
       ref = "master";
     };
+    cdo-private = {
+      type = "github";
+      owner = "cdo256";
+      repo = "private";
+      ref = "main";
+      flake = false;
+    };
   };
 }

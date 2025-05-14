@@ -1,11 +1,12 @@
 {
   flake,
+  inputs,
   ...
 }:
 
 {
   sops = {
-    defaultSopsFile = flake + "/secrets/secrets.yaml";
+    defaultSopsFile = "${inputs.cdo-private}/secrets.yaml";
     defaultSopsFormat = "yaml";
     age.keyFile = "/etc/sops/age/keys.txt";
     secrets = {
