@@ -4,7 +4,7 @@
   pkgs.jq
   pkgs.lazygit
   pkgs.git-imerge
-  inputs.nixvim.packages.x86_64-linux.default
+  pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
   pkgs.just # updated gnumake replacement

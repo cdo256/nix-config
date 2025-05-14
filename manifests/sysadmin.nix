@@ -21,7 +21,7 @@
   pkgs.dig
   pkgs.sysstat
   pkgs.inetutils
-  inputs.nh.packages.${arch}.default
+  pkgs.nh
   pkgs.isd
   pkgs.nettools
   pkgs.arp-scan
