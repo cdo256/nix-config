@@ -13,6 +13,7 @@
     getRelativePath = import ./getRelativePath.nix args;
     withDefaultPath = import ./withDefaultPath.nix args;
     types = import ./types.nix args;
+    mergeAttrs = import ./mergeAttrs.nix args;
   };
   perSystem._module.args.lib = self.lib;
 }
