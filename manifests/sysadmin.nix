@@ -38,4 +38,5 @@
   #pkgs.sudo-rs # memory-safe `sudo`
   #pkgs.uutils-coreutils-noprefix # replaces GNU `coreutils`
   pkgs.viddy # better watch
+  pkgs.dust # Alternative to du
 ]
