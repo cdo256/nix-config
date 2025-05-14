@@ -44,6 +44,9 @@ in
           "obsidian" = {
             path = "sync/obsidian";
             devices = pcs ++ androidDevices;
+            ignores = [
+              ".obsidian"
+            ];
           };
           "secure" = {
             path = "sync/secure";
