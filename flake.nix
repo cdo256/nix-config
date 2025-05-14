@@ -57,9 +57,9 @@
     };
     nh = {
       type = "github";
-      owner = "cdo256";
+      owner = "nix-community";
       repo = "nh";
-      ref = "build-vm";
+      ref = "master";
     };
   };
 }
