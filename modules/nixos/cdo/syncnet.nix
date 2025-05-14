@@ -137,8 +137,8 @@ in
               devices = map (device: device.name) devices;
               inherit type;
               versioning = {
-                type = "staggered";
-                params.maxAge = "365";
+                type = "simple";
+                params.keep = "10";
               };
             }
           ) folders;
