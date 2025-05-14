@@ -84,10 +84,6 @@ let
   dirBindings = mergeAttrs (map forEachDirection directions);
 in
 {
-  imports = [
-    ./waybar.nix
-  ];
-
   home.packages = [
     pkgs.grim
     pkgs.slurp
