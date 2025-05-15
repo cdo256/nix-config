@@ -6,6 +6,7 @@
   pkgs.lazygit
   pkgs.git-imerge
   pkgs.git-filter-repo
+  pkgs.gh
   pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
