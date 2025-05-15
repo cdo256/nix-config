@@ -2,8 +2,10 @@
 [
   pkgs.nixfmt-rfc-style
   pkgs.jq
+  pkgs.git
   pkgs.lazygit
   pkgs.git-imerge
+  pkgs.git-filter-repo
   pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
