@@ -1,0 +1,9 @@
+[project]
+name =  "python-utils"
+authors = [
+    {name = "Christina O'Donnell", email = "cdo@mutix.org"},
+]
+version = "0.1.0"
+dependencies = [
+  "pypandoc >= 1.13"
+]
