@@ -7,6 +7,7 @@
   pkgs.git-imerge
   pkgs.git-filter-repo
   pkgs.gh
+  pkgs.gitleaks
   pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
