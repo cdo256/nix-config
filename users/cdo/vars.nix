@@ -66,11 +66,15 @@ in
         fileManager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
         emailProgram = "${pkgs.thunderbird}/bin/thunderbird";
         passwordManager = "${pkgs.keepassxc}/bin/keepassxc";
+        diffTool = "${pkgs.neovim}/bin/nvim -d";
+        mergeTool = "${pkgs.neovim}/bin/nvim -d";
       };
       sessionVariables = {
         EDITOR = config.home.defaults.editor;
         BROWSER = config.home.defaults.browser;
         TERMINAL = config.home.defaults.terminal;
+        DIFF_TOOL = config.home.defaults.diffTool;
+        MERGE_TOOL = config.home.defaults.mergeTool;
       };
       kbLayout = {
         layout = "gb";
