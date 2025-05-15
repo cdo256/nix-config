@@ -46,6 +46,8 @@ in
             devices = pcs ++ androidDevices;
             ignores = [
               ".obsidian"
+              ".git"
+              ".trash"
             ];
           };
           "secure" = {
