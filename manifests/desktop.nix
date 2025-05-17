@@ -14,6 +14,7 @@
   pkgs.zotero # Reference manager
   pkgs.ncpamixer
   pkgs.pavucontrol
+  pkgs.discord
 
   # Broken
   pkgs.zoom # Screen sharing never worked, but browser sharing did.
