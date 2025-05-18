@@ -14,6 +14,11 @@
       repo = "nixpkgs";
       ref = "nixos-unstable";
     };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      #url = "https://git.lix.systems/lix-project/lix/src/branch/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts = {
       type = "github";
       owner = "hercules-ci";

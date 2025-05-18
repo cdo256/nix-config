@@ -30,6 +30,7 @@
       ./sshd.nix
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
+      inputs.lix-module.nixosModules.default
       "base.nix"
       "cdo"
       "superuser.nix"

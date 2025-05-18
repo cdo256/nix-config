@@ -14,6 +14,7 @@ let
     attrsOf
     submodule
     submoduleWith
+    functionTo
     ;
 in
 rec {
@@ -25,6 +26,7 @@ rec {
     str
     path
     attrs
+    (functionTo attrs)
   ];
   mkSubmoduleType = (attrs: submoduleWith { modules = [ attrs ]; });
   system = mkSubmoduleType {
