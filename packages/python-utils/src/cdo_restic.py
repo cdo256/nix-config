@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import argparse
 import subprocess
 import os
@@ -13,7 +11,6 @@ def eprint(*args, **kwargs):
 
 
 def load_secrets():
-    # Decrypt with sops and load YAML
     secrets_path = Path(
         os.environ.get("MUTIX_SECRETS_PATH", "~/.local/secure/mutix/secrets.sops")
     )
@@ -50,7 +47,7 @@ def main():
         description="Restic wrapper with SOPS-managed secrets"
     )
     parser.add_argument(
-        "--machine", required=True, help="Machine name to look up in secrets"
+        "--machine", "-m", required=True, help="Machine name to look up in secrets"
     )
     parser.add_argument(
         "restic_args", nargs=argparse.REMAINDER, help="Arguments to pass to restic"
@@ -64,12 +61,10 @@ def main():
     env["RESTIC_REPOSITORY"] = url
     env["RESTIC_PASSWORD"] = password
 
-    # Remove the '--' separator if present
     restic_args = args.restic_args
     if restic_args and restic_args[0] == "--":
         restic_args = restic_args[1:]
 
-    # Call restic with the remaining arguments
     try:
         proc = subprocess.run(["restic"] + restic_args, env=env)
         sys.exit(proc.returncode)

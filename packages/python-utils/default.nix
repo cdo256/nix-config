@@ -5,7 +5,7 @@
 let
   python = pkgs.python3;
 in
-python.pkgs.buildPythonApplication rec {
+python.pkgs.buildPythonPackage rec {
   pname = "python-utils";
   version = "0.1.0";
   src = ./.;

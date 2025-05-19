@@ -1,3 +1,7 @@
+#[build-system]
+#requires = ["setuptools>=61.0"]
+#build-backend = "setuptools.build_meta"
+
 [project]
 name =  "python-utils"
 authors = [ {name = "Christina O'Donnell", email = "cdo@mutix.org"}, ]
@@ -6,3 +10,6 @@ dependencies = [
   "pypandoc >= 1.13",
   "pyyaml >= 6.0.2"
 ]
+
+[project.scripts]
+cdo-restic = "cdo_restic:main"
