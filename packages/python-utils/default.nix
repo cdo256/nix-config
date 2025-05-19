@@ -5,7 +5,7 @@
 let
   python = pkgs.python3;
 in
-python.pkgs.buildPythonPackage rec {
+python.pkgs.buildPythonApplication rec {
   pname = "python-utils";
   version = "0.1.0";
   src = ./.;
@@ -19,6 +19,7 @@ python.pkgs.buildPythonPackage rec {
   dependencies = with python.pkgs; [
     pkgs.pandoc
     pypandoc
+    pyyaml
   ];
 
   # does not contain any tests
