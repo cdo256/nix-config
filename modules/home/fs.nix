@@ -28,6 +28,7 @@ in
     HISTFILE = "${config.xdg.stateHome}/shell/histfile";
     MAILDIR = "${config.xdg.dataHome}/mail/"; # Trailing slash required.
     SPACEMACSDIR = "${config.xdg.configHome}/spacemacs";
+    NH_FLAKE = "${config.xdg.configHome}/mutix";
   };
 
   home.file = {
