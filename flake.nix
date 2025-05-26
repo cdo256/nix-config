@@ -73,5 +73,12 @@
       ref = "main";
       flake = false;
     };
+    stylix = {
+      type = "github";
+      owner = "danth";
+      repo = "stylix";
+      ref = "master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
