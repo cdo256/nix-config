@@ -10,6 +10,7 @@
     "context": "Workspace",
     "bindings": {
       "space f f": "file_finder::Toggle",
+      "space f c": "pane::DeploySearch",
       "space f d": "workspace::Open",
       "space g s": "git_panel::OpenMenu",
       "space g g": "git_panel::OpenMenu",
@@ -32,6 +33,7 @@
     "bindings": {
       "ctrl-s": "workspace::Save",
       "space f f": "file_finder::Toggle",
+      "space f c": "pane::DeploySearch",
       "space f d": "workspace::Open",
       "space g s": "git_panel::OpenMenu",
       "space g g": "git_panel::OpenMenu",
