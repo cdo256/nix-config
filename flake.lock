@@ -100,11 +100,11 @@
     "cdo-private": {
       "flake": false,
       "locked": {
-        "lastModified": 1747235841,
-        "narHash": "sha256-XBCKGvXcXsS9J+rGAFAvDWmVIIOk/+Imkxd6+3+gXd8=",
+        "lastModified": 1748242721,
+        "narHash": "sha256-E+3V5uSznez9lHzHjN+Q0vFMZ9nxRRtv5u65TrZQV/4=",
         "owner": "cdo256",
         "repo": "private",
-        "rev": "8e60d367bbc5e34c1dc6303b96b39da4a766ce1a",
+        "rev": "ad475b271f03b8e8bb0a05f7f6e1b0d34a189bcc",
         "type": "github"
       },
       "original": {
@@ -831,11 +831,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1747226693,
-        "narHash": "sha256-znYd6T8MHUaFf+U8dn2taLxQjzqbDH7mF6TpzoAJ2Ds=",
+        "lastModified": 1748162465,
+        "narHash": "sha256-24/sywpETZBMKlzqOYROftudpNdPY/fUeDhfQgp7Olc=",
         "owner": "cdo256",
         "repo": "nixvim-config",
-        "rev": "c05396374df7753fe63366087077c3745d0bfd9d",
+        "rev": "53f823d38c9e97f69aff16ffc5416ca210809c3e",
         "type": "github"
       },
       "original": {
