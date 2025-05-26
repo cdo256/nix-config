@@ -11,9 +11,8 @@ def eprint(*args, **kwargs):
 
 
 def load_secrets():
-    secrets_path = Path(
-        os.environ.get("MUTIX_SECRETS_PATH", "~/.local/secure/mutix/secrets.sops")
-    )
+    default_secrets_path = f"{os.environ["HOME"]}/.local/secure/mutix/secrets.yaml"
+    secrets_path = Path(os.environ.get("MUTIX_SECRETS_PATH", default_secrets_path))
     try:
         result = subprocess.run(
             ["sops", "--decrypt", secrets_path],
@@ -24,7 +23,7 @@ def load_secrets():
         )
         return yaml.safe_load(result.stdout)
     except subprocess.CalledProcessError as e:
-        eprint(f"Error decrypting secrets: {e.stderr}", file=sys.stderr)
+        eprint(f"Error decrypting secrets: {e.stderr}")
         sys.exit(1)
 
 
@@ -32,12 +31,11 @@ def get_machine_secrets(secrets, machine):
     try:
         entry = secrets["restic"][machine]
         url = entry["url"]
-        password = entry["password"]
+        password = entry["key"]
         return url, password
     except KeyError:
         print(
-            f"Could not find restic.{machine}.url or restic.{machine}.password in secrets.",
-            file=sys.stderr,
+            f"Could not find restic.{machine}.url or restic.{machine}.password in secrets."
         )
         sys.exit(1)
 
@@ -69,7 +67,7 @@ def main():
         proc = subprocess.run(["restic"] + restic_args, env=env)
         sys.exit(proc.returncode)
     except FileNotFoundError:
-        print("restic not found in PATH.", file=sys.stderr)
+        print("restic not found in PATH.")
         sys.exit(127)
 
 
