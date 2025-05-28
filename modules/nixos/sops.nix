@@ -6,7 +6,7 @@
 
 {
   sops = {
-    defaultSopsFile = "${inputs.cdo-private}/secrets.yaml";
+    defaultSopsFile = "${inputs.cdo-secrets}/secrets.yaml";
     defaultSopsFormat = "yaml";
     age.keyFile = "/etc/sops/age/keys.txt";
     secrets = {

@@ -66,7 +66,7 @@
       repo = "nh";
       ref = "master";
     };
-    cdo-private = {
+    cdo-secrets = {
       type = "github";
       owner = "cdo256";
       repo = "private";
