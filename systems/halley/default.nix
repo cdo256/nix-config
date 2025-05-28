@@ -52,7 +52,6 @@
       "unfree.nix"
       "devices.nix"
       "borgbase.nix"
-      "sops.nix"
       "sway.nix"
       "oom.nix"
     ];

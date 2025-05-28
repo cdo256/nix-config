@@ -44,7 +44,6 @@
       "unfree.nix"
       "devices.nix"
       "borgbase.nix"
-      "sops.nix"
       "linode.nix"
       "netbird-server.nix"
     ];

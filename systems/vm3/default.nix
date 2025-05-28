@@ -37,7 +37,6 @@
       "vm-networking.nix"
       "devices.nix"
       "borgbase.nix"
-      "sops.nix"
     ];
     modules.home = [ ];
   };

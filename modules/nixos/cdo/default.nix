@@ -2,6 +2,7 @@
 {
   imports = [
     ./syncnet.nix
+    ./secrets.nix
   ];
   config.users.users.cdo = {
     description = "Christina O'Donnell";

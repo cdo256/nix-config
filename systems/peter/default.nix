@@ -52,7 +52,6 @@
       "unfree.nix"
       "devices.nix"
       "borgbase.nix"
-      "sops.nix"
       "steam.nix"
       "dolphin.nix"
       "sway.nix"
