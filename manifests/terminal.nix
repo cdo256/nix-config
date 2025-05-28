@@ -18,4 +18,5 @@
   pkgs.hexyl # hex pretty printer
   pkgs.ripgrep # rg ~ `grep` replacement
   pkgs.viddy # better watch
+  pkgs.strip-ansi # Util to remove escape sequences
 ]
