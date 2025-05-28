@@ -2,6 +2,7 @@
 
 let
   cfg = config.services.borgbase;
+  inherit (config.networking) hostName;
 in
 {
   options = {
@@ -13,10 +14,14 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
+    sops.secrets = {
+      "restic/${hostName}/url" = { };
+      "restic/${hostName}/key" = { };
+    };
     services.restic.backups.borgbase = {
-      repositoryFile = config.sops.secrets."restic/${config.networking.hostName}/url".path;
+      repositoryFile = config.sops.secrets."restic/${hostName}/url".path;
       initialize = true;
-      passwordFile = config.sops.secrets."restic/${config.networking.hostName}/key".path;
+      passwordFile = config.sops.secrets."restic/${hostName}/key".path;
       paths = [
         "/home"
         "/root"
