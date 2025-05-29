@@ -10,6 +10,7 @@ host:
   arch,
   modules,
   owner,
+  users,
   packages,
   hostname,
   graphical ? (type == "laptop" || type == "desktop"),
@@ -30,6 +31,7 @@ nixosSystem {
           type
           arch
           owner
+          users
           hostname
           packages
           graphical

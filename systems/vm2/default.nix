@@ -11,6 +11,7 @@
     arch = "x86_64-linux";
     os = "nixos";
     owner = "cdo";
+    users = [ "cdo" ];
     graphical = false;
     packages.system = [ ];
     packages.home = [ ];
