@@ -13,16 +13,16 @@
     graphical = false;
     packages.system = [
       "base.nix"
-      #"system.nix"
-      #"terminal.nix"
-      #"services.nix"
+      "system.nix"
+      "terminal.nix"
+      "services.nix"
     ];
     packages.home = [
       "base.nix"
-      #"desktop.nix"
-      #"development.nix"
-      #"terminal.nix"
-      #"sysadmin.nix"
+      "desktop.nix"
+      "development.nix"
+      "terminal.nix"
+      "sysadmin.nix"
     ];
     modules.nixos = [
       ./nixos.nix
