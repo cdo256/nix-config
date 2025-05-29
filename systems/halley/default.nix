@@ -47,7 +47,6 @@
       "shell.nix"
       "xserver.nix"
       "graphical.nix"
-      "hyprland.nix"
       "video.nix"
       "vpn.nix"
       "unfree.nix"
@@ -56,10 +55,14 @@
       "oom.nix"
       "users.nix"
       "fish.nix"
+      "stylix.nix"
     ];
     modules.home = [
       ./home/hyprland.nix
       ./home/waybar.nix
+      #inputs.stylix.homeModules.stylix
+      "zed.nix"
+      #"stylix.nix"
     ];
   };
 }

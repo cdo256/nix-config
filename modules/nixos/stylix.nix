@@ -1,7 +1,9 @@
-{inputs,...}:
+{ inputs, ... }:
 {
-  stylix.enable = true;
-  stylix.base16Scheme = {
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    base16Scheme = {
       base00 = "#000005";
       base01 = "#1f3d48";
       base02 = "#c5020e";
@@ -18,5 +20,6 @@
       base0D = "#6f9fff";
       base0E = "#9255ff";
       base0F = "#90bbff";
+    };
   };
 }

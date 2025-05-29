@@ -27,7 +27,7 @@
     modules.nixos = [
       ./nixos.nix
       inputs.home-manager.nixosModules.home-manager
-      #inputs.sops-nix.nixosModules.sops
+      inputs.sops-nix.nixosModules.sops
       inputs.lix-module.nixosModules.default
       #inputs.stylix.nixosModules.stylix
       "base.nix"
@@ -37,21 +37,21 @@
       "system-packages.nix"
       #"laptop.nix"
       "hm.nix"
-      #"fonts.nix"
+      "fonts.nix"
       "locale.nix"
-      #"nix.nix"
-      #"security.nix"
-      #"networking.nix"
-      #"shell.nix"
+      "nix.nix"
+      "security.nix"
+      "networking.nix"
+      "shell.nix"
       #"xserver.nix"
-      #"graphical.nix"
+      "graphical.nix"
       #"hyprland.nix"
       #"video.nix"
       #"vpn.nix"
-      #"unfree.nix"
+      "unfree.nix"
       #"borgbase.nix"
-      #"sway.nix"
-      #"oom.nix"
+      "sway.nix"
+      "oom.nix"
       "users.nix"
       "fish.nix"
     ];

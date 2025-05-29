@@ -36,10 +36,6 @@ in
       source = "${files}/spacemacs";
       recursive = true;
     };
-    ".config/zed" = {
-      source = "${files}/zed";
-      recursive = true;
-    };
     #".config/nvim" = {
     #  source = "${files}/nvim";
     #  recursive = true;

@@ -123,7 +123,6 @@ in
   programs.swaylock = {
     enable = true;
     settings = {
-      color = "063F62";
       show-failed-attempts = true;
     };
   };
