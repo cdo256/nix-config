@@ -58,6 +58,7 @@
       "oom.nix"
       "netbird-client.nix"
       "users.nix"
+      "fish.nix"
     ];
     modules.home = [ ];
   };

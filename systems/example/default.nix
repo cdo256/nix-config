@@ -53,6 +53,7 @@
       #"sway.nix"
       #"oom.nix"
       "users.nix"
+      "fish.nix"
     ];
     modules.home = [
     ];

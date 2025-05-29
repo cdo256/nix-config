@@ -47,6 +47,7 @@
       "linode.nix"
       "netbird-server.nix"
       "users.nix"
+      "fish.nix"
     ];
   };
 }

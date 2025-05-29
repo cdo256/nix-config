@@ -55,6 +55,7 @@
       "sway.nix"
       "oom.nix"
       "users.nix"
+      "fish.nix"
     ];
     modules.home = [
       ./home/hyprland.nix

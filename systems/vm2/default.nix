@@ -35,6 +35,7 @@
       "vm-networking.nix"
       "borgbase.nix"
       "users.nix"
+      "fish.nix"
     ];
     modules.home = [ ];
   };
