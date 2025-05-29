@@ -16,13 +16,14 @@ ap = argparse.ArgumentParser(
 ap.add_argument('-r', '--regenerate', action='store_true')
 ap.add_argument('-s', '--ssh', action='store_true')
 ap.add_argument('-a', '--age', action='store_true')
+ap.add_argument("email")
 args = ap.parse_args()
 print(args)
 
 if (args.regenerate and args.ssh) or not ssh_priv_key_path.exists():
     print(f'Generating ed25519 ssh key in {ssh_priv_key_path}...')
-    sp.run(['ssh-keygen', '-t', 'ed25519', '-C', 'cdo@mutix.org'], capture_output=False)
     print('Done: ')
+    sp.run(["ssh-keygen", "-t", "ed25519", "-C", args.email], capture_output=False)
 else:
     print(f'ed25519 ssh key already exists at path {ssh_priv_key_path}, not regenerating.')
 
