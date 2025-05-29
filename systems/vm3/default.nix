@@ -35,7 +35,6 @@
       "unfree.nix"
       "virtual.nix"
       "vm-networking.nix"
-      "devices.nix"
       "borgbase.nix"
     ];
     modules.home = [ ];

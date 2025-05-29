@@ -42,7 +42,6 @@
       "networking.nix"
       "shell.nix"
       "unfree.nix"
-      "devices.nix"
       "borgbase.nix"
       "linode.nix"
       "netbird-server.nix"

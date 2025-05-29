@@ -50,7 +50,6 @@
       "video.nix"
       "vpn.nix"
       "unfree.nix"
-      "devices.nix"
       "borgbase.nix"
       "sway.nix"
       "oom.nix"
