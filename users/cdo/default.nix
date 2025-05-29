@@ -8,6 +8,7 @@ let
   baseModules = [
     ./vars.nix
     ./email.nix
+    "vars.nix"
     "base.nix"
     "direnv.nix"
     "fish.nix"
