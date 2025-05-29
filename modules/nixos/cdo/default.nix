@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./syncnet.nix
     ./secrets.nix
   ];
   config.users.users.cdo = {
-    description = "Christina O'Donnell";
+    description = config.home-manager.users.cdo.home.fullName;
     initialPassword = "";
     shell = pkgs.fish;
   };

@@ -16,6 +16,12 @@ in
     defaults = mkOption {
       type = types.attrs;
     };
+    mainEmail = mkOption {
+      type = types.str;
+    };
+    fullName = mkOption {
+      type = types.str;
+    };
     # From https://github.com/NixOS/nixpkgs/blob/7650c61104186974b24d9ba97f6a2ea018581f09/nixos/modules/services/x11/xserver.nix
     kbLayout = {
       layout = mkOption {
@@ -57,6 +63,8 @@ in
   config = {
     home = {
       username = "cdo";
+      fullName = "Christina O'Donnell";
+      mainEmail = "cdo@mutix.org";
       defaults = {
         editor = "${inputs.nixvim.packages.${args.arch}.default}/bin/nvim";
         browser = "${pkgs.brave}/bin/brave";

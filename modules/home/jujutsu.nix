@@ -1,10 +1,10 @@
-{ flake, ... }:
+{ config, ... }:
 {
   programs.jujutsu = {
     enable = true;
     settings = {
-      user.name = flake.vars.fullname;
-      user.email = flake.vars.email;
+      user.name = config.home.fullName;
+      user.email = config.home.mainEmail;
       ui.color = "always";
       ui.defalt-command = [ "st" ];
     };

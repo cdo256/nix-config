@@ -1,9 +1,9 @@
-{ flake, pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.git = {
     enable = true;
-    userName = flake.vars.fullname;
-    userEmail = flake.vars.email;
+    userName = config.home.fullName;
+    userEmail = config.home.mainEmail;
     extraConfig = {
       init.defaultBranch = "main";
       pull.ff = true;
