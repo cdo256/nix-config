@@ -18,6 +18,7 @@ in
     ./makeda
     ./vm2
     ./vm3
+    ./example
   ];
   options.flake.systems = mkOption {
     type = lazyAttrsOf system;
