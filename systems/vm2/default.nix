@@ -34,6 +34,7 @@
       "virtual.nix"
       "vm-networking.nix"
       "borgbase.nix"
+      "users.nix"
     ];
     modules.home = [ ];
   };

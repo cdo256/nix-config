@@ -57,6 +57,7 @@
       "sway.nix"
       "oom.nix"
       "netbird-client.nix"
+      "users.nix"
     ];
     modules.home = [ ];
   };

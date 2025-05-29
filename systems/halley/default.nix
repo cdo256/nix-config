@@ -54,6 +54,7 @@
       "borgbase.nix"
       "sway.nix"
       "oom.nix"
+      "users.nix"
     ];
     modules.home = [
       ./home/hyprland.nix

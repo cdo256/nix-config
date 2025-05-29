@@ -46,6 +46,7 @@
       "borgbase.nix"
       "linode.nix"
       "netbird-server.nix"
+      "users.nix"
     ];
   };
 }
