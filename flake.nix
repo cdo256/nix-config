@@ -75,7 +75,7 @@
     };
     stylix = {
       type = "github";
-      owner = "danth";
+      owner = "cdo256";
       repo = "stylix";
       ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
