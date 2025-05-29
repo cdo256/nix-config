@@ -48,6 +48,10 @@ rec {
         type = str;
         description = "String of username of person who owns this system.";
       };
+      users = mkOption {
+        type = listOf str;
+        description = "String of username of person who owns this system.";
+      };
       hostname = mkOption {
         type = str;
         description = "The name of the machine.";
