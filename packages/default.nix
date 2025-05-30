@@ -13,6 +13,7 @@
         files = pkgs.callPackage ./files.nix { };
         python-utils = pkgs.callPackage ./python-utils { };
         sc-im = pkgs.sc-im.overrideAttrs { xlsSupport = true; };
+        chrome-id-generator = pkgs.callPackage ./chromeIdGenerator.nix { };
       };
     };
 }
