@@ -41,6 +41,7 @@ nixosSystem {
       config._module.args = {
         inherit inputs;
         flake = self;
+        flake-pkgs = self.packages.${arch};
       };
     }
   ];

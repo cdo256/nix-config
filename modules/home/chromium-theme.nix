@@ -1,15 +1,17 @@
 {
   config,
   pkgs,
+  flake-pkgs,
   ...
 }:
 
 let
   version = "0.1.0";
-  manifest = pkgs.writeTextFile "manifest.json" (
-    builtins.toJSON {
+  manifest = pkgs.writeTextFile {
+    name = "manifest.json";
+    text = builtins.toJSON {
       manifest_version = 3;
-      name = "Stylix Chrome Theme";
+      name = "Stylix Chromium Theme";
       version = version;
       description = "Auto-generated theme from Stylix color scheme";
       theme = {
@@ -25,8 +27,8 @@ let
           ntp_text = config.lib.stylix.colors.base05;
         };
       };
-    }
-  );
+    };
+  };
 
   stylix-chromium-theme = pkgs.stdenv.mkDerivation {
     pname = "stylix-chromium-theme";
@@ -37,12 +39,14 @@ let
 
     build-inputs = [
       pkgs.ungoogled-chromium
+      flake-pkgs.chromium-id-generator
     ];
 
     buildPhase = ''
       mkdir -p chromium-theme
       cp ${manifest} chromium-theme/manifest.json
-      ${pkgs.ungoogled-chromium}/bin/chromium --pack=chromium-theme
+      ${pkgs.ungoogled-chromium}/bin/chromium --pack-extension=chromium-theme
+      ${flake-pkgs.chromium-id-generator}/bin/chromium-id-generator
     '';
 
     installPhase = ''
@@ -50,15 +54,14 @@ let
       cp chromium-theme.crx $out/share/chromium-themes/stylix-chromium-theme.crx
     '';
   };
-
 in
 {
+  programs.chromium.enable = true;
   programs.chromium.extensions = [
     {
-      id = "TODO";
+      id = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
       crxPath = "${stylix-chromium-theme}/share/chromium-themes/stylix-chromium-theme.crx";
       version = version;
     }
   ];
 }
-

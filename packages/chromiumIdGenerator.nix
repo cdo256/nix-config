@@ -3,7 +3,7 @@
   pkgs,
 }:
 pkgs.stdenv.mkDerivation rec {
-  pname = "chrome-id-generator";
+  pname = "chromium-id-generator";
   version = "0.1.0";
 
   src = pkgs.fetchFromGitHub {
@@ -20,8 +20,8 @@ pkgs.stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
-    install -Dm755 extension_id.py $out/bin/chrome-id-generator
-    wrapProgram $out/bin/chrome-id-generator \
+    install -Dm755 extension_id.py $out/bin/chromium-id-generator
+    wrapProgram $out/bin/chromium-id-generator \
       --prefix PATH : ${lib.makeBinPath [ pkgs.openssl ]}
   '';
 

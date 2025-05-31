@@ -20,6 +20,7 @@ let
     "sway.nix"
     "waybar.nix"
     "wofi.nix"
+    "chromium-theme.nix"
   ];
   modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in
