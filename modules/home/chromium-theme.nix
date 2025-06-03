@@ -1,10 +1,10 @@
 {
+  flake,
   config,
   pkgs,
   flake-pkgs,
   ...
 }:
-
 let
   version = "0.1.0";
   manifest = pkgs.writeTextFile {
@@ -43,10 +43,11 @@ let
     ];
 
     buildPhase = ''
+      set -x 
       mkdir -p chromium-theme
       cp ${manifest} chromium-theme/manifest.json
-      ${pkgs.ungoogled-chromium}/bin/chromium --pack-extension=chromium-theme
-      ${flake-pkgs.chromium-id-generator}/bin/chromium-id-generator
+      ${pkgs.go-crx3}/bin/crx3 pack chromium-theme -o chromium-theme.crx
+      # ${pkgs.go-crx3}/bin/crx3 id chromium-theme.crx
     '';
 
     installPhase = ''
@@ -59,7 +60,7 @@ in
   programs.chromium.enable = true;
   programs.chromium.extensions = [
     {
-      id = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+      id = "bclibcogaghnhpjafpidinaahkieocdi";
       crxPath = "${stylix-chromium-theme}/share/chromium-themes/stylix-chromium-theme.crx";
       version = version;
     }

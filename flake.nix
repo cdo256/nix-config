@@ -62,9 +62,9 @@
     };
     nh = {
       type = "github";
-      owner = "nix-community";
+      owner = "cdo256";
       repo = "nh";
-      ref = "master";
+      ref = "mutix";
     };
     cdo-secrets = {
       type = "github";

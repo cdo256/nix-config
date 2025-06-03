@@ -1,0 +1,11 @@
+{
+  "description": "Auto-generated theme from Stylix color scheme",
+  "manifest_version": 3,
+  "name": "Stylix Chromium Theme",
+  "theme": {
+    "colors": {
+      "bookmark_text": [9, 200, 220]
+    }
+  },
+  "version": "0.1.0"
+}

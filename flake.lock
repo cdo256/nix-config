@@ -937,16 +937,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1748096601,
-        "narHash": "sha256-ji/9z1pRbosyKVVAIGBazyz6PjWV8bc2Ux2RdQrVDWY=",
-        "owner": "nix-community",
+        "lastModified": 1748729124,
+        "narHash": "sha256-KYvSMA6mUf1LcrQF/DYv/WfwvHBzEAWENsFZ3BAtePE=",
+        "owner": "cdo256",
         "repo": "nh",
-        "rev": "1ea27e73a3dcbc9950258e9054377ee677d12b9e",
+        "rev": "2a14e5cd071a05fe3d5d14459321ab67c2b52737",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "ref": "master",
+        "owner": "cdo256",
+        "ref": "mutix",
         "repo": "nh",
         "type": "github"
       }
