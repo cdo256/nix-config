@@ -9,6 +9,7 @@
   pkgs.git-filter-repo
   pkgs.gh
   pkgs.gitleaks
+  pkgs.mergiraf
   pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
