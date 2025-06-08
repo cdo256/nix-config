@@ -10,9 +10,9 @@
   inputs = {
     nixpkgs = {
       type = "github";
-      owner = "nixos";
+      owner = "cdo256";
       repo = "nixpkgs";
-      ref = "nixos-unstable";
+      ref = "mutix"; # following nixos-unstable.
     };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
