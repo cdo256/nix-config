@@ -13,6 +13,7 @@
   pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
+  pkgs.cloc
 
   # Less used
   pkgs.vscodium
