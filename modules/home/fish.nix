@@ -1,8 +1,15 @@
 {
+  flake,
+  args,
   pkgs,
+  config,
   ...
 }:
 
+let
+  inherit (flake.packages.${args.arch}) files;
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+in
 {
   programs.fish = {
     enable = true;
@@ -23,6 +30,9 @@
       zed = "zeditor";
     };
   };
+
+  home.file.".config/fish/fish_variables".source =
+    symlink "${config.home.homeDirectory}/sync/config/fish/fish_variables";
 
   home.packages = [
     # Stable
