@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   programs.gnupg.agent = {
     enable = true;
@@ -7,9 +8,10 @@
   services.openssh = {
     enable = true;
     settings = {
+      # TODO: Disable this inthe future.
       PasswordAuthentication = true;
-      PermitRootLogin = "yes";
+      PermitRootLogin = "no";
     };
+    keyFiles = config.devices.commonKeys;
   };
 }
-

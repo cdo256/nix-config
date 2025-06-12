@@ -28,7 +28,6 @@
       ./nixos.nix
       ./hardware.nix
       ./boot.nix
-      ./sshd.nix
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
       inputs.lix-module.nixosModules.default
@@ -49,6 +48,7 @@
       "users.nix"
       "fish.nix"
       "nix-build-server.nix"
+      "sshd.nix"
     ];
   };
 }
