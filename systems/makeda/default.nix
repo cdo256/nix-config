@@ -48,6 +48,7 @@
       "netbird-server.nix"
       "users.nix"
       "fish.nix"
+      "nix-build-server.nix"
     ];
   };
 }
