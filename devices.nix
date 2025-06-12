@@ -7,17 +7,6 @@
 
 let
   machines = {
-    algernon = {
-      name = "algernon";
-      type = "server";
-      sshPublicKey = ""; # TODO
-      ipAddr = "194.163.141.236";
-    };
-    eugenia = {
-      name = "eugenia";
-      type = "server";
-      ipAddr = "84.247.140.25";
-    };
     rhiannon = {
       name = "rhiannon";
       type = "server";
@@ -69,8 +58,6 @@ in
   };
   config.devices = machines // {
     linuxDevices = [
-      machines.algernon
-      machines.eugenia
       machines.rhiannon
       machines.makeda
       machines.isaac
@@ -88,8 +75,6 @@ in
       machines.a34
     ];
     allDevices = [
-      machines.algernon
-      machines.eugenia
       machines.rhiannon
       machines.makeda
       machines.isaac
