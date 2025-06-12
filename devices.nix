@@ -1,6 +1,5 @@
 {
-  config,
-  pkgs,
+  flake,
   lib,
   ...
 }:
@@ -16,6 +15,7 @@ let
       name = "makeda";
       type = "server";
       ipAddr = "172.104.147.15";
+      sshKeyFile = flake + "/files/makeda.pub";
     };
     peter = {
       name = "peter";
@@ -33,7 +33,7 @@ let
       name = "halley";
       syncthingId = "5Y5D72K-I4AOOJS-MAXNQUR-ISK7SGZ-QWQ6VN6-FGK37VW-QJFWOHY-UAKJUQZ";
       type = "laptop";
-      sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqDnhdlknFB0KhLATaKouZW1jlqchpzuAcScrlOn4XG cdo@halley";
+      sshKeyFile = flake + "/files/halley.pub";
     };
     vm1 = {
       name = "vm1";
@@ -87,6 +87,10 @@ in
       machines.peter
       machines.isaac
       machines.halley
+    ];
+    commonKeys = [
+      machines.halley.sshKeyFile
+      machines.makeda.sshKeyFile
     ];
   };
 }
