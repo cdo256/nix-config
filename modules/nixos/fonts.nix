@@ -6,8 +6,8 @@
 }:
 {
   fonts = {
-    enableDefaultFonts = true;
-    fonts = [
+    enableDefaultPackages = true;
+    packages = [
       pkgs.noto-fonts
       pkgs.noto-fonts-emoji
     ];
