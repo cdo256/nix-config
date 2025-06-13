@@ -1,7 +1,7 @@
 {
   self,
   inputs,
-  lib,
+  withSystem,
   ...
 }:
 host:
@@ -22,26 +22,29 @@ let
   inherit (self.lib) withDefaultPath;
   nixosModules = map (withDefaultPath "/modules/nixos") modules.nixos ++ [ (self + "/devices.nix") ];
 in
-nixosSystem {
-  system = null;
-  modules = nixosModules ++ [
-    {
-      config.args = {
-        inherit
-          type
-          arch
-          owner
-          users
-          hostname
-          packages
-          graphical
-          modules
-          ;
-      };
-      config._module.args = {
-        inherit inputs;
-        flake = self;
-      };
-    }
-  ];
-}
+withSystem arch (
+  { inputs', ... }:
+  nixosSystem {
+    system = null;
+    modules = nixosModules ++ [
+      {
+        config.args = {
+          inherit
+            type
+            arch
+            owner
+            users
+            hostname
+            packages
+            graphical
+            modules
+            ;
+        };
+        config._module.args = {
+          inherit inputs;
+          flake = self;
+        } // inputs';
+      }
+    ];
+  }
+)
