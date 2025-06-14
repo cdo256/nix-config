@@ -68,6 +68,7 @@
       ref = "mutix";
     };
     cdo-secrets = {
+      #url = "/home/cdo/.local/secure/mutix";
       type = "github";
       owner = "cdo256";
       repo = "private";

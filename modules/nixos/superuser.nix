@@ -10,5 +10,7 @@
       "video"
       "audio"
     ];
+    openssh.authorizedKeys.keyFiles = config.devices.commonKeys;
   };
+  nix.settings.trusted-users = [ config.args.owner ];
 }

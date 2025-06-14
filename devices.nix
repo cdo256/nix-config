@@ -15,25 +15,23 @@ let
       name = "makeda";
       type = "server";
       ipAddr = "172.104.147.15";
-      sshKeyFile = flake + "/files/makeda.pub";
+      sshKeyFile = flake + "/files/keys/makeda.pub";
     };
     peter = {
       name = "peter";
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "desktop";
-      #sshPublicKey = ""; #TODO
     };
     isaac = {
       name = "peter";
       syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "laptop";
-      #sshPublicKey = ""; #TODO
     };
     halley = {
       name = "halley";
       syncthingId = "5Y5D72K-I4AOOJS-MAXNQUR-ISK7SGZ-QWQ6VN6-FGK37VW-QJFWOHY-UAKJUQZ";
       type = "laptop";
-      sshKeyFile = flake + "/files/halley.pub";
+      sshKeyFile = flake + "/files/keys/halley.pub";
     };
     vm1 = {
       name = "vm1";

@@ -44,7 +44,7 @@
       "unfree.nix"
       "borgbase.nix"
       "linode.nix"
-      "netbird-server.nix"
+      #"netbird-server.nix" #TODO: Requires more configuration
       "users.nix"
       "fish.nix"
       "nix-build-server.nix"
