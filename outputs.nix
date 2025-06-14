@@ -7,5 +7,6 @@
     ./systems
     #./debug.nix # Suddenly causing a stack overflow
     ./users
+    ./overlays.nix
   ];
 }
