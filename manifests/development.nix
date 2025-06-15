@@ -10,7 +10,7 @@
   pkgs.gh
   pkgs.gitleaks
   pkgs.mergiraf
-  #pkgs.nixvim
+  pkgs.nixvim
   pkgs.delta
   pkgs.zed-editor
   pkgs.cloc
