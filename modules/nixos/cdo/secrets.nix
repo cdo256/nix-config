@@ -16,6 +16,8 @@
       "cdo/mutix-password" = {
         owner = "cdo";
       };
+      "environment/NIX_GITHUB_PRIVATE_USERNAME" = { owner = "cdo"; };
+      "environment/NIX_GITHUB_PRIVATE_PASSEORD" = { owner = "cdo"; };
     };
   };
 }

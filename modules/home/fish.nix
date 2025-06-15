@@ -18,6 +18,8 @@ in
       set -x GPG_TTY (tty)
       set -g fish_key_bindings fish_vi_key_bindings
       direnv hook fish | source
+      set -x NIX_GITHUB_PRIVATE_USERNAME (cat ${config.sops.secrets."environment/NIX_GITHUB_PRIVATE_USERNAME"})
+      set -x NIX_GITHUB_PRIVATE_PASSWORD (cat ${config.sops.secrets."environemnt/NIX_GITHUB_PRIVATE_PASSWORD"})
     '';
     shellAbbrs = {
       gla = "git log --graph --all --simplify-by-decoration --oneline";
