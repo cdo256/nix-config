@@ -10,6 +10,7 @@ let
     ./email.nix
     "vars.nix"
     "base.nix"
+    "chromium.nix"
     "direnv.nix"
     "fish.nix"
     "fs.nix"
