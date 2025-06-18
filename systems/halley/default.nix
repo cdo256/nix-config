@@ -23,6 +23,7 @@
       "development.nix"
       "terminal.nix"
       "sysadmin.nix"
+      "games.nix"
     ];
     modules.nixos = [
       ./nixos.nix
