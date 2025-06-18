@@ -8,7 +8,6 @@
   pkgs.libreoffice
   pkgs.vlc
   pkgs.xdg-desktop-portal
-  pkgs.brave
   pkgs.obsidian
   pkgs.anki
   pkgs.zotero # Reference manager
