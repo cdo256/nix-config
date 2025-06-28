@@ -1,8 +1,4 @@
 { self, inputs, ... }:
-let
-  inherit (inputs.nixpkgs.lib) foldl' removeAttrs;
-  mergeAttrs = foldl' (a: b: a // removeAttrs b [ "default" ]) { };
-in
 {
   systems = [
     "x86_64-linux"
