@@ -22,6 +22,54 @@
     ];
     extraPackages = [ ];
     installRemoteServer = false;
+    userKeymaps = [
+      {
+        "context" = "Workspace";
+        "bindings" = {
+          "space f f" = "file_finder::Toggle";
+          "space f c" = "pane::DeploySearch";
+          "space f d" = "workspace::Open";
+          "space g s" = "git_panel::OpenMenu";
+          "space g g" = "git_panel::OpenMenu";
+          "space d g" = "editor::GoToDefinition";
+          "alt-x" = "command_palette::Toggle";
+          "space w /" = "pane::SplitVertical";
+          "space w s" = "pane::SplitHorizontal";
+          "ctrl-l" = "workspace::ActivatePaneRight";
+          "ctrl-h" = "workspace::ActivatePaneLeft";
+          "ctrl-k" = "workspace::ActivatePaneUp";
+          "ctrl-j" = "workspace::ActivatePaneDown";
+          "space w l" = "workspace::ActivatePaneRight";
+          "space w h" = "workspace::ActivatePaneLeft";
+          "space w k" = "workspace::ActivatePaneUp";
+          "space w j" = "workspace::ActivatePaneDown";
+        };
+      }
+      {
+        "context" = "Editor";
+        "bindings" = {
+          "ctrl-s" = "workspace::Save";
+          "space f f" = "file_finder::Toggle";
+          "space f c" = "pane::DeploySearch";
+          "space f d" = "workspace::Open";
+          "space g s" = "git_panel::OpenMenu";
+          "space g g" = "git_panel::OpenMenu";
+          "space d g" = "editor::GoToDefinition";
+          "alt-x" = "command_palette::Toggle";
+          "space w /" = "pane::SplitVertical";
+          "space w s" = "pane::SplitHorizontal";
+          "ctrl-l" = "workspace::ActivatePaneRight";
+          "ctrl-h" = "workspace::ActivatePaneLeft";
+          "ctrl-k" = "workspace::ActivatePaneUp";
+          "ctrl-j" = "workspace::ActivatePaneDown";
+          "space w l" = "workspace::ActivatePaneRight";
+          "space w h" = "workspace::ActivatePaneLeft";
+          "space w k" = "workspace::ActivatePaneUp";
+          "space w j" = "workspace::ActivatePaneDown";
+        };
+      }
+    ];
+
     userSettings = {
       auto_update = false;
       active_pane_modifiers = {
