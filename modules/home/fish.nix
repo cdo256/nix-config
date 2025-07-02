@@ -28,6 +28,9 @@ in
       ssd = "sudo systemctl";
       sjd = "sudo journalctl";
       zed = "zeditor";
+      da = "direnv allow";
+      nfu = "nix flake update";
+      develop = "nix develop -c fish";
     };
     functions = {
       fish_prompt = {
