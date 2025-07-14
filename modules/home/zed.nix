@@ -19,6 +19,7 @@
       "haskell"
       "typst"
       "markdown-oxide" # For obsidian.
+      "unicode"
     ];
     extraPackages = [ ];
     installRemoteServer = false;
@@ -225,6 +226,13 @@
         disabled_globs = [
           "**/*.journal"
         ];
+      };
+      lsp = {
+        unicode = {
+          settings = {
+            include_all_symbols =  false;
+          };
+        };
       };
     };
   };
