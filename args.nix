@@ -16,6 +16,7 @@
           overlays = with self.overlays; [
             nh
             nixvim
+            zed-extensions
           ];
         };
       };

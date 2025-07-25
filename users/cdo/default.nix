@@ -1,4 +1,5 @@
 {
+  inputs,
   flake,
   args,
   ...
@@ -21,6 +22,7 @@ let
     "sway.nix"
     "waybar.nix"
     "wofi.nix"
+    inputs.zed-extensions.homeManagerModules.default
   ];
   modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in

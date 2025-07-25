@@ -1,6 +1,8 @@
+{ pkgs, ... }:
 {
   programs.zed-editor = {
     enable = true;
+    package = pkgs.zed-editor-fhs;
     extensions = [
       "html"
       "toml"
@@ -230,10 +232,17 @@
       lsp = {
         unicode = {
           settings = {
-            include_all_symbols =  false;
+            include_all_symbols = "all";
           };
         };
       };
     };
   };
+  #programs.zed-editor-extensions = {
+  #  enable = false;
+  #  packages = with pkgs.nix-zed-extensions; [
+  #    nix
+  #    unicode
+  #  ];
+  #};
 }

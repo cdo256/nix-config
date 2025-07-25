@@ -81,5 +81,11 @@
       ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zed-extensions = {
+      type = "github";
+      owner = "DuskSystems";
+      repo = "nix-zed-extensions";
+      ref = "main";
+    };
   };
 }

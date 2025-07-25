@@ -12,8 +12,8 @@
   pkgs.mergiraf
   pkgs.nixvim
   pkgs.delta
-  pkgs.zed-editor
   pkgs.cloc
+  pkgs.nixd # Nix language server
 
   # Less used
   pkgs.vscodium

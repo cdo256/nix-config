@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   flake.overlays = {
     hyprland = inputs.hyprland.overlays.default;
@@ -7,5 +7,6 @@
       nvim = nixvim;
     };
     nh = inputs.nh.overlays.default;
+    zed-extensions = inputs.zed-extensions.overlays.default;
   };
 }
