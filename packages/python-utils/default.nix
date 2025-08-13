@@ -18,6 +18,7 @@ python.pkgs.buildPythonPackage rec {
 
   dependencies = with python.pkgs; [
     pkgs.pandoc
+    pkgs.sops
     pypandoc
     pyyaml
   ];
