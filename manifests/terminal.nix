@@ -6,6 +6,7 @@
   pkgs.direnv
   pkgs.fd
   pkgs.zip
+  pkgs.unzip
   pkgs.file
   pkgs.llm
 
