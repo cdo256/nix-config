@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.zed-editor = {
-    enable = true;
+    enable = false;
     package = pkgs.zed-editor-fhs;
     extensions = [
       "html"
@@ -233,6 +233,12 @@
         unicode = {
           settings = {
             include_all_symbols = "all";
+          };
+        };
+        tinymist =  {
+          settings = {
+            exportPdf = "onSave";
+            outputPath = "$root/$name";
           };
         };
       };
