@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 [
   pkgs.nixfmt-rfc-style
   pkgs.jq
@@ -14,6 +14,7 @@
   pkgs.delta
   pkgs.cloc
   pkgs.nixd # Nix language server
+  pkgs.zed-editor-fhs
 
   # Less used
   pkgs.vscodium
