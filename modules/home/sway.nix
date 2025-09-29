@@ -163,7 +163,7 @@ in
           # FIXME: An empty variant is rejected by sway.
           #xkb_variant = variant;
           xkb_options = options;
-          tap = "enabled";
+          tap = "disabled";
         };
       };
 
@@ -188,7 +188,7 @@ in
           "${super}+Shift+w" = "exec ${defaults.emailProgram}";
           "${super}+r" = "exec ${menu}";
 
-          # App spspecific
+          # App specific
           "${super}+${alt}+Shift+v" = "floating toggle";
           "${super}+Shift+F11" = "fullscreen";
           "${super}+Shift+${alt}+z" = "mode resize";
