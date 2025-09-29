@@ -3,22 +3,41 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   fonts = {
     enableDefaultPackages = true;
     packages = [
       pkgs.noto-fonts
-      pkgs.noto-fonts-emoji
+      pkgs.noto-fonts-cjk-sans
+      pkgs.noto-fonts-emoji        # "Noto Color Emoji"
+      pkgs.unifont
+      pkgs.fira-code
+      pkgs.julia-mono
     ];
-    fontconfig.defaultFonts = {
-      emoji = [ "Noto Color Emoji" ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [
+          "DejaVu Serif"
+          "Noto Sans Symbols"
+          "Unifont"
+        ];
+        sansSerif = [
+          "DejaVu Sans"
+          "Noto Sans Symbols"
+          "Unifont"
+        ];
+        emoji = [
+          "Noto Color Emoji"
+          "Noto Sans Symbols"
+          "Unifont"
+        ];
+        monospace = [
+          "Fira Code"
+          "Noto Sans Mono"
+          "Noto Sans Symbols"
+          "Unifont"
+        ];
+      };
     };
   };
-  #programs.kitty = {
-  #  enable = true;
-  #  extraConfig = ''
-  #    symbol_map U+2600-U+26FF Noto Color
-  #  '';
-  #};
 }
