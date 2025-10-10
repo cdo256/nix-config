@@ -14,6 +14,7 @@
   pkgs.ncpamixer
   pkgs.pavucontrol
   pkgs.discord
+  pkgs.teams-for-linux
 
   # Broken
   pkgs.zoom # Screen sharing never worked, but browser sharing did.
