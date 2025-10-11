@@ -13,3 +13,5 @@ dependencies = [
 
 [project.scripts]
 cdo-restic = "cdo_restic:main"
+dirsplit = "dirsplit:main"
+line-set-diff = "line_set_diff:main"

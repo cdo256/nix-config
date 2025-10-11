@@ -5,7 +5,12 @@
 }:
 {
   perSystem =
-    { pkgs, system, ... }:
+    {
+      self',
+      pkgs,
+      system,
+      ...
+    }:
     {
       devShells = {
         default = pkgs.mkShell {
@@ -16,6 +21,8 @@
             inputs.nh.packages.${system}.nh
             pkgs.screen
             pkgs.restic
+            self'.packages.python-utils
+            self'.packages.home-manager
           ];
         };
       };
