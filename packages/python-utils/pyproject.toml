@@ -15,3 +15,4 @@ dependencies = [
 cdo-restic = "cdo_restic:main"
 dirsplit = "dirsplit:main"
 line-set-diff = "line_set_diff:main"
+git-least-diff = "git_least_diff:main"
