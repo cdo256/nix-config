@@ -15,7 +15,7 @@
       ref = "mutix"; # following nixos-unstable.
     };
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
       #url = "https://git.lix.systems/lix-project/lix/src/branch/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -63,9 +63,9 @@
     };
     nh = {
       type = "github";
-      owner = "cdo256";
+      owner = "nix-community";
       repo = "nh";
-      ref = "mutix";
+      ref = "master";
     };
     cdo-secrets = {
       type = "github";
