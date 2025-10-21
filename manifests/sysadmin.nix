@@ -2,6 +2,7 @@
   inputs,
   arch,
   pkgs,
+  self',
   ...
 }:
 [
@@ -26,6 +27,7 @@
   pkgs.nettools
   pkgs.arp-scan
   pkgs.netbird
+  self'.packages.python-utils
 
   # Trying
   pkgs.bottom # btm ~ better top, htop, etc

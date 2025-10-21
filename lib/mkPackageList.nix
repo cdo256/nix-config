@@ -13,7 +13,7 @@
   ...
 }:
 withSystem arch (
-  { pkgs, ... }:
+  { pkgs, self', ... }:
   let
     inherit (inputs.nixpkgs.lib) concatMap;
     inherit (self.lib) withDefaultPath;
@@ -24,6 +24,7 @@ withSystem arch (
         lib
         arch
         pkgs
+        self'
         ;
     } // extraArgs;
   in
