@@ -1,60 +1,82 @@
+#!/usr/bin/env python3
+import sys
 import subprocess
 import argparse
 
 
-def list_refs(repo_path):
-    result = subprocess.run(
-        ["git", "-C", repo_path, "for-each-ref", "--format=%(refname)"],
-        stdout=subprocess.PIPE,
-        text=True,
-    )
-    refs = result.stdout.strip().split("\n")
-    return refs
+def diff_size(ref_commit, other_commit):
+    """Return total number of changed lines between ref_commit and other_commit."""
+    cmd = ["git", "diff", "--shortstat", ref_commit, other_commit]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        output = result.stdout.strip()
+        if not output:
+            return 0
+        # Example output: " 1 file changed, 3 insertions(+), 1 deletion(-)"
+        total = sum(
+            int(part) for part in output.replace(",", "").split() if part.isdigit()
+        )
+        return total
+    except subprocess.CalledProcessError as e:
+        # Print the meaningful Git error message to stderr
+        if e.stderr:
+            sys.stderr.write(
+                f"git diff failed for {other_commit}:\n{e.stderr.strip()}\n"
+            )
+        else:
+            sys.stderr.write(
+                f"git diff failed for {other_commit} (no stderr):\n{e.stdout.strip()}\n"
+            )
+        return float("inf")
 
 
-def count_diff_lines(worktree_path, ref, repo_path):
-    # Compare the external worktree against ref in the repo using --no-index
-    result = subprocess.run(
-        ["git", "-C", repo_path, "diff", "--shortstat", ref, "--", "."],
-        cwd=worktree_path,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Find the commit with the smallest diff relative to a reference commit."
     )
-    stat = result.stdout.strip()
-    if not stat:
-        return 0
-    insertions = 0
-    deletions = 0
-    for token in stat.split(","):
-        token = token.strip()
-        if "insertion" in token:
-            insertions = int(token.split(" ")[0])
-        if "deletion" in token:
-            deletions = int(token.split(" ")[0])
-    return insertions + deletions
+    parser.add_argument(
+        "reference_commit",
+        metavar="REFERENCE_COMMIT",
+        help="Reference commit (hash, branch, tag, etc.)",
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Print diff scores for each commit.",
+    )
+    return parser.parse_args()
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Find the closest main repo ref by diff to the supplied repo state."
-    )
-    parser.add_argument("main_repo", help="Path to main (reference) git repo")
-    parser.add_argument("supplied_repo", help="Path to supplied repo state (committed)")
-    args = parser.parse_args()
+    args = parse_args()
+    ref_commit = args.reference_commit.strip()
+    commits = [line.strip() for line in sys.stdin if line.strip()]
 
-    refs = list_refs(args.main_repo)
-    best_ref = None
-    best_score = None
-    for ref in refs:
-        score = count_diff_lines(args.supplied_repo, ref, args.main_repo)
-        print(f"Ref {ref} diff score: {score}")
-        if best_score is None or score < best_score:
-            best_score = score
-            best_ref = ref
-    print("\nClosest reference:")
-    print(f"{best_ref} with diff score {best_score}")
+    if not commits:
+        sys.stderr.write("No commits provided on stdin.\n")
+        sys.exit(2)
+
+    smallest = None
+    min_diff = float("inf")
+
+    for commit in commits:
+        diff = diff_size(ref_commit, commit)
+        if args.verbose:
+            print(f"{commit} {diff}")
+        if diff < min_diff:
+            min_diff = diff
+            smallest = commit
+
+    if smallest is not None:
+        print(smallest)
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit(130)
