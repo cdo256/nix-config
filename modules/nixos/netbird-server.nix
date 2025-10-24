@@ -27,6 +27,14 @@
       enable = true;
       enableNginx = true;
       domain = "netbird.mutix.org";
+      settings = {
+        AUTH_AUTHORITY = "https://auth.mutix.org";
+        AUTH_CLIENT_ID = "netbird";
+        AUTH_AUDIENCE = "netbird";
+        AUTH_SUPPORTED_SCOPES = "openid email profile offline_access";
+        AUTH_REDIRECT_URI = "/auth";
+        AUTH_SILENT_REDIRECT_URI = "/silent-auth";
+      };
     };
   };
 
