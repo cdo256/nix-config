@@ -12,6 +12,7 @@
       enable = true;
       enableNginx = true;
       domain = "netbird.mutix.org";
+      oidcConfigEndpoint = "https://auth.mutix.org";
       settings = {
         Signal.URI = "signal.mutix.org:443";
         DataStoreEncryptionKey._secret = "/run/secrets/netbird-datastore-key";
@@ -22,7 +23,6 @@
       enableNginx = true;
       domain = "signal.mutix.org";
     };
-
     dashboard = {
       enable = true;
       enableNginx = true;
