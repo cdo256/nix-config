@@ -124,11 +124,11 @@
     "cdo-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1759942645,
-        "narHash": "sha256-952jNdFzDPZZUGFWPnSEhKZ8Rh4oGOE3GgjueDTq044=",
+        "lastModified": 1761313219,
+        "narHash": "sha256-tq/l4JlnuoCGNCOKVZx8VF6lZwjfxLYoZzny+/iAnqQ=",
         "owner": "cdo256",
         "repo": "private",
-        "rev": "7f45bbb08d5287ffadb96cc249d4c549305fa39a",
+        "rev": "dcf89090b73333ccdee68380f072a1bcd0d19f04",
         "type": "github"
       },
       "original": {
