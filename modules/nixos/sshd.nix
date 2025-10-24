@@ -12,6 +12,5 @@
       PasswordAuthentication = true;
       PermitRootLogin = "no";
     };
-    keyFiles = config.devices.commonKeys;
   };
 }
