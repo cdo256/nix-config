@@ -124,8 +124,8 @@
     "cdo-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1761317742,
-        "narHash": "sha256-v6oOB0dDMmFQl4CjZR0oU+eeKGV4bObs0mE4/UeiRzk=",
+        "lastModified": 1761382390,
+        "narHash": "sha256-7UCFEPNVf31mwkzgqYHZT8qHkaLtCLIzG/ZDvGYBsy8=",
         "path": "/home/cdo/.local/secure/mutix",
         "type": "path"
       },
