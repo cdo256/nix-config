@@ -124,18 +124,14 @@
     "cdo-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1761313219,
-        "narHash": "sha256-tq/l4JlnuoCGNCOKVZx8VF6lZwjfxLYoZzny+/iAnqQ=",
-        "owner": "cdo256",
-        "repo": "private",
-        "rev": "dcf89090b73333ccdee68380f072a1bcd0d19f04",
-        "type": "github"
+        "lastModified": 1761317742,
+        "narHash": "sha256-v6oOB0dDMmFQl4CjZR0oU+eeKGV4bObs0mE4/UeiRzk=",
+        "path": "/home/cdo/.local/secure/mutix",
+        "type": "path"
       },
       "original": {
-        "owner": "cdo256",
-        "ref": "main",
-        "repo": "private",
-        "type": "github"
+        "path": "/home/cdo/.local/secure/mutix",
+        "type": "path"
       }
     },
     "fenix": {

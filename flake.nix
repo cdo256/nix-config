@@ -68,12 +68,16 @@
       ref = "master";
     };
     cdo-secrets = {
-      type = "github";
-      owner = "cdo256";
-      repo = "private";
-      ref = "main";
+url = "/home/cdo/.local/secure/mutix";
       flake = false;
     };
+    # cdo-secrets = {
+    #   type = "github";
+    #   owner = "cdo256";
+    #   repo = "private";
+    #   ref = "main";
+    #   flake = false;
+    # };
     stylix = {
       type = "github";
       owner = "cdo256";
