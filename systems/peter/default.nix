@@ -22,6 +22,7 @@
       "base.nix"
       "desktop.nix"
       "development.nix"
+      "games.nix"
       "terminal.nix"
       "sysadmin.nix"
       "video.nix"
