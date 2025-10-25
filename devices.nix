@@ -23,7 +23,7 @@ let
       type = "desktop";
     };
     isaac = {
-      name = "peter";
+      name = "isaac";
       syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "laptop";
     };
