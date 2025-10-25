@@ -76,12 +76,13 @@ in
   config = {
     home = {
       sessionVariables = {
-        EDITOR = config.home.defaults.editor;
-        BROWSER = config.home.defaults.browser;
         TERMINAL = config.home.defaults.terminal;
         DIFF_TOOL = config.home.defaults.diffTool;
         MERGE_TOOL = config.home.defaults.mergeTool;
-      };
+      } // (if args.graphical then {
+        EDITOR = config.home.defaults.editor;
+        BROWSER = config.home.defaults.browser;
+      } else {});
     };
   };
 }
