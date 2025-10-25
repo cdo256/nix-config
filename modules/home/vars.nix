@@ -9,7 +9,25 @@ let
   inherit (inputs.nixpkgs.lib)
     mkOption
     types
+    filter
     ;
+  defaults = config.home.defaults or { };
+  mapping = {
+    terminal = "TERMINAL";
+    diffTool = "DIFF_TOOL";
+    mergeTool = "MERGE_TOOL";
+    editor = "EDITOR";
+    browser = "BROWSER";
+  };
+
+  names = builtins.attrNames mapping;
+
+  sessionVars = builtins.listToAttrs (
+    map (n: {
+      name = builtins.getAttr n mapping;
+      value = builtins.getAttr n defaults;
+    }) (filter (n: builtins.hasAttr n defaults && (builtins.getAttr n defaults) != null) names)
+  );
 in
 {
   options.home = {
@@ -75,13 +93,7 @@ in
   };
   config = {
     home = {
-      sessionVariables = {
-        EDITOR = config.home.defaults.editor;
-        BROWSER = config.home.defaults.browser;
-        TERMINAL = config.home.defaults.terminal;
-        DIFF_TOOL = config.home.defaults.diffTool;
-        MERGE_TOOL = config.home.defaults.mergeTool;
-      };
+      sessionVariables = sessionVars;
     };
   };
 }
