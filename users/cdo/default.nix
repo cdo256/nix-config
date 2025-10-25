@@ -11,7 +11,6 @@ let
     ./email.nix
     "vars.nix"
     "base.nix"
-    "chromium.nix"
     "direnv.nix"
     "fish.nix"
     "fs.nix"
@@ -19,11 +18,13 @@ let
     "jujutsu.nix"
     "packages.nix"
     "readline.nix"
+  ] ++ (if args.graphical then [
+    "chromium.nix"
     "sway.nix"
     "waybar.nix"
     "wofi.nix"
     inputs.zed-extensions.homeManagerModules.default
-  ];
+  ] else []);
   modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in
 {
