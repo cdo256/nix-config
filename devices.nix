@@ -21,6 +21,7 @@ let
       name = "peter";
       syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "desktop";
+      sshKeyFile = flake + "/files/keys/peter.pub";
     };
     isaac = {
       name = "isaac";
@@ -88,6 +89,7 @@ in
     ];
     commonKeys = [
       machines.halley.sshKeyFile
+      machines.peter.sshKeyFile
       machines.makeda.sshKeyFile
     ];
   };
