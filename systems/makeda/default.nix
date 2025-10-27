@@ -50,6 +50,8 @@
       "nix-build-server.nix"
       "sshd.nix"
       "nftables.nix"
+      "keycloak.nix"
+      "nginx.nix"
     ];
   };
 }

@@ -12,7 +12,7 @@
       enable = true;
       enableNginx = true;
       domain = "netbird.mutix.org";
-      oidcConfigEndpoint = "https://auth.mutix.org";
+      oidcConfigEndpoint = "https://auth.mutix.org/auth/realms/master/.well-known/openid-configuration";
       settings = {
         Signal.URI = "signal.mutix.org:443";
         DataStoreEncryptionKey._secret = "/run/secrets/netbird-datastore-key";
@@ -54,10 +54,11 @@
       443 # Dashbord
       33073 # Management API
       10000 # Signal
-      33080 # OIDC
       3478 # STUN/TURN
       3479 # STUN/TURN
       5349 # STUN/TURN
+      8011
+      9090
     ];
     allowedUDPPorts = [
       51820 # WireGuard
