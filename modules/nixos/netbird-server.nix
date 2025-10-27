@@ -46,4 +46,7 @@
       owner = "root";
     };
   };
+  systemd.services.netbird-management = {
+    after = [ "keycloak.service" ];
+  };
 }
