@@ -1,6 +1,6 @@
 {
   services.netbird.server = {
-    enable = true; # Must be enabled only on servers.
+    enable = true;
     domain = "netbird.mutix.org";
     enableNginx = true;
     coturn = {
@@ -40,10 +40,37 @@
 
   sops.secrets = {
     "coturn-password" = {
-      owner = "root";
+      owner = "turnserver";
+      group = "turnserver";
     };
     "netbird-datastore-key" = {
       owner = "root";
     };
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443 # Dashbord
+      33073 # Management API
+      10000 # Signal
+      33080 # OIDC
+      3478 # STUN/TURN
+      3479 # STUN/TURN
+      5349 # STUN/TURN
+    ];
+    allowedUDPPorts = [
+      51820 # WireGuard
+      3478 # STUN/TURN
+      3479 # STUN/TURN
+      5349 # STUN/TURN
+    ];
+    allowedUDPPortRanges = [
+      {
+
+        from = 49152;
+        to = 65535;
+      } # TURN relay
+    ];
   };
 }

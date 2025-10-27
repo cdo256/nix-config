@@ -15,4 +15,5 @@ in
       graphics = config.args.graphical;
     };
   };
+  config.virtualisation.podman.enable = true;
 }

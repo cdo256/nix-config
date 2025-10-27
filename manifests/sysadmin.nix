@@ -28,6 +28,7 @@
   pkgs.arp-scan
   pkgs.netbird
   self'.packages.python-utils
+  pkgs.nftables
 
   # Trying
   pkgs.bottom # btm ~ better top, htop, etc

@@ -49,6 +49,7 @@
       "fish.nix"
       "nix-build-server.nix"
       "sshd.nix"
+      "nftables.nix"
     ];
   };
 }
