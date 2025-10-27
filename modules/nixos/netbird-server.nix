@@ -57,8 +57,8 @@
       3478 # STUN/TURN
       3479 # STUN/TURN
       5349 # STUN/TURN
-      8011
-      9090
+      8011 # management
+      9090 # management
     ];
     allowedUDPPorts = [
       51820 # WireGuard
@@ -68,10 +68,27 @@
     ];
     allowedUDPPortRanges = [
       {
-
         from = 49152;
         to = 65535;
       } # TURN relay
     ];
+  };
+  services.nginx.virtualHosts = {
+    "netbird.mutix.org" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8011/";
+        proxyWebsockets = true;
+      };
+    };
+    "signal.mutix.org" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:10000/";
+        proxyWebsockets = true;
+      };
+    };
   };
 }
