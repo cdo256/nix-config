@@ -52,16 +52,17 @@
     allowedTCPPorts = [
       80
       443 # Dashbord
-      33073 # Management API
-      10000 # Signal
+      # 33073 # Management API
+      # 33080 # Management API
+      # 10000 # Signal
       3478 # STUN/TURN
       3479 # STUN/TURN
       5349 # STUN/TURN
-      8011 # management
-      9090 # management
+      # 8011 # management
+      # 9090 # management
     ];
     allowedUDPPorts = [
-      51820 # WireGuard
+      # 51820 # WireGuard
       3478 # STUN/TURN
       3479 # STUN/TURN
       5349 # STUN/TURN
@@ -78,7 +79,15 @@
       forceSSL = true;
       enableACME = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:8011/";
+        proxyPass = "http://127.0.0.1:33080/";
+        proxyWebsockets = true;
+      };
+      locations."/api" = {
+        proxyPass = "http://127.0.0.1:33073/";
+        proxyWebsockets = true;
+      };
+      locations."/management.ManagementService/" = {
+        proxyPass = "http://127.0.0.1:33073/management.ManagementService/";
         proxyWebsockets = true;
       };
     };
