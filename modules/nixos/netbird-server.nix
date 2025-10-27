@@ -78,18 +78,18 @@
     "netbird.mutix.org" = {
       forceSSL = true;
       enableACME = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:33080/";
-        proxyWebsockets = true;
-      };
-      locations."/api" = {
-        proxyPass = "http://127.0.0.1:33073/";
-        proxyWebsockets = true;
-      };
-      locations."/management.ManagementService/" = {
-        proxyPass = "http://127.0.0.1:33073/management.ManagementService/";
-        proxyWebsockets = true;
-      };
+      #locations."/" = {
+      #  proxyPass = "http://127.0.0.1:8011/";
+      #  proxyWebsockets = true;
+      #};
+      #locations."/api" = {
+      #  proxyPass = "http://127.0.0.1:33073/";
+      #  proxyWebsockets = true;
+      #};
+      #locations."/management.ManagementService/" = {
+      #  proxyPass = "http://127.0.0.1:33073/management.ManagementService/";
+      #  proxyWebsockets = true;
+      #};
     };
     "signal.mutix.org" = {
       forceSSL = true;
