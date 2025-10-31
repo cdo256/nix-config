@@ -19,13 +19,12 @@ let
     };
     peter = {
       name = "peter";
-      syncthingId = "B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
+      syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "desktop";
       sshKeyFile = flake + "/files/keys/peter.pub";
     };
     isaac = {
       name = "isaac";
-      syncthingId = "5B7GQEP-LCS4VN6-N3LORSY-24NTMW3-AJ6DVUE-T2CFXIH-7EITS46-ZFBXWAD";
       type = "laptop";
     };
     halley = {
@@ -59,13 +58,13 @@ in
     linuxDevices = [
       machines.rhiannon
       machines.makeda
-      machines.isaac
+      #machines.isaac
       machines.peter
       machines.halley
     ];
     nixosDevices = [
       machines.makeda
-      machines.isaac
+      #machines.isaac
       machines.peter
       machines.halley
     ];
@@ -76,7 +75,7 @@ in
     allDevices = [
       machines.rhiannon
       machines.makeda
-      machines.isaac
+      #machines.isaac
       machines.peter
       machines.halley
       machines.s9
@@ -84,7 +83,7 @@ in
     ];
     pcs = [
       machines.peter
-      machines.isaac
+      #machines.isaac
       machines.halley
     ];
     commonKeys = [
