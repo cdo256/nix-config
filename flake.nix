@@ -87,5 +87,11 @@
       repo = "nix-zed-extensions";
       ref = "main";
     };
+    plasma-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "plasma-manager";
+      ref = "trunk";
+    };
   };
 }

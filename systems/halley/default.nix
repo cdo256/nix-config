@@ -57,6 +57,7 @@
       "users.nix"
       "fish.nix"
       "stylix.nix"
+      "gnome.nix"
     ];
     modules.home = [
       ./home/hyprland.nix

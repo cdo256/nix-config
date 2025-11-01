@@ -18,13 +18,21 @@ let
     "jujutsu.nix"
     "packages.nix"
     "readline.nix"
-  ] ++ (if args.graphical then [
-    "chromium.nix"
-    "sway.nix"
-    "waybar.nix"
-    "wofi.nix"
-    inputs.zed-extensions.homeManagerModules.default
-  ] else []);
+  ]
+  ++ (
+    if args.graphical then
+      [
+        "chromium.nix"
+        "sway.nix"
+        "waybar.nix"
+        "wofi.nix"
+        inputs.zed-extensions.homeManagerModules.default
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+        "plasma.nix"
+      ]
+    else
+      [ ]
+  );
   modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in
 {

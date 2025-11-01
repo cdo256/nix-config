@@ -54,6 +54,7 @@
       "oom.nix"
       "users.nix"
       "fish.nix"
+      "gnome.nix"
     ];
     modules.home = [
     ];
