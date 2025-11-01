@@ -23,6 +23,7 @@
             pkgs.restic
             self'.packages.python-utils
             self'.packages.home-manager
+            inputs.plasma-manager.packages.${system}.rc2nix
           ];
         };
         python-utils =
