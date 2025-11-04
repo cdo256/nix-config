@@ -63,6 +63,8 @@
       #"gnome.nix"
       "sddm.nix"
     ];
-    modules.home = [ ];
+    modules.home = [
+      ./home/sway.nix
+    ];
   };
 }
