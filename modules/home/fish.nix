@@ -29,8 +29,9 @@ in
       sjd = "sudo journalctl";
       zed = "zeditor";
       da = "direnv allow";
+      dr = "direnv reload";
       nfu = "nix flake update";
-      develop = "nix develop -c fish";
+      dev = "nix develop -c fish";
     };
     functions = {
       fish_prompt = {
