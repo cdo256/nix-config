@@ -8,11 +8,12 @@
     { system, pkgs, ... }:
     {
       packages = {
-        home-manager = inputs.home-manager.packages.x86_64-linux.default;
-        nixvim = inputs.nixvim.packages.x86_64-linux.default;
+        home-manager = inputs.home-manager.packages.${system}.default;
+        nixvim = inputs.nixvim.packages.${system}.default;
         files = pkgs.callPackage ./files.nix { };
         python-utils = pkgs.callPackage ./python-utils { };
         sc-im = pkgs.sc-im.overrideAttrs { xlsSupport = true; };
+        just-agda = inputs.just-agda.packages.${system}.default;
       };
     };
 }

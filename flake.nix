@@ -93,5 +93,11 @@
       repo = "plasma-manager";
       ref = "trunk";
     };
+    just-agda = {
+      type = "github";
+      owner = "cdo256";
+      repo = "just-agda";
+      ref = "main";
+    };
   };
 }
