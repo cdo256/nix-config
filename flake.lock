@@ -855,11 +855,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1762230509,
-        "narHash": "sha256-VUrgkPkFqxthmfC43BY9sFEDVK1qX3QtNkXDD43pBI4=",
+        "lastModified": 1762430333,
+        "narHash": "sha256-RFB1h9SP/igIL/yi8v6nFZav/R4Pzhc+iB1Soz1v/mo=",
         "owner": "cdo256",
         "repo": "just-agda",
-        "rev": "d73641891a930dc17e9f74cdc179c2e0f22ba379",
+        "rev": "1608e14c77f5b83178a30c842875afde2b5b97e9",
         "type": "github"
       },
       "original": {
