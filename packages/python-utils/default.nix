@@ -21,6 +21,7 @@ python.pkgs.buildPythonPackage rec {
     pkgs.sops
     pypandoc
     pyyaml
+    gitpython
   ];
 
   # does not contain any tests
