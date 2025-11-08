@@ -18,6 +18,7 @@ let
     "jujutsu.nix"
     "packages.nix"
     "readline.nix"
+    "ranger.nix"
   ]
   ++ (
     if args.graphical then
