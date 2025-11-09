@@ -12,16 +12,16 @@ let
   baseModules = [
     ./vars.nix
     ./email.nix
-    #"vars.nix"
-    #"base.nix"
-    #"direnv.nix"
-    #"fish.nix"
-    #"fs.nix"
-    #"git.nix"
-    #"jujutsu.nix"
-    #"packages.nix"
-    #"readline.nix"
-    #"ranger.nix"
+    "vars.nix"
+    "base.nix"
+    "direnv.nix"
+    "fish.nix"
+    "fs.nix"
+    "git.nix"
+    "jujutsu.nix"
+    "packages.nix"
+    "readline.nix"
+    "ranger.nix"
   ];
   #++ (
   #  if args.graphical then
@@ -40,6 +40,11 @@ let
   modules = map (withDefaultPath "/modules/home") (args.modules.home ++ baseModules);
 in
 {
-  args = import ./args.nix;
+  foo = bar;
+  args = {
+    modules = baseModules;
+  };
+  #modules = modules;
   #imports = modules;
+  #home.stateVersion = "24.05"; # Please read the comment before changing.
 }

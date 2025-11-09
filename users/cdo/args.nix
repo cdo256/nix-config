@@ -1,5 +1,6 @@
 {
   #args = {
+  username = "cdo";
   type = "laptop";
   hostname = "halley";
   arch = "x86_64-linux";
@@ -7,8 +8,7 @@
   owner = "cdo";
   users = [ "cdo" ];
   graphical = false;
-  packages.system = [ ];
-  packages.home = [
+  manifests = [
     "base.nix"
     "desktop.nix"
     "development.nix"
@@ -16,13 +16,6 @@
     "sysadmin.nix"
     "games.nix"
   ];
-  modules.nixos = [ ];
-  modules.home = [
-    ./home/hyprland.nix
-    ./home/waybar.nix
-    #inputs.stylix.homeModules.stylix
-    "zed.nix"
-    #"stylix.nix"
-  ];
-  #};
+  modules = [ ];
+  args = { };
 }
