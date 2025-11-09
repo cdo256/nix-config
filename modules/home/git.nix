@@ -1,5 +1,5 @@
 {
-  self',
+  flake',
   config,
   pkgs,
   ...
@@ -14,7 +14,7 @@
       pull.ff = true;
       pull.rebase = "true";
       push.autoSetupRemote = true;
-      credential.helper = "${self'.packages.python-utils}/bin/git-credentials-read"; # Read from .git-credentials
+      credential.helper = "${flake'.packages.python-utils}/bin/git-credentials-read"; # Read from .git-credentials
       diff.tool = "nvimdiff";
       difftool.nvimdiff.cmd = "${pkgs.neovim}/bin/nvim -d \"$LOCAL\" \"$REMOTE\"";
       merge.tool = "nvimdiff";

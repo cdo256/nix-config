@@ -2,6 +2,7 @@
   inputs,
   config,
   flake,
+  flake',
   pkgs,
   ...
 }:
@@ -12,6 +13,7 @@
       inherit
         inputs
         flake
+        flake'
         ;
       inherit (config)
         args

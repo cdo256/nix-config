@@ -23,7 +23,7 @@ let
   nixosModules = map (withDefaultPath "/modules/nixos") modules.nixos ++ [ (self + "/devices.nix") ];
 in
 withSystem arch (
-  { inputs', ... }:
+  { inputs', self', ... }:
   nixosSystem {
     system = null;
     modules = nixosModules ++ [
@@ -43,7 +43,9 @@ withSystem arch (
         config._module.args = {
           inherit inputs;
           flake = self;
-        } // inputs';
+          flake' = self';
+        }
+        // inputs';
       }
     ];
   }
