@@ -14,6 +14,14 @@
       repo = "nixpkgs";
       ref = "mutix"; # following nixos-unstable.
     };
+    # For mesa, since mesa 25 has flickering issues with Zed+wayland.
+    #FIXME: See https://github.com/zed-industries/zed/issues/32792.
+    nixpkgs-24-11 = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixpkgs";
+      ref = "24.11";
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-2.tar.gz";
       #url = "https://git.lix.systems/lix-project/lix/src/branch/main";

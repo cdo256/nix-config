@@ -17,6 +17,7 @@
             nh
             nixvim
             zed-extensions
+            mesa
           ];
         };
       };
