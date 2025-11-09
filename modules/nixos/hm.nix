@@ -2,6 +2,7 @@
   inputs,
   config,
   flake,
+  flake',
   pkgs,
   ...
 }:
@@ -12,12 +13,12 @@
       inherit
         inputs
         flake
+        flake'
         ;
       inherit (config)
         args
         ;
     };
-    users.${config.args.owner} =
-      import (flake + "/users/${config.args.owner}");
+    users.${config.args.owner} = import (flake + "/users/${config.args.owner}");
   };
 }

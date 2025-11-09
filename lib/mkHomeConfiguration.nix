@@ -4,6 +4,8 @@
   withSystem,
   ...
 }@inputs':
+module:
+
 {
   username,
   manifests,
@@ -17,11 +19,12 @@ let
   inherit (self.lib) withDefaultPath;
 in
 withSystem arch (
-  { pkgs, ... }:
+  { pkgs, self', ... }:
   {
     extraSpecialArgs = {
       inherit inputs args;
       flake = self;
+      flake' = self';
     };
     modules = map (withDefaultPath "/modules/home") modules;
     inherit pkgs;

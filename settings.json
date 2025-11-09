@@ -1,0 +1,206 @@
+{
+    "agent": {
+        "default_profile": "ask",
+        "play_sound_when_agent_done": true,
+        "model_parameters": [],
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4"
+        },
+        "version": "2"
+    },
+    "active_pane_modifiers": {
+        "border_size": 0,
+        "inactive_opacity": 1,
+        "magnification": 1
+    },
+    "auto_install_extensions": {
+        "astro": true,
+        "catppuccin-icons": true,
+        "fish": true,
+        "git-firefly": true,
+        "haskell": true,
+        "html": true,
+        "ini": true,
+        "l": true,
+        "latex": true,
+        "lua": true,
+        "make": true,
+        "markdown-oxide": true,
+        "nix": true,
+        "sql": true,
+        "toml": true,
+        "typst": true,
+        "unicode": true
+    },
+
+    "auto_update": false,
+    "buffer_font_family": "DejaVu Sans Mono",
+    "buffer_font_size": 16.0,
+    "cursors": true,
+    "diagnostics": {},
+    "double_click_in_minibuffer": "open",
+    "edit_predictions": {
+        "disabled_globs": ["**/*.journal"],
+        "mode": "eager"
+    },
+    "features": {
+        "edit_prediction_provider": "zed"
+    },
+    "git": {
+        "git_gutter": "tracked_files",
+        "gutter_debounce": 500,
+        "inline_blame": {
+            "delay_ms": 1000
+        }
+    },
+    "git_diff": true,
+    "inlay_hints": {
+        "edit_debounce_ms": 500,
+        "enable": true,
+        "show_other_hints": true,
+        "show_type_hints": true
+    },
+    "load_direnv": "shell_hook",
+    "lsp": {
+        "unicode": {
+            "settings": {
+                "include_all_symbols": "all"
+            }
+        },
+        "texlab": {
+            "settings": {
+                "texlab": {
+                    "latexindent": { "modifyLineBreaks": true },
+                    "build": {
+                        "onSave": true,
+                        "executable": "lualatex",
+                        "args": []
+                    }
+                }
+            }
+        }
+    },
+    "relative_line_numbers": true,
+    "scroll_beyond_last_line": "one_page",
+    "search": {
+        "button": true,
+        "case_sensitive": false,
+        "include_ignored": false,
+        "regex": false,
+        "whole_word": false
+    },
+    "search_results": true,
+    "search_wrap": true,
+    "seed_search_query_from_cursor": "always",
+    "selected_symbol": true,
+    "selected_text": true,
+    "selection_highlight": true,
+    "server_url": "https://zed.dev",
+    "session": {
+        "restore_unsaved_buffers": true
+    },
+    "shell": "system",
+    "show": "auto",
+    "show_call_status_icon": true,
+    "show_completion_documentation": true,
+    "show_completions_on_input": true,
+    "show_edit_predictions": true,
+    "show_signature_help_after_edits": false,
+    "show_whitespaces": "selection",
+    "show_wrap_guides": true,
+    "slash_commands": {
+        "docs": {
+            "enabled": false
+        },
+        "project": {
+            "enabled": false
+        }
+    },
+    "snippet_sort_order": "inline",
+    "soft_wrap": "editor_width",
+    "ssh_connections": [],
+    "stable": {},
+    "tab_bar": {
+        "show": true,
+        "show_nav_history_buttons": true,
+        "show_tab_bar_buttons": true
+    },
+    "tab_size": 4,
+    "tabs": {
+        "activate_on_close": "history",
+        "close_position": "right",
+        "file_icons": false,
+        "git_status": false,
+        "show_close_button": "hover",
+        "show_diagnostics": "all"
+    },
+    "tasks": {
+        "enabled": true,
+        "variables": {}
+    },
+    "telemetry": {
+        "diagnostics": true,
+        "metrics": true
+    },
+    "terminal": {
+        "alternate_scroll": "on",
+        "blinking": "terminal_controlled",
+        "button": true,
+        "copy_on_select": false,
+        "cursor_shape": null,
+        "default_height": 320,
+        "default_width": 640,
+        "detect_venv": {
+            "on": {
+                "activate_script": "default",
+                "directories": [".env", "env", ".venv", "venv"]
+            }
+        },
+        "dock": "bottom",
+        "env": {},
+        "line_height": "comfortable",
+        "option_as_meta": false,
+        "scrollbar": {
+            "show": null
+        }
+    },
+    "theme": "One Dark",
+    "title_bar": {
+        "show_branch_icon": false,
+        "show_branch_name": true,
+        "show_onboarding_banner": true,
+        "show_project_items": true,
+        "show_user_picture": true
+    },
+    "toolbar": {
+        "agent_review": true,
+        "breadcrumbs": true,
+        "quick_actions": true,
+        "selections_menu": true
+    },
+    "ui_font_family": "DejaVu Sans",
+    "ui_font_size": 16.0,
+    "unnecessary_code_fade": 0.3,
+    "use_auto_surround": true,
+    "use_autoclose": true,
+    "use_on_type_format": true,
+    "use_smartcase_search": false,
+    "use_system_path_prompts": true,
+    "use_system_prompts": true,
+    "vertical_scroll_margin": 3,
+    "vim": {
+        "cursor_shape": {},
+        "custom_digraphs": {},
+        "default_mode": "normal",
+        "highlight_on_yank_duration": 200,
+        "toggle_relative_line_numbers": false,
+        "use_multiline_find": false,
+        "use_smartcase_find": false,
+        "use_system_clipboard": "always"
+    },
+    "vim_mode": true,
+    "when_closing_with_no_tabs": "platform_default",
+    "working_directory": "current_project_directory",
+    "wrap_guides": []
+}

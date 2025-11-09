@@ -2,6 +2,7 @@
   self,
   inputs,
   lib,
+  self',
   ...
 }:
 let
@@ -11,15 +12,19 @@ let
   inherit (inputs.flake-parts.lib) mkSubmoduleOptions;
 in
 {
-  imports = [
-    #./cdo
-  ];
   options.flake.users = mkOption {
-    type = lazyAttrsOf attrs; # user;
+    type = lazyAttrsOf attrs;
     default = { };
     description = ''
       Input list of users.
     '';
+  };
+  config.flake.users.cdo = import ./cdo {
+    inherit inputs;
+    flake = self;
+    args = import ./cdo/args.nix;
+    config = { };
+    flake' = self';
   };
   config.flake.homeConfigurations = mapAttrs mkHomeConfiguration self.users;
 }
