@@ -55,5 +55,5 @@ in
       flake' = self';
     };
   #config.flake.homeConfigurations = mapAttrs mkHomeConfiguration self.users;
-  config.flake.homeConfigurations.cdo = mkHomeConfiguration (import ./cdo/args.nix);
+  config.flake.homeConfigurations.cdo = mkHomeConfiguration (import ./cdo (import ./cdo/args.nix));
 }
