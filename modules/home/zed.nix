@@ -1,7 +1,17 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+let
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+in
 {
+  home.file.".config/zed/settings.json".source =
+    symlink "${config.home.homeDirectory}/sync/config/zed/settings.json";
+  home.file.".config/zed/keymap.json".source =
+    symlink "${config.home.homeDirectory}/sync/config/zed/keymap.json";
+  home.file.".config/zed/themes/stylix.json".source =
+    symlink "${config.home.homeDirectory}/sync/config/zed/themes/stylix.json";
+
   programs.zed-editor = {
-    enable = false;
+    enable = false; # Use settings in ~/sync/config for live updating.
     package = pkgs.zed-editor-fhs;
     extensions = [
       "html"
@@ -235,7 +245,7 @@
             include_all_symbols = "all";
           };
         };
-        tinymist =  {
+        tinymist = {
           settings = {
             exportPdf = "onSave";
             outputPath = "$root/$name";

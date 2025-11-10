@@ -30,6 +30,7 @@ let
         inputs.zed-extensions.homeManagerModules.default
         inputs.plasma-manager.homeManagerModules.plasma-manager
         "plasma.nix"
+        "zed.nix"
       ]
     else
       [ ]

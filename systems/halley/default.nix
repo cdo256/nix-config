@@ -63,7 +63,6 @@
       ./home/hyprland.nix
       ./home/waybar.nix
       #inputs.stylix.homeModules.stylix
-      "zed.nix"
       #"stylix.nix"
     ];
   };
