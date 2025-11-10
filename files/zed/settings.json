@@ -166,7 +166,7 @@
             "show": null
         }
     },
-    "theme": "One Dark",
+    "theme": "Base16 untitled",
     "title_bar": {
         "show_branch_icon": false,
         "show_branch_name": true,
