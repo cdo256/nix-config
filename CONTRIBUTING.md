@@ -171,33 +171,39 @@ My preference is to reduce the output verbosity using `--no-nom --quiet`.
 
 ```bash
 # Dry run (check for errors without building)
-nh os build --no-nom --quiet
+just build
 
 # Build and switch (for NixOS systems)
-nh os switch --no-nom --quiet
+just switch
 
 # Build home-manager only
-nh home switch --no-nom --quiet
+just build-home
 
 # Build specific system
-nh os build -H HOST --no-nom --quiet
+just build HOST
+
+# To pass arguments, use
+just build HOST ARGS*
+
+# For example,
+just build halley --show-trace --no-nom
 ```
 
 ### Adding New Secrets
 
 #### System Secrets (NixOS level)
-1. Create/edit secret file: `sops secrets/secrets.yaml` 
+1. Create/edit secret file: `sops secrets/secrets.yaml`
 2. Add secret to NixOS module: `modules/nixos/*/secrets.nix`
 3. Use system age key (`/etc/sops/age/keys.txt`)
 
 #### User Secrets (Home Manager level)
 1. Generate user age key: `just generate-user-age-key`
-2. Create/edit user secret file: `sops user-secrets.yaml` 
+2. Create/edit user secret file: `sops user-secrets.yaml`
 3. Add secret to home module that needs it:
    ```nix
    sops.secrets.my-user-secret = {
      # Uses defaultSopsFile (user-secrets.yaml) and user age key automatically
-     format = "binary"; 
+     format = "binary";
      mode = "0400";
      # Note: no owner/group for home-manager sops
    };
@@ -218,7 +224,7 @@ nh os build -H HOST --no-nom --quiet
 - **Cause**: Missing `inputs.sops-nix.homeManagerModules.sops` import
 - **Fix**: Add to user's base modules in `users/*/default.nix`
 
-**Error: `The option '*.sops.secrets.*.group' does not exist`**  
+**Error: `The option '*.sops.secrets.*.group' does not exist`**
 - **Cause**: Using NixOS sops options in home-manager
 - **Fix**: Remove `owner` and `group` from home-manager sops secrets
 
@@ -292,7 +298,7 @@ This configuration uses a **dual-key architecture** for maximum security:
 - **Usage**: NixOS modules (`modules/nixos/*/secrets.nix`)
 - **File**: Usually `secrets/secrets.yaml` in external secrets repo
 
-#### User Secrets (`~/.config/sops/age/user-keys.txt`) 
+#### User Secrets (`~/.config/sops/age/user-keys.txt`)
 - **Purpose**: User-level secrets (API keys, user credentials, etc.)
 - **Access**: Only the user account
 - **Location**: User-specific age key, shared across user's machines

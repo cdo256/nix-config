@@ -3,24 +3,25 @@ VM := "vm1"
 HOST := `hostname`
 USER := "$USER"
 EMAIL := 'cdo@mutix.org'
+DEFAULT_NH_ARGS := "--quiet --no-nom"
 
 default:
     @just switch
 
-build host=HOST:
-    nh os build . -H {{host}} --out-link ./results/system -- --show-trace
+build host=HOST *args=DEFAULT_NH_ARGS:
+    nh os build . -H {{host}} --out-link ./results/system {{args}}
 
-switch host=HOST:
-    nh os switch . -H {{host}} -- --show-trace
+switch host=HOST *args=DEFAULT_NH_ARGS:
+    nh os switch . -H {{host}} {{args}}
 
-build-home kind="client":
-    nh home build . -c {{kind}} --out-link ./results/home -- --show-trace
+build-home kind="client" *args=DEFAULT_NH_ARGS:
+    nh home build . -c {{kind}} --out-link ./results/home {{args}}
 
-switch-home kind="client":
-    nh home switch . -c {{kind}} -- --show-trace
+switch-home kind="client" *args=DEFAULT_NH_ARGS:
+    nh home switch . -c {{kind}} {{args}}
 
-build-vm host=VM:
-    nh os build-vm -H {{host}} --out-link ./results/vm -- --show-trace
+build-vm host=VM *args=DEFAULT_NH_ARGS:
+    nh os build-vm -H {{host}} --out-link ./results/vm {{args}}
 
 run-vm host=VM: build-vm
     sudo ./results/vm/bin/run-{{host}}-vm
