@@ -107,5 +107,11 @@
       repo = "just-agda";
       ref = "main";
     };
+    git-reflection = {
+      type = "github";
+      owner = "cdo256";
+      repo = "git-reflection";
+      ref = "main";
+    };
   };
 }

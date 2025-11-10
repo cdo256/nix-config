@@ -16,6 +16,7 @@
   pkgs.nixd # Nix language server
   pkgs.zed-editor-fhs
   self'.packages.just-agda
+  self'.packages.git-reflection
 
   # Less used
   pkgs.vscodium

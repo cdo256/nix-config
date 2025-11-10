@@ -15,6 +15,7 @@
         sc-im = pkgs.sc-im.overrideAttrs { xlsSupport = true; };
         just-agda = inputs.just-agda.packages.${system}.default;
         mesa = inputs.nixpkgs-24-11.legacyPackages.${system}.mesa;
+        git-reflection = inputs.git-reflection.packages.${system}.default;
       };
     };
 }
