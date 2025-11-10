@@ -18,8 +18,6 @@ in
   sops.secrets.zed-development-credentials = {
     sopsFile = "${inputs.cdo-secrets}/zed-development-credentials.sops";
     format = "binary";
-    owner = "cdo";
-    group = "users";
     mode = "0400";
   };
   home.file.".config/zed/development_credentials".source =

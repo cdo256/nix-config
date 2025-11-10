@@ -14,8 +14,6 @@
   sops.secrets.remote-build-key = {
     sopsFile = "${inputs.cdo-secrets}/remote-build-key.sops";
     format = "binary";
-    owner = "root";
-    group = "users";
     mode = "0440";
   };
 }

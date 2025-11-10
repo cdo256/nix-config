@@ -9,6 +9,7 @@ let
   baseModules = [
     ./vars.nix
     ./email.nix
+    inputs.sops-nix.homeManagerModules.sops
     "vars.nix"
     "base.nix"
     "direnv.nix"
@@ -19,6 +20,7 @@ let
     "packages.nix"
     "readline.nix"
     "ranger.nix"
+    "sops.nix"
   ]
   ++ (
     if args.graphical then
