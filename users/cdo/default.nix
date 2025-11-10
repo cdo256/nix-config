@@ -30,8 +30,8 @@ let
         "waybar.nix"
         "wofi.nix"
         inputs.zed-extensions.homeManagerModules.default
-        inputs.plasma-manager.homeManagerModules.plasma-manager
-        "plasma.nix"
+        #inputs.plasma-manager.homeManagerModules.plasma-manager
+        #"plasma.nix"
         "zed.nix"
       ]
     else

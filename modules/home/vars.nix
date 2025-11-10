@@ -40,7 +40,7 @@ in
         terminal = "${pkgs.kitty}/bin/kitty";
         desktop = "sway";
         launcher = "${pkgs.wofi}/bin/wofi";
-        fileManager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
+        fileManager = "${pkgs.xfce.thunar}/bin/thunar";
         emailProgram = "${pkgs.thunderbird}/bin/thunderbird";
         passwordManager = "${pkgs.keepassxc}/bin/keepassxc";
         diffTool = "${pkgs.neovim}/bin/nvim -d";

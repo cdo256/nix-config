@@ -22,6 +22,7 @@
   # Less used
   pkgs.signal-desktop
   pkgs.kdePackages.okular
+  pkgs.xfce.thunar
   pkgs.inkscape
   pkgs.gimp
   pkgs.google-chrome

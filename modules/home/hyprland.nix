@@ -11,7 +11,7 @@ let
   terminal = "${pkgs.kitty}/bin/kitty";
   browser = "${pkgs.brave}/bin/brave";
   launcher = "${pkgs.wofi}/bin/wofi";
-  fileManager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
+  fileManager = "${pkgs.xfce.thunar}/bin/thunar";
   emailProgram = "${pkgs.thunderbird}/bin/thunderbird";
   passwordManager = "${pkgs.keepassxc}/bin/keepassxc";
   menu = "${launcher} -S run";

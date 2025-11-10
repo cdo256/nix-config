@@ -35,7 +35,7 @@
       inputs.stylix.nixosModules.stylix
       "base.nix"
       "cdo"
-      "dolphin.nix"
+      #"dolphin.nix"
       "superuser.nix"
       "system-packages.nix"
       "laptop.nix"
