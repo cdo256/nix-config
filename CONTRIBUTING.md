@@ -184,18 +184,25 @@ nh os build -H HOST --no-nom --quiet
 ```
 
 ### Adding New Secrets
-1. Create/edit secret file: `sops secrets/secrets.yaml`
+
+#### System Secrets (NixOS level)
+1. Create/edit secret file: `sops secrets/secrets.yaml` 
 2. Add secret to NixOS module: `modules/nixos/*/secrets.nix`
-3. Add secret to home module that needs it
-4. For home modules, ensure sops is configured:
+3. Use system age key (`/etc/sops/age/keys.txt`)
+
+#### User Secrets (Home Manager level)
+1. Generate user age key: `just generate-user-age-key`
+2. Create/edit user secret file: `sops user-secrets.yaml` 
+3. Add secret to home module that needs it:
    ```nix
-   sops.secrets.my-secret = {
-     sopsFile = "${inputs.cdo-secrets}/my-secret.sops";
-     format = "binary";
+   sops.secrets.my-user-secret = {
+     # Uses defaultSopsFile (user-secrets.yaml) and user age key automatically
+     format = "binary"; 
      mode = "0400";
      # Note: no owner/group for home-manager sops
    };
    ```
+4. For non-default secret files, specify `sopsFile` explicitly
 
 ### Adding New Modules
 1. Create module file in appropriate directory
@@ -211,13 +218,18 @@ nh os build -H HOST --no-nom --quiet
 - **Cause**: Missing `inputs.sops-nix.homeManagerModules.sops` import
 - **Fix**: Add to user's base modules in `users/*/default.nix`
 
-**Error: `The option '*.sops.secrets.*.group' does not exist`**
+**Error: `The option '*.sops.secrets.*.group' does not exist`**  
 - **Cause**: Using NixOS sops options in home-manager
 - **Fix**: Remove `owner` and `group` from home-manager sops secrets
 
 **Error: `No key source configured for sops`**
 - **Cause**: Missing sops configuration in home-manager
 - **Fix**: Create `modules/home/sops.nix` with `sops.age.keyFile` setting
+
+**Error: `sops-nix.service failed - permission denied accessing /etc/sops/age/keys.txt`**
+- **Cause**: User service trying to access system-level age key
+- **Fix**: Generate separate user age key with `just generate-user-age-key`
+- **Architecture**: Use separate keys for system vs user secrets for better security
 
 ### Module Import Issues
 
@@ -270,6 +282,25 @@ nix-collect-garbage -d
 - **Maintainability**: Centralized package management
 
 ### Secrets Strategy
-- **sops-nix**: Encrypted secrets in git, decrypted at runtime
-- **Age encryption**: SSH key-based, simpler than GPG
-- **Separation**: System secrets (NixOS) vs user secrets (Home Manager)
+
+This configuration uses a **dual-key architecture** for maximum security:
+
+#### System Secrets (`/etc/sops/age/keys.txt`)
+- **Purpose**: System-level secrets (service credentials, system passwords, etc.)
+- **Access**: Only root and system services
+- **Location**: System age key derived from SSH host key
+- **Usage**: NixOS modules (`modules/nixos/*/secrets.nix`)
+- **File**: Usually `secrets/secrets.yaml` in external secrets repo
+
+#### User Secrets (`~/.config/sops/age/user-keys.txt`) 
+- **Purpose**: User-level secrets (API keys, user credentials, etc.)
+- **Access**: Only the user account
+- **Location**: User-specific age key, shared across user's machines
+- **Usage**: Home Manager modules (`modules/home/*.nix`)
+- **File**: Usually `user-secrets.yaml` in external secrets repo
+
+#### Benefits
+- **Principle of least privilege**: Users can't access system secrets
+- **Separation of concerns**: System vs user configuration boundaries
+- **Portability**: User secrets work across machines for same user
+- **Security**: Compromise of user account doesn't expose system secrets

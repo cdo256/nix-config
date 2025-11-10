@@ -14,6 +14,6 @@
   sops.secrets.remote-build-key = {
     sopsFile = "${inputs.cdo-secrets}/remote-build-key.sops";
     format = "binary";
-    mode = "0440";
+    mode = "0400";
   };
 }

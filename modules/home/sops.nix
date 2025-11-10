@@ -5,8 +5,7 @@
 }:
 {
   sops = {
-    age.keyFile = "/etc/sops/age/keys.txt";
-    defaultSopsFile = "${inputs.cdo-secrets}/secrets.yaml";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/user-keys.txt";
     defaultSopsFormat = "yaml";
   };
 }
