@@ -434,11 +434,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1762687594,
-        "narHash": "sha256-8hizgKSi7STnR0TFivhlY+Wo7Ix6xkzvjU55/g8FbhI=",
+        "lastModified": 1762860019,
+        "narHash": "sha256-j1ohLRydcHDtOlBcy1PTIMe3htHbPR7Vntj50X3SaWU=",
         "owner": "cdo256",
         "repo": "git-reflection",
-        "rev": "90a5ac7d7e71dfa3c7d6c9b0a0a549b96b319659",
+        "rev": "90dff58643c3574fd35c429303a79b1045c98907",
         "type": "github"
       },
       "original": {
