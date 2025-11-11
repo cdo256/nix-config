@@ -4,6 +4,6 @@
       enable = true;
       wayland.enable = true;
     };
-    defaultSession = "plasma";
+    defaultSession = "sway";
   };
 }
