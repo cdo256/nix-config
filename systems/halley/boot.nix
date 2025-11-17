@@ -5,27 +5,30 @@ in
 {
   config.boot = {
     loader.grub = {
-      enable = true;
+      enable = false;
       efiSupport = true;
+      efiInstallAsRemovable = true;
       device = "nodev";
       #useOSProber = true;
       enableCryptodisk = true;
     };
-    loader.efi.efiSysMountPoint = "/boot";
+    loader.systemd-boot.enable = true;
+    loader.efi = {
+      efiSysMountPoint = "/boot";
+      canTouchEfiVariables = false;
+    };
     initrd = {
       luks.devices = {
         "root" = {
-          keyFile = "/etc/secrets/crypto_keyfile.bin";
+          #keyFile = "/etc/cryptkey/initrd-luks.bin";
         };
         "swap" = {
-          keyFile = "/etc/secrets/crypto_keyfile.bin";
-          device = "/dev/disk/by-uuid/1bf70d4e-1e23-4357-b51f-40c34ae2d263";
+          #keyFile = "/etc/cryptkey/initrd-luks.bin";
         };
       };
       # Setup keyfile
-      # Delete this to build a VM.
       secrets = {
-        "/etc/secrets/crypto_keyfile.bin" = null;
+        #"/etc/cryptkey/initrd-luks.bin" = "/etc/cryptkey/initrd-luks.bin";
       };
     };
   };
