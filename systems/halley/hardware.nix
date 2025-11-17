@@ -14,26 +14,35 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/mapper/root";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/mapper/root";
+    fsType = "ext4";
+  };
 
   boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/26f30444-e729-4254-808d-16e12eec659f";
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/DEC1-0E50";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/DEC1-0E50";
+    fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
+  };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/38de1acb-73e9-4439-b15e-6fd768e12098"; }
+    { device = "/dev/disk/by-uuid/1bf70d4e-1e23-4357-b51f-40c34ae2d263"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -47,3 +56,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+#/dev/nvme0n1p1: UUID="26f30444-e729-4254-808d-16e12eec659f" TYPE="crypto_LUKS" PARTUUID="857151df-01"
+#/dev/nvme0n1p2: UUID="1bf70d4e-1e23-4357-b51f-40c34ae2d263" TYPE="crypto_LUKS" PARTUUID="857151df-02"
+#/dev/nvme0n1p3: UUID="DEC1-0E50" BLOCK_SIZE="512" TYPE="vfat" PARTUUID="857151df-03"
