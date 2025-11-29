@@ -1,7 +1,7 @@
 {
   wayland.windowManager.sway.config = {
     output = {
-      "DP-1" = {
+      "DP-3" = {
         mode = "3840x2160";
         pos = "0,0";
       };

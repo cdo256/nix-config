@@ -48,7 +48,7 @@
       "shell.nix"
       "xserver.nix"
       "graphical.nix"
-      "hyprland.nix"
+      #"hyprland.nix"
       "video.nix"
       "vpn.nix"
       "unfree.nix"
