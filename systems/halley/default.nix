@@ -58,6 +58,7 @@
       "fish.nix"
       "stylix.nix"
       "gnome.nix"
+      "yubikey.nix"
     ];
     modules.home = [
       ./home/hyprland.nix

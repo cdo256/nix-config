@@ -62,6 +62,7 @@
       #"kde.nix"
       #"gnome.nix"
       "sddm.nix"
+      "yubikey.nix"
     ];
     modules.home = [
       ./home/sway.nix
