@@ -27,6 +27,7 @@
   pkgs.nettools
   pkgs.arp-scan
   pkgs.netbird
+  pkgs.openssl
   self'.packages.python-utils
 
   # Trying

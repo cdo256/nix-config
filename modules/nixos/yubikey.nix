@@ -4,6 +4,7 @@
   services.pcscd.enable = true;
   services.udev.packages = [
     pkgs.yubikey-personalization
+    pkgs.yubico-piv-tool
     pkgs.yubikey-manager
   ];
 }
