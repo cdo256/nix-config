@@ -893,11 +893,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1762430333,
-        "narHash": "sha256-RFB1h9SP/igIL/yi8v6nFZav/R4Pzhc+iB1Soz1v/mo=",
+        "lastModified": 1764600152,
+        "narHash": "sha256-f2Inklw0ZIQ2Qp0/EvDOdnYFLv+yQ11a3u4A0KONr/U=",
         "owner": "cdo256",
         "repo": "just-agda",
-        "rev": "1608e14c77f5b83178a30c842875afde2b5b97e9",
+        "rev": "f5a7ae4f04aca4f509e8d687955ca135dfaa7b66",
         "type": "github"
       },
       "original": {
