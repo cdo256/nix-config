@@ -3,13 +3,14 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   fonts = {
     enableDefaultPackages = true;
     packages = [
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
-      pkgs.noto-fonts-emoji        # "Noto Color Emoji"
+      pkgs.noto-fonts-color-emoji
       pkgs.unifont
       pkgs.fira-code
       pkgs.julia-mono

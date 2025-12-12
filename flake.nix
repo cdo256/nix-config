@@ -35,9 +35,9 @@
     };
     home-manager = {
       type = "github";
-      owner = "cdo256";
+      owner = "nix-community";
       repo = "home-manager";
-      ref = "backup-command";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
