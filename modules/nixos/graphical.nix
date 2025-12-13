@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  programs.ssh.askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
   #  xdg.portal = {
   #    enable = true;
   #    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
