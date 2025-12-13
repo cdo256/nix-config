@@ -65,6 +65,7 @@
       ./home/waybar.nix
       #inputs.stylix.homeModules.stylix
       #"stylix.nix"
+      "rclone-failing.nix"
     ];
   };
 }
