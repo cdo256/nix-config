@@ -7,7 +7,6 @@
 }:
 
 let
-  hyprland-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${system};
   terminal = "${pkgs.kitty}/bin/kitty";
   browser = "${pkgs.brave}/bin/brave";
   launcher = "${pkgs.wofi}/bin/wofi";

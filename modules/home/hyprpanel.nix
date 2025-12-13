@@ -8,8 +8,6 @@
 }:
 
 {
-  imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
-
   programs.hyprpanel = {
     enable = args.graphical;
     systemd.enable = true;

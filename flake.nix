@@ -54,21 +54,6 @@
       ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #TODO: Drop these dependencies.
-    hyprland = {
-      type = "github";
-      owner = "hyprwm";
-      repo = "hyprland";
-      ref = "main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprpanel = {
-      type = "github";
-      owner = "Jas-SinghFSU";
-      repo = "HyprPanel";
-      ref = "master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nh = {
       type = "github";
       owner = "nix-community";
