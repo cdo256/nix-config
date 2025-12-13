@@ -2,11 +2,11 @@ import sys
 
 
 def main():
-    if len(sys.argv) < 2:
-        raise SystemExit("usage: rot10 <digit-key>")
+    if len(sys.argv) != 1:
+        raise SystemExit("usage: rot10")
 
-    key = sys.argv[1].strip()
-    s = sys.stdin.read().strip()
+    key = input("key: ").strip()
+    s = input("ciphertext: ").strip()
 
     out = []
     for i, ch in enumerate(s):

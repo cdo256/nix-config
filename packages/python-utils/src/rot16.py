@@ -2,11 +2,11 @@ import sys
 
 
 def main():
-    if len(sys.argv) < 2:
-        raise SystemExit("usage: rot16 <hex-digit-key>")
+    if len(sys.argv) != 1:
+        raise SystemExit("usage: rot16")
 
-    key = sys.argv[1].strip()
-    s = sys.stdin.read().strip()
+    key = input("key: ").strip()
+    s = input("ciphertext: ").strip()
 
     out = []
     hexchars = "0123456789abcdef"
