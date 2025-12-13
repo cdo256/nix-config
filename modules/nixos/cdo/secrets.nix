@@ -1,21 +1,14 @@
 {
   flake,
+  config,
   inputs,
   ...
 }:
 
 {
   sops = {
-    defaultSopsFile = "${inputs.cdo-secrets}/secrets.yaml";
+    defaultSopsFile = "${inputs.secrets}/hosts/${config.networking.hostName}.yaml";
     defaultSopsFormat = "yaml";
     age.keyFile = "/etc/sops/age/keys.txt";
-    secrets = {
-      "cdo/git-credentials" = {
-        owner = "cdo";
-      };
-      "cdo/mutix-password" = {
-        owner = "cdo";
-      };
-    };
   };
 }

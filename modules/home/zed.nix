@@ -15,14 +15,6 @@ in
   home.file.".config/zed/themes/stylix.json".source =
     symlink "${config.home.homeDirectory}/sync/config/zed/themes/stylix.json";
 
-  sops.secrets.zed-development-credentials = {
-    sopsFile = "${inputs.cdo-secrets}/zed-development-credentials.sops";
-    format = "binary";
-    mode = "0400";
-  };
-  home.file.".config/zed/development_credentials".source =
-    symlink config.sops.secrets.zed-development-credentials.path;
-
   programs.zed-editor = {
     enable = false; # Use settings in ~/sync/config for live updating.
     package = pkgs.zed-editor-fhs;

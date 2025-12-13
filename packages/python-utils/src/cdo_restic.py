@@ -10,9 +10,7 @@ def eprint(*args, **kwargs):
     return print(*args, **kwargs, file=sys.stderr)
 
 
-def load_secrets():
-    default_secrets_path = f"{os.environ["HOME"]}/.local/secure/mutix/secrets.yaml"
-    secrets_path = Path(os.environ.get("MUTIX_SECRETS_PATH", default_secrets_path))
+def get_machine_secrets(file):
     try:
         result = subprocess.run(
             ["sops", "--decrypt", secrets_path],
@@ -21,22 +19,18 @@ def load_secrets():
             stderr=subprocess.PIPE,
             encoding="utf-8",
         )
-        return yaml.safe_load(result.stdout)
+        secrets = yaml.safe_load(result.stdout)
     except subprocess.CalledProcessError as e:
         eprint(f"Error decrypting secrets: {e.stderr}")
         sys.exit(1)
 
-
-def get_machine_secrets(secrets, machine):
     try:
-        entry = secrets["restic"][machine]
+        entry = secrets["restic"]
         url = entry["url"]
         password = entry["key"]
         return url, password
     except KeyError:
-        print(
-            f"Could not find restic.{machine}.url or restic.{machine}.password in secrets."
-        )
+        print(f"Could not find restic.url or restic.password in secret file.")
         sys.exit(1)
 
 
@@ -52,8 +46,11 @@ def main():
     )
     args = parser.parse_args()
 
-    secrets = load_secrets()
-    url, password = get_machine_secrets(secrets, args.machine)
+    default_secrets_path = (
+        f"{os.environ["HOME"]}/.local/secure/mutix/hosts/{machine}.yaml"
+    )
+    secrets_path = Path(os.environ.get("MUTIX_SECRETS_PATH", default_secrets_path))
+    url, password = get_machine_secrets(secrets_path)
 
     env = os.environ.copy()
     env["RESTIC_REPOSITORY"] = url

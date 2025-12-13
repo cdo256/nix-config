@@ -75,7 +75,11 @@
       repo = "nh";
       ref = "master";
     };
-    cdo-secrets = {
+    #secrets = {
+    #  url = "path:/home/cdo/.local/secure/mutix";
+    #  flake = false;
+    #};
+    secrets = {
       type = "github";
       owner = "cdo256";
       repo = "private";

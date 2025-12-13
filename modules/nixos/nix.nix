@@ -1,4 +1,4 @@
-{ config , inputs , ... }:
+{ config, inputs, ... }:
 {
   nix = {
     settings = {
@@ -9,14 +9,14 @@
       warn-dirty = false;
     };
     extraOptions = ''
-      !include ${config.sops.secrets.nix-github-token-file.path}
+      !include ${config.sops.secrets.nixos-github-token.path}
     '';
   };
-  sops.secrets.nix-github-token-file = {
-    sopsFile = "${inputs.cdo-secrets}/nix-github-token-file.sops";
-    format = "binary";
+  sops.secrets.nixos-github-token = {
+    sopsFile = "${inputs.secrets}/hosts/${config.networking.hostName}.yaml";
     owner = "root";
-    group = "nixbld";
+    group = "users";
     mode = "0440";
+    restartUnits = [ "nix-daemon.service" ];
   };
 }

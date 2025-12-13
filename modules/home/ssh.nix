@@ -1,4 +1,9 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  osConfig,
+  ...
+}:
 {
   programs.ssh = {
     enable = true;
@@ -12,7 +17,7 @@
     };
   };
   sops.secrets.remote-build-key = {
-    sopsFile = "${inputs.cdo-secrets}/remote-build-key.sops";
+    sopsFile = "${inputs.secrets}/hosts/${osConfig.networking.hostName}/remote-build-key.sops";
     format = "binary";
     mode = "0400";
   };

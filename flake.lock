@@ -121,23 +121,6 @@
         "type": "github"
       }
     },
-    "cdo-secrets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1761382383,
-        "narHash": "sha256-+4OeERCG/0KqGCiKIger5YBYduAe7y3A1JP0bcKbocc=",
-        "owner": "cdo256",
-        "repo": "private",
-        "rev": "f8f81e888521c60f5f4d4f8903c5982861019c6b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cdo256",
-        "ref": "main",
-        "repo": "private",
-        "type": "github"
-      }
-    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -1359,7 +1342,6 @@
     },
     "root": {
       "inputs": {
-        "cdo-secrets": "cdo-secrets",
         "flake-parts": "flake-parts",
         "git-reflection": "git-reflection",
         "home-manager": "home-manager",
@@ -1372,6 +1354,7 @@
         "nixpkgs-24-11": "nixpkgs-24-11",
         "nixvim": "nixvim",
         "plasma-manager": "plasma-manager",
+        "secrets": "secrets",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "zed-extensions": "zed-extensions"
@@ -1409,6 +1392,23 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765620811,
+        "narHash": "sha256-HpglAs4yoPKiMOYPnFq3jjfLQNrQnR5YWOgehKo/U24=",
+        "owner": "cdo256",
+        "repo": "private",
+        "rev": "294954aeec35f75a7098e4d42ad0905c13818e6e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cdo256",
+        "ref": "main",
+        "repo": "private",
         "type": "github"
       }
     },

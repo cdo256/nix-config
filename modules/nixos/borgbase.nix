@@ -15,13 +15,13 @@ in
   };
   config = lib.mkIf cfg.enable {
     sops.secrets = {
-      "restic/${hostName}/url" = { };
-      "restic/${hostName}/key" = { };
+      "restic/url" = { };
+      "restic/key" = { };
     };
     services.restic.backups.borgbase = {
-      repositoryFile = config.sops.secrets."restic/${hostName}/url".path;
+      repositoryFile = config.sops.secrets."restic/url".path;
       initialize = true;
-      passwordFile = config.sops.secrets."restic/${hostName}/key".path;
+      passwordFile = config.sops.secrets."restic/key".path;
       paths = [
         "/home"
         "/root"
