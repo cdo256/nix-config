@@ -29,6 +29,8 @@
   pkgs.netbird
   pkgs.openssl
   self'.packages.python-utils
+  pkgs.yubikey-personalization
+  pkgs.yubikey-manager
 
   # Trying
   pkgs.bottom # btm ~ better top, htop, etc
