@@ -9,34 +9,34 @@
         team_drive = ""; # no
       };
       secrets = {
-        client_id = config.sops.secrets."google-drive/client_id";
-        client_secret = config.sops.secrets."google-drive/client_secret";
+        client_id = config.sops.secrets."google-drive/client_id".path;
+        client_secret = config.sops.secrets."google-drive/client_secret".path;
       };
       bisyncs = {
         "obsidian" = {
           enable = true;
-          mountPoint = "${config.home.homeDirectory}/obsidian";
+          localPath = "${config.home.homeDirectory}/obsidian";
           options = {
             umask = "077";
           };
         };
         "sync" = {
           enable = true;
-          mountPoint = "${config.home.homeDirectory}/sync";
+          localPath = "${config.home.homeDirectory}/sync";
           options = {
             umask = "077";
           };
         };
         "secure" = {
           enable = true;
-          mountPoint = "${config.home.homeDirectory}/.local/sync/secure";
+          localPath = "${config.home.homeDirectory}/.local/sync/secure";
           options = {
             umask = "077";
           };
         };
         "config" = {
           enable = true;
-          mountPoint = "${config.home.homeDirectory}/.local/sync/config";
+          localPath = "${config.home.homeDirectory}/.local/sync/config";
           options = {
             umask = "077";
           };

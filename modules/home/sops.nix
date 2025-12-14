@@ -1,11 +1,13 @@
 {
   inputs,
   config,
+  osConfig,
   ...
 }:
 {
   sops = {
-    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/user-keys.txt";
+    defaultSopsFile = "${inputs.secrets}/hosts/${osConfig.networking.hostName}.yaml";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFormat = "yaml";
   };
 }

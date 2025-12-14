@@ -410,8 +410,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1765725969,
-        "narHash": "sha256-24pp8JzTl8A9p5XljtfnFIKTyXfDR/fbhK1LcyQIPp0=",
+        "lastModified": 1765728594,
+        "narHash": "sha256-2URf/vW0rpl81WipJzS1ACd4J0jkK0JpMWX/tcjp27Q=",
         "path": "/home/cdo/src/home-manager",
         "type": "path"
       },
