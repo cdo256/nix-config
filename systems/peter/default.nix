@@ -66,6 +66,7 @@
     ];
     modules.home = [
       ./home/sway.nix
+      "rclone.nix"
     ];
   };
 }
