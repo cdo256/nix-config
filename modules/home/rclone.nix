@@ -1,7 +1,7 @@
 { config, ... }:
 {
   programs.rclone = {
-    enable = true;
+    enable = false; # Currently broken
     remotes.g = {
       config = {
         type = "drive";
