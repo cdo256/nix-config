@@ -15,6 +15,8 @@ in
   home.file.".config/zed/themes/stylix.json".source =
     symlink "${config.home.homeDirectory}/sync/config/zed/themes/stylix.json";
 
+  home.packages = [ pkgs.zed-editor-fhs ];
+
   programs.zed-editor = {
     enable = false; # Use settings in ~/sync/config for live updating.
     package = pkgs.zed-editor-fhs;
