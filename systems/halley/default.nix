@@ -59,7 +59,7 @@
       "stylix.nix"
       "gnome.nix"
       "yubikey.nix"
-      "keyd.nix"
+      ./keyd.nix
     ];
     modules.home = [
       ./home/hyprland.nix
