@@ -36,17 +36,8 @@ in
       source = "${files}/spacemacs";
       recursive = true;
     };
-    #".config/nvim" = {
-    #  source = "${files}/nvim";
-    #  recursive = true;
-    #};
-    #".config/hypr" = {
-    #  source = "${files}/hypr";
-    #  recursive = true;
-    #};
 
     # Symlinks
-    ".git-credentials".source = symlink "/run/secrets/${config.home.username}/git-credentials";
     ".thunderbird".source = symlink "${config.home.homeDirectory}/.config/thunderbird";
     ".mozilla/firefox".source = symlink "${config.home.homeDirectory}/.config/firefox";
   };
