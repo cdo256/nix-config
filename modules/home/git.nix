@@ -19,6 +19,7 @@
       difftool.nvimdiff.cmd = "${pkgs.neovim}/bin/nvim -d \"$LOCAL\" \"$REMOTE\"";
       merge.tool = "nvimdiff";
       mergetool.nvimdiff.cmd = "${pkgs.neovim}/bin/nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c 'wincmd w' -c 'wincmd J'";
+      core.askPass = "";
     };
   };
 }
