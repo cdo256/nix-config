@@ -63,6 +63,7 @@
       #"gnome.nix"
       "sddm.nix"
       "yubikey.nix"
+      "keyboard.nix"
     ];
     modules.home = [
       ./home/sway.nix

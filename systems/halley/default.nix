@@ -59,6 +59,7 @@
       "stylix.nix"
       "gnome.nix"
       "yubikey.nix"
+      "keyboard.nix"
       ./keyd.nix
     ];
     modules.home = [
