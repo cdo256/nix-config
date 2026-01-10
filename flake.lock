@@ -481,11 +481,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1764600152,
-        "narHash": "sha256-f2Inklw0ZIQ2Qp0/EvDOdnYFLv+yQ11a3u4A0KONr/U=",
+        "lastModified": 1767986048,
+        "narHash": "sha256-PJ/ZSRsNTHwYnOgoGhurNOQOcQQASh9O8Op4zOPHKeg=",
         "owner": "cdo256",
         "repo": "just-agda",
-        "rev": "f5a7ae4f04aca4f509e8d687955ca135dfaa7b66",
+        "rev": "24970a0b0d5907b82418d34277d58ee93b2e0071",
         "type": "github"
       },
       "original": {
