@@ -34,12 +34,16 @@
       ref = "main";
     };
     home-manager = {
-      type = "github";
-      owner = "nix-community";
-      repo = "home-manager";
-      ref = "master";
+      url = "path:/home/cdo/src/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #home-manager = {
+    #  type = "github";
+    #  owner = "nix-community";
+    #  repo = "home-manager";
+    #  ref = "master";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     nixvim = {
       type = "github";
       owner = "cdo256";
