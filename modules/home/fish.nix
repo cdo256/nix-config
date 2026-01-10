@@ -23,17 +23,25 @@ in
       gla = "git log --graph --all --simplify-by-decoration --oneline";
       lg = "lazygit";
       nv = "nvim";
+      da = "direnv allow";
+      dr = "direnv reload";
+      nfu = "nix flake update";
+      nd = "nix develop -c fish";
+    };
+    shellAliases = {
       usd = "systemctl --user";
       ujd = "journalctl --user";
       ssd = "sudo systemctl";
       sjd = "sudo journalctl";
-      zed = "zeditor";
-      da = "direnv allow";
-      dr = "direnv reload";
-      nfu = "nix flake update";
-      dev = "nix develop -c fish";
     };
     functions = {
+      cdo-list-used-nix-pkgs = {
+        body = ''
+          for pkg in (history | string match -r -a 'nixpkgs#([\w.-]+)' | string replace -r '.*#' "" | sort -u)
+            rg -qF -- "$pkg" ~/.config/mutix; or echo "$pkg"
+          end
+        '';
+      };
       fish_prompt = {
         body = ''
           #Save the return status of the previous command
@@ -64,17 +72,16 @@ in
 
   home.packages = [
     # Stable
-    pkgs.fish
+    pkgs.fishPlugins.foreign-env # for direnv
+    pkgs.fishPlugins.done # system notifications
     pkgs.fzf
-    pkgs.fishPlugins.foreign-env
-
-    # Trying
-    pkgs.fishPlugins.done
-    pkgs.fishPlugins.autopair
     pkgs.fishPlugins.fzf-fish
-    pkgs.fishPlugins.forgit
-    pkgs.fishPlugins.hydro
-    pkgs.grc
+    pkgs.grc # output coloring
     pkgs.fishPlugins.grc
+
+    # Other plugins
+    #pkgs.fishPlugins.autopair
+    #pkgs.fishPlugins.forgit
+    #pkgs.fishPlugins.hydro
   ];
 }
