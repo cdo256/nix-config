@@ -35,7 +35,7 @@
           };
 
       kbLayout = {
-        layout = "gb";
+        layout = "us";
         variant = "";
         options = "caps:escape";
       };
