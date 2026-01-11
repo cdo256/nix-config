@@ -21,6 +21,7 @@ let
     "readline.nix"
     "ranger.nix"
     "sops.nix"
+    "keyboard.nix"
   ]
   ++ (
     if args.graphical then

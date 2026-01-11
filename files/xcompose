@@ -1,0 +1,22 @@
+include "%L"
+
+# Logic & Quantifiers
+<Multi_key> <a> <l> <l> : "∀"   # Compose + a + l + l
+<Multi_key> <e> <x>     : "∃"   # Compose + e + x
+<Multi_key> <t> <o>     : "→"   # Compose + t + o
+<Multi_key> <i> <m> <p> : "⇒"   # Compose + i + m + p
+<Multi_key> <e> <q>     : "≡"   # Compose + e + q
+<Multi_key> <d> <e> <f> : "≜"   # Compose + d + e + f
+
+# Sets
+<Multi_key> <i> <n>     : "∈"   # Compose + i + n
+<Multi_key> <n> <i> <n> : "∉"   # Compose + n + i + n
+<Multi_key> <n> <a> <t> : "ℕ"   # Compose + n + a + t
+<Multi_key> <i> <n> <t> : "ℤ"   # Compose + i + n + t
+
+# Lattice
+<Multi_key> <t> <o> <p> : "⊤"
+<Multi_key> <b> <o> <t> : "⊥"
+
+# Proof
+<Multi_key> <q> <e> <d> : "∎"

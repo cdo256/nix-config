@@ -38,7 +38,7 @@
         # Greek on altgr
         layout = "us,gr";
         variant = "";
-        options = "grp:switch,caps:escape";
+        options = "grp:switch,caps:escape,compose:menu";
       };
     };
   };
