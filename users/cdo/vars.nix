@@ -35,9 +35,10 @@
           };
 
       kbLayout = {
-        layout = "us";
+        # Greek on altgr
+        layout = "us,gr";
         variant = "";
-        options = "caps:escape";
+        options = "grp:switch,caps:escape";
       };
     };
   };
