@@ -27,6 +27,7 @@ in
       dr = "direnv reload";
       nfu = "nix flake update";
       nd = "nix develop -c fish";
+      zed = "zed";
     };
     shellAliases = {
       usd = "systemctl --user";
