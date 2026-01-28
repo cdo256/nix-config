@@ -1,0 +1,10 @@
+[
+    {
+        "label": "switch",
+        "command": "nh",
+        "args": ["os", "switch"],
+        "use_new_terminal": false,
+        "allow_concurrent_runs": false,
+        "reveal": "no_focus"
+    }
+]
