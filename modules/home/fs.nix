@@ -41,4 +41,10 @@ in
     ".thunderbird".source = symlink "${config.home.homeDirectory}/.config/thunderbird";
     ".mozilla/firefox".source = symlink "${config.home.homeDirectory}/.config/firefox";
   };
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "auto";
+  };
 }
