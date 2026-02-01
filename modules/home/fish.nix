@@ -15,6 +15,8 @@ in
     enable = true;
     loginShellInit = ''
       set -x PATH ~/.local/bin $PATH
+    '';
+    interactiveShellInit = ''
       set -x GPG_TTY (tty)
       set -g fish_key_bindings fish_vi_key_bindings
       direnv hook fish | source
