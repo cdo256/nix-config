@@ -39,9 +39,9 @@
     #};
     home-manager = {
       type = "github";
-      owner = "nix-community";
+      owner = "cdo256";
       repo = "home-manager";
-      ref = "master";
+      ref = "mutix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
