@@ -29,13 +29,13 @@ in
       dr = "direnv reload";
       nfu = "nix flake update";
       nd = "nix develop -c fish";
-      zed = "zed";
     };
     shellAliases = {
       usd = "systemctl --user";
       ujd = "journalctl --user";
       ssd = "sudo systemctl";
       sjd = "sudo journalctl";
+      zed = "zeditor";
     };
     functions = {
       cdo-list-used-nix-pkgs = {

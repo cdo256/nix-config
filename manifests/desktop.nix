@@ -9,7 +9,7 @@
   pkgs.vlc
   pkgs.xdg-desktop-portal
   pkgs.obsidian
-  pkgs.anki
+  #pkgs.anki
   pkgs.zotero # Reference manager
   pkgs.ncpamixer
   pkgs.pavucontrol
