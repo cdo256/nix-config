@@ -1,12 +1,19 @@
-services.nginx = {
-  enable = true;
-  virtualHosts."octocurious.org" = {
-    enableACME = true;
-    root = "/var/www/octocurious";
-    
-    # Optional: Handle 404s by routing to 404.html for SPA-like behavior if necessary
-    locations."/" = {
-      tryFiles = "$uri $uri/ =404";
+{
+  services.nginx = {
+    enable = true;
+    virtualHosts."octocurious.com" = {
+      enableACME = true;
+      forceSSL = true;
+      root = "/var/www/octocurious";
+      
+      locations."/" = {
+        tryFiles = "$uri $uri/ =404";
+      };
     };
   };
-};
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "christina@octocurious.com";
+  };
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+}
