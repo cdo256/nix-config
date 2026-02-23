@@ -44,13 +44,13 @@ in
   };
 
   programs.mbsync = {
-    enable = true;
+    enable = false;
   };
   programs.neomutt = {
-    enable = true;
+    enable = false;
   };
   services.mbsync = {
-    enable = true;
+    enable = false;
     #frequency = "*:0/5";
     configFile = configFile;
   };
