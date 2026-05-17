@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   args,
   ...
@@ -13,7 +12,7 @@
       defaults = {
         shellPackage = pkgs.fish;
         shell = "${pkgs.fish}/bin/fish";
-        editor = "${inputs.nixvim.packages.${args.arch}.default}/bin/nvim";
+        editor = "${pkgs.neovim}/bin/nvim";
         browser = "${pkgs.brave}/bin/brave";
         terminal = "${pkgs.kitty}/bin/kitty";
         desktop = "sway";

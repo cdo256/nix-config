@@ -44,13 +44,6 @@
       ref = "mutix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      type = "github";
-      owner = "cdo256";
-      repo = "nixvim-config";
-      ref = "main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     sops-nix = {
       type = "github";
       owner = "Mic92";

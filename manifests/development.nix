@@ -10,7 +10,7 @@
   pkgs.gh
   pkgs.gitleaks
   pkgs.mergiraf
-  pkgs.nixvim
+  pkgs.neovim
   pkgs.delta
   pkgs.cloc
   pkgs.nixd # Nix language server
