@@ -44,11 +44,12 @@ in
     installRemoteServer = false;
     userKeymaps = [
       {
-        "context" = "not_editing || vim_mode == normal";
+        "context" = "!menu && (not_editing || vim_mode == normal)";
         "bindings" = {
           "space f f" = "file_finder::Toggle";
           "space f c" = "pane::DeploySearch";
-          "space f d" = "workspace::Open";
+          "space f o" = "workspace::Open";
+          "space f n" = "workspace::NewFile";
           "space g s" = "git_panel::OpenMenu";
           "space g g" = "git_panel::OpenMenu";
           "space d g" = "editor::GoToDefinition";
@@ -83,6 +84,11 @@ in
         "context" = "Editor";
         "bindings" = {
           "ctrl-s" = "workspace::Save";
+        };
+      }
+      {
+        "context" = "Editor && (vim_mode == normal || vim_mode == visual)";
+        "bindings" = {
           "space ;" = "editor::ToggleComments";
         };
       }
