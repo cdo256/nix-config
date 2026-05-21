@@ -17,6 +17,7 @@ let
     "fs.nix"
     "git.nix"
     "jujutsu.nix"
+    "opencode.nix"
     "packages.nix"
     "readline.nix"
     "ranger.nix"
