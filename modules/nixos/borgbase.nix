@@ -1,16 +1,17 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.services.borgbase;
-  inherit (config.networking) hostName;
 in
 {
   options = {
     services.borgbase = {
       enable = lib.mkEnableOption "Enable Restic backup";
-      repository = lib.mkOption {
-        type = lib.types.str;
-      };
     };
   };
   config = lib.mkIf cfg.enable {
@@ -22,6 +23,9 @@ in
       repositoryFile = config.sops.secrets."restic/url".path;
       initialize = true;
       passwordFile = config.sops.secrets."restic/key".path;
+      backupPrepareCommand = ''
+        ${pkgs.restic}/bin/restic unlock || true
+      '';
       paths = [
         "/home"
         "/root"
