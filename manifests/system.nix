@@ -5,4 +5,5 @@
   pkgs.age
   pkgs.age-plugin-yubikey
   pkgs.yubikey-agent
+  pkgs.docker
 ]

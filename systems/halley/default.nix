@@ -60,6 +60,7 @@
       "gnome.nix"
       "yubikey.nix"
       "keyboard.nix"
+      "docker.nix"
       ./keyd.nix
     ];
     modules.home = [

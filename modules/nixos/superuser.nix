@@ -9,6 +9,7 @@
       "input"
       "video"
       "audio"
+      "docker"
     ];
     openssh.authorizedKeys.keyFiles = config.devices.commonKeys;
   };

@@ -64,6 +64,7 @@
       "sddm.nix"
       "yubikey.nix"
       "keyboard.nix"
+      "docker.nix"
     ];
     modules.home = [
       ./home/sway.nix
