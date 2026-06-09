@@ -64,6 +64,7 @@
       "sddm.nix"
       "yubikey.nix"
       "keyboard.nix"
+      "lan-mouse.nix"
       "docker.nix"
     ];
     modules.home = [

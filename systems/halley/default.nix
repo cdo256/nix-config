@@ -60,6 +60,7 @@
       "gnome.nix"
       "yubikey.nix"
       "keyboard.nix"
+      "lan-mouse.nix"
       "docker.nix"
       ./keyd.nix
     ];
